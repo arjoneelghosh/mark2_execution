@@ -29,7 +29,7 @@ const ThemeToggle: React.FC = () => {
         <path
           id={modeLabelArcId}
           className="theme-bulb-label-arc-path"
-          d="M 77 65 A 27 27 0 0 1 23 65"
+          d="M 15.5 74 A 42 42 0 0 0 84.5 74"
         />
         <text className="theme-bulb-ring-label">
           <textPath

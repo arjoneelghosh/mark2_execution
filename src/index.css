@@ -706,7 +706,7 @@ a:hover {
 
   .theme-bulb-rays {
     position: absolute;
-    top: 0.44rem;
+    top: 0.30rem;
     left: 50%;
     z-index: 0;
     width: 1.34rem;
@@ -781,7 +781,7 @@ a:hover {
     position: relative;
     z-index: 1;
     color: rgb(var(--text-muted-rgb) / 0.84);
-    transform: translateY(0.14rem);
+    transform: translateY(0);
     transition:
       color var(--transition-fast) ease,
       filter var(--transition-fast) ease,
@@ -790,7 +790,7 @@ a:hover {
 
   .theme-bulb-filament {
     position: absolute;
-    bottom: 0.54rem;
+    bottom: 0.68rem;
     width: 0.62rem;
     height: 0.18rem;
     border-radius: 999px;
