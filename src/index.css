@@ -675,9 +675,9 @@ a:hover {
 
   .theme-bulb-ring-label {
     font-family: 'Outfit', sans-serif;
-    font-size: 6.2px;
+    font-size: 7.1px;
     font-weight: 600;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.13em;
     fill: rgb(var(--text-faint-rgb) / 0.9);
     transition: fill var(--transition-fast) ease;
   }
@@ -706,11 +706,11 @@ a:hover {
 
   .theme-bulb-rays {
     position: absolute;
-    top: 0.28rem;
+    top: 0.32rem;
     left: 50%;
     z-index: 0;
-    width: 1.05rem;
-    height: 0.82rem;
+    width: 1.18rem;
+    height: 0.72rem;
     pointer-events: none;
     opacity: 0;
     transform: translateX(-50%) translateY(0.08rem) scale(0.94);
@@ -721,10 +721,8 @@ a:hover {
 
   .theme-bulb-ray {
     position: absolute;
-    top: 0;
-    left: 50%;
-    width: 0.1rem;
-    height: 0.56rem;
+    bottom: 0;
+    width: 0.09rem;
     border-radius: 999px;
     background: linear-gradient(
       to top,
@@ -736,16 +734,47 @@ a:hover {
   }
 
   .theme-bulb-ray:nth-child(1) {
-    transform: translateX(-50%) rotate(-26deg);
+    left: 0.08rem;
+    height: 0.42rem;
+    transform: rotate(-42deg);
   }
 
   .theme-bulb-ray:nth-child(2) {
-    height: 0.62rem;
-    transform: translateX(-50%) rotate(0deg);
+    left: 0.22rem;
+    height: 0.28rem;
+    width: 0.075rem;
+    transform: rotate(-28deg);
   }
 
   .theme-bulb-ray:nth-child(3) {
-    transform: translateX(-50%) rotate(26deg);
+    left: 0.37rem;
+    height: 0.48rem;
+    transform: rotate(-14deg);
+  }
+
+  .theme-bulb-ray:nth-child(4) {
+    left: 0.54rem;
+    height: 0.54rem;
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  .theme-bulb-ray:nth-child(5) {
+    right: 0.37rem;
+    height: 0.48rem;
+    transform: rotate(14deg);
+  }
+
+  .theme-bulb-ray:nth-child(6) {
+    right: 0.22rem;
+    height: 0.28rem;
+    width: 0.075rem;
+    transform: rotate(28deg);
+  }
+
+  .theme-bulb-ray:nth-child(7) {
+    right: 0.08rem;
+    height: 0.42rem;
+    transform: rotate(42deg);
   }
 
   .theme-bulb-icon {

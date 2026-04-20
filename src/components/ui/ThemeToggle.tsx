@@ -37,7 +37,7 @@ const ThemeToggle: React.FC = () => {
             startOffset="50%"
             textAnchor="middle"
             lengthAdjust="spacingAndGlyphs"
-            textLength="46"
+            textLength="48"
           >
             {currentModeLabel.toUpperCase()}
           </textPath>
@@ -45,6 +45,10 @@ const ThemeToggle: React.FC = () => {
       </svg>
       <span className="theme-bulb-shell" aria-hidden="true">
         <span className="theme-bulb-rays" aria-hidden="true">
+          <span className="theme-bulb-ray" />
+          <span className="theme-bulb-ray" />
+          <span className="theme-bulb-ray" />
+          <span className="theme-bulb-ray" />
           <span className="theme-bulb-ray" />
           <span className="theme-bulb-ray" />
           <span className="theme-bulb-ray" />
