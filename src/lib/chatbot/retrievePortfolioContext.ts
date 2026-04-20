@@ -824,28 +824,91 @@ const referencesBroadProjectDiscovery = (query: string, queryTokens: string[]) =
     ) ||
       includesAny(query, ['kind of ai work', 'kind of software work', 'what all has arjoneel built'])));
 
+const referencesDsMlBucketTerms = (query: string, queryTokens: string[]) =>
+  includesAny(query, ['data science', 'machine learning', 'ds/ml', 'ml/data', 'analytics']) ||
+  queryTokens.includes('ds') ||
+  queryTokens.includes('ml');
+
+const inferDsMlProjectListLabel = (query: string, queryTokens: string[]) => {
+  if (
+    includesAny(query, ['which projects are both ml and data science', 'ds/ml', 'ml/data']) ||
+    (queryTokens.includes('ds') && queryTokens.includes('ml'))
+  ) {
+    return 'DS/ML Projects';
+  }
+
+  if (query.includes('analytics')) {
+    return 'Analytics Projects';
+  }
+
+  if (query.includes('machine learning') || queryTokens.includes('ml')) {
+    return 'Machine Learning Projects';
+  }
+
+  if (query.includes('data science') || queryTokens.includes('ds')) {
+    return 'Data Science Projects';
+  }
+
+  return 'DS/ML Projects';
+};
+
+const buildDsMlProjectListContext = (query: string, queryTokens: string[]): PortfolioMatchContext => {
+  const title = inferDsMlProjectListLabel(query, queryTokens);
+  const answer =
+    title === 'Data Science Projects'
+      ? 'These are the current data science-oriented projects in the local portfolio knowledge base. DS/ML and older ML/Data wording still map to this same taxonomy.'
+      : title === 'Machine Learning Projects'
+        ? 'These are the current machine learning-oriented projects in the local portfolio knowledge base. DS/ML and older ML/Data wording still map to this same taxonomy.'
+        : title === 'Analytics Projects'
+          ? 'These are the current analytics-oriented projects in the local portfolio knowledge base. They are grouped through the same DS/ML bucket used elsewhere in the portfolio.'
+          : 'These are the current DS/ML projects in the local portfolio knowledge base. Older ML/Data wording still maps to this same taxonomy.';
+
+  return {
+    kind: 'project-list',
+    scope: 'ml',
+    title,
+    answer,
+    related: ['Projects', 'DS/ML', 'Full Stack'],
+    projects: chatbotKnowledge.projects.filter(
+      (project) => projectHasWorkBucket(project, 'DS/ML') && !project.archive
+    ),
+  };
+};
+
 const referencesDsMlBucketQuery = (query: string, queryTokens: string[]) =>
   includesAny(query, [
+    'ds projects',
+    'data science projects',
+    'ml projects',
+    'machine learning projects',
+    'ds/ml projects',
+    'ml/data projects',
+    'analytics projects',
+    'all ds projects',
+    'all data science projects',
+    'all ml projects',
+    'all machine learning projects',
+    'all ds/ml projects',
     'show ds/ml work',
     'show ml/data work',
+    'show all ds projects',
     'what ds/ml projects are here',
     'what data science projects are here',
     'what ml projects are here',
+    'what machine learning projects are here',
+    'what analytics projects are here',
     'which projects are both ml and data science',
     'what projects belong in ds/ml',
     'what projects belong in ml/data',
   ]) ||
-  (((query.includes('data science') ||
-    query.includes('machine learning') ||
-    query.includes('ds/ml') ||
-    query.includes('ml/data') ||
-    query.includes(' ml ')) &&
-    (query.includes('project') || query.includes('projects') || query.includes('work'))) &&
+  (referencesDsMlBucketTerms(query, queryTokens) &&
+    referencesProjectsHint(query, queryTokens) &&
     (query.includes('here') ||
       query.includes('belong') ||
       query.includes('show') ||
       query.includes('which') ||
-      query.includes('what')));
+      query.includes('what') ||
+      query.includes('all')));
 
 const referencesProjectOverviewQuery = (query: string, queryTokens: string[]) => {
   const compactQuery = normalizeCompact(query);
@@ -2271,32 +2334,34 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
   if (
     canonicalIntent === 'best-ml' ||
     includesAny(query, [
+      'all ds projects',
+      'all data science projects',
       'best ml',
+      'all ml projects',
       'strongest ml',
+      'all machine learning projects',
+      'all ds/ml projects',
       'machine learning projects',
       'show ds/ml work',
       'show ml/data work',
+      'show all ds projects',
       'what ds/ml projects are here',
       'what data science projects are here',
       'what ml projects are here',
+      'what machine learning projects are here',
       'which projects are both ml and data science',
       'what projects belong in ds/ml',
+      'what analytics projects are here',
     ]) ||
-    ((query.includes('ml') || query.includes('data science') || query.includes('ds/ml') || query.includes('ml/data')) &&
+    (referencesDsMlBucketTerms(query, queryTokens) &&
       (query.includes('best') || query.includes('strongest') || referencesProjects))
   ) {
-    context = {
-      kind: 'project-list',
-      scope: 'ml',
-      projects: chatbotKnowledge.projects.filter(
-        (project) => projectHasWorkBucket(project, 'DS/ML') && !project.archive
-      ),
-    };
+    context = buildDsMlProjectListContext(query, queryTokens);
     return {
       normalizedQuery: query,
       canonicalIntent,
       matchedDomain: context.kind,
-      matchedEntryCount: context.projects.length,
+      matchedEntryCount: getMatchedEntryCount(context),
       context,
     };
   }
