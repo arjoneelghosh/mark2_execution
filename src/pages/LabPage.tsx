@@ -263,12 +263,12 @@ const LabPage: React.FC = () => {
               {previewCard.detail[0]}
             </p>
             {previewCard.link && (
-              <div className="mt-4">
+              <div className="mt-8 flex items-center gap-4">
                 <a
                   href={previewCard.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="theme-link-inline text-xs transition-colors"
+                  className="theme-button-muted px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-250 inline-flex items-center justify-center"
                 >
                   {previewCard.linkLabel || 'Open'}
                 </a>
