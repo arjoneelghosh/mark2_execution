@@ -669,33 +669,15 @@ a:hover {
     pointer-events: none;
   }
 
-  .theme-bulb-ring-outer,
-  .theme-bulb-ring-inner {
-    fill: none;
-    transition:
-      stroke var(--transition-fast) ease,
-      opacity var(--transition-fast) ease;
-  }
-
-  .theme-bulb-ring-outer {
-    stroke: rgb(var(--border-rgb) / 0.34);
-    stroke-width: 1.15;
-  }
-
-  .theme-bulb-ring-inner {
-    stroke: rgb(var(--border-rgb) / 0.22);
-    stroke-width: 1;
-  }
-
   .theme-bulb-label-arc-path {
     fill: none;
   }
 
   .theme-bulb-ring-label {
     font-family: 'Outfit', sans-serif;
-    font-size: 7px;
+    font-size: 6.2px;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
     fill: rgb(var(--text-faint-rgb) / 0.9);
     transition: fill var(--transition-fast) ease;
   }
@@ -709,6 +691,7 @@ a:hover {
     justify-content: center;
     width: 2.35rem;
     height: 2.35rem;
+    overflow: hidden;
     border-radius: 999px;
     border: 1px solid rgb(var(--border-rgb) / 0.28);
     background: rgb(var(--panel-elevated-rgb) / 0.56);
@@ -723,11 +706,14 @@ a:hover {
 
   .theme-bulb-rays {
     position: absolute;
-    inset: 0;
-    z-index: 2;
+    top: 0.28rem;
+    left: 50%;
+    z-index: 0;
+    width: 1.05rem;
+    height: 0.82rem;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(0.12rem) scale(0.96);
+    transform: translateX(-50%) translateY(0.08rem) scale(0.94);
     transition:
       opacity var(--transition-fast) ease,
       transform var(--transition-fast) ease;
@@ -735,36 +721,31 @@ a:hover {
 
   .theme-bulb-ray {
     position: absolute;
-    top: 0.58rem;
+    top: 0;
     left: 50%;
-    width: 0.12rem;
-    height: 0.78rem;
+    width: 0.1rem;
+    height: 0.56rem;
     border-radius: 999px;
     background: linear-gradient(
       to top,
       rgb(var(--accent-glow-rgb) / 0.12) 0%,
       rgb(var(--accent-glow-rgb) / 0.82) 100%
     );
-    box-shadow: 0 0 10px rgb(var(--accent-glow-rgb) / 0.18);
+    box-shadow: 0 0 8px rgb(var(--accent-glow-rgb) / 0.16);
     transform-origin: center bottom;
   }
 
   .theme-bulb-ray:nth-child(1) {
-    transform: translateX(-50%) rotate(-30deg);
+    transform: translateX(-50%) rotate(-26deg);
   }
 
   .theme-bulb-ray:nth-child(2) {
-    top: 0.38rem;
-    transform: translateX(-50%) rotate(-10deg);
+    height: 0.62rem;
+    transform: translateX(-50%) rotate(0deg);
   }
 
   .theme-bulb-ray:nth-child(3) {
-    top: 0.38rem;
-    transform: translateX(-50%) rotate(10deg);
-  }
-
-  .theme-bulb-ray:nth-child(4) {
-    transform: translateX(-50%) rotate(30deg);
+    transform: translateX(-50%) rotate(26deg);
   }
 
   .theme-bulb-icon {
@@ -820,15 +801,7 @@ a:hover {
 
   .theme-bulb-button.is-on .theme-bulb-rays {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  .theme-bulb-button.is-on .theme-bulb-ring-outer {
-    stroke: rgb(var(--accent-border-rgb) / 0.58);
-  }
-
-  .theme-bulb-button.is-on .theme-bulb-ring-inner {
-    stroke: rgb(var(--accent-border-rgb) / 0.34);
+    transform: translateX(-50%) translateY(0) scale(1);
   }
 
   .theme-bulb-button.is-on .theme-bulb-shell {
@@ -1302,14 +1275,6 @@ a:hover {
       inset 0 1px 0 rgba(255, 251, 240, 0.96);
   }
 
-  :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-ring-outer {
-    stroke: rgb(216 190 121 / 0.72);
-  }
-
-  :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-ring-inner {
-    stroke: rgb(226 205 139 / 0.46);
-  }
-
   :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-icon {
     color: rgb(214 177 80 / 0.98);
     filter: drop-shadow(0 0 10px rgba(238, 208, 121, 0.42));
@@ -1330,7 +1295,7 @@ a:hover {
       rgba(241, 215, 131, 0.16) 0%,
       rgba(231, 193, 88, 0.92) 100%
     );
-    box-shadow: 0 0 12px rgba(241, 215, 131, 0.2);
+    box-shadow: 0 0 10px rgba(241, 215, 131, 0.16);
   }
 
   :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-icon {
@@ -1339,14 +1304,6 @@ a:hover {
 
   :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-filament {
     background: rgb(162 151 124 / 0.4);
-  }
-
-  :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-ring-outer {
-    stroke: rgb(var(--border-rgb) / 0.46);
-  }
-
-  :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-ring-inner {
-    stroke: rgb(var(--border-rgb) / 0.28);
   }
 
   :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-ring-label {
@@ -1735,14 +1692,6 @@ a:hover {
 
   :root[data-theme='dark'] .theme-bulb-button.is-on .theme-bulb-filament {
     background: rgb(var(--accent-glow-rgb) / 0.94);
-  }
-
-  :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-ring-outer {
-    stroke: rgb(var(--border-rgb) / 0.18);
-  }
-
-  :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-ring-inner {
-    stroke: rgb(var(--border-rgb) / 0.12);
   }
 
   :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-ring-label {

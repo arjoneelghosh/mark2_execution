@@ -26,12 +26,10 @@ const ThemeToggle: React.FC = () => {
         viewBox="0 0 100 100"
         aria-hidden="true"
       >
-        <circle className="theme-bulb-ring-outer" cx="50" cy="50" r="44" />
-        <circle className="theme-bulb-ring-inner" cx="50" cy="50" r="31.5" />
         <path
           id={modeLabelArcId}
           className="theme-bulb-label-arc-path"
-          d="M 18 50 A 32 32 0 0 1 82 50"
+          d="M 17 50 A 33 33 0 0 1 83 50"
         />
         <text className="theme-bulb-ring-label">
           <textPath
@@ -39,19 +37,18 @@ const ThemeToggle: React.FC = () => {
             startOffset="50%"
             textAnchor="middle"
             lengthAdjust="spacingAndGlyphs"
-            textLength="44"
+            textLength="46"
           >
             {currentModeLabel.toUpperCase()}
           </textPath>
         </text>
       </svg>
-      <span className="theme-bulb-rays" aria-hidden="true">
-        <span className="theme-bulb-ray" />
-        <span className="theme-bulb-ray" />
-        <span className="theme-bulb-ray" />
-        <span className="theme-bulb-ray" />
-      </span>
       <span className="theme-bulb-shell" aria-hidden="true">
+        <span className="theme-bulb-rays" aria-hidden="true">
+          <span className="theme-bulb-ray" />
+          <span className="theme-bulb-ray" />
+          <span className="theme-bulb-ray" />
+        </span>
         <Lightbulb size={18} strokeWidth={1.85} className="theme-bulb-icon" />
         <span className="theme-bulb-filament" />
       </span>
