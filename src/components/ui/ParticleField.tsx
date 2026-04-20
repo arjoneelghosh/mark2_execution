@@ -13,6 +13,9 @@ const ParticleField: React.FC = () => {
     let particles: { x: number; y: number; radius: number; opacity: number; speed: number; drift: number }[] = [];
     let particleRgb = '138 170 224';
     let particleLayerOpacity = '0.6';
+    let particleDensityMultiplier = 1;
+    let particleRadiusMultiplier = 1;
+    let particleHaloOpacity = 0.14;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -26,18 +29,33 @@ const ParticleField: React.FC = () => {
       particleLayerOpacity =
         getComputedStyle(document.documentElement).getPropertyValue('--particle-layer-opacity').trim() ||
         '0.6';
+      particleDensityMultiplier = Number.parseFloat(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--particle-density-multiplier')
+          .trim() || '1'
+      );
+      particleRadiusMultiplier = Number.parseFloat(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--particle-radius-multiplier')
+          .trim() || '1'
+      );
+      particleHaloOpacity = Number.parseFloat(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--particle-halo-opacity')
+          .trim() || '0.14'
+      );
       canvas.style.opacity = particleLayerOpacity;
     };
 
     const init = () => {
       syncThemeTokens();
       resize();
-      const count = Math.floor((canvas.width * canvas.height) / 18000);
+      const count = Math.floor(((canvas.width * canvas.height) / 18000) * particleDensityMultiplier);
       particles = Array.from({ length: Math.min(count, 120) }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 1.2 + 0.3,
-        opacity: Math.random() * 0.4 + 0.1,
+        radius: (Math.random() * 1.2 + 0.3) * particleRadiusMultiplier,
+        opacity: Math.random() * 0.36 + 0.12,
         speed: Math.random() * 0.15 + 0.02,
         drift: (Math.random() - 0.5) * 0.08,
       }));
@@ -46,6 +64,11 @@ const ParticleField: React.FC = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius * 3.1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgb(${particleRgb} / ${p.opacity * particleHaloOpacity})`;
+        ctx.fill();
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgb(${particleRgb} / ${p.opacity})`;
@@ -66,13 +89,13 @@ const ParticleField: React.FC = () => {
 
     init();
     draw();
-    window.addEventListener('resize', resize);
-    const observer = new MutationObserver(syncThemeTokens);
+    window.addEventListener('resize', init);
+    const observer = new MutationObserver(init);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', init);
       observer.disconnect();
     };
   }, []);

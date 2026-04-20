@@ -18,13 +18,13 @@ const CompactRing: React.FC = () => {
   const ringRadius = 84;
   const isRingVisible = isRingHovered;
   const ringScale = isRingVisible ? 1.16 : 1.04;
-  const accentField = 'rgb(var(--accent-blue-rgb) / 0.1)';
-  const accentHalo = 'rgb(var(--accent-glow-rgb) / 0.12)';
-  const accentHaloOuter = 'rgb(var(--accent-blue-rgb) / 0.05)';
-  const ringStroke = 'rgb(var(--accent-blue-rgb) / 0.1)';
-  const coreGlow = 'rgb(var(--accent-blue-rgb) / 0.08)';
-  const coreFill = 'rgb(var(--ring-core-fill-rgb) / 0.88)';
-  const coreStroke = 'rgb(var(--ring-core-stroke-rgb) / 0.2)';
+  const accentField = 'rgb(var(--accent-blue-rgb) / var(--compact-ring-field-opacity))';
+  const accentHalo = 'rgb(var(--accent-glow-rgb) / var(--compact-ring-halo-opacity))';
+  const accentHaloOuter = 'rgb(var(--accent-blue-rgb) / var(--compact-ring-halo-outer-opacity))';
+  const ringStroke = 'rgb(var(--accent-blue-rgb) / var(--compact-ring-stroke-opacity))';
+  const coreGlow = 'rgb(var(--accent-blue-rgb) / var(--compact-ring-core-glow-opacity))';
+  const coreFill = 'rgb(var(--ring-core-fill-rgb) / var(--compact-ring-core-fill-opacity))';
+  const coreStroke = 'rgb(var(--ring-core-stroke-rgb) / var(--compact-ring-core-stroke-opacity))';
 
   useEffect(() => {
     setIsRingHovered(false);

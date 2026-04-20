@@ -90,7 +90,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto w-full px-8 lg:px-14">
-          <div className="max-w-[34rem] lg:max-w-[32rem] pt-24 lg:pt-0">
+          <div className="home-hero-copy max-w-[34rem] lg:max-w-[32rem] pt-24 lg:pt-0">
             <p
               className="text-accent-blue/70 tracking-widest uppercase mb-7 animate-fade-in opacity-0 italic font-medium"
               style={{
@@ -195,7 +195,7 @@ const HomePage: React.FC = () => {
                   ),
                 })
               }
-              className="card-base p-4 min-h-[88px] flex items-end text-left w-full cursor-pointer animate-fade-in opacity-0"
+              className="home-focus-card card-base p-4 min-h-[88px] flex items-end text-left w-full cursor-pointer animate-fade-in opacity-0"
               style={{ animationDelay: `${1000 + i * 80}ms`, animationFillMode: 'forwards' }}
             >
               <h4 className="font-heading text-sm font-semibold text-navy-100">
@@ -224,7 +224,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className="mt-32 space-y-20">
-          <div className="animate-fade-in opacity-0" style={{ animationDelay: '1350ms', animationFillMode: 'forwards' }}>
+          <div className="home-feature-block animate-fade-in opacity-0" style={{ animationDelay: '1350ms', animationFillMode: 'forwards' }}>
             <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Featured Work</h3>
             <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
               Projects spanning ML systems, assistive technology, product engineering, and data tooling, each built with care for both technical depth and user experience.
@@ -237,7 +237,7 @@ const HomePage: React.FC = () => {
             </button>
           </div>
 
-          <div className="animate-fade-in opacity-0" style={{ animationDelay: '1450ms', animationFillMode: 'forwards' }}>
+          <div className="home-feature-block animate-fade-in opacity-0" style={{ animationDelay: '1450ms', animationFillMode: 'forwards' }}>
             <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Professional Experience</h3>
             <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
               Certificate-backed internships at KPMG and Sopra Steria, leadership at SRMMUN Society, and a role-based view of practical responsibility.
@@ -250,7 +250,7 @@ const HomePage: React.FC = () => {
             </button>
           </div>
 
-          <div className="animate-fade-in opacity-0" style={{ animationDelay: '1550ms', animationFillMode: 'forwards' }}>
+          <div className="home-feature-block animate-fade-in opacity-0" style={{ animationDelay: '1550ms', animationFillMode: 'forwards' }}>
             <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Research and Exploration</h3>
             <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
               Manuscript work, technical experiments, evolving concepts, and prototype systems that sit alongside the polished project record.
