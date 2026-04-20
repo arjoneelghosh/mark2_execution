@@ -221,13 +221,6 @@ const findBestSkillGroup = (query: string) => {
   return scored[0]?.group;
 };
 
-const navigationFaq = {
-  label: chatbotKnowledge.ask.faqQuestions[0]?.label || 'Navigation ring',
-  replyTitle: chatbotKnowledge.ask.faqReplies['navigation-ring'].title,
-  replySummary: chatbotKnowledge.ask.faqReplies['navigation-ring'].summary,
-  replyBullets: chatbotKnowledge.ask.faqReplies['navigation-ring'].bullets,
-};
-
 const actionReplyById = (id: 'best-ml' | 'recruiter-summary' | 'full-stack' | 'guide') => {
   const question = chatbotKnowledge.ask.actionQuestions.find((item) => item.id === id);
   const reply = chatbotKnowledge.ask.actionReplies[id];
@@ -513,9 +506,15 @@ const referencesPublicationAuthorQuery = (query: string, queryTokens: string[]) 
 
 const includesSiteStructure = (query: string) =>
   includesAny(query, [
+    'structure',
+    'site structure',
+    'website structure',
+    'portfolio structure',
     'portfolio organized',
     'guide me through this portfolio',
     'how is the portfolio organized',
+    'how is this site organized',
+    'how is this website organized',
     'what sections are on the site',
     'what sections are on the portfolio',
     'what pages are on the site',
@@ -526,7 +525,107 @@ const includesSiteStructure = (query: string) =>
     'what pages are on the website',
     'what sections does the site have',
     'what sections does this portfolio have',
+    'what does the site contain',
+    'what does the portfolio contain',
   ]);
+
+const referencesPortfolioWebsiteQuery = (query: string, queryTokens: string[]) => {
+  if (query === 'website' || query === 'site') return true;
+
+  return (
+    includesAny(query, [
+      'explain portfolio website',
+      'explain this website',
+      'explain this site',
+      'what is this portfolio website',
+      'what is this site',
+      'what is this website',
+      'what does this website show',
+      'what does this site show',
+      'what is the purpose of this site',
+      'what is the purpose of this website',
+      'what is this portfolio for',
+      'what is this site for',
+      'what does this portfolio website show',
+    ]) ||
+    ((query.includes('website') || query.includes('site')) &&
+      (hasTokenFamily(queryTokens, ['what', 'explain', 'purpose', 'show'], 1) ||
+        includesAny(query, ['what is', 'purpose of', 'does this'])))
+  );
+};
+
+const referencesPortfolioSummaryQuery = (query: string, queryTokens: string[]) => {
+  if (query === 'portfolio' || query === 'summarize portfolio') return true;
+
+  return (
+    includesAny(query, [
+      'give me a portfolio summary',
+      'summarize this website',
+      'summarize portfolio',
+      'summarise portfolio',
+      'summarize arjoneel s portfolio',
+      'summarise arjoneel s portfolio',
+      'what is in this portfolio',
+      'what does this portfolio include',
+      'what is included in this portfolio',
+      'what does this portfolio cover',
+    ]) ||
+    ((query.includes('portfolio') || query.includes('website') || query.includes('site')) &&
+      hasTokenFamily(queryTokens, ['summary', 'summarize', 'summarise', 'overview'], 1))
+  );
+};
+
+const referencesNavigationRingQuery = (query: string, queryTokens: string[]) => {
+  if (query === 'ring' || query === 'navigation' || query === 'navigation ring') return true;
+
+  return (
+    includesAny(query, [
+      'explain ring',
+      'explain ring of website',
+      'explain ring of the website',
+      'explain the ring of the website',
+      'what is the ring',
+      'how does the ring work',
+      'what is the navigation ring',
+      'how does the navigation ring work',
+      'explain navigation ring',
+      'what does ag/home do',
+      'what does ag do',
+      'what does home do',
+    ]) ||
+    ((query.includes('ring') || query.includes('navigation')) &&
+      (hasTokenFamily(queryTokens, ['what', 'explain', 'how'], 1) ||
+        query.includes('website') ||
+        query.includes('site') ||
+        query.includes('portfolio') ||
+        query.includes('ag/home') ||
+        query.includes('ag')))
+  );
+};
+
+const referencesPortfolioOwnerSiteQuery = (query: string, queryTokens: string[]) => {
+  if (query === 'who is this' || query === 'who made this') return true;
+
+  return (
+    includesAny(query, [
+      'who is behind this portfolio',
+      'who is behind this website',
+      'who made this portfolio',
+      'who made this website',
+      'who built this website',
+      'who built this portfolio',
+      'who is arjoneel in this website',
+      'who is arjoneel in this portfolio',
+      'summarize arjoneel for this site',
+      'summarize arjoneel for this website',
+      'summarise arjoneel for this site',
+      'summarise arjoneel for this website',
+    ]) ||
+    ((hasTokenFamily(queryTokens, ['who', 'made', 'built', 'behind'], 1) ||
+      query.includes('person behind')) &&
+      (query.includes('portfolio') || query.includes('website') || query.includes('site')))
+  );
+};
 
 const siteMetaById = chatbotKnowledge.siteMeta;
 
@@ -584,6 +683,8 @@ const referencesChatbotMeta = (query: string, queryTokens: string[]) => {
 };
 
 export type CanonicalIntent =
+  | 'portfolio-website'
+  | 'portfolio-summary'
   | 'project-overview'
   | 'broad-project-discovery'
   | 'comparative-projects'
@@ -1546,11 +1647,24 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
   const knowledgeRefs = referencesKnowledgeSynthesis(query, queryTokens);
 
   if (
+    referencesPortfolioOwnerSiteQuery(query, queryTokens) ||
     includesAny(query, ['who made this portfolio', 'who is the person behind this portfolio']) ||
     (hasTokenFamily(queryTokens, ['who', 'made'], 1) && hasTokenFamily(queryTokens, ['portfolio'], 2)) ||
     (identityRefs.mentionsOwner && includesAny(query, ['made this portfolio', 'person behind this portfolio']))
   ) {
     return 'portfolio-owner';
+  }
+
+  if (referencesPortfolioSummaryQuery(query, queryTokens)) {
+    return 'portfolio-summary';
+  }
+
+  if (referencesNavigationRingQuery(query, queryTokens)) {
+    return 'navigation-ring';
+  }
+
+  if (referencesPortfolioWebsiteQuery(query, queryTokens)) {
+    return 'portfolio-website';
   }
 
   if (
@@ -1733,13 +1847,6 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
     (metaRefs.mentionsSite && metaRefs.mentionsHow)
   ) {
     return 'portfolio-structure';
-  }
-
-  if (
-    includesAny(query, ['how do i use the navigation ring', 'navigation ring']) &&
-    !query.includes('work')
-  ) {
-    return 'navigation-ring';
   }
 
   if (
@@ -2084,7 +2191,10 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent === 'how-ask-page-works' ||
       canonicalIntent === 'faq-vs-chat' ||
       canonicalIntent === 'chatbot-scope' ||
+      canonicalIntent === 'portfolio-website' ||
+      canonicalIntent === 'portfolio-summary' ||
       canonicalIntent === 'portfolio-structure' ||
+      canonicalIntent === 'navigation-ring' ||
       canonicalIntent === 'website-navigation' ||
       includesChatbotMeta(query) ||
       (metaRefs.mentionsChatbot &&
@@ -2099,7 +2209,10 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
     > = {
       'how-chatbot-works': 'chatbotBehavior',
       'how-ask-page-works': 'askPageWorkflow',
+      'portfolio-website': 'portfolioWebsite',
+      'portfolio-summary': 'portfolioSummary',
       'portfolio-structure': 'portfolioStructure',
+      'navigation-ring': 'navigationSystem',
       'website-navigation': 'navigationSystem',
       'faq-vs-chat': 'faqVsChat',
       'chatbot-scope': 'chatbotScope',
@@ -2170,17 +2283,6 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent,
       matchedDomain: context.kind,
       matchedEntryCount: 0,
-      context,
-    };
-  }
-
-  if (canonicalIntent === 'navigation-ring') {
-    context = { kind: 'faq', item: navigationFaq };
-    return {
-      normalizedQuery: query,
-      canonicalIntent,
-      matchedDomain: context.kind,
-      matchedEntryCount: 1,
       context,
     };
   }

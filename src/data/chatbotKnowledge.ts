@@ -13,6 +13,31 @@ export const chatbotKnowledge = {
     ringNavigationLabels: ["Projects", "Profile", "Experience", "Connect", "Ask", "Lab"],
   },
   siteMeta: {
+    portfolioWebsite: {
+      id: "portfolio-website",
+      label: "Portfolio Website",
+      summary: "This website is Arjoneel Ghosh's portfolio. It brings together project work, profile context, experience records, Lab material, contact routes, and a dedicated Ask page for grounded portfolio questions.",
+      bullets: [
+        "Projects is the main project shelf, covering DS/ML systems, full-stack product work, research-led work, and archive entries.",
+        "Profile explains positioning, grouped skills, education, resume context, achievements, and public record layers.",
+        "Experience holds internships, research, leadership, and related certificate-backed evidence.",
+        "Lab extends the portfolio with papers, concepts, and working prototypes that complement the main project shelf.",
+        "Ask is the dedicated local assistant surface, while Connect holds the published public destinations."
+      ],
+      related: ["Projects", "Profile", "Experience", "Lab", "Connect", "Ask"]
+    },
+    portfolioSummary: {
+      id: "portfolio-summary",
+      label: "Portfolio Summary",
+      summary: "Arjoneel Ghosh's portfolio presents him as a machine learning engineer and full-stack developer, with emphasis on forecasting systems, assistive computer vision, data tooling, and product-oriented technical delivery.",
+      bullets: [
+        "The strongest visible work spans DS/ML systems, full-stack product workflows, and applied AI with evidence-backed project summaries.",
+        "Profile and Experience add education, grouped skills, internships, leadership, and supporting record layers.",
+        "Lab captures paper-backed work, concept-stage ideas, and prototype material that does not sit on the main project shelf in the same way.",
+        "Ask provides a grounded way to explore the same portfolio corpus through guided prompts and typed questions."
+      ],
+      related: ["Projects", "Profile", "Experience", "Lab", "Ask"]
+    },
     portfolioStructure: {
       id: "portfolio-structure",
       label: "Portfolio Structure",
@@ -88,8 +113,9 @@ export const chatbotKnowledge = {
       label: "Navigation System",
       summary: "The ring is the persistent navigation system for moving between the major sections of the portfolio.",
       bullets: [
-        "Use the ring nodes to move across the main portfolio sections.",
-        "On inner pages, the AG center returns to the landing page.",
+        "The outer ring nodes map to the main portfolio sections Projects, Profile, Experience, Connect, Ask, and Lab.",
+        "On the landing page the ring acts as the main section-switching surface, while inner pages keep a compact version available.",
+        "On inner pages, the AG or Home center returns to the landing page.",
         "The ring is separate from the Ask chatbot and stays available as site navigation."
       ],
       related: ["Navigation ring", "Portfolio Structure"]
