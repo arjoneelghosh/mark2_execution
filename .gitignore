@@ -8,9 +8,14 @@ dist/
 Thumbs.db
 Desktop.ini
 
+# Local process artifacts and branch-pass notes
 report*.md
 integration_report.md
 ask_local_first_architecture_note.md
+approved_design/
+repo_exclude_manifest.md
+repo_include_manifest.md
+repo_sync_plan.md
 
 src/assets/project-previews/assets.lnk
 src/assets/project-previews/ASK_DESIGN.png
