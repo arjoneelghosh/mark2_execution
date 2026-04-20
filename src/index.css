@@ -675,9 +675,9 @@ a:hover {
 
   .theme-bulb-ring-label {
     font-family: 'Outfit', sans-serif;
-    font-size: 7.1px;
+    font-size: 8.2px;
     font-weight: 600;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.11em;
     fill: rgb(var(--text-faint-rgb) / 0.9);
     transition: fill var(--transition-fast) ease;
   }
@@ -689,8 +689,8 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.62rem;
+    height: 2.62rem;
     overflow: hidden;
     border-radius: 999px;
     border: 1px solid rgb(var(--border-rgb) / 0.28);
@@ -706,11 +706,11 @@ a:hover {
 
   .theme-bulb-rays {
     position: absolute;
-    top: 0.32rem;
+    top: 0.44rem;
     left: 50%;
     z-index: 0;
-    width: 1.18rem;
-    height: 0.72rem;
+    width: 1.34rem;
+    height: 0.7rem;
     pointer-events: none;
     opacity: 0;
     transform: translateX(-50%) translateY(0.08rem) scale(0.94);
@@ -734,53 +734,54 @@ a:hover {
   }
 
   .theme-bulb-ray:nth-child(1) {
-    left: 0.08rem;
-    height: 0.42rem;
-    transform: rotate(-42deg);
+    left: 0.06rem;
+    height: 0.37rem;
+    transform: rotate(-44deg);
   }
 
   .theme-bulb-ray:nth-child(2) {
     left: 0.22rem;
-    height: 0.28rem;
+    height: 0.22rem;
     width: 0.075rem;
-    transform: rotate(-28deg);
+    transform: rotate(-30deg);
   }
 
   .theme-bulb-ray:nth-child(3) {
-    left: 0.37rem;
-    height: 0.48rem;
-    transform: rotate(-14deg);
+    left: 0.39rem;
+    height: 0.44rem;
+    transform: rotate(-17deg);
   }
 
   .theme-bulb-ray:nth-child(4) {
-    left: 0.54rem;
-    height: 0.54rem;
+    left: 0.62rem;
+    height: 0.3rem;
     transform: translateX(-50%) rotate(0deg);
   }
 
   .theme-bulb-ray:nth-child(5) {
-    right: 0.37rem;
-    height: 0.48rem;
-    transform: rotate(14deg);
+    right: 0.39rem;
+    height: 0.44rem;
+    transform: rotate(17deg);
   }
 
   .theme-bulb-ray:nth-child(6) {
     right: 0.22rem;
-    height: 0.28rem;
+    height: 0.22rem;
     width: 0.075rem;
-    transform: rotate(28deg);
+    transform: rotate(30deg);
   }
 
   .theme-bulb-ray:nth-child(7) {
-    right: 0.08rem;
-    height: 0.42rem;
-    transform: rotate(42deg);
+    right: 0.06rem;
+    height: 0.37rem;
+    transform: rotate(44deg);
   }
 
   .theme-bulb-icon {
     position: relative;
     z-index: 1;
     color: rgb(var(--text-muted-rgb) / 0.84);
+    transform: translateY(0.14rem);
     transition:
       color var(--transition-fast) ease,
       filter var(--transition-fast) ease,
@@ -789,8 +790,8 @@ a:hover {
 
   .theme-bulb-filament {
     position: absolute;
-    bottom: 0.5rem;
-    width: 0.55rem;
+    bottom: 0.54rem;
+    width: 0.62rem;
     height: 0.18rem;
     border-radius: 999px;
     background: rgb(var(--text-faint-rgb) / 0.42);

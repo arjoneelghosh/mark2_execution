@@ -29,7 +29,7 @@ const ThemeToggle: React.FC = () => {
         <path
           id={modeLabelArcId}
           className="theme-bulb-label-arc-path"
-          d="M 17 50 A 33 33 0 0 1 83 50"
+          d="M 77 65 A 27 27 0 0 1 23 65"
         />
         <text className="theme-bulb-ring-label">
           <textPath
@@ -37,7 +37,7 @@ const ThemeToggle: React.FC = () => {
             startOffset="50%"
             textAnchor="middle"
             lengthAdjust="spacingAndGlyphs"
-            textLength="48"
+            textLength="56"
           >
             {currentModeLabel.toUpperCase()}
           </textPath>
@@ -53,7 +53,7 @@ const ThemeToggle: React.FC = () => {
           <span className="theme-bulb-ray" />
           <span className="theme-bulb-ray" />
         </span>
-        <Lightbulb size={18} strokeWidth={1.85} className="theme-bulb-icon" />
+        <Lightbulb size={20} strokeWidth={1.9} className="theme-bulb-icon" />
         <span className="theme-bulb-filament" />
       </span>
     </button>
