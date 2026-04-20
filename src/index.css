@@ -629,6 +629,8 @@ a:hover {
     min-width: 4.5rem;
     min-height: 4.5rem;
     justify-content: center;
+    align-items: center;
+    isolation: isolate;
     border: 1px solid rgb(var(--border-rgb) / 0.76);
     border-radius: 999px;
     background: linear-gradient(
@@ -657,9 +659,50 @@ a:hover {
     outline-offset: 3px;
   }
 
+  .theme-bulb-ring {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .theme-bulb-ring-outer,
+  .theme-bulb-ring-inner {
+    fill: none;
+    transition:
+      stroke var(--transition-fast) ease,
+      opacity var(--transition-fast) ease;
+  }
+
+  .theme-bulb-ring-outer {
+    stroke: rgb(var(--border-rgb) / 0.34);
+    stroke-width: 1.15;
+  }
+
+  .theme-bulb-ring-inner {
+    stroke: rgb(var(--border-rgb) / 0.22);
+    stroke-width: 1;
+  }
+
+  .theme-bulb-label-arc-path {
+    fill: none;
+  }
+
+  .theme-bulb-ring-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    fill: rgb(var(--text-faint-rgb) / 0.9);
+    transition: fill var(--transition-fast) ease;
+  }
+
   .theme-bulb-shell {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -676,6 +719,52 @@ a:hover {
       background var(--transition-fast) ease,
       border-color var(--transition-fast) ease,
       box-shadow var(--transition-fast) ease;
+  }
+
+  .theme-bulb-rays {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0.12rem) scale(0.96);
+    transition:
+      opacity var(--transition-fast) ease,
+      transform var(--transition-fast) ease;
+  }
+
+  .theme-bulb-ray {
+    position: absolute;
+    top: 0.58rem;
+    left: 50%;
+    width: 0.12rem;
+    height: 0.78rem;
+    border-radius: 999px;
+    background: linear-gradient(
+      to top,
+      rgb(var(--accent-glow-rgb) / 0.12) 0%,
+      rgb(var(--accent-glow-rgb) / 0.82) 100%
+    );
+    box-shadow: 0 0 10px rgb(var(--accent-glow-rgb) / 0.18);
+    transform-origin: center bottom;
+  }
+
+  .theme-bulb-ray:nth-child(1) {
+    transform: translateX(-50%) rotate(-30deg);
+  }
+
+  .theme-bulb-ray:nth-child(2) {
+    top: 0.38rem;
+    transform: translateX(-50%) rotate(-10deg);
+  }
+
+  .theme-bulb-ray:nth-child(3) {
+    top: 0.38rem;
+    transform: translateX(-50%) rotate(10deg);
+  }
+
+  .theme-bulb-ray:nth-child(4) {
+    transform: translateX(-50%) rotate(30deg);
   }
 
   .theme-bulb-icon {
@@ -717,19 +806,6 @@ a:hover {
       background var(--transition-fast) ease;
   }
 
-  .theme-bulb-state {
-    position: absolute;
-    right: 0.5rem;
-    bottom: 0.45rem;
-    z-index: 1;
-    font-size: 0.6rem;
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: rgb(var(--text-faint-rgb) / 0.88);
-    transition: color var(--transition-fast) ease;
-  }
-
   .theme-bulb-button.is-on {
     border-color: rgb(var(--accent-border-rgb) / 0.58);
     box-shadow:
@@ -740,6 +816,19 @@ a:hover {
   .theme-bulb-button.is-on .theme-bulb-aura {
     opacity: 1;
     transform: scale(1.04);
+  }
+
+  .theme-bulb-button.is-on .theme-bulb-rays {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .theme-bulb-button.is-on .theme-bulb-ring-outer {
+    stroke: rgb(var(--accent-border-rgb) / 0.58);
+  }
+
+  .theme-bulb-button.is-on .theme-bulb-ring-inner {
+    stroke: rgb(var(--accent-border-rgb) / 0.34);
   }
 
   .theme-bulb-button.is-on .theme-bulb-shell {
@@ -756,8 +845,8 @@ a:hover {
     box-shadow: 0 0 12px rgb(var(--accent-glow-rgb) / 0.3);
   }
 
-  .theme-bulb-button.is-on .theme-bulb-state {
-    color: rgb(var(--text-primary-rgb) / 0.96);
+  .theme-bulb-button.is-on .theme-bulb-ring-label {
+    fill: rgb(var(--text-primary-rgb) / 0.96);
   }
 
   .theme-bulb-button.is-off .theme-bulb-shell {
@@ -772,6 +861,10 @@ a:hover {
   .theme-bulb-button.is-off .theme-bulb-filament {
     background: rgb(var(--text-faint-rgb) / 0.28);
     box-shadow: none;
+  }
+
+  .theme-bulb-button.is-off .theme-bulb-ring-label {
+    fill: rgb(var(--text-faint-rgb) / 0.84);
   }
 
   .home-hero-copy,
@@ -1209,6 +1302,14 @@ a:hover {
       inset 0 1px 0 rgba(255, 251, 240, 0.96);
   }
 
+  :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-ring-outer {
+    stroke: rgb(216 190 121 / 0.72);
+  }
+
+  :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-ring-inner {
+    stroke: rgb(226 205 139 / 0.46);
+  }
+
   :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-icon {
     color: rgb(214 177 80 / 0.98);
     filter: drop-shadow(0 0 10px rgba(238, 208, 121, 0.42));
@@ -1219,12 +1320,37 @@ a:hover {
     box-shadow: 0 0 10px rgba(238, 208, 121, 0.34);
   }
 
+  :root[data-theme='light'] .theme-bulb-button.is-on .theme-bulb-ring-label {
+    fill: rgb(131 101 32 / 0.96);
+  }
+
+  :root[data-theme='light'] .theme-bulb-ray {
+    background: linear-gradient(
+      to top,
+      rgba(241, 215, 131, 0.16) 0%,
+      rgba(231, 193, 88, 0.92) 100%
+    );
+    box-shadow: 0 0 12px rgba(241, 215, 131, 0.2);
+  }
+
   :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-icon {
     color: rgb(127 121 104 / 0.82);
   }
 
   :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-filament {
     background: rgb(162 151 124 / 0.4);
+  }
+
+  :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-ring-outer {
+    stroke: rgb(var(--border-rgb) / 0.46);
+  }
+
+  :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-ring-inner {
+    stroke: rgb(var(--border-rgb) / 0.28);
+  }
+
+  :root[data-theme='light'] .theme-bulb-button.is-off .theme-bulb-ring-label {
+    fill: rgb(137 124 92 / 0.92);
   }
 
   :root[data-theme='light'] .home-hero-copy {
@@ -1611,8 +1737,16 @@ a:hover {
     background: rgb(var(--accent-glow-rgb) / 0.94);
   }
 
-  :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-state {
-    color: rgb(var(--navy-300-rgb) / 0.8);
+  :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-ring-outer {
+    stroke: rgb(var(--border-rgb) / 0.18);
+  }
+
+  :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-ring-inner {
+    stroke: rgb(var(--border-rgb) / 0.12);
+  }
+
+  :root[data-theme='dark'] .theme-bulb-button.is-off .theme-bulb-ring-label {
+    fill: rgb(var(--navy-300-rgb) / 0.8);
   }
 }
 
