@@ -1,0 +1,536 @@
+projects:
+  - canonical_title: "AgriFore"
+    canonical_slug: "agrifore"
+    treatment: featured
+    source_of_truth: merged
+    confidence: high
+    category: "ML / Data"
+    subcategory: "Agricultural Forecasting Platform"
+    status: "Research Prototype / Full-Stack System"
+    one_line_summary: "Agriculture forecasting platform combining DuckDB ETL, forecasting models, a FastAPI service, and a Next.js dashboard."
+    preview_summary: "Strongest agriculture project in the set, with direct evidence across ETL, backend, frontend, reports, and figures."
+    deep_context:
+      paragraph_1: "AgriFore is an integrated agriculture forecasting system built around Telangana production, weather, and market data rather than a notebook-only experiment."
+      paragraph_2: "The workflow loads production, weather, and market CSVs into DuckDB through the `AgricultureProd/sql` pipeline, creates model-ready datasets, then serves predictions and analytics through FastAPI and a dashboard UI."
+      paragraph_3: "Concrete modules include `AgricultureProd/run_duckdb_pipeline.ps1`, `AgricultureProd/tools/train_model1_xgboost.py`, `AgriMarket/train_model2_base.py`, `AgriMarket/train_model2_adjust.py`, `api/server.py`, and the Next.js app under `frontend/`, plus figure assets and forecast reports."
+      paragraph_4: "This is portfolio-strong because it demonstrates ETL, tabular ML, API design, and dashboard delivery in one system. The main uncertainty is ownership granularity and which deployment or metric claims should be surfaced publicly."
+    strongest_evidence:
+      - "C:/Users/footb/Desktop/AgriFore/REPO_FULL_REPORT.md"
+      - "C:/Users/footb/Desktop/AgriFore/api/server.py"
+      - "C:/Users/footb/Desktop/AgriFore/frontend/README.md"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+    key_files_and_artifacts:
+      - "C:/Users/footb/Desktop/AgriFore/AgricultureProd/run_duckdb_pipeline.ps1"
+      - "C:/Users/footb/Desktop/AgriFore/aaaFinalModels"
+      - "C:/Users/footb/Desktop/AgriFore/march2026_prediction_vs_reality.md"
+    concrete_implementation_points:
+      - "Runs an 18-step DuckDB SQL pipeline for ingest, feature engineering, diagnostics, and model dataset creation."
+      - "Trains a yield model and a market-price model, with a RidgeCV adjustment layer for price correction."
+      - "Serves commodities, districts, trends, seasonal data, arrivals, prediction, and health endpoints from `api/server.py`."
+      - "Backs a three-page Next.js dashboard with typed API helpers and chart components."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "A real ETL plus API plus frontend split exists."
+        - "DuckDB is the runtime data layer for the backend."
+      uncertain:
+        - "Your exact ownership across ETL, modeling, frontend, backend, and paper work."
+        - "Whether the hosted link is the final stable deployment."
+    media_readiness: strong
+    media_candidates:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/architecture_aligned_fresh.png"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/arrivals_vs_price_fresh.png"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/feature_importance_fresh.png"
+    missing_info:
+      - "Ownership split across the stack."
+      - "Preferred deployment or demo path."
+    notes_for_user:
+      - "Now specific enough for live portfolio population with conservative ownership wording."
+
+  - canonical_title: "FlightFinder AI"
+    canonical_slug: "flightfinder-ai"
+    treatment: featured
+    source_of_truth: merged
+    confidence: high
+    category: "Full Stack"
+    subcategory: "Accessible Travel Assistant"
+    status: "Substantial Prototype"
+    one_line_summary: "Accessible flight-booking prototype with role-adaptive UI, FastAPI backend modules, and assistive voice or camera pathways."
+    preview_summary: "Accessibility-centered product prototype with a clear frontend and backend split and unusually explicit workflow docs."
+    deep_context:
+      paragraph_1: "FlightFinder AI is designed around accessible booking for deaf, mute, blind, and standard users instead of generic travel search."
+      paragraph_2: "Users sign up with a role, land in a dashboard whose middle pane changes by role, then interact through chat, flight results, voice input, or an ASL camera area depending on the selected mode."
+      paragraph_3: "The backend is organized under `backend/app` with modules for auth, chat, flights, trips, and ASL, and `PROJECT_SUMMARY.md` maps frontend components such as `ASLCamera.tsx`, `VoiceInput.tsx`, `ChatPanel.tsx`, `FlightCard.tsx`, and `TripHistory.tsx`."
+      paragraph_4: "This matters because it combines accessibility-first product framing with practical full-stack structure. The main caution is feature completeness: ASL inference, live API behavior, and payment flow should stay conservatively worded."
+    strongest_evidence:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/README.md"
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/PROJECT_SUMMARY.md"
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/backend/app/main.py"
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/backend/requirements.txt"
+    key_files_and_artifacts:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/backend/app/routes/auth_routes.py"
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/backend/app/routes/chat_routes.py"
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/backend/app/routes/flight_routes.py"
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/docker-compose.yml"
+    concrete_implementation_points:
+      - "Defines separate auth, chat, flight, trip-history, and ASL router modules under a FastAPI backend."
+      - "Creates DB tables on startup and uses SQLAlchemy, Alembic, and JWT-oriented auth dependencies."
+      - "Documents role-adaptive pane layouts and assistive input modes."
+      - "Includes setup, testing, and troubleshooting docs for voice and ASL flows."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "There is a real frontend or backend split with concrete route modules."
+        - "Accessibility roles are central to the product structure."
+      uncertain:
+        - "Exactly which integrations were fully working in the strongest demo."
+        - "Whether Amadeus and OpenRouter were run live or mainly through fallback behavior."
+    media_readiness: medium
+    media_candidates:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking/final_project_ppt"
+    missing_info:
+      - "Best screenshots or recording."
+      - "Feature completeness of ASL, voice, and live flight search."
+    notes_for_user:
+      - "Text is ready; media is the weak point."
+
+  - canonical_title: "SignChat"
+    canonical_slug: "signchat"
+    treatment: featured
+    source_of_truth: local
+    confidence: high
+    category: "ML / Computer Vision"
+    subcategory: "Assistive Tech"
+    status: "Prototype / Research Build"
+    one_line_summary: "Streamlit sign-language transcription prototype using MediaPipe hand landmarks, per-language Keras model loading, and temporal smoothing."
+    preview_summary: "Concrete assistive ML build with a webcam-to-transcript workflow and explicit detector and model-loading logic."
+    deep_context:
+      paragraph_1: "SignChat is a user-facing assistive communication prototype built around live sign detection instead of a loose gesture experiment."
+      paragraph_2: "The workflow includes a login gate, a sidebar for new conversations, language selection for ASL, BSL, or ISL, a chat panel, and a webcam panel that appends stabilized letters into the active thread."
+      paragraph_3: "The pipeline uses MediaPipe Hands to extract landmarks, converts them into a 68-dimensional feature vector, then loads per-language Keras classifiers from `models/<LANG>/model.h5` and applies buffered smoothing before emission."
+      paragraph_4: "This project matters because it demonstrates an explainable live CV pipeline in a runnable interface. The main unresolved pieces are model provenance, working language coverage, and final demo stability."
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/README.md"
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/signchat/ui.py"
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/signchat/detector.py"
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/signchat/models.py"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/app.py"
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/signchat/feature.py"
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py/models"
+    concrete_implementation_points:
+      - "Uses `streamlit-webrtc` for a live webcam panel inside a Streamlit UI."
+      - "Runs MediaPipe Hands with one-hand tracking and custom feature extraction."
+      - "Loads per-language Keras `.h5` files for ASL, BSL, and ISL paths."
+      - "Uses buffered temporal smoothing before appending letters into the transcript."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "A real threaded UI and webcam detection loop exist."
+        - "The model-loading path is per language and file-based."
+      uncertain:
+        - "Which language models were actually trained and present."
+        - "Dataset and training provenance."
+    media_readiness: medium
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+    missing_info:
+      - "Training and dataset story."
+      - "Working language coverage."
+      - "Screenshots or demo recording."
+    notes_for_user:
+      - "Strong case-study candidate once the training provenance is added."
+
+  - canonical_title: "CropIQ"
+    treatment: archive
+    canonical_slug: "cropiq"
+    source_of_truth: local
+    confidence: medium
+    category: "Full Stack"
+    subcategory: "Agriculture Assistant"
+    status: "Prototype"
+    one_line_summary: "Conversational crop planning prototype with chat state, crop specific context, and rule based advisory flows for harvest timing, pricing, and pesticide related questions."
+    preview_summary: "A narrower and more structured assistant than a generic chatbot, because each conversation is tied to crop plans, local context, and predefined advisory pathways."
+    deep_context:
+      paragraph_1: "CropIQ is a crop advisory chat workspace built around practical questions such as harvest timing, expected pricing, and pesticide related decisions."
+      paragraph_2: "The current version creates crop specific conversations from a harvest planning flow and keeps each chat tied to details such as crop, subdistrict, sow date, and acreage, which makes the interaction more grounded than a free form assistant."
+      paragraph_3: "Its main value is not broad intelligence but the way it productizes conversational state and domain specific advisory logic inside a focused agricultural interface."
+      paragraph_4: "It should still be presented conservatively, because the current version appears to rely heavily on offline rules and constrained prompt paths, while the stronger long term direction would be a more retrieval grounded system with broader query coverage."
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/pages/Workspace.tsx"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/data.ts"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/engine.ts"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/store.ts"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/package.json"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/components"
+    concrete_implementation_points:
+      - "Creates chats from structured harvest plans with crop, area, market, and sow-date context."
+      - "Persists selected chat and MRL-hold state in local storage via Zustand."
+      - "Implements a 30-day threshold between short-horizon and long-horizon forecast logic."
+      - "Includes an offline assistant and an OpenRouter-backed path."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "The app is centered on agriculture-specific prompts and chat state."
+        - "Local geography, weather, and price context are modeled in code."
+      uncertain:
+        - "Whether the data is placeholder-only or mirrors a real demo context."
+        - "Whether a real backend existed."
+    media_readiness: weak
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+    missing_info:
+      - "Event context and ownership."
+      - "Real data or backend usage."
+      - "Screenshots."
+    notes_for_user:
+      - "Narrative specificity is now usable, but the evidentiary ceiling is still moderate."
+
+  - canonical_title: "CropIQ"
+    treatment: archive
+    canonical_slug: "cropiq"
+    source_of_truth: local
+    confidence: medium
+    category: "Full Stack"
+    subcategory: "Agriculture Assistant"
+    status: "Prototype"
+    one_line_summary: "Conversational crop planning prototype with chat state, crop specific context, and rule based advisory flows for harvest timing, pricing, and pesticide related questions."
+    preview_summary: "A narrower and more structured assistant than a generic chatbot, because each conversation is tied to crop plans, local context, and predefined advisory pathways."
+    deep_context:
+      paragraph_1: "CropIQ is a crop advisory chat workspace built around practical questions such as harvest timing, expected pricing, and pesticide related decisions."
+      paragraph_2: "The current version creates crop specific conversations from a harvest planning flow and keeps each chat tied to details such as crop, subdistrict, sow date, and acreage, which makes the interaction more grounded than a free form assistant."
+      paragraph_3: "Its main value is not broad intelligence but the way it productizes conversational state and domain specific advisory logic inside a focused agricultural interface."
+      paragraph_4: "It should still be presented conservatively, because the current version appears to rely heavily on offline rules and constrained prompt paths, while the stronger long term direction would be a more retrieval grounded system with broader query coverage."
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/pages/Workspace.tsx"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/data.ts"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/engine.ts"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/store.ts"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/package.json"
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot/src/components"
+    concrete_implementation_points:
+      - "Creates chats from structured harvest plans with crop, area, market, and sow-date context."
+      - "Persists selected chat and MRL-hold state in local storage via Zustand."
+      - "Implements a 30-day threshold between short-horizon and long-horizon forecast logic."
+      - "Includes an offline assistant and an OpenRouter-backed path."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "The app is centered on agriculture-specific prompts and chat state."
+        - "Local geography, weather, and price context are modeled in code."
+      uncertain:
+        - "Whether the data is placeholder-only or mirrors a real demo context."
+        - "Whether a real backend existed."
+    media_readiness: weak
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+    missing_info:
+      - "Event context and ownership."
+      - "Real data or backend usage."
+      - "Screenshots."
+    notes_for_user:
+      - "Narrative specificity is now usable, but the evidentiary ceiling is still moderate."
+
+  - canonical_title: "LoanONE AI"
+    canonical_slug: "loanone-ai"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "Full Stack"
+    subcategory: "Fintech / AI Product Prototype"
+    status: "Hackathon Prototype"
+    one_line_summary: "Multi-step loan onboarding prototype with login, questionnaire, document upload, simulated verification, and supporting speech or camera hooks."
+    preview_summary: "The strongest evidence is the routed product flow and upload workflow, while the AI-verification story remains tentative."
+    deep_context:
+      paragraph_1: "LoanONE AI is a loan application workflow product rather than a single landing page or isolated form."
+      paragraph_2: "The app defines routes for login, questionnaire, document upload, and loan status, and uses upload validation, preview rendering, instructional videos, and simulated verification states."
+      paragraph_3: "It remains worth keeping because the product flow is tangible and portfolio-readable. What still needs confirmation is which branch was canonical and whether speech and face-verification features were truly functional."
+      paragraph_4: ""
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/hackathon-main/README.md"
+      - "C:/onedrive_localdata/Programming/hackathon-main/src/App.tsx"
+      - "C:/onedrive_localdata/Programming/hackathon-main/src/pages/DocumentUpload.tsx"
+      - "C:/onedrive_localdata/Programming/hackathon-main/src/pages/LoanStatus.tsx"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/hackathon-main/src/hooks/useSpeechToText.tsx"
+      - "C:/onedrive_localdata/Programming/hackathon-main/src/hooks/useCamera.tsx"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id/main.py"
+    concrete_implementation_points:
+      - "Defines a four-step application journey with explicit route pages."
+      - "Implements document upload validation for government ID, proof of income, and bank statement files."
+      - "Uses timed verification states and branching outcome UIs."
+      - "Mounts camera preview conditionally depending on the active route."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "A multi-step routed frontend flow exists."
+        - "Document upload and status UIs are implemented."
+      uncertain:
+        - "Which AI or verification features were truly functional."
+        - "Canonical branch among the related local variants."
+    media_readiness: weak
+    media_candidates:
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+    missing_info:
+      - "Canonical branch."
+      - "Actual working AI or verification features."
+      - "Screenshots."
+    notes_for_user:
+      - "Usable for archive population, but still needs conservative wording."
+
+  - canonical_title: "AQI Forecasting"
+    canonical_slug: "aqi-forecasting"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "ML / Data"
+    subcategory: "Time-Series Forecasting App"
+    status: "Prototype"
+    one_line_summary: "Streamlit forecasting app that fits ARIMA and Prophet models on uploaded time-series data and renders forecast plots and evaluation outputs."
+    preview_summary: "The forecasting workflow is real and inspectable, but the exact domain framing and frontend branch relationship remain blurry."
+    deep_context:
+      paragraph_1: "AQI Forecasting is a user-facing forecasting app built around time-series uploads and ARIMA or Prophet forecasting instead of a notebook-only workflow."
+      paragraph_2: "The reviewed implementation auto-detects a date column, lets the user pick a numeric target, runs `auto_arima`, creates forecast periods, computes MAPE where possible, and renders forecast plots and tables in Streamlit."
+      paragraph_3: "This is worth keeping because it shows hands-on forecasting workflow design. It still needs confirmation on whether the project was truly AQI-specific and which branch represents the cleanest user interface."
+      paragraph_4: ""
+    strongest_evidence:
+      - "C:/Users/footb/Desktop/Project AQI/README.md"
+      - "C:/Users/footb/Desktop/Project AQI/forecasting.py"
+      - "C:/Users/footb/Desktop/Project AQI/requirements.txt"
+    key_files_and_artifacts:
+      - "C:/Users/footb/Desktop/Project AQI/model_training.py"
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+    concrete_implementation_points:
+      - "Runs Streamlit-based ARIMA forecasting with auto parameter selection."
+      - "Builds future date ranges, renders charts, and shows forecast tables."
+      - "Includes Prophet and a wider scientific Python dependency set."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "The repo contains a user-facing forecasting script."
+        - "ARIMA and Prophet are central to the stack."
+      uncertain:
+        - "How AQI-specific the final product actually was."
+        - "Whether the React frontend branch was final or support-only."
+    media_readiness: weak
+    media_candidates:
+      - "C:/Users/footb/Desktop/Project AQI"
+    missing_info:
+      - "Domain framing."
+      - "Representative UI branch."
+      - "Screenshots."
+    notes_for_user:
+      - "Concrete enough for archive text, but still not fully locked as a polished case study."
+
+  - canonical_title: "RStudio Replica Forecasting App"
+    canonical_slug: "rstudio-replica-forecasting-app"
+    treatment: archive
+    source_of_truth: github
+    confidence: high
+    category: "Data Application"
+    subcategory: "Forecasting Platform"
+    status: "Substantial Prototype"
+    one_line_summary: "GitHub-hosted forecasting workspace that combines Streamlit forecasting scripts with a Vite React frontend shell."
+    preview_summary: "Distinct from AQI Forecasting because the repo explicitly frames itself as an RStudio-like forecasting tool."
+    deep_context:
+      paragraph_1: "RStudio Replica Forecasting App is framed as a web-based forecasting environment that reproduces RStudio-like analyst workflows using ARIMA and Prophet models."
+      paragraph_2: "Its `forecasting.py` script handles date construction from `Year` and `Month`, target selection, auto ARIMA training, forecast generation, MAPE display, and plotting in Streamlit, while `project/package.json` shows a separate Vite React frontend shell."
+      paragraph_3: "It is worth keeping because it broadens the forecasting story beyond AQI. The main uncertainty is the cleanest demo path and media set."
+      paragraph_4: ""
+    strongest_evidence:
+      - "https://github.com/arjoneelghosh/R-studio_replica/blob/main/README.md"
+      - "https://github.com/arjoneelghosh/R-studio_replica/blob/main/forecasting.py"
+      - "https://github.com/arjoneelghosh/R-studio_replica/blob/main/requirements.txt"
+      - "https://github.com/arjoneelghosh/R-studio_replica/blob/main/project/package.json"
+    key_files_and_artifacts:
+      - "README.md"
+      - "forecasting.py"
+      - "requirements.txt"
+      - "project/package.json"
+    concrete_implementation_points:
+      - "Uses Streamlit for forecasting interactions and chart output."
+      - "Supports ARIMA and Prophet dependencies in the repo."
+      - "Includes a separate Vite React frontend shell under `project/`."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "The repo combines forecasting scripts and a frontend branch."
+        - "The README explicitly frames the app as an RStudio-style forecasting tool."
+      uncertain:
+        - "Which interface is the preferred demo path."
+        - "Whether a clean screenshot set exists."
+    media_readiness: weak
+    media_candidates:
+      - "https://github.com/arjoneelghosh/R-studio_replica"
+    missing_info:
+      - "Best demo path."
+      - "Screenshots."
+    notes_for_user:
+      - "Good archive item for analytics breadth, but still thin visually."
+
+  - canonical_title: "Collaborative Filtering Recommendation Engine"
+    canonical_slug: "collaborative-filtering-recommendation-engine"
+    treatment: archive
+    source_of_truth: merged
+    confidence: medium
+    category: "ML / Data"
+    subcategory: "Recommender Systems"
+    status: "Prototype"
+    one_line_summary: "Movie recommendation prototype that pairs a React recommendation interface with a separate Surprise SVD collaborative-filtering experiment."
+    preview_summary: "Specific enough to keep, but the heuristic UI logic and collaborative-filtering script are not clearly unified."
+    deep_context:
+      paragraph_1: "This project is a movie recommendation prototype rather than an abstract recommender-system notebook. Users browse movies, build watched history, and open a recommendation panel after selecting a title."
+      paragraph_2: "The frontend logic in `src/App.tsx` and `src/utils/recommendations.ts` generates recommendations based on genre, actor, director, and rating fallback logic, while `cf_model/collaborative_filtering.py` trains a Surprise SVD model on a very small hardcoded interaction dataset."
+      paragraph_3: "It is worth keeping because it still demonstrates recommender-system exploration with a presentable UI. The unresolved part is whether the collaborative-filtering script or the heuristic frontend recommender was the actual showcase."
+      paragraph_4: ""
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project/src/App.tsx"
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project/src/utils/recommendations.ts"
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project/cf_model/collaborative_filtering.py"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project/src/components/RecommendationPanel.tsx"
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project/cf_model"
+    concrete_implementation_points:
+      - "Tracks watched movies and opens a recommendation side panel after selection."
+      - "Implements explainable heuristic matching rules based on genre, actor, director, and rating."
+      - "Includes a separate Surprise SVD training script with RMSE output and top-N generation."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "The UI recommendation path is implemented."
+        - "A collaborative-filtering experiment exists in Python."
+      uncertain:
+        - "Whether those two paths were ever integrated."
+        - "Which path was intended for demonstration."
+    media_readiness: weak
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project"
+    missing_info:
+      - "Canonical demo story."
+      - "Real dataset scope."
+      - "Screenshots."
+    notes_for_user:
+      - "Usable as archive breadth, but not ready for aggressive ML claims."
+
+  - canonical_title: "SurgeMedi"
+    canonical_slug: "surgemedi"
+    treatment: archive
+    source_of_truth: merged
+    confidence: medium
+    category: "Frontend Product"
+    subcategory: "Medical Equipment Tracker / Catalog"
+    status: "Working Frontend"
+    one_line_summary: "Branded healthcare catalog frontend with routed pages, structured medical product data, and deployable presentation assets."
+    preview_summary: "A polished multi-page catalog app with strong static product modeling and usable media, but no verified backend depth."
+    deep_context:
+      paragraph_1: "SurgeMedi is best evidenced as a branded healthcare catalog frontend. The app presents a medical and hygiene product brand with landing, catalog, product detail pages, and supporting about and contact flows."
+      paragraph_2: "The implementation includes route wiring in `src/App.tsx`, motion-enhanced presentation on the home page, and a large structured data model in `src/data/products.ts` that covers surgical packs, drapes, gloves, uniforms, and devices."
+      paragraph_3: "The project is worth keeping because it shows frontend execution, structured content modeling, and a domain-specific catalog experience. What still needs confirmation is whether any backend, admin workflow, or client context existed behind the interface."
+      paragraph_4: ""
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/src/App.tsx"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/src/pages/Home.tsx"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/src/data/products.ts"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/2.png"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/src/pages/Catalog.tsx"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/src/pages/ProductDetail.tsx"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/original.jpg"
+    concrete_implementation_points:
+      - "Uses React Router for home, catalog, product detail, about, and contact pages."
+      - "Stores a large static catalog with categories, descriptions, images, and product specifications."
+      - "Uses Framer Motion and branded UI components for the landing experience."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "A substantial multi-page frontend exists."
+        - "Product content and categories are defined locally."
+      uncertain:
+        - "Backend or inventory logic."
+        - "Client or business context."
+    media_readiness: strong
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/2.png"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/original.jpg"
+    missing_info:
+      - "Backend or client context."
+      - "Preferred hosted link."
+    notes_for_user:
+      - "Safe to populate with conservative frontend-focused wording."
+
+  - canonical_title: "Priority-Based CSV Sampler"
+    canonical_slug: "priority-based-csv-sampler"
+    treatment: archive
+    source_of_truth: local
+    confidence: high
+    category: "Data Tooling"
+    subcategory: "CSV Workflow Utility"
+    status: "Utility"
+    one_line_summary: "Streamlit utility for sampling uploaded CSV rows by configurable priority quotas with YAML config import and export, fulfillment logging, and downloadable output."
+    preview_summary: "A practical data utility with specific sampling logic and a clearer workflow than most internal-tool style projects."
+    deep_context:
+      paragraph_1: "Priority-Based CSV Sampler is a practical workflow tool for creating quota-based or weighted samples from CSV data."
+      paragraph_2: "The Streamlit dashboard supports CSV upload, optional YAML config loading, dynamic creation of priority groups, per-value allocation percentages, sampled preview generation, and CSV plus YAML export, while `utils_backup.py` handles quota fulfillment, backfill, fallback sampling, and warnings."
+      paragraph_3: "This is worth keeping because it demonstrates useful utility design and nontrivial sampling logic rather than a generic dashboard. The remaining gap is professional context and how directly it should be tied to the Sopra Steria support evidence."
+      paragraph_4: ""
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/File_filter/dashboard.py"
+      - "C:/onedrive_localdata/Programming/File_filter/utils_backup.py"
+      - "C:/onedrive_localdata/Programming/File_filter/requirements.txt"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/File_filter/assets/style.css"
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    concrete_implementation_points:
+      - "Supports YAML config import and export for repeatable sampling setups."
+      - "Tracks quota fulfillment and warns on underfilled priorities."
+      - "Performs backfill from other values and final fallback sampling from remaining rows."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "The app implements real sampling logic rather than static filtering."
+        - "The workflow includes file upload, config, preview, and export."
+      uncertain:
+        - "Professional usage context."
+        - "How much the Sopra Steria folder should be surfaced."
+    media_readiness: weak
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/File_filter"
+    missing_info:
+      - "Operational context."
+      - "Screenshots."
+    notes_for_user:
+      - "Specificity-ready for utility-style portfolio copy."
+
+  - canonical_title: "GitHub Contribution Scheduler"
+    canonical_slug: "github-contribution-scheduler"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "Developer Tooling"
+    subcategory: "Desktop Utility"
+    status: "Prototype / Utility"
+    one_line_summary: "Desktop GUI for scheduling file commits and pushing them to GitHub with selected dates, commit messages, and repository settings."
+    preview_summary: "A structured developer-tooling experiment with a real desktop UI, but still thin on usage proof and media."
+    deep_context:
+      paragraph_1: "GitHub Contribution Scheduler is a desktop utility for scheduling commit actions through a GUI instead of command-line git operations."
+      paragraph_2: "The implementation launches a ttkbootstrap window, builds separate panels for file selection, schedule management, configuration, and logging, and lets the user assign commit dates and messages to selected files before running git add, commit, and push flows."
+      paragraph_3: "It is worth keeping only as a breadth item because the structure is real, but the maturity story is still unclear. It still needs confirmation on actual usage, screenshots of the Python UI, and whether the adjacent React design folder should be treated as support evidence only."
+      paragraph_4: ""
+    strongest_evidence:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler/main.py"
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler/ui_layout.py"
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler/git_ops.py"
+    key_files_and_artifacts:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler/config.json"
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    concrete_implementation_points:
+      - "Builds a multi-panel desktop interface with ttkbootstrap."
+      - "Tracks scheduled commits, commit messages, and status per selected file."
+      - "Commits files with explicit `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` values before pushing."
+    confirmed_vs_uncertain:
+      confirmed:
+        - "A real desktop UI exists."
+        - "Git operations are split into a dedicated module."
+      uncertain:
+        - "Practical usage and maturity."
+        - "Availability of representative screenshots."
+    media_readiness: weak
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler"
+    missing_info:
+      - "Usage context."
+      - "Screenshots."
+      - "Preferred public framing."
+    notes_for_user:
+      - "This is the thinnest included project after the deep pass."

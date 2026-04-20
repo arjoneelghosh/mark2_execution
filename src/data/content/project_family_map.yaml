@@ -1,0 +1,110 @@
+families:
+  - family_name: "AgriFore Forecasting Family"
+    theme: "Agricultural forecasting, ETL, price prediction, and district-specific research variants"
+    folders:
+      - path: "C:/Users/footb/Desktop/AgriFore"
+        role: main
+        confidence: high
+        notes:
+          - "Most complete repo-like implementation with ETL, model artifacts, backend, frontend, and repo reports."
+      - path: "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+        role: narrowed-scope
+        confidence: medium
+        notes:
+          - "Appears to be a Kamareddy-specific narrowing of the same broader system."
+      - path: "C:/Users/footb/Desktop/KamareddyAgriFore"
+        role: support
+        confidence: medium
+        notes:
+          - "Figure-generation, simulation, and paper-support derivative of the same work."
+      - path: "C:/Users/footb/Desktop/AgricultureForecasting"
+        role: unclear
+        confidence: medium
+        notes:
+          - "Looks like an earlier umbrella workspace with model experiments and chatbot branches rather than one clean repo."
+    recommended_portfolio_representation:
+      main_project_folder: "C:/Users/footb/Desktop/AgriFore"
+      supporting_folders:
+        - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+        - "C:/Users/footb/Desktop/KamareddyAgriFore"
+        - "Selected evidence from C:/Users/footb/Desktop/AgricultureForecasting"
+      separate_portfolio_entries: []
+      merge_into_main:
+        - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+        - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      exclude_from_portfolio_as_separate_entries:
+        - "C:/Users/footb/Desktop/AgricultureForecasting"
+    rationale:
+      - "AgriFore is the strongest, broadest, and most explainable representative."
+      - "The Kamareddy-only folders read more like narrowed reporting variants than distinct flagship projects."
+      - "AgricultureForecasting is useful provenance, but too mixed to stand alone cleanly."
+
+  - family_name: "Loan / Face-ID Hackathon Family"
+    theme: "Loan onboarding, document flow, and face-identification support"
+    folders:
+      - path: "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+        role: main
+        confidence: medium
+        notes:
+          - "Best candidate to represent the family, though still overlaps with a sibling variant."
+      - path: "C:/Users/footb/Desktop/hackathin/hackathon-main"
+        role: variant
+        confidence: medium
+        notes:
+          - "Near-duplicate loan-flow branch with camera-preview behavior."
+      - path: "C:/Users/footb/Desktop/hackathin/SC_face_id"
+        role: support
+        confidence: medium
+        notes:
+          - "Face detection helper module, likely intended to support the same hackathon story."
+      - path: "C:/Users/footb/Desktop/hackathin/ai-branch-manager"
+        role: unclear
+        confidence: low
+        notes:
+          - "Looks like a separate utility rather than part of the user-facing product family."
+    recommended_portfolio_representation:
+      main_project_folder: "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      supporting_folders:
+        - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+        - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+      separate_portfolio_entries: []
+      merge_into_main:
+        - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+        - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+      exclude_from_portfolio_as_separate_entries:
+        - "C:/Users/footb/Desktop/hackathin/ai-branch-manager"
+    rationale:
+      - "The core loan-flow idea repeats across sibling folders."
+      - "SC_face_id is support code, not a full standalone portfolio item."
+      - "Keeping one representative avoids duplicate hackathon entries."
+
+  - family_name: "AQI Forecasting Family"
+    theme: "Time-series forecasting app with multiple workspace copies"
+    folders:
+      - path: "C:/Users/footb/Desktop/Project AQI"
+        role: main
+        confidence: medium
+        notes:
+          - "Main forecasting workspace with README, requirements, scripts, and Streamlit flow."
+      - path: "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+        role: duplicate
+        confidence: medium
+        notes:
+          - "Looks like a sibling workspace mirroring the main forecasting directory."
+      - path: "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+        role: duplicate
+        confidence: high
+        notes:
+          - "Appears to be only a git shell/stub with no usable project contents."
+    recommended_portfolio_representation:
+      main_project_folder: "C:/Users/footb/Desktop/Project AQI"
+      supporting_folders:
+        - "Selected UI pieces from C:/Users/footb/Desktop/Project AQI/sales_frontend if they are better than the main workspace"
+      separate_portfolio_entries: []
+      merge_into_main:
+        - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      exclude_from_portfolio_as_separate_entries:
+        - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    rationale:
+      - "The top-level Project AQI folder already contains the clearest forecasting story."
+      - "The other AQI branches do not currently justify separate portfolio entries."

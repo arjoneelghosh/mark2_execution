@@ -1,0 +1,174 @@
+projects:
+  - canonical_title: "AgriFore"
+    canonical_slug: "agrifore"
+    treatment: featured
+    source_of_truth: merged
+    confidence: high
+    narrative_draft:
+      - "AgriFore reads like the strongest representative of your agriculture forecasting work because it combines several layers that usually live in separate prototypes: data processing, model artifacts, an API surface, and a dashboard layer. Across the local Desktop folders and the GitHub repo, the project consistently points to the same core idea: bringing together production, weather, and market signals into a single forecasting-oriented system. The local evidence is especially strong because it includes figure packs, simulation outputs, and repo-level reports that make the work easier to explain than a code-only repository would."
+      - "The technical shape is grounded enough to describe without overstating it. The project appears to use a DuckDB-centered ETL and feature pipeline, model artifacts stored locally, a FastAPI backend, and a Next.js frontend for dashboard-style access to predictions and market intelligence. That combination gives it a more complete product feel than a notebook-only forecasting project. The presence of paper-style artifacts and figure-generation work also suggests this project was not just a coding exercise, but something you were trying to package into a more coherent technical narrative."
+      - "The main caution is not whether the project exists, but how confidently it can be framed. The evidence supports describing it as a research prototype or forecasting platform, but not yet making hard claims about production deployment quality, model performance, or your exact ownership split across ETL, modeling, frontend, backend, and report writing. The strongest near-term portfolio version would present AgriFore as an integrated agriculture forecasting system, while treating the Kamareddy-only branches and earlier rainfall-correlation work as support and lineage rather than separate products."
+    uncertainty_notes:
+      - "Do not claim production maturity or performance metrics yet."
+      - "Ownership split still needs manual confirmation."
+    missing_info:
+      - "Exact ownership across ETL, modeling, backend, frontend, and paper work."
+      - "Best public-facing deployment or demo proof."
+
+  - canonical_title: "FlightFinder AI"
+    canonical_slug: "flightfinder-ai"
+    treatment: featured
+    source_of_truth: merged
+    confidence: high
+    narrative_draft:
+      - "FlightFinder AI stands out because the project framing is unusually clear even before any final copywriting. Both the local `ViklangFlightBooking` folder and the public GitHub repository describe the same core concept: a flight-booking experience adapted for users with different communication needs rather than a generic booking clone. The accessibility angle is not a vague label in this case; it appears in the actual structure of the project through role-adaptive UI flows, references to ASL support, voice input, and an assistant-style interaction model."
+      - "From the evidence available, the project seems to span a real full-stack boundary. The frontend stack points to a Next.js application with motion and accessibility-aware interaction patterns, while the backend points to a FastAPI service for authentication, flight search, chat-style flows, and history. The repo structure and summary files also suggest that external integrations were part of the intended story, including Amadeus for flight data and OpenRouter-style AI support. That gives the project a stronger product identity than many hackathon-style demos, even though the exact end-to-end completeness of those integrations is still uncertain."
+      - "The right narrative for now is strong but careful: this is a substantial accessibility-focused prototype, not yet a verified shipped product. The evidence supports saying the system was designed to make booking more usable for deaf, mute, blind, and standard users, and that it combined adaptive UX with backend services and assistive input ideas. What still needs user confirmation is which parts were fully operational in practice, whether the gesture and voice paths worked live, and which screenshots or demo moments best represent the project visually."
+    uncertainty_notes:
+      - "Do not claim live end-to-end API success without confirmation."
+      - "ASL and voice features should be described conservatively until verified."
+    missing_info:
+      - "Whether Amadeus, AI chat, ASL, and voice flows were fully working."
+      - "Best screenshots or demo recording."
+
+  - canonical_title: "SignChat"
+    canonical_slug: "signchat"
+    treatment: featured
+    source_of_truth: local
+    confidence: high
+    narrative_draft:
+      - "SignChat is one of the clearest assistive ML projects in the current catalog because the problem statement, interface, and technical pipeline line up cleanly. The local project evidence consistently describes a sign-language transcription or communication aid built around live webcam input, rather than a vague computer-vision experiment. That makes it easier to position as a user-facing assistive application instead of just a model-training exercise. The strength of the project is that it appears to connect a real communication problem to a runnable interface rather than stopping at notebooks or offline training."
+      - "The implementation details are also concrete enough to support a grounded narrative. The project points to a Streamlit-based frontend with webcam support, MediaPipe hand landmark extraction, and TensorFlow/Keras models organized by language. That suggests a pipeline where hand landmarks serve as structured input features rather than raw images alone. It also gives the project a useful technical identity: lightweight, explainable, and practical enough for a live demo if the models were working consistently. The precursor folders reinforce this interpretation by showing earlier gesture- and landmark-based experimentation that appears to feed into the final SignChat concept."
+      - "The uncertainty here is mostly around scope and maturity, not around legitimacy. The evidence supports describing SignChat as a prototype for live sign-language interpretation, but it does not yet support firm claims about dataset size, language coverage, model quality, or measured accuracy. The safest narrative is to present it as a promising assistive ML build with a clear input-to-text workflow, while keeping the older gesture-recognition folders in the background as lineage rather than inflating them into separate portfolio projects."
+    uncertainty_notes:
+      - "Avoid claiming accuracy, dataset scale, or complete language coverage."
+      - "The final story still needs your training/data explanation."
+    missing_info:
+      - "Dataset/training story."
+      - "Which language models actually worked."
+      - "Best screenshots or demo proof."
+
+  - canonical_title: "CropIQ"
+    canonical_slug: "cropiq"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    narrative_draft:
+      - "CropIQ appears to be the strongest agriculture-adjacent archive project that should remain separate from AgriFore. The project identity is clearer than a generic chatbot demo because the surrounding data structures and quick actions are tightly focused on crop planning, prices, subdistrict context, and weather-related decision support. That makes it reasonable to describe as an agriculture advisory workspace rather than a general conversational UI with themed labels pasted on top."
+      - "What is still uncertain is the depth of the assistant logic behind the interface. The current evidence supports saying that the product modeled agricultural context locally and presented a conversation-driven planning workflow, but it does not yet prove how much of the advisory intelligence was rule-based, mocked, AI-backed, or competition-driven. The right portfolio posture is to keep it as a distinct archive project with a clear domain story, while avoiding stronger claims about backend sophistication until you confirm the event context, your role, and the actual grounding or orchestration behavior."
+    uncertainty_notes:
+      - "Assistant intelligence depth is still unclear."
+    missing_info:
+      - "Event context and exact ownership."
+      - "What AI/orchestration logic was actually used."
+
+  - canonical_title: "LoanONE AI"
+    canonical_slug: "loanone-ai"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    narrative_draft:
+      - "LoanONE AI is best understood as one canonical hackathon-style product assembled from several closely related local variants. The strongest evidence points to a multi-step loan onboarding flow with login, questionnaire, document upload, and status tracking, framed as a product that tries to reduce friction in digital loan applications. Even before final copy, the project already has a coherent product arc, which is why it survives as an archive entry instead of being collapsed entirely into early projects."
+      - "The main uncertainty is where the product ends and the pitch begins. The available evidence supports describing a strong frontend flow and support for ideas like voice entry, verification status, and face-related checks, but not yet asserting that all those features were actually functioning end to end. That makes the safest narrative one of a hackathon prototype with a real application flow and adjacent identity-verification experiments, rather than a polished fintech system. The branch overlap also means it should stay one project only, with the other folders serving as support material."
+    uncertainty_notes:
+      - "Do not overstate AI or verification functionality."
+    missing_info:
+      - "Which branch was the final presented version."
+      - "Whether face/voice/AI parts actually worked."
+
+  - canonical_title: "AQI Forecasting"
+    canonical_slug: "aqi-forecasting"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    narrative_draft:
+      - "AQI Forecasting reads like a practical time-series forecasting prototype rather than just a one-off notebook. The core story is straightforward: a user-facing forecasting workflow built around ARIMA and Prophet, apparently with a Streamlit layer intended to make those forecasting operations easier to run and inspect without dropping into raw code. That makes it explainable as a small forecasting application instead of a purely academic artifact."
+      - "The main ambiguity is scope, not category. The evidence is strong enough to say the project centered on forecasting workflows and statistical modeling, but not yet strong enough to say whether the domain stayed strictly AQI-focused or broadened into more general time-series experimentation over time. Because of that, the best narrative is conservative: this is a forecasting app prototype with side workspaces and UI branches, not a production analytics platform. The sibling folders should remain support-only unless you later confirm that one of them was the actual representative interface."
+    uncertainty_notes:
+      - "Domain scope needs confirmation."
+    missing_info:
+      - "Whether the project remained AQI-specific."
+      - "Which UI branch should represent it."
+
+  - canonical_title: "RStudio Replica Forecasting App"
+    canonical_slug: "rstudio-replica-forecasting-app"
+    treatment: archive
+    source_of_truth: github
+    confidence: high
+    narrative_draft:
+      - "RStudio Replica Forecasting App looks like a broader and more ambitious forecasting tool than AQI Forecasting, even though it is less tidy. The GitHub evidence suggests a project that tries to recreate the feel of an accessible forecasting workspace by combining forecasting scripts, datasets, and a mixed frontend/backend setup rather than just exposing a single model. That gives it more breadth than a narrowly scoped experiment and makes it defensible as an archive entry on its own."
+      - "The reason it remains archive instead of featured is that the repo appears cluttered enough to raise clarity questions. The evidence supports describing it as a substantial prototype with ARIMA and Prophet-style workflows, but not yet as a polished or singularly focused product. In portfolio terms, it works better as a supporting signal of forecasting breadth than as a flagship case study unless you later clean up the demo path and identify the best media or hosted representation."
+    uncertainty_notes:
+      - "Repo clarity is the main limitation, not project legitimacy."
+    missing_info:
+      - "Best runnable path."
+      - "Whether a clean demo or screenshots exist."
+
+  - canonical_title: "Collaborative Filtering Recommendation Engine"
+    canonical_slug: "collaborative-filtering-recommendation-engine"
+    treatment: archive
+    source_of_truth: merged
+    confidence: medium
+    narrative_draft:
+      - "Collaborative Filtering Recommendation Engine has a useful dual identity: it appears to be both a recommendation-systems experiment and a small frontend demo that helps visualize recommendation behavior. That combination is valuable because it gives you something more explainable than a lone modeling script. The evidence points to a movie-oriented recommendation flow, watched-state tracking, and a separate collaborative-filtering path based on Surprise SVD, which is enough to make the project narratively distinct."
+      - "The main thing this project still needs is disambiguation. Right now the evidence suggests both heuristic recommendation logic in the UI and a collaborative-filtering model experiment in Python, but it is not yet clear which path was the true showcase. That uncertainty does not weaken the project enough to remove it; it just changes how it should be described. The safest framing is a recommender-systems prototype that explored both explainable frontend recommendation logic and collaborative-filtering modeling, without pretending they were already unified into a single production-grade engine."
+    uncertainty_notes:
+      - "Need to distinguish heuristic demo logic from actual CF work."
+    missing_info:
+      - "Which recommendation path was actually showcased."
+      - "Best screenshots or demo."
+
+  - canonical_title: "SurgeMedi"
+    canonical_slug: "surgemedi"
+    treatment: archive
+    source_of_truth: merged
+    confidence: medium
+    narrative_draft:
+      - "SurgeMedi is best described as a polished medical-equipment catalog or tracker interface rather than a full verified business system. The strongest evidence comes from the consistency of the branding, the routed frontend structure, and the fact that both local and GitHub sources point to the same product line. That makes it stronger than a random UI mockup, even if the current evidence is still mostly frontend-oriented."
+      - "The caution here is about business depth, not design legitimacy. The evidence supports saying that this was built as a branded multi-page healthcare product interface with catalog and product-detail flows, and that it likely had at least one deployed frontend. It does not yet prove a backend, live commerce logic, or a real operational client scenario. So the right narrative is a presentable archive product showing polished frontend execution in a healthcare-adjacent domain, with the duplicate GitHub repo collapsed into the same story rather than treated separately."
+    uncertainty_notes:
+      - "Real client or backend context remains unverified."
+    missing_info:
+      - "Whether there was a backend or real client context."
+
+  - canonical_title: "Priority-Based CSV Sampler"
+    canonical_slug: "priority-based-csv-sampler"
+    treatment: archive
+    source_of_truth: local
+    confidence: high
+    narrative_draft:
+      - "Priority-Based CSV Sampler is one of the clearer practical tool entries in the archive group because the value proposition is specific and grounded. It appears to be a Streamlit utility for loading CSV data, applying configurable priority rules, previewing the results, and exporting a filtered or sampled output. That gives it the kind of workflow clarity that many internal tools lack when they reach portfolio review."
+      - "What still needs confirmation is whether the tool was built in isolation or as part of a real internship or operational workflow. The related SopraSteria dashboard evidence strengthens the sense that this was more than a toy, but the current material still stops short of proving organizational use or user adoption. The right narrative is therefore a practical data-ops style utility with repeatable rule configuration and export capabilities, framed conservatively as a useful workflow tool rather than a formally deployed platform."
+    uncertainty_notes:
+      - "Professional usage context needs confirmation."
+    missing_info:
+      - "Whether this supported a real internship or workplace workflow."
+      - "Best screenshots if available."
+
+  - canonical_title: "GitHub Contribution Scheduler"
+    canonical_slug: "github-contribution-scheduler"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    narrative_draft:
+      - "GitHub Contribution Scheduler is a niche project, but it is niche in a useful way. The evidence points to a desktop application that separates UI layout, git operations, and configuration into distinct files rather than bundling everything into a single script. That gives it enough structure to read as a real utility project instead of a disposable automation experiment. It also has a clear job: managing and scheduling contribution-related git actions through a user-facing interface."
+      - "The project should still be framed carefully. The evidence supports saying it was a desktop tooling prototype for planning contribution activity, with a related React design exploration sitting beside it, but not yet claiming that it was broadly used or that the scheduling flow was fully mature. That makes it a good archive entry for breadth in developer tooling, especially if you later recover screenshots of the UI, but not something to oversell as a major systems project."
+    uncertainty_notes:
+      - "Actual usage and maturity are still unclear."
+    missing_info:
+      - "How complete the scheduling flow was in practice."
+      - "Screenshots of the desktop UI."
+
+lineage_and_excluded_notes:
+  - canonical_title: "Agriculture Forecasting Precursors"
+    note: "Useful only as lineage for AgriFore. Do not convert into a separate live project."
+  - canonical_title: "Gesture Recognition Precursors"
+    note: "Useful only as lineage for SignChat. Keep background-only unless you want an explicit evolution note."
+  - canonical_title: "Loan Hackathon Variants"
+    note: "Branch-level support for LoanONE AI and not separate portfolio entries."
+  - canonical_title: "AQI Side Workspaces"
+    note: "Support-only branches for AQI Forecasting."
+  - canonical_title: "Portfolio Website Lineage"
+    note: "Relevant to site evolution, not to project population."
+  - canonical_title: "VolunTree"
+    note: "Hold out of live population until provenance is clarified."

@@ -1,0 +1,247 @@
+﻿achievements:
+  - file: "AWS_Academy_Machine_Learning_Foundation.pdf"
+    normalized_title: "AWS Academy Machine Learning Foundations"
+    issuer: "AWS Academy"
+    probable_type: course
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: keep
+    duplicate_group: ""
+    canonical_file_for_group: ""
+    evidence:
+      - "Text reads 'AWS Academy Graduate - AWS Academy Machine Learning Foundations'."
+      - "Includes a Credly verification URL."
+      - "Shows 20 hours."
+    missing_info:
+      - "Whether you want to present this as a course credential or supporting ML training evidence."
+    notes_for_user:
+      - "Reasonable to keep, but it is more course-like than a vendor pro certification."
+
+  - file: "Computer_Vision_Essential_Course_Certificate_1.pdf"
+    normalized_title: "Computer Vision Essential Course Certificate"
+    issuer: ""
+    probable_type: unclear
+    confidence: low
+    include_in_portfolio: false
+    suggested_treatment: support_only
+    duplicate_group: ""
+    canonical_file_for_group: ""
+    evidence:
+      - "Filename suggests a computer vision course certificate."
+      - "No extractable text was available from the PDF."
+      - "PDF metadata did not reveal issuer details."
+    missing_info:
+      - "Actual issuer or platform."
+      - "Whether this is a meaningful credential or just a generic course export."
+    notes_for_user:
+      - "Needs manual confirmation before any public use."
+
+  - file: "deeplearning.pdf"
+    normalized_title: "Deep Learning Onramp"
+    issuer: "MathWorks"
+    probable_type: course
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: optional
+    duplicate_group: "mathworks_onramp_courses"
+    canonical_file_for_group: ""
+    evidence:
+      - "Text shows 'Course Completion Certificate'."
+      - "Course title extracted as 'Deep Learning Onramp'."
+    missing_info:
+      - "Issuer name is inferred from the Onramp branding rather than explicitly shown in extracted text."
+    notes_for_user:
+      - "Useful for breadth, but weaker than your formal certifications."
+
+  - file: "DIGITAL IP.pdf"
+    normalized_title: "Digital IP certificate"
+    issuer: ""
+    probable_type: unclear
+    confidence: low
+    include_in_portfolio: false
+    suggested_treatment: support_only
+    duplicate_group: ""
+    canonical_file_for_group: ""
+    evidence:
+      - "Filename suggests a digital IP-related certificate."
+      - "No extractable text or issuer was available."
+    missing_info:
+      - "Actual title."
+      - "Issuer or platform."
+      - "Whether the credential is portfolio-relevant."
+    notes_for_user:
+      - "Needs manual review before inclusion."
+
+  - file: "Fortinet Certified Associate in Cybersecurity.pdf"
+    normalized_title: "Fortinet Certified Associate in Cybersecurity"
+    issuer: "Fortinet"
+    probable_type: certification
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: keep
+    duplicate_group: "fortinet_fca_track"
+    canonical_file_for_group: "Fortinet Certified Associate in Cybersecurity.pdf"
+    evidence:
+      - "Text explicitly says 'has achieved Fortinet Certified Associate in Cybersecurity'."
+      - "Includes validity window and certification validation number."
+      - "Signed by Fortinet leadership."
+    missing_info: []
+    notes_for_user:
+      - "This is the main Fortinet credential to show publicly."
+
+  - file: "Fortinet_Certificate.pdf"
+    normalized_title: "FCA - FortiGate 7.4 Operator Self-Paced"
+    issuer: "Fortinet Training Institute"
+    probable_type: course
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: optional
+    duplicate_group: "fortinet_fca_track"
+    canonical_file_for_group: "Fortinet Certified Associate in Cybersecurity.pdf"
+    evidence:
+      - "Text says 'successfully completed the course FCA - FortiGate 7.4 Operator Self-Paced'."
+      - "Signed by Vice President, Fortinet Training Institute."
+    missing_info: []
+    notes_for_user:
+      - "Related to the Fortinet certification, but not a duplicate."
+      - "Best treated as supporting breadth rather than the headline credential."
+
+  - file: "FUNDAMENTALS.pdf"
+    normalized_title: "MATLAB Fundamentals"
+    issuer: "MathWorks"
+    probable_type: course
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: optional
+    duplicate_group: "mathworks_onramp_courses"
+    canonical_file_for_group: ""
+    evidence:
+      - "Text shows 'Course Completion Certificate'."
+      - "Course title extracted as 'MATLAB Fundamentals'."
+    missing_info:
+      - "Issuer is inferred rather than explicitly present in extracted text."
+    notes_for_user:
+      - "Useful only if you want to show breadth in foundational tooling."
+
+  - file: "GitHubFoundations.pdf"
+    normalized_title: "GitHub Foundations"
+    issuer: "GitHub"
+    probable_type: certification
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: keep
+    duplicate_group: ""
+    canonical_file_for_group: ""
+    evidence:
+      - "Text reads 'Issued by: GitHub'."
+      - "Includes issue and expiry dates."
+      - "Includes a Credly verification URL."
+    missing_info: []
+    notes_for_user:
+      - "Strong, easy-to-understand portfolio credential."
+
+  - file: "IMAGE PROCESSING.pdf"
+    normalized_title: "Image Processing Onramp"
+    issuer: "MathWorks"
+    probable_type: course
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: optional
+    duplicate_group: "mathworks_onramp_courses"
+    canonical_file_for_group: ""
+    evidence:
+      - "Text shows 'Course Completion Certificate'."
+      - "Course title extracted as 'Image Processing Onramp'."
+    missing_info:
+      - "Issuer is inferred rather than explicitly present in extracted text."
+    notes_for_user:
+      - "Reasonable supporting evidence for image/vision learning, but not a flagship credential."
+
+  - file: "ISRO_Course.pdf"
+    normalized_title: "Geo-data Sharing and Cyber Security"
+    issuer: "IIRS / ISRO"
+    probable_type: workshop
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: keep
+    duplicate_group: ""
+    canonical_file_for_group: ""
+    evidence:
+      - "Text explicitly names the online course 'Geo-data sharing and Cyber Security'."
+      - "Shows validation URL at certificate.iirs.gov.in."
+      - "Shows total course duration of 15 hours and 100% attendance."
+    missing_info:
+      - "Whether you want this framed as a course/workshop rather than a certification."
+    notes_for_user:
+      - "Good supporting credential from a recognizable public-sector issuer."
+
+  - file: "Matlab ML.pdf"
+    normalized_title: "Machine Learning Onramp"
+    issuer: "MathWorks"
+    probable_type: course
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: optional
+    duplicate_group: "mathworks_onramp_courses"
+    canonical_file_for_group: ""
+    evidence:
+      - "Text shows 'Course Completion Certificate'."
+      - "Course title extracted as 'Machine Learning Onramp'."
+    missing_info:
+      - "Issuer is inferred rather than explicitly present in extracted text."
+    notes_for_user:
+      - "Broad supporting ML course credential only."
+
+  - file: "MATLAB ONRAPM.pdf"
+    normalized_title: "MATLAB Onramp"
+    issuer: "MathWorks"
+    probable_type: course
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: optional
+    duplicate_group: "mathworks_onramp_courses"
+    canonical_file_for_group: ""
+    evidence:
+      - "Text shows 'Course Completion Certificate'."
+      - "Course title extracted as 'MATLAB Onramp'."
+    missing_info:
+      - "Issuer is inferred rather than explicitly present in extracted text."
+    notes_for_user:
+      - "Useful only as breadth; do not overemphasize."
+
+  - file: "ServiceNowCAD.pdf"
+    normalized_title: "ServiceNow Certified Application Developer"
+    issuer: "ServiceNow"
+    probable_type: certification
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: keep
+    duplicate_group: "servicenow_certifications"
+    canonical_file_for_group: ""
+    evidence:
+      - "Extracted text shows 'Certified Application Developer'."
+      - "Shows credential number 27087361."
+      - "Filename strongly indicates ServiceNow CAD."
+    missing_info:
+      - "The issuer name is inferred from filename and certificate style rather than explicit extracted line."
+    notes_for_user:
+      - "Strong enough to keep unless manual review shows it is incomplete or unofficial."
+
+  - file: "ServiceNow_20Certified_20System_20Administrator.pdf"
+    normalized_title: "ServiceNow Certified System Administrator"
+    issuer: "ServiceNow"
+    probable_type: certification
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: keep
+    duplicate_group: "servicenow_certifications"
+    canonical_file_for_group: ""
+    evidence:
+      - "Text explicitly says 'Successfully completed certification requirements for ServiceNow Certified System Administrator'."
+      - "Includes issue date and certification number."
+      - "Signed by a ServiceNow executive."
+    missing_info: []
+    notes_for_user:
+      - "Distinct from ServiceNow CAD; both can be retained."
+
+duplicate_groups: []

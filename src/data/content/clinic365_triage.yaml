@@ -1,0 +1,25 @@
+﻿items:
+  - folder: "Clinic365-Main-V1.0\\clinic365-Main\\clinic365-Main"
+    confidence: high
+    probable_title: "Clinic365 - Clinic Management System"
+    probable_type: "template"
+    include_in_portfolio: false
+    suggested_treatment: "exclude"
+    originality_assessment: "Strong evidence indicates a downloaded or purchased CodeIgniter management-system package from BDTASK, with little visible proof of substantial original authorship in the inspected files."
+    evidence:
+      - "Documentation names BDTASK and Author: Tanzil, with creation date 20/11/2017."
+      - "installation.html instructs the user to upload packaged zip files to cPanel/FTP and verify an Envato purchase key."
+      - "The app uses a standard CodeIgniter application/system/index.php structure."
+      - "index.php contains stock CodeIgniter bootstrap and framework copyright text."
+      - "refresh/sql/install_sql.sql includes demo data, vendor-linked URLs, and sample records tied to Tanzil and softest1.bdtask.com."
+      - "The root bundle includes a separate documentation site, nested zip archive, and __MACOSX packaging artifacts typical of downloaded distributions."
+    missing_info:
+      - "Whether you created a heavily modified fork elsewhere with substantial original feature work."
+      - "Whether there is separate commit history or deployment evidence showing meaningful customization by you."
+    notes_for_user:
+      - "Do not treat this as an authored standalone portfolio project based on the current evidence."
+      - "If you significantly customized it, document those changes separately before considering even an archive mention."
+
+excluded_items:
+  - name: "__MACOSX"
+    reason: "Mac archive metadata / junk folder."

@@ -1,0 +1,145 @@
+projects:
+  - canonical_slug: "agrifore"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: true
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Exact ownership wording is still missing."
+      - "Deployment/demo wording should stay conservative until confirmed."
+    recommended_next_action: "Can move into live schema after ownership notes are added."
+
+  - canonical_slug: "flightfinder-ai"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "No confirmed screenshot or demo asset in the current manifest."
+      - "Need confirmation of which accessibility and external-integration features were fully working."
+    recommended_next_action: "Collect screenshots and confirm feature completeness before live population."
+
+  - canonical_slug: "signchat"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "No confirmed media assets yet."
+      - "Dataset/training story and language coverage still need confirmation."
+    recommended_next_action: "Add screenshots and a grounded training-data note before live population."
+
+  - canonical_slug: "cropiq"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: medium
+    ready_for_live_population: partial
+    blockers:
+      - "Event context and exact role remain unclear."
+      - "No confirmed screenshots or demo proof."
+      - "Assistant/orchestration depth is still uncertain."
+    recommended_next_action: "Confirm event context and recover screenshots before live population."
+
+  - canonical_slug: "loanone-ai"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: medium
+    ready_for_live_population: partial
+    blockers:
+      - "Need one final canonical branch decision for the archived local variants."
+      - "No confirmed media assets."
+      - "Actual functionality of AI/voice/face verification remains uncertain."
+    recommended_next_action: "Lock the final branch and collect demo screenshots before live population."
+
+  - canonical_slug: "aqi-forecasting"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: medium
+    ready_for_live_population: partial
+    blockers:
+      - "Need confirmation that the project stayed AQI-specific."
+      - "Need confirmation whether sales_frontend contributes useful final UI assets."
+      - "No confirmed screenshots."
+    recommended_next_action: "Confirm scope and UI branch, then populate conservatively."
+
+  - canonical_slug: "rstudio-replica-forecasting-app"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "No confirmed media assets."
+      - "Best runnable/demo path still unclear."
+    recommended_next_action: "Keep as optional archive until a better demo path is identified."
+
+  - canonical_slug: "collaborative-filtering-recommendation-engine"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Need clarity on whether the showcased logic was heuristic, collaborative filtering, or both."
+      - "No confirmed screenshots."
+    recommended_next_action: "Clarify modeling story before live population."
+
+  - canonical_slug: "surgemedi"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: true
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Real client or backend context is still unverified."
+    recommended_next_action: "Can move into live schema with conservative frontend-focused wording."
+
+  - canonical_slug: "priority-based-csv-sampler"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Professional workflow context is still uncertain."
+      - "No confirmed screenshot assets."
+    recommended_next_action: "Populate only if you want internal-tool breadth and can confirm context."
+
+  - canonical_slug: "github-contribution-scheduler"
+    include_candidate: true
+    narrative_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "No confirmed screenshots."
+      - "Actual usage and maturity are still unclear."
+    recommended_next_action: "Populate only if you want developer-tooling breadth and can recover UI evidence."
+
+lineage_only:
+  - canonical_slug: "agriculture-forecasting-precursors"
+    ready_for_live_population: false
+    reason: "Lineage/support only for AgriFore."
+  - canonical_slug: "gesture-recognition-precursors"
+    ready_for_live_population: false
+    reason: "Lineage/support only for SignChat."
+  - canonical_slug: "loan-hackathon-variants"
+    ready_for_live_population: false
+    reason: "Branch-level support only for LoanONE AI."
+  - canonical_slug: "aqi-side-workspaces"
+    ready_for_live_population: false
+    reason: "Support-only branches for AQI Forecasting."
+  - canonical_slug: "portfolio-website-lineage"
+    ready_for_live_population: false
+    reason: "Not intended for portfolio project records."
+
+excluded_or_held:
+  - canonical_slug: "voluntree"
+    ready_for_live_population: false
+    reason: "Provenance remains unresolved."

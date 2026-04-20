@@ -1,0 +1,49 @@
+﻿items:
+  - folder: "C:\\Users\\footb\\Downloads\\hackathon hand gesture"
+    confidence: high
+    probable_title: "Early Hand Gesture / Sign Alphabet Classifier"
+    probable_category: "machine learning"
+    probable_subcategory: "computer vision hand-sign recognition precursor"
+    probable_type: precursor
+    include_in_portfolio: true
+    suggested_treatment: merge
+    probable_status: "working experiment / early precursor"
+    one_line_summary_guess: "An early webcam-based hand-sign classifier that collects A-Z hand gesture images and predicts letters using a Keras model."
+    problem_guess: "Build a basic system that can collect hand-sign samples and classify single-hand alphabet gestures in real time from a webcam feed."
+    approach_guess:
+      - "Used cvzone hand detection to find a single hand and crop the bounding box from webcam frames."
+      - "Normalized the cropped hand onto a white square canvas before saving or inference."
+      - "Organized collected images into A-Z class folders under Data/."
+      - "Loaded a trained keras_model.h5 classifier with labels.txt for real-time letter prediction."
+    model_assessment: mixed
+    detected_stack:
+      - "Python"
+      - "OpenCV"
+      - "cvzone"
+      - "Keras / TensorFlow model (.h5)"
+      - "NumPy"
+    detected_artifacts:
+      - "datacollection.py"
+      - "test.py"
+      - "Data/A ... Data/Z"
+      - "Model/keras_model.h5"
+      - "Model/labels.txt"
+    originality_assessment: "Likely user-authored early ML/CV experiment. The folder contains a custom collected dataset, custom capture script, and a small direct inference workflow rather than a packaged template."
+    likely_related_project: "SignChat / later gesture-recognition assistive work"
+    evidence:
+      - "datacollection.py saves captured hand images into letter-labeled folders."
+      - "Data/ contains A-Z directories with dozens of examples per class."
+      - "labels.txt maps 26 output classes to letters A-Z."
+      - "test.py runs real-time classification using cvzone HandDetector and Classifier."
+      - "keras_model.h5 is present in the Model folder."
+    missing_info:
+      - "Whether the model training code exists elsewhere."
+      - "Whether this directly evolved into SignChat or was a parallel experiment."
+      - "Whether the target was sign alphabet recognition specifically or broader gesture recognition."
+    notes_for_user:
+      - "Best treated as a precursor within your SignChat lineage rather than as a standalone project card."
+      - "If you have a training notebook or hackathon presentation elsewhere, that would strengthen the lineage story."
+
+excluded_items:
+  - name: "Model/package-lock.json"
+    reason: "Minimal lockfile with no useful dependency evidence for portfolio triage."

@@ -1,0 +1,134 @@
+projects:
+  - canonical_slug: "agrifore"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: true
+    source_ready: true
+    ready_for_live_population: yes
+    blockers:
+      - "Ownership wording still needs final user confirmation."
+    recommended_next_action:
+      - "Populate into `src/data` with conservative ownership language and use the confirmed figure assets."
+
+  - canonical_slug: "flightfinder-ai"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "No confirmed screenshot or demo asset."
+      - "Need final confirmation on which accessibility and integration features were fully working."
+    recommended_next_action:
+      - "Populate text now if needed, but leave media and feature-completeness claims conservative until confirmed."
+
+  - canonical_slug: "signchat"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "No confirmed screenshot asset."
+      - "Training provenance and working language coverage are still missing."
+    recommended_next_action:
+      - "Populate narrative with explicit prototype wording and collect model or demo context before tightening claims."
+
+  - canonical_slug: "cropiq"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Event context and ownership are unconfirmed."
+      - "Real backend or live data usage is still unclear."
+      - "No confirmed media."
+    recommended_next_action:
+      - "Populate only if you want archive breadth and are comfortable keeping the data and orchestration story conservative."
+
+  - canonical_slug: "loanone-ai"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Canonical branch among local variants is not fully settled."
+      - "Speech or face-verification completeness is unclear."
+      - "No confirmed media."
+    recommended_next_action:
+      - "Use conservative prototype wording or wait until the final branch and demo evidence are confirmed."
+
+  - canonical_slug: "aqi-forecasting"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "AQI-specific domain framing is not fully locked."
+      - "Representative frontend branch is unclear."
+      - "No confirmed media."
+    recommended_next_action:
+      - "Populate as a forecasting app only if you are comfortable leaving the domain scope slightly general."
+
+  - canonical_slug: "rstudio-replica-forecasting-app"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Best demo path is not clear."
+      - "No confirmed screenshots or mapped media."
+    recommended_next_action:
+      - "Keep ready as a secondary archive item and populate only with text-first conservative copy."
+
+  - canonical_slug: "collaborative-filtering-recommendation-engine"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "The relationship between the heuristic UI and the collaborative-filtering script is still ambiguous."
+      - "No confirmed media."
+    recommended_next_action:
+      - "Populate only if you clearly label it as a recommender prototype with parallel UI and CF experimentation."
+
+  - canonical_slug: "surgemedi"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: true
+    source_ready: true
+    ready_for_live_population: yes
+    blockers:
+      - "Backend or real client context is still unverified."
+    recommended_next_action:
+      - "Populate with frontend-focused wording and use the existing local media candidates."
+
+  - canonical_slug: "priority-based-csv-sampler"
+    narrative_ready: true
+    specificity_ready: true
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: partial
+    blockers:
+      - "Professional usage context is still unclear."
+      - "No confirmed media."
+    recommended_next_action:
+      - "Populate if you want internal-tool breadth, leaving the context phrasing generic until confirmed."
+
+  - canonical_slug: "github-contribution-scheduler"
+    narrative_ready: true
+    specificity_ready: false
+    media_ready: false
+    source_ready: true
+    ready_for_live_population: no
+    blockers:
+      - "Usage and maturity are too unclear."
+      - "No screenshots or demo evidence."
+      - "Still the thinnest included project after direct inspection."
+    recommended_next_action:
+      - "Wait for UI screenshots and a clearer usage story before populating into `src/data`."

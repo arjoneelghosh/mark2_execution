@@ -1,0 +1,98 @@
+﻿families:
+  - family_name: "portfolio_websites"
+    theme: "personal portfolio site evolution"
+    repos:
+      - repo_name: "mark2"
+        role: main
+        confidence: high
+        notes:
+          - "Current main portfolio shell repo."
+      - repo_name: "arjoneel-fullstack-resume"
+        role: variant
+        confidence: medium
+        notes:
+          - "Earlier/fullstack portfolio variant with backend and frontend."
+      - repo_name: "Website_Mark1_LLM"
+        role: support
+        confidence: medium
+        notes:
+          - "Small AI portfolio assistant backend experiment."
+      - repo_name: "portfolio"
+        role: variant
+        confidence: medium
+        notes:
+          - "Older static HTML portfolio site."
+      - repo_name: "arjoneel-portfolio"
+        role: duplicate
+        confidence: low
+        notes:
+          - "Minimal incomplete portfolio variant."
+    recommended_portfolio_representation:
+      main_repo: "mark2"
+      supporting_repos:
+        - "arjoneel-fullstack-resume"
+        - "Website_Mark1_LLM"
+        - "portfolio"
+      separate_portfolio_entries: []
+      merge_into_main:
+        - "arjoneel-fullstack-resume"
+        - "Website_Mark1_LLM"
+        - "portfolio"
+      exclude_from_portfolio_as_separate_entries:
+        - "arjoneel-portfolio"
+    rationale:
+      - "These repos all represent iterations of the personal portfolio website rather than separate showcase projects."
+      - "mark2 is the clearest current representative."
+
+  - family_name: "agriculture_forecasting"
+    theme: "agriculture production, weather, and market forecasting"
+    repos:
+      - repo_name: "Kamareddy_Telangana_Production_Weather_Market_"
+        role: main
+        confidence: high
+        notes:
+          - "Most integrated repo with frontend, API, model outputs, and paper artifacts."
+      - repo_name: "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+        role: variant
+        confidence: medium
+        notes:
+          - "Earlier or narrower data-heavy forecasting/correlation repo."
+    recommended_portfolio_representation:
+      main_repo: "Kamareddy_Telangana_Production_Weather_Market_"
+      supporting_repos:
+        - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+      separate_portfolio_entries:
+        - "Kamareddy_Telangana_Production_Weather_Market_"
+      merge_into_main:
+        - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+      exclude_from_portfolio_as_separate_entries:
+        - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    rationale:
+      - "The names and repo structure suggest an iteration lineage rather than two independent flagship projects."
+      - "The Kamareddy repo is substantially richer and more presentation-ready."
+
+  - family_name: "medical_equipment_tracker"
+    theme: "medical equipment catalog / tracking app"
+    repos:
+      - repo_name: "surgemedi"
+        role: main
+        confidence: medium
+        notes:
+          - "Likely branded/public-facing representative."
+      - repo_name: "Medical-Equipment-Tracking"
+        role: duplicate
+        confidence: high
+        notes:
+          - "Near-duplicate structure and same package identity as surgemedi."
+    recommended_portfolio_representation:
+      main_repo: "surgemedi"
+      supporting_repos: []
+      separate_portfolio_entries:
+        - "surgemedi"
+      merge_into_main:
+        - "Medical-Equipment-Tracking"
+      exclude_from_portfolio_as_separate_entries:
+        - "Medical-Equipment-Tracking"
+    rationale:
+      - "The two repos appear to represent the same product line under different naming."
+      - "A single medical equipment tracker entry is cleaner and more defensible."

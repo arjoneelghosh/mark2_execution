@@ -1,0 +1,612 @@
+projects:
+  - folder: "C:/onedrive_localdata/Programming/hackathon-main"
+    include_in_portfolio: true
+    confidence: high
+    probable_title: "LoanONE AI"
+    suggested_slug: "loanone-ai"
+    probable_category: "Full Stack"
+    probable_subcategory: "Fintech / AI Product Prototype"
+    probable_status: "Hackathon Prototype"
+    featured_candidate: true
+    one_line_summary_guess: "AI-assisted loan approval workflow prototype with onboarding, document upload, and status tracking."
+    preview_summary_guess: "Hackathon-style loan approval product with guided application flow and AI-oriented verification touches."
+    problem_guess: "Reduce friction in digital loan onboarding and make loan application steps easier to understand and complete."
+    approach_guess:
+      - "Built a multi-route React application for login, questionnaire, document upload, and loan-status steps."
+      - "Combined UI flow with AI-oriented concepts such as voice entry and face-verification hooks."
+      - "Used a modern Vite and component-library stack for rapid iteration."
+    outcomes_guess:
+      - "Clear end-to-end product flow is present in the codebase."
+      - "Hackathon framing and README make the project explainable as a portfolio piece."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind CSS"
+      - "shadcn/ui"
+      - "React Router"
+      - "TanStack Query"
+    detected_artifacts:
+      - "README.md"
+      - "package.json"
+      - "src/App.tsx"
+      - "src/pages"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "README names the project 'LoanONE AI - Intelligent Loan Approval System'."
+      - "README lists voice entry, document upload, verification status, and face-detection concepts."
+      - "App.tsx defines routes for login, questionnaire, document upload, and loan status."
+    missing_info:
+      - "What parts were fully implemented versus planned for the hackathon."
+      - "Team size and your exact ownership."
+      - "Whether a live demo or screenshots still exist."
+    notes_for_user:
+      - "Strong featured candidate if you can confirm your role and what AI features were actually working."
+
+  - folder: "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+    include_in_portfolio: true
+    confidence: high
+    probable_title: "SignChat"
+    suggested_slug: "signchat"
+    probable_category: "ML / Computer Vision"
+    probable_subcategory: "Assistive Tech"
+    probable_status: "Prototype / Research Build"
+    featured_candidate: true
+    one_line_summary_guess: "Live sign-language transcription app using webcam landmark detection and per-language models."
+    preview_summary_guess: "Assistive communication prototype supporting sign-language detection in a Streamlit interface."
+    problem_guess: "Help bridge communication gaps by converting live sign gestures into readable text in real time."
+    approach_guess:
+      - "Built a Streamlit interface with webcam support through streamlit-webrtc."
+      - "Used MediaPipe hand landmarks as input features for TensorFlow/Keras models."
+      - "Organized models by language with separate ASL, BSL, and ISL support paths."
+    outcomes_guess:
+      - "README and folder structure suggest a runnable end-to-end prototype."
+      - "The project is easy to position as an assistive ML application."
+    detected_stack:
+      - "Python"
+      - "Streamlit"
+      - "streamlit-webrtc"
+      - "OpenCV"
+      - "MediaPipe"
+      - "TensorFlow"
+      - "NumPy"
+    detected_artifacts:
+      - "README.md"
+      - "requirements.txt"
+      - "models/"
+      - "app files under signchat_py"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "README explicitly names the project 'SignChat (Python)'."
+      - "README describes ASL/BSL/ISL support and live webcam detection."
+      - "requirements.txt includes Streamlit, MediaPipe, TensorFlow, and OpenCV."
+    missing_info:
+      - "Which languages actually had trained, working models."
+      - "What dataset or training process was used."
+      - "Any measured accuracy or demo video."
+    notes_for_user:
+      - "This is one of the strongest featured candidates if you can supply your training/data story."
+
+  - folder: "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "CropIQ"
+    suggested_slug: "cropiq"
+    probable_category: "AI / Full Stack"
+    probable_subcategory: "Agriculture Assistant"
+    probable_status: "Prototype"
+    featured_candidate: true
+    one_line_summary_guess: "Agriculture advisory chat app with crop, market, and weather context wired into a workspace experience."
+    preview_summary_guess: "Conversational crop-planning prototype with domain mock data and assistant orchestration."
+    problem_guess: "Give growers a single interface for planning harvest decisions, pricing questions, and contextual advice."
+    approach_guess:
+      - "Built a chat workspace with persisted conversation state using Zustand."
+      - "Modeled crop, market, subdistrict, price, and weather data locally for grounded responses."
+      - "Added orchestration logic and an AI-enabled or offline fallback flow."
+    outcomes_guess:
+      - "The product identity and advisory workflow are clear from the current UI code."
+      - "Strong candidate if the project came from a competition or domain challenge."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Zustand"
+      - "Supabase client"
+      - "Tailwind CSS"
+    detected_artifacts:
+      - "src/pages/Workspace.tsx"
+      - "src/data.ts"
+      - "src/engine.ts"
+      - "package.json"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "Workspace header labels the app 'CropIQ'."
+      - "src/data.ts contains crop, market, weather, and price structures."
+      - "Quick actions reference harvest timing, pricing, and pesticide-related questions."
+    missing_info:
+      - "What external models or APIs were actually used."
+      - "Whether this was built for SIH or another event."
+      - "Your exact contribution and any backend/data pipeline details."
+    notes_for_user:
+      - "Worth featuring if you can explain the advisory logic and whether it was a competition build."
+
+  - folder: "C:/onedrive_localdata/Programming/VolunTree/code"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "VolunTree"
+    suggested_slug: "voluntree"
+    probable_category: "Full Stack"
+    probable_subcategory: "Community / Volunteer Platform"
+    probable_status: "In Progress"
+    featured_candidate: true
+    one_line_summary_guess: "Volunteer coordination platform with host and volunteer dashboards, auth, and opportunity management."
+    preview_summary_guess: "Role-based volunteering platform spanning frontend flows, backend routes, and infrastructure files."
+    problem_guess: "Make it easier to connect volunteers with hosts and manage opportunities through a shared platform."
+    approach_guess:
+      - "Built a routed React frontend with separate public, volunteer, and host pages."
+      - "Added Express backend endpoints with auth and database configuration."
+      - "Included Terraform infrastructure files, suggesting a deployment-minded setup."
+    outcomes_guess:
+      - "Broader full-stack scope is visible from the folder structure."
+      - "Could become a strong featured case study if the product story is real and complete."
+    detected_stack:
+      - "React"
+      - "Vite"
+      - "React Router"
+      - "styled-components"
+      - "Express"
+      - "PostgreSQL"
+      - "JWT"
+      - "Terraform"
+    detected_artifacts:
+      - "src/pages"
+      - "backend/server.js"
+      - "backend/routes"
+      - "infra/terraform"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "App.jsx contains separate volunteer and host dashboards."
+      - "backend/package.json includes express, pg, jsonwebtoken, and bcrypt."
+      - "Folder contains infra/terraform."
+    missing_info:
+      - "Whether the app was deployed or used by anyone."
+      - "What database schema and backend features were completed."
+      - "Your role across frontend, backend, and infra."
+    notes_for_user:
+      - "Potentially one of the strongest full-stack portfolio pieces if the story is real and not just scaffolding."
+
+  - folder: "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "Collaborative Filtering Recommendation Engine"
+    suggested_slug: "collaborative-filtering-recommendation-engine"
+    probable_category: "ML / Data"
+    probable_subcategory: "Recommender Systems"
+    probable_status: "Prototype"
+    featured_candidate: true
+    one_line_summary_guess: "Movie recommendation demo combining frontend recommendation UX with a separate collaborative-filtering model experiment."
+    preview_summary_guess: "Recommender-system prototype with watched-history logic and an SVD-based collaborative filtering script."
+    problem_guess: "Surface relevant movie recommendations based on prior preferences and interaction history."
+    approach_guess:
+      - "Built a React movie discovery interface with watched state and recommendation panels."
+      - "Implemented heuristic recommendation logic in the frontend for explainable demo behavior."
+      - "Explored collaborative filtering in Python using Surprise SVD over interaction data."
+    outcomes_guess:
+      - "The project is explainable as both a UI demo and a recommendation-systems experiment."
+      - "A cleaner project narrative is possible after removing duplicate nested copies."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind CSS"
+      - "Python"
+      - "pandas"
+      - "surprise"
+    detected_artifacts:
+      - "src/App.tsx"
+      - "src/utils/recommendations.ts"
+      - "cf_model/collaborative_filtering.py"
+      - "movie interaction CSV files"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "App.tsx includes movie browsing, watched history, and recommendation panel flows."
+      - "recommendations.ts implements recommendation reasoning such as genre, actor, and director overlap."
+      - "collaborative_filtering.py trains an SVD model with Surprise."
+    missing_info:
+      - "Which recommendation path was actually showcased."
+      - "Whether there were evaluation results beyond the sample RMSE printout."
+      - "Whether the duplicate nested folder is older or newer."
+    notes_for_user:
+      - "Good featured candidate if you can describe the modeling choices and distinguish demo heuristics from actual CF work."
+
+  - folder: "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "Gesture Recognition"
+    suggested_slug: "gesture-recognition"
+    probable_category: "ML / Computer Vision"
+    probable_subcategory: "Sign Recognition"
+    probable_status: "Experimental"
+    featured_candidate: false
+    one_line_summary_guess: "Hand-tracking and ASL recognition experiment built on MediaPipe landmark features."
+    preview_summary_guess: "Computer-vision experiment for sign recognition using extracted hand landmarks."
+    problem_guess: "Interpret hand gestures or signs from camera input using a lightweight landmark-based approach."
+    approach_guess:
+      - "Used MediaPipe Hands to extract landmarks."
+      - "Explored and trained a classifier through notebooks and runnable scripts."
+      - "Packaged image and webcam inference entry points."
+    outcomes_guess:
+      - "Clear technical experiment with an explainable CV pipeline."
+    detected_stack:
+      - "Python"
+      - "MediaPipe"
+      - "Jupyter"
+    detected_artifacts:
+      - "README.md"
+      - "run.py"
+      - "run_on_image.py"
+      - "notebooks"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "README explains MediaPipe hand tracking and ASL recognition."
+      - "README references notebooks for data exploration and training."
+    missing_info:
+      - "What dataset was used."
+      - "Accuracy or demo outcomes."
+      - "How this project differs from or led into SignChat."
+    notes_for_user:
+      - "Probably better as supporting context unless it was a major precursor to SignChat."
+
+  - folder: "C:/onedrive_localdata/Programming/ansh_c/surgemedi"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "SurgMedi"
+    suggested_slug: "surgmedi"
+    probable_category: "Full Stack"
+    probable_subcategory: "E-commerce / Catalog Frontend"
+    probable_status: "Prototype"
+    featured_candidate: false
+    one_line_summary_guess: "Medical supplies catalog site with branded landing, product listings, and product detail routes."
+    preview_summary_guess: "Clean healthcare catalog frontend with multiple marketing and product pages."
+    problem_guess: "Present and organize medical supply products in a more polished digital catalog experience."
+    approach_guess:
+      - "Built a multi-page React frontend with category cards, product views, and branded sections."
+      - "Used motion and Tailwind styling for a more polished presentation."
+    outcomes_guess:
+      - "Visually presentable frontend exists."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind CSS"
+      - "Framer Motion"
+      - "React Router"
+    detected_artifacts:
+      - "src/pages/Home.tsx"
+      - "src/pages/Catalog.tsx"
+      - "src/pages/ProductDetail.tsx"
+      - "src/data/products.ts"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/2.png"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/original.jpg"
+    evidence:
+      - "Home.tsx brands the site as SurgMedi."
+      - "Routing covers catalog, product details, about, and contact."
+    missing_info:
+      - "Whether there is a backend or commerce logic elsewhere."
+      - "Whether this was a real client or a design exercise."
+    notes_for_user:
+      - "Useful as a supporting project if you want breadth in polished frontend work."
+
+  - folder: "C:/onedrive_localdata/Programming/File_filter"
+    include_in_portfolio: true
+    confidence: high
+    probable_title: "Priority-Based CSV Sampler"
+    suggested_slug: "priority-based-csv-sampler"
+    probable_category: "Data Tooling"
+    probable_subcategory: "CSV Workflow Utility"
+    probable_status: "Utility"
+    featured_candidate: false
+    one_line_summary_guess: "Streamlit utility for sampling CSV rows based on configurable priority rules and YAML presets."
+    preview_summary_guess: "Practical data-ops style utility for CSV filtering, previewing, and export."
+    problem_guess: "Help users create weighted or prioritized CSV samples without writing code manually."
+    approach_guess:
+      - "Built a Streamlit dashboard for uploading CSV data and defining priority rules."
+      - "Allowed optional YAML config import/export for repeatable workflows."
+      - "Rendered preview tables, metrics, and downloadable output."
+    outcomes_guess:
+      - "Clear, practical workflow utility with evidence of actual implementation."
+    detected_stack:
+      - "Python"
+      - "Streamlit"
+      - "pandas"
+      - "PyYAML"
+    detected_artifacts:
+      - "dashboard.py"
+      - "requirements.txt"
+      - "assets/style.css"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "dashboard.py titles the app 'Priority-Based CSV Sampler'."
+      - "Code supports YAML config loading and sampled CSV export."
+      - "requirements.txt includes Streamlit and pandas."
+    missing_info:
+      - "What real workflow or organization it supported."
+      - "Whether this was standalone or related to SopraSteria work."
+    notes_for_user:
+      - "Solid archive utility, especially if you want to show practical internal-tool work."
+
+  - folder: "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "CSV Data Dashboard"
+    suggested_slug: "csv-data-dashboard"
+    probable_category: "Data Tooling"
+    probable_subcategory: "Operational Dashboard"
+    probable_status: "Utility / Internship Work"
+    featured_candidate: false
+    one_line_summary_guess: "Incident-data dashboard for filtering, sorting, visualizing, and exporting CSV records."
+    preview_summary_guess: "Operational Streamlit dashboard for exploring incident-style datasets."
+    problem_guess: "Make incident CSVs easier to inspect, filter, and prioritize in a browser-based workflow."
+    approach_guess:
+      - "Built a Streamlit dashboard for CSV upload, filtering, sorting, and export."
+      - "Added lightweight analytics and data insights."
+    outcomes_guess:
+      - "A clear internal-tool style dashboard is present."
+    detected_stack:
+      - "Python"
+      - "Streamlit"
+      - "pandas"
+    detected_artifacts:
+      - "README.md"
+      - "dashboard.py"
+      - "requirements.txt"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "README explicitly describes a CSV data dashboard with filtering, sorting, and export."
+      - "Folder lives under SopraSteria, suggesting professional context."
+    missing_info:
+      - "Whether this was built during an internship or training."
+      - "How distinct it is from File_filter and priority_filter."
+    notes_for_user:
+      - "Good supporting candidate if you want to show workplace-style dashboards."
+
+  - folder: "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "GitHub Contribution Scheduler"
+    suggested_slug: "github-contribution-scheduler"
+    probable_category: "Developer Tooling"
+    probable_subcategory: "Desktop Utility"
+    probable_status: "Prototype / Utility"
+    featured_candidate: false
+    one_line_summary_guess: "Desktop utility for planning and scheduling GitHub contribution activity."
+    preview_summary_guess: "Niche developer tool for organizing and automating scheduled commit actions."
+    problem_guess: "Give users a controlled interface for scheduling commit activity rather than doing it manually."
+    approach_guess:
+      - "Built a desktop UI with ttkbootstrap."
+      - "Separated UI layout, config, and git operations into different files."
+    outcomes_guess:
+      - "Specific enough to discuss as a utility project."
+    detected_stack:
+      - "Python"
+      - "ttkbootstrap"
+    detected_artifacts:
+      - "main.py"
+      - "ui_layout.py"
+      - "git_ops.py"
+      - "config.json"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "main.py launches a ttkbootstrap app."
+      - "File layout includes UI, config, and git operation modules."
+    missing_info:
+      - "How complete the scheduling flow is."
+      - "Whether this was actually used or just explored."
+    notes_for_user:
+      - "Archive candidate unless this solved a real workflow and you want to show tooling breadth."
+
+  - folder: "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    include_in_portfolio: false
+    confidence: medium
+    probable_title: "Commitment Issue Design"
+    suggested_slug: "commitment-issue-design"
+    probable_category: "Frontend"
+    probable_subcategory: "Tool UI Prototype"
+    probable_status: "Design Prototype"
+    featured_candidate: false
+    one_line_summary_guess: "Frontend prototype for a commit scheduling and GitHub settings workflow."
+    preview_summary_guess: "UI concept for commit scheduling with logs and confirmation flow."
+    problem_guess: "Prototype an interface for scheduled GitHub commit workflows."
+    approach_guess:
+      - "Built a React dashboard with file upload, scheduler, settings, and activity log panels."
+      - "Simulated commit results and confirmation flow in the UI."
+    outcomes_guess:
+      - "Useful evidence of product thinking, but not obviously a standalone final project."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind CSS"
+    detected_artifacts:
+      - "src/App.tsx"
+      - "src/components"
+      - "package.json"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "App.tsx contains scheduler, GitHub settings, activity log, and commit simulation."
+      - "Concept overlaps with github_contribution_scheduler."
+    missing_info:
+      - "Whether this was just a design exploration for the Python tool."
+    notes_for_user:
+      - "Probably exclude unless you want to discuss it as a UI prototype that preceded the utility."
+
+  - folder: "C:/onedrive_localdata/Programming/Payment_Wall"
+    include_in_portfolio: false
+    confidence: low
+    probable_title: "Payment_Wall"
+    suggested_slug: "payment-wall"
+    probable_category: "Unclear"
+    probable_subcategory: "Prototype / Mixed Workspace"
+    probable_status: "Unclear"
+    featured_candidate: false
+    one_line_summary_guess: "Mixed workspace with signs of a routed app, but no clean project boundary."
+    preview_summary_guess: "Possible fintech or loan-flow prototype, but current evidence is too messy for confident portfolio use."
+    problem_guess: "Unclear."
+    approach_guess:
+      - "Top-level App.tsx suggests a routed product flow."
+      - "Folder also contains unrelated loose scripts, which weakens confidence."
+    outcomes_guess:
+      - "Not enough clean evidence for a strong portfolio story yet."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Python"
+    detected_artifacts:
+      - "App.tsx"
+      - "dashboard.py"
+      - "mixed loose scripts"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "App.tsx contains routed page composition."
+      - "Folder structure mixes unrelated files and lacks a clear manifest."
+    missing_info:
+      - "What the actual product was."
+      - "Whether this is a duplicate or branch of hackathon-main."
+      - "Whether there is a clean subfolder that should have been reviewed instead."
+    notes_for_user:
+      - "Only revisit if you know this folder contains an important project under a cleaner subpath."
+
+  - folder: "C:/onedrive_localdata/Programming/STEP_saturday_extra_class/Project/rec_system"
+    include_in_portfolio: false
+    confidence: low
+    probable_title: "rec_system"
+    suggested_slug: "rec-system"
+    probable_category: "AI / Experiment"
+    probable_subcategory: "Recommendation Assistant"
+    probable_status: "Experimental / Coursework"
+    featured_candidate: false
+    one_line_summary_guess: "Mixed recommendation-assistant experiment with frontend and FastAPI backend traces."
+    preview_summary_guess: "Recommendation/chatbot experiment that needs cleanup before it can be judged as portfolio material."
+    problem_guess: "Likely intended to provide entertainment recommendations through a chat interface."
+    approach_guess:
+      - "Set up a backend API around a chatbot prompt."
+      - "Maintained a separate frontend folder under the project."
+    outcomes_guess:
+      - "Project intent exists, but current evidence does not support a strong portfolio entry."
+    detected_stack:
+      - "FastAPI"
+      - "Python"
+      - "React"
+      - "Recharts"
+    detected_artifacts:
+      - "backend/main.py"
+      - "backend/rec.py"
+      - "frontend/prime-vision-whisper-main"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    evidence:
+      - "backend/main.py defines an 'OTT Recommendation Assistant' endpoint."
+      - "Folder lives inside a coursework/practice umbrella."
+      - "A hardcoded API key is present in backend/main.py and would need cleanup."
+    missing_info:
+      - "What the intended final product was."
+      - "Whether the frontend and backend were ever fully integrated."
+      - "Whether this should be merged into another recommendation project."
+    notes_for_user:
+      - "Exclude for now unless you know this was an important project and can supply a cleaner source path."
+
+excluded_items:
+  - name: "NLP_quiz'"
+    reason: "Explicit user exclusion."
+  - name: "Basic"
+    reason: "Programming practice folder rather than a portfolio project."
+  - name: "InitialProgramming"
+    reason: "Early learning material, not portfolio-ready project work."
+  - name: "ServiceNow"
+    reason: "Training/course material, not a distinct build."
+  - name: "Resume"
+    reason: "Resume assets and portfolio repo, not a separate project candidate."
+  - name: "adv"
+    reason: "Wrapper/noise folder with CSVs, scripts, and a nested duplicate of hackathon-main."
+  - name: "adv/adv/hackathon-main"
+    reason: "Appears to duplicate the top-level hackathon-main project."
+  - name: "SopraSteria"
+    reason: "Umbrella folder reviewed through subprojects instead."
+  - name: "Commitment_issues"
+    reason: "Umbrella folder reviewed through subprojects instead."
+  - name: "STEP_saturday_extra_class"
+    reason: "Umbrella coursework folder; only nested rec_system was considered."
+  - name: "Face-Detection"
+    reason: "Could not inspect because directory access was denied."
+  - name: "bfg-1.15.0.jar"
+    reason: "Binary/tooling file, not a project folder."
+  - name: "Face-Detection.zip"
+    reason: "Archive file skipped unless needed for blocked Face-Detection recovery."
+  - name: "terraform.exe"
+    reason: "Binary executable, not a project."
+  - name: "VSCodeUserSetup-x64-1.82.3.exe"
+    reason: "Installer executable, not a project."
+  - name: "R 4.2.3.lnk"
+    reason: "Shortcut file, not a project."
+  - name: "Rattle.lnk"
+    reason: "Shortcut file, not a project."
+  - name: "UNIT-1_PPT_DMA[1].pptx"
+    reason: "Presentation file, not a software project."
+  - name: "UNIT-2_DMA_(2)[1].pptx"
+    reason: "Presentation file, not a software project."
+  - name: "videoplayback.m4a"
+    reason: "Audio file, not a software project."
+  - name: "LICENSE.txt"
+    reason: "Loose text file, not a project."

@@ -1,0 +1,108 @@
+media:
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/architecture_aligned_fresh.png"
+    source_type: local
+    asset_kind: architecture
+    recommended_usage: hero
+    confidence: high
+    notes:
+      - "Strong candidate for a case-study architecture visual."
+
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/arrivals_vs_price_fresh.png"
+    source_type: evidence
+    asset_kind: chart
+    recommended_usage: gallery
+    confidence: high
+    notes:
+      - "Useful as evidence-only or gallery chart."
+
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/feature_importance_fresh.png"
+    source_type: evidence
+    asset_kind: chart
+    recommended_usage: gallery
+    confidence: high
+    notes:
+      - "Good supporting model-interpretation visual."
+
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/KamareddyAgriFore/architecture.png"
+    source_type: evidence
+    asset_kind: architecture
+    recommended_usage: evidence_only
+    confidence: medium
+    notes:
+      - "Likely derivative of the main AgriFore figure set."
+
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/KamareddyAgriFore/arrival_price.png"
+    source_type: evidence
+    asset_kind: chart
+    recommended_usage: evidence_only
+    confidence: medium
+    notes:
+      - "Useful fallback if the fresher AgriFore figure is not preferred."
+
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/KamareddyAgriFore/feature_importance.png"
+    source_type: evidence
+    asset_kind: chart
+    recommended_usage: evidence_only
+    confidence: medium
+    notes:
+      - "Lineage/support visual, not primary."
+
+  - project_slug: "agrifore"
+    asset_path_or_url: "C:/Users/footb/Desktop/KamareddyAgriFore/simulation.png"
+    source_type: evidence
+    asset_kind: screenshot
+    recommended_usage: gallery
+    confidence: medium
+    notes:
+      - "Could help explain simulation or scenario outputs."
+
+  - project_slug: "surgemedi"
+    asset_path_or_url: "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/2.png"
+    source_type: local
+    asset_kind: preview_candidate
+    recommended_usage: card
+    confidence: medium
+    notes:
+      - "Best currently known card-preview candidate."
+
+  - project_slug: "surgemedi"
+    asset_path_or_url: "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/original.jpg"
+    source_type: local
+    asset_kind: cover_candidate
+    recommended_usage: hero
+    confidence: medium
+    notes:
+      - "Possible broader hero or cover image."
+
+  - project_slug: "priority-based-csv-sampler"
+    asset_path_or_url: "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    source_type: evidence
+    asset_kind: other
+    recommended_usage: evidence_only
+    confidence: low
+    notes:
+      - "Folder-level evidence only. No confirmed screenshot path in the intake."
+
+  - project_slug: "flightfinder-ai"
+    asset_path_or_url: "C:/Users/footb/Desktop/ViklangFlightBooking"
+    source_type: evidence
+    asset_kind: other
+    recommended_usage: evidence_only
+    confidence: low
+    notes:
+      - "Project has strong product evidence but no confirmed screenshot path in the intake."
+
+  - project_slug: "signchat"
+    asset_path_or_url: "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+    source_type: evidence
+    asset_kind: other
+    recommended_usage: evidence_only
+    confidence: low
+    notes:
+      - "No confirmed media asset path yet."

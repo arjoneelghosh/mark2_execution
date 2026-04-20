@@ -1,0 +1,59 @@
+﻿items:
+  - folder: "C:\\Users\\footb\\Downloads\\App py project\\App py project"
+    confidence: medium
+    probable_title: "NG Motors"
+    probable_category: "desktop application"
+    probable_subcategory: "Tkinter car showroom / dealership prototype"
+    probable_type: early_project
+    include_in_portfolio: true
+    suggested_treatment: merge
+    probable_status: "prototype / partially complete"
+    one_line_summary_guess: "An early Tkinter desktop app for browsing and configuring cars, with CSV-based lead and order capture."
+    problem_guess: "Build a simple interactive dealership/showroom interface where a user can enter contact details, browse car models, customize them, and record the selection."
+    approach_guess:
+      - "Built multiple fullscreen Tkinter screens connected through Python module imports."
+      - "Used image-heavy custom page assets for login, main catalog, and per-car customization views."
+      - "Stored user details and selected car options in a local CSV file rather than a database."
+      - "Prototyped earlier page flows in the trial folder before expanding the main app."
+    detected_stack:
+      - "Python"
+      - "Tkinter"
+      - "CSV file storage"
+      - "Custom PNG/PSD assets"
+    detected_artifacts:
+      - "project.py"
+      - "project2.py"
+      - "page911.py"
+      - "Banshee.py"
+      - "Corquette.py"
+      - "Grand.py"
+      - "Create database.py"
+      - "record.csv"
+      - "Pages/"
+      - "Cars/"
+      - "pics/"
+      - "trial/"
+    originality_assessment: "Likely user-authored early project. The folder contains custom assets, project-specific Tkinter code, and iterative prototypes, with no strong signs of a downloaded template."
+    evidence:
+      - "project.py sets the app title to NG Motors and captures user info into record.csv."
+      - "project2.py presents a main catalog with multiple named car buttons."
+      - "Per-car pages write selected model, color, and extras back into the CSV."
+      - "The Pages, Cars, and pics folders contain many custom GUI assets and PSD files."
+      - "record.csv contains sample dealership-style order rows that match the code flow."
+    missing_info:
+      - "Whether test.py is actually part of the same project or an unrelated experiment."
+      - "Whether this was a class project, personal project, or demo assignment."
+      - "Whether a final Mustang page or more complete release exists elsewhere."
+    notes_for_user:
+      - "Best kept as an early-project mention rather than a standalone featured or archive project."
+      - "If you have screenshots or a final demo video, that could raise confidence for a later archive decision."
+
+excluded_items:
+  - name: ".idea"
+    reason: "IDE metadata; excluded by default."
+  - name: "__pycache__"
+    reason: "Python cache folder; excluded by default."
+  - name: "Never.mp4"
+    reason: "Large media file not needed for initial code-based triage."
+  - name: "DONT CLICK!!!.py"
+    reason: "Excluded by request and not needed to classify the main project."

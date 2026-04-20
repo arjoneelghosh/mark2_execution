@@ -1,0 +1,289 @@
+import React, { useEffect, useRef, useState } from 'react';
+import HomepageRing from '../components/navigation/HomepageRing';
+import ParticleField from '../components/ui/ParticleField';
+import PreviewPanel from '../components/ui/PreviewPanel';
+import { profileRecord } from '../data';
+import { useNavigate } from 'react-router-dom';
+import portraitPhoto from '../assets/project-previews/photo.png';
+import { MessageCircle } from 'lucide-react';
+import type { ContentCard } from '../types';
+
+const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+  const [ringRevealProgress, setRingRevealProgress] = useState(0);
+  const [ringIsActive, setRingIsActive] = useState(false);
+  const [previewCard, setPreviewCard] = useState<ContentCard | null>(null);
+  const landingFocusCards = [
+    'Machine Learning and Forecasting',
+    'Computer Vision and Applied ML',
+    'Data and Tooling',
+    'Full Stack and Product Delivery',
+  ]
+    .map((label) => profileRecord.skillGroups.find((group) => group.label === label))
+    .filter((group): group is NonNullable<typeof group> => Boolean(group));
+
+  const ringRef = useRef<HTMLDivElement>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const focusSectionRef = useRef<HTMLDivElement>(null);
+  const ringActiveRef = useRef(false);
+
+  useEffect(() => {
+    const apply = () => {
+      const t = Math.min(Math.max(window.scrollY / 560, 0), 1);
+      const ringOpacity = Math.min(0.04 + t * 1.04, 1);
+      const ringScale = 0.94 + t * 0.06;
+
+      if (portraitRef.current) {
+        const portraitOpacity = 0.28 - t * 0.2;
+        portraitRef.current.style.opacity = `${Math.max(portraitOpacity, 0.08)}`;
+      }
+
+      if (ringRef.current) {
+        ringRef.current.style.opacity = `${ringOpacity}`;
+        ringRef.current.style.transform = `translateY(-50%) scale(${ringScale})`;
+      }
+
+      setRingRevealProgress(t);
+
+      if (focusSectionRef.current && ringRef.current) {
+        const focusTop = focusSectionRef.current.getBoundingClientRect().top;
+        const activationPoint = window.innerHeight * 0.34;
+        const isActive = focusTop <= activationPoint;
+
+        if (isActive !== ringActiveRef.current) {
+          ringActiveRef.current = isActive;
+          setRingIsActive(isActive);
+        }
+      }
+    };
+
+    apply();
+    const onScroll = () => requestAnimationFrame(apply);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div className="bg-home relative">
+      <ParticleField />
+
+      <div className="relative z-10 min-h-screen flex items-center overflow-hidden">
+        <div
+          ref={portraitRef}
+          className="absolute top-0 right-0 w-[52%] h-full pointer-events-none select-none"
+          style={{ opacity: 0.28 }}
+        >
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy-950 via-navy-950/28 to-transparent" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-navy-950/42 via-transparent to-navy-950/12" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy-950/10 via-transparent to-navy-950/38" />
+          <img
+            src={portraitPhoto}
+            alt="Arjoneel Ghosh"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: '54% 14%' }}
+          />
+        </div>
+
+        <div className="relative z-20 max-w-7xl mx-auto w-full px-8 lg:px-14">
+          <div className="max-w-[34rem] lg:max-w-[32rem] pt-24 lg:pt-0">
+            <p
+              className="text-accent-blue/70 tracking-widest uppercase mb-7 animate-fade-in opacity-0 italic font-medium"
+              style={{
+                fontFamily: "'Caveat', 'Segoe Script', cursive",
+                fontSize: '1.95rem',
+                letterSpacing: '0.12em',
+                transform: 'rotate(-2deg)',
+                transformOrigin: 'left center',
+                animationDelay: '200ms',
+                animationFillMode: 'forwards',
+              }}
+            >
+              Hello
+            </p>
+
+            <h1
+              className="font-heading text-[clamp(2.2rem,4.35vw,3.25rem)] font-semibold text-navy-50 leading-[1.16] tracking-[-0.02em] mb-16 animate-fade-in opacity-0"
+              style={{ animationDelay: '350ms', animationFillMode: 'forwards' }}
+            >
+              I am Arjoneel Ghosh,
+              <br />
+              and this is my
+              <br />
+              portfolio website
+            </h1>
+
+            <p
+              className="text-navy-300 text-[0.95rem] leading-relaxed max-w-[31rem] animate-fade-in opacity-0"
+              style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
+            >
+              {profileRecord.longBio[0]}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        ref={ringRef}
+        className="fixed z-30 will-change-transform"
+        style={{
+          right: '14%',
+          top: '51%',
+          transform: 'translateY(-50%) scale(0.94)',
+          opacity: 0.04,
+          pointerEvents: 'auto',
+        }}
+      >
+        <div
+          style={{
+            transform: 'scale(1.14)',
+            filter: 'drop-shadow(0 0 48px rgba(74, 144, 217, 0.18))',
+          }}
+        >
+          <HomepageRing
+            scrollProgress={ringRevealProgress}
+            isActive={ringIsActive}
+          />
+        </div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-14 pb-40">
+        <div className="max-w-[34rem] space-y-6 mt-14">
+          {profileRecord.longBio.slice(1).map((paragraph, i) => (
+            <p
+              key={i}
+              className="text-navy-200 text-base leading-[1.75] animate-fade-in opacity-0"
+              style={{ animationDelay: `${600 + i * 140}ms`, animationFillMode: 'forwards' }}
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        <div className="mt-24 mb-3 w-12 h-px bg-accent-blue/20" />
+
+        <div
+          ref={focusSectionRef}
+          className="mt-8 animate-fade-in opacity-0"
+          style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
+        >
+          <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">
+            Current Focus
+          </h3>
+        </div>
+
+        <div
+          className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-[38rem] animate-fade-in opacity-0"
+          style={{ animationDelay: '950ms', animationFillMode: 'forwards' }}
+        >
+          {landingFocusCards.map((group, i) => (
+            <button
+              key={group.id}
+              type="button"
+              onClick={() =>
+                setPreviewCard({
+                  title: group.label,
+                  body: group.description || 'Skill group.',
+                  tags: group.skills.map((skill) =>
+                    skill.emphasis ? `${skill.name} (${skill.emphasis})` : skill.name
+                  ),
+                })
+              }
+              className="card-base p-4 min-h-[88px] flex items-end text-left w-full cursor-pointer animate-fade-in opacity-0"
+              style={{ animationDelay: `${1000 + i * 80}ms`, animationFillMode: 'forwards' }}
+            >
+              <h4 className="font-heading text-sm font-semibold text-navy-100">
+                {group.label}
+              </h4>
+            </button>
+          ))}
+        </div>
+
+        <div
+          className="mt-20 animate-fade-in opacity-0"
+          style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}
+        >
+          <button
+            onClick={() => navigate('/ask')}
+            className="group flex items-center gap-3 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-accent-blue/20 hover:bg-white/[0.04] transition-all duration-280"
+          >
+            <MessageCircle
+              size={16}
+              className="text-accent-blue/50 group-hover:text-accent-blue transition-colors duration-280"
+            />
+            <span className="text-sm text-navy-400 group-hover:text-navy-200 transition-colors duration-280">
+              Ask me anything about this portfolio
+            </span>
+          </button>
+        </div>
+
+        <div className="mt-32 space-y-20">
+          <div className="animate-fade-in opacity-0" style={{ animationDelay: '1350ms', animationFillMode: 'forwards' }}>
+            <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Featured Work</h3>
+            <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
+              Projects spanning ML systems, assistive technology, product engineering, and data tooling, each built with care for both technical depth and user experience.
+            </p>
+            <button
+              onClick={() => navigate('/work')}
+              className="text-accent-blue text-sm font-medium hover:text-accent-glow transition-colors duration-220 flex items-center gap-2"
+            >
+              Explore projects
+            </button>
+          </div>
+
+          <div className="animate-fade-in opacity-0" style={{ animationDelay: '1450ms', animationFillMode: 'forwards' }}>
+            <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Professional Experience</h3>
+            <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
+              Certificate-backed internships at KPMG and Sopra Steria, leadership at SRMMUN Society, and a role-based view of practical responsibility.
+            </p>
+            <button
+              onClick={() => navigate('/experience')}
+              className="text-accent-blue text-sm font-medium hover:text-accent-glow transition-colors duration-220 flex items-center gap-2"
+            >
+              View experience
+            </button>
+          </div>
+
+          <div className="animate-fade-in opacity-0" style={{ animationDelay: '1550ms', animationFillMode: 'forwards' }}>
+            <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Research and Exploration</h3>
+            <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
+              Manuscript work, technical experiments, evolving concepts, and prototype systems that sit alongside the polished project record.
+            </p>
+            <button
+              onClick={() => navigate('/lab')}
+              className="text-accent-blue text-sm font-medium hover:text-accent-glow transition-colors duration-220 flex items-center gap-2"
+            >
+              Enter Lab
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <PreviewPanel
+        isOpen={!!previewCard}
+        onClose={() => setPreviewCard(null)}
+        title={previewCard?.title || ''}
+      >
+        {previewCard && (
+          <>
+            <p className="text-navy-200 text-sm">{previewCard.body}</p>
+            {previewCard.meta && <p className="text-navy-400 text-xs mt-2">{previewCard.meta}</p>}
+            {previewCard.tags && (
+              <div className="flex flex-wrap gap-1.5 mt-3">
+                {previewCard.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-400 border border-white/[0.04]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </PreviewPanel>
+    </div>
+  );
+};
+
+export default HomePage;

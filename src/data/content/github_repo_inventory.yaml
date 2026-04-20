@@ -1,0 +1,699 @@
+﻿repos:
+  - repo_name: "mark2"
+    repo_url: "https://github.com/arjoneelghosh/mark2"
+    confidence: high
+    probable_title: "Mark 2 Portfolio"
+    suggested_slug: "mark2"
+    probable_category: "portfolio infrastructure"
+    probable_subcategory: "current portfolio frontend"
+    probable_status: "active"
+    include_in_portfolio: false
+    suggested_treatment: merge
+    one_line_summary_guess: "Current React/TypeScript portfolio shell."
+    preview_summary_guess: "Portfolio-site repo, not a separate showcased project."
+    problem_guess: "Build the current generation of the personal portfolio site."
+    approach_guess:
+      - "Uses Vite, React, TypeScript, and Tailwind-style frontend tooling."
+      - "Appears to have started from a Bolt-oriented scaffold."
+    outcomes_guess:
+      - "Acts as the main portfolio website codebase."
+    detected_stack:
+      - "TypeScript"
+      - "React"
+      - "Vite"
+      - "Tailwind"
+    detected_artifacts:
+      - "src/"
+      - ".bolt/"
+      - "package.json"
+      - "README.md"
+    related_family: "portfolio_websites"
+    probable_relationship: main
+    evidence:
+      - "Root includes src, Vite config, and frontend tooling."
+      - "README is minimal and Bolt-oriented."
+    missing_info:
+      - "How much of the implementation differs from the initial scaffold."
+    notes_for_user:
+      - "Treat as the portfolio platform itself, not as a project card."
+
+  - repo_name: "Kamareddy_Telangana_Production_Weather_Market_"
+    repo_url: "https://github.com/arjoneelghosh/Kamareddy_Telangana_Production_Weather_Market_"
+    confidence: high
+    probable_title: "AgriFore Kamareddy Forecasting Platform"
+    suggested_slug: "agrifore-kamareddy"
+    probable_category: "machine learning"
+    probable_subcategory: "agriculture forecasting and market/weather analytics"
+    probable_status: "active"
+    include_in_portfolio: true
+    suggested_treatment: featured
+    one_line_summary_guess: "Integrated agriculture forecasting platform combining production, weather, and market data for Kamareddy/Telangana."
+    preview_summary_guess: "Most mature GitHub agriculture forecasting repo with frontend, API, model outputs, and paper artifacts."
+    problem_guess: "Forecast agricultural production/market behavior using regional weather and related agricultural data."
+    approach_guess:
+      - "Combines Python forecasting/model assets with a Next.js frontend and API layer."
+      - "Includes reports, forecast outputs, and paper-style documentation in the repo."
+    outcomes_guess:
+      - "Deployed frontend exists."
+      - "Looks like the strongest agriculture repo candidate on GitHub."
+    detected_stack:
+      - "Python"
+      - "Next.js"
+      - "TypeScript"
+      - "API backend"
+      - "Forecasting/model artifacts"
+    detected_artifacts:
+      - "frontend/"
+      - "api/"
+      - "aaaFinalModels/"
+      - "AgriFore_IEEE_Paper.md"
+      - "march2026_forecast.json"
+    related_family: "agriculture_forecasting"
+    probable_relationship: main
+    evidence:
+      - "Repo includes frontend, api, model/output folders, and paper/report docs."
+      - "Homepage points to a deployed frontend."
+    missing_info:
+      - "Precise production/modeling methodology without reading deeper notebooks/scripts."
+    notes_for_user:
+      - "Strongest GitHub representative of the agriculture forecasting family."
+
+  - repo_name: "PotpieAI_Context_Project"
+    repo_url: "https://github.com/arjoneelghosh/PotpieAI_Context_Project"
+    confidence: low
+    probable_title: "PotpieAI Context Project"
+    suggested_slug: "potpieai-context-project"
+    probable_category: "unclear"
+    probable_subcategory: "empty or uninitialized repo"
+    probable_status: "unclear"
+    include_in_portfolio: false
+    suggested_treatment: exclude
+    one_line_summary_guess: "Public repo metadata exists, but no visible code or documentation surfaced."
+    preview_summary_guess: "Too little evidence to classify meaningfully."
+    problem_guess: "Unknown."
+    approach_guess:
+      - "No visible implementation evidence surfaced in the public root."
+    outcomes_guess:
+      - "None verified."
+    detected_stack: []
+    detected_artifacts: []
+    related_family: ""
+    probable_relationship: unclear
+    evidence:
+      - "Repo contents appear empty from the public API."
+    missing_info:
+      - "Whether this repo was intended to hold work that was never pushed."
+    notes_for_user:
+      - "Needs confirmation before any portfolio use."
+
+  - repo_name: "The_Wedding_Company_Backend_Assignment"
+    repo_url: "https://github.com/arjoneelghosh/The_Wedding_Company_Backend_Assignment"
+    confidence: high
+    probable_title: "Wedding Company Backend Assignment"
+    suggested_slug: "wedding-company-backend-assignment"
+    probable_category: "backend engineering"
+    probable_subcategory: "multi-tenant FastAPI service"
+    probable_status: "complete assignment"
+    include_in_portfolio: false
+    suggested_treatment: coursework
+    one_line_summary_guess: "FastAPI multi-tenant backend assignment for organization management."
+    preview_summary_guess: "Well-structured assessment repo with tests, but assignment-scoped."
+    problem_guess: "Implement a secure multi-tenant backend for organization management."
+    approach_guess:
+      - "Uses FastAPI, MongoDB, JWT auth, and clean architecture layers."
+      - "Includes tests and deployment/runtime files."
+    outcomes_guess:
+      - "Demonstrates solid backend fundamentals for an assignment."
+    detected_stack:
+      - "Python"
+      - "FastAPI"
+      - "MongoDB"
+      - "JWT"
+      - "Pytest"
+    detected_artifacts:
+      - "app/"
+      - "tests/"
+      - "Dockerfile"
+      - "Procfile"
+      - "README.md"
+    related_family: "backend_assignments"
+    probable_relationship: support
+    evidence:
+      - "README explicitly names it as an assignment."
+      - "Repo structure is clean and complete."
+    missing_info:
+      - "Whether you want strong assignments mentioned anywhere publicly."
+    notes_for_user:
+      - "Technically solid, but still assessment-scoped."
+
+  - repo_name: "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    repo_url: "https://github.com/arjoneelghosh/Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    confidence: medium
+    probable_title: "Telangana Agriculture Rainfall Correlation Forecasting"
+    suggested_slug: "telangana-agriculture-rainfall-correlation"
+    probable_category: "machine learning"
+    probable_subcategory: "agriculture forecasting experiment"
+    probable_status: "older variant"
+    include_in_portfolio: false
+    suggested_treatment: merge
+    one_line_summary_guess: "Earlier agriculture forecasting repo centered on Telangana rainfall and pricing correlation."
+    preview_summary_guess: "Older data-heavy variant of the agriculture forecasting line."
+    problem_guess: "Study agricultural price or production forecasting through rainfall correlation."
+    approach_guess:
+      - "Relies heavily on CSV datasets and Python scripts."
+      - "Looks like an earlier or broader forecasting experiment before the Kamareddy repo."
+    outcomes_guess:
+      - "Useful as lineage/support for the stronger agriculture repo."
+    detected_stack:
+      - "Python"
+      - "CSV datasets"
+      - "Forecasting scripts"
+    detected_artifacts:
+      - "multiple cleaned CSVs"
+      - "app_modelno.py"
+      - "cleaning.py"
+      - "district_reduction.py"
+    related_family: "agriculture_forecasting"
+    probable_relationship: variant
+    evidence:
+      - "Repo name and data/script structure overlap strongly with the agriculture forecasting theme."
+      - "No stronger integrated frontend/backend layer is visible."
+    missing_info:
+      - "Precise forecasting method and whether this repo fed directly into the newer Kamareddy repo."
+    notes_for_user:
+      - "Best treated as support/lineage, not a separate project entry."
+
+  - repo_name: "Tredence_Assignment"
+    repo_url: "https://github.com/arjoneelghosh/Tredence_Assignment"
+    confidence: high
+    probable_title: "Tredence Workflow Engine Assignment"
+    suggested_slug: "tredence-workflow-engine-assignment"
+    probable_category: "backend engineering"
+    probable_subcategory: "workflow engine"
+    probable_status: "complete assignment"
+    include_in_portfolio: false
+    suggested_treatment: coursework
+    one_line_summary_guess: "FastAPI workflow/graph execution engine built as an AI engineering assignment."
+    preview_summary_guess: "Technically strong assessment repo, but assignment-scoped."
+    problem_guess: "Build a deterministic graph engine with branching, looping, and execution tracking."
+    approach_guess:
+      - "Implements node/edge workflow execution with state passing."
+      - "Uses FastAPI endpoints and tests for verification."
+    outcomes_guess:
+      - "Good evidence of backend/system design skill in an assignment setting."
+    detected_stack:
+      - "Python"
+      - "FastAPI"
+      - "WebSockets"
+      - "Pytest"
+    detected_artifacts:
+      - "app/"
+      - "tests/"
+      - "README.md"
+      - "Coding Assignment AI Engineering.pdf"
+    related_family: "backend_assignments"
+    probable_relationship: support
+    evidence:
+      - "README explicitly frames the repo as an assignment."
+      - "Repo contains workflow engine app files and tests."
+    missing_info:
+      - "Whether you want strong assessment repos visible publicly."
+    notes_for_user:
+      - "Could be referenced privately, but not a top public portfolio priority."
+
+  - repo_name: "Disable_Friendly_Flight_Booking"
+    repo_url: "https://github.com/arjoneelghosh/Disable_Friendly_Flight_Booking"
+    confidence: high
+    probable_title: "FlightFinder AI"
+    suggested_slug: "flightfinder-ai"
+    probable_category: "full-stack product"
+    probable_subcategory: "accessible flight booking"
+    probable_status: "substantial prototype"
+    include_in_portfolio: true
+    suggested_treatment: featured
+    one_line_summary_guess: "Accessible flight booking system with adaptive UI, ASL/voice modes, and AI-assisted flight search."
+    preview_summary_guess: "One of the strongest public repos: clear product framing, frontend/backend split, and accessibility-driven differentiation."
+    problem_guess: "Make flight booking more usable across Deaf, Blind, Mute, and standard user flows."
+    approach_guess:
+      - "Uses a Next.js frontend with adaptive role-based UI."
+      - "Uses a FastAPI backend with AI and flight-search integrations."
+      - "Includes ASL/gesture and voice-input documentation and support material."
+    outcomes_guess:
+      - "Strong standalone portfolio candidate if functionality is real and demoable."
+    detected_stack:
+      - "Next.js"
+      - "TypeScript"
+      - "FastAPI"
+      - "OpenRouter"
+      - "Amadeus API"
+      - "SQLite/PostgreSQL"
+    detected_artifacts:
+      - "frontend/"
+      - "backend/"
+      - "docker-compose.yml"
+      - "Gesture-Recognition-master/"
+      - "multiple ASL/voice integration docs"
+    related_family: ""
+    probable_relationship: main
+    evidence:
+      - "README clearly defines product, user roles, and architecture."
+      - "Repo has substantial frontend/backend structure and integration guides."
+    missing_info:
+      - "How complete and stable the integrations are in practice."
+    notes_for_user:
+      - "One of the strongest likely public project candidates on GitHub."
+
+  - repo_name: "surgemedi"
+    repo_url: "https://github.com/arjoneelghosh/surgemedi"
+    confidence: medium
+    probable_title: "SurgeMedi"
+    suggested_slug: "surgemedi"
+    probable_category: "frontend product"
+    probable_subcategory: "medical equipment tracker/catalog"
+    probable_status: "working frontend"
+    include_in_portfolio: true
+    suggested_treatment: archive
+    one_line_summary_guess: "Branded medical equipment tracking/catalog app built with React and TypeScript."
+    preview_summary_guess: "Likely the branded representative of the medical equipment tracker family."
+    problem_guess: "Provide a usable UI for browsing or managing medical equipment inventory/catalog data."
+    approach_guess:
+      - "Built as a Vite React TypeScript app with motion and routing."
+      - "Appears to have a deployed frontend."
+    outcomes_guess:
+      - "Reasonable archive/supporting candidate if the product story is confirmed."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind"
+      - "Framer Motion"
+    detected_artifacts:
+      - "src/"
+      - "public/"
+      - "package.json"
+    related_family: "medical_equipment_tracker"
+    probable_relationship: main
+    evidence:
+      - "Homepage points to surgemedi.vercel.app."
+      - "Package name and source layout match a coherent frontend app."
+    missing_info:
+      - "Whether there is a backend or richer data layer elsewhere."
+    notes_for_user:
+      - "Good archive/supporting candidate; likely pick this over the descriptive duplicate repo."
+
+  - repo_name: "Medical-Equipment-Tracking"
+    repo_url: "https://github.com/arjoneelghosh/Medical-Equipment-Tracking"
+    confidence: high
+    probable_title: "Medical Equipment Tracking"
+    suggested_slug: "medical-equipment-tracking"
+    probable_category: "frontend product"
+    probable_subcategory: "medical equipment tracker/catalog"
+    probable_status: "variant"
+    include_in_portfolio: false
+    suggested_treatment: merge
+    one_line_summary_guess: "Medical equipment tracking app variant with the same apparent frontend stack and structure as surgemedi."
+    preview_summary_guess: "Descriptive-name duplicate or earlier/later variant of surgemedi."
+    problem_guess: "Track or present medical equipment information through a web interface."
+    approach_guess:
+      - "Uses the same package identity and similar source layout as surgemedi."
+      - "Has its own deployment URL."
+    outcomes_guess:
+      - "Should collapse into a single medical-equipment portfolio story."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind"
+      - "Framer Motion"
+    detected_artifacts:
+      - "src/"
+      - "public/"
+      - "README.md"
+      - "package.json"
+    related_family: "medical_equipment_tracker"
+    probable_relationship: duplicate
+    evidence:
+      - "Same package name `surgmedi-catalog` as surgemedi."
+      - "Same `src` structure pattern surfaced from the API."
+    missing_info:
+      - "Which of the two repos is the final intended representative."
+    notes_for_user:
+      - "Do not create a separate entry from this if surgemedi is retained."
+
+  - repo_name: "Collaborative-Filtering-Recommendation-Engine"
+    repo_url: "https://github.com/arjoneelghosh/Collaborative-Filtering-Recommendation-Engine"
+    confidence: medium
+    probable_title: "Collaborative Filtering Recommendation Engine"
+    suggested_slug: "collaborative-filtering-recommendation-engine"
+    probable_category: "machine learning"
+    probable_subcategory: "recommendation systems"
+    probable_status: "prototype"
+    include_in_portfolio: true
+    suggested_treatment: archive
+    one_line_summary_guess: "Recommendation engine repo combining collaborative filtering with a small frontend wrapper."
+    preview_summary_guess: "Useful supporting ML project, though thinner on documentation than top candidates."
+    problem_guess: "Recommend items using matrix factorization and collaborative filtering techniques."
+    approach_guess:
+      - "Description mentions SVD-based matrix factorization."
+      - "Repo includes a frontend app under project/ and a model artifact/file."
+    outcomes_guess:
+      - "Good breadth project for recommender-systems work."
+    detected_stack:
+      - "Recommendation systems"
+      - "SVD / matrix factorization"
+      - "React"
+      - "Vite"
+    detected_artifacts:
+      - "project/"
+      - "project/package.json"
+      - "cf_model"
+    related_family: ""
+    probable_relationship: main
+    evidence:
+      - "Repo description explicitly mentions SVD-based matrix factorization."
+      - "Root contains a project app directory and model-related artifact."
+    missing_info:
+      - "Whether the training pipeline lives elsewhere in the repo."
+    notes_for_user:
+      - "Reasonable archive/supporting ML entry."
+
+  - repo_name: "R-studio_replica"
+    repo_url: "https://github.com/arjoneelghosh/R-studio_replica"
+    confidence: high
+    probable_title: "RStudio Replica Forecasting App"
+    suggested_slug: "rstudio-replica-forecasting-app"
+    probable_category: "data application"
+    probable_subcategory: "forecasting platform"
+    probable_status: "substantial prototype"
+    include_in_portfolio: true
+    suggested_treatment: archive
+    one_line_summary_guess: "Forecasting application replicating RStudio-style time-series workflows using ARIMA and Prophet."
+    preview_summary_guess: "Substantial forecasting app with mixed frontend/backend stack, but the repo is cluttered enough to keep as archive/supporting."
+    problem_guess: "Provide a web-based interface for practical time-series forecasting workflows."
+    approach_guess:
+      - "Uses Python forecasting libraries including Prophet and pmdarima."
+      - "README describes a React/Vite frontend and Streamlit backend combination."
+    outcomes_guess:
+      - "Strong supporting repo for analytics/forecasting breadth."
+    detected_stack:
+      - "Python"
+      - "Streamlit"
+      - "Prophet"
+      - "pmdarima"
+      - "React"
+      - "Vite"
+    detected_artifacts:
+      - "README.md"
+      - "requirements.txt"
+      - "many forecasting scripts"
+      - "dataset CSVs"
+      - "project/package.json"
+    related_family: ""
+    probable_relationship: main
+    evidence:
+      - "README clearly explains forecasting functionality and dependencies."
+      - "Repo contains many forecasting scripts and data assets."
+    missing_info:
+      - "Whether there is a single clean entry point/demo path in the current repo state."
+    notes_for_user:
+      - "Strong supporting repo; could rise if cleaned and documented better."
+
+  - repo_name: "Face-Detection"
+    repo_url: "https://github.com/arjoneelghosh/Face-Detection"
+    confidence: low
+    probable_title: "Face Detection"
+    suggested_slug: "face-detection"
+    probable_category: "computer vision"
+    probable_subcategory: "frontend experiment"
+    probable_type: project
+    probable_status: "thin prototype"
+    include_in_portfolio: false
+    suggested_treatment: exclude
+    one_line_summary_guess: "Minimal face-detection app experiment."
+    preview_summary_guess: "Too thin on public evidence to justify a portfolio slot."
+    problem_guess: "Experiment with face detection in a browser app."
+    approach_guess:
+      - "Uses a Create React App style frontend."
+    outcomes_guess:
+      - "No meaningful product or technical depth was verifiable from the README."
+    detected_stack:
+      - "JavaScript"
+      - "React"
+      - "react-scripts"
+    detected_artifacts:
+      - "src/App.js"
+      - "package.json"
+      - "README.md"
+    related_family: ""
+    probable_relationship: unclear
+    evidence:
+      - "README only says `Face Detection`."
+      - "Repo structure is minimal CRA-style scaffolding."
+    missing_info:
+      - "Actual detection approach and substantive implementation details."
+    notes_for_user:
+      - "Exclude unless a stronger evolved version exists elsewhere."
+
+  - repo_name: "arjoneel-fullstack-resume"
+    repo_url: "https://github.com/arjoneelghosh/arjoneel-fullstack-resume"
+    confidence: medium
+    probable_title: "Fullstack Resume Site"
+    suggested_slug: "arjoneel-fullstack-resume"
+    probable_category: "portfolio infrastructure"
+    probable_subcategory: "fullstack portfolio variant"
+    probable_status: "variant"
+    include_in_portfolio: false
+    suggested_treatment: merge
+    one_line_summary_guess: "An earlier fullstack portfolio/resume implementation with separate frontend and backend folders."
+    preview_summary_guess: "Part of the portfolio website lineage, not a separate project entry."
+    problem_guess: "Build a fuller portfolio/resume site with frontend and backend pieces."
+    approach_guess:
+      - "Uses a React/Vite frontend and a small Python backend."
+      - "Has a deployment URL for the frontend."
+    outcomes_guess:
+      - "Useful as lineage evidence for the portfolio-site evolution."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Python"
+    detected_artifacts:
+      - "frontend/"
+      - "backend/"
+      - "frontend/package.json"
+    related_family: "portfolio_websites"
+    probable_relationship: variant
+    evidence:
+      - "Repo contains both frontend and backend directories."
+      - "Homepage points to a deployed frontend."
+    missing_info:
+      - "How far this variant progressed before being superseded."
+    notes_for_user:
+      - "Merge into the portfolio-site lineage rather than showing separately."
+
+  - repo_name: "portfolio"
+    repo_url: "https://github.com/arjoneelghosh/portfolio"
+    confidence: medium
+    probable_title: "Static Portfolio Website"
+    suggested_slug: "portfolio-static-site"
+    probable_category: "portfolio infrastructure"
+    probable_subcategory: "legacy static portfolio"
+    probable_status: "legacy"
+    include_in_portfolio: false
+    suggested_treatment: merge
+    one_line_summary_guess: "Older static HTML portfolio site with many images and page files."
+    preview_summary_guess: "Legacy portfolio variant to collapse into the website family."
+    problem_guess: "Create an earlier portfolio/personal website in static HTML/CSS."
+    approach_guess:
+      - "Uses many standalone HTML pages and static images."
+    outcomes_guess:
+      - "Represents the earliest visible public portfolio-site phase."
+    detected_stack:
+      - "HTML"
+      - "CSS"
+      - "Static assets"
+    detected_artifacts:
+      - "many HTML files"
+      - "image assets"
+      - "certificate pages"
+    related_family: "portfolio_websites"
+    probable_relationship: variant
+    evidence:
+      - "Root is dominated by HTML pages and image assets."
+      - "No modern app scaffold or deeper documentation surfaced."
+    missing_info:
+      - "Which parts of the old site were actually intended for public use."
+    notes_for_user:
+      - "Keep only as historical portfolio-site lineage, not a separate entry."
+
+  - repo_name: "spring-petclinic"
+    repo_url: "https://github.com/arjoneelghosh/spring-petclinic"
+    confidence: high
+    probable_title: "Spring Petclinic"
+    suggested_slug: "spring-petclinic"
+    probable_category: "template/fork"
+    probable_subcategory: "sample application"
+    probable_status: "fork"
+    include_in_portfolio: false
+    suggested_treatment: template
+    one_line_summary_guess: "Fork of the Spring Petclinic sample application."
+    preview_summary_guess: "Template/sample repo, not original portfolio work."
+    problem_guess: "Sample Spring application usage/training."
+    approach_guess:
+      - "GitHub marks the repo as a fork."
+    outcomes_guess:
+      - "No separate portfolio value as original work."
+    detected_stack:
+      - "Spring"
+    detected_artifacts:
+      - "forked sample app"
+    related_family: ""
+    probable_relationship: duplicate
+    evidence:
+      - "GitHub metadata marks it as a fork."
+      - "Description says sample application."
+    missing_info: []
+    notes_for_user:
+      - "Exclude from portfolio as original authored work."
+
+  - repo_name: "Website_Mark1_LLM"
+    repo_url: "https://github.com/arjoneelghosh/Website_Mark1_LLM"
+    confidence: medium
+    probable_title: "Website Mark 1 LLM"
+    suggested_slug: "website-mark1-llm"
+    probable_category: "portfolio infrastructure"
+    probable_subcategory: "AI portfolio assistant backend"
+    probable_status: "early variant"
+    include_in_portfolio: false
+    suggested_treatment: merge
+    one_line_summary_guess: "Early portfolio backend exposing an LLM chat endpoint as an AI representative."
+    preview_summary_guess: "Interesting lineage repo, but too small to stand alone."
+    problem_guess: "Add an AI representative/chat endpoint to a portfolio website."
+    approach_guess:
+      - "Uses Flask, CORS, dotenv, and OpenAI ChatCompletion."
+      - "Implements a single `/api/chat` endpoint."
+    outcomes_guess:
+      - "Shows early experimentation with AI-assisted portfolio interactions."
+    detected_stack:
+      - "Python"
+      - "Flask"
+      - "OpenAI API"
+    detected_artifacts:
+      - "app.py"
+      - "requirements.txt"
+      - "README.md"
+    related_family: "portfolio_websites"
+    probable_relationship: support
+    evidence:
+      - "app.py describes Arjoneel Ghosh's AI representative."
+      - "Repo is tiny and backend-focused."
+    missing_info:
+      - "What frontend this was paired with originally."
+    notes_for_user:
+      - "Best kept as a support repo in the portfolio lineage, not a separate entry."
+
+  - repo_name: "VolunTree"
+    repo_url: "https://github.com/arjoneelghosh/VolunTree"
+    confidence: medium
+    probable_title: "VolunTree"
+    suggested_slug: "voluntree"
+    probable_category: "fork/template"
+    probable_subcategory: "online volunteering portal"
+    probable_status: "fork"
+    include_in_portfolio: false
+    suggested_treatment: template
+    one_line_summary_guess: "Forked volunteering portal repo that may still reflect meaningful work, but not enough GitHub-first evidence of original ownership."
+    preview_summary_guess: "Interesting project concept, but GitHub marks this repo as a fork."
+    problem_guess: "Build an online volunteering portal."
+    approach_guess:
+      - "GitHub metadata marks the repo as a fork."
+    outcomes_guess:
+      - "Needs confirmation before public portfolio use."
+    detected_stack: []
+    detected_artifacts:
+      - "forked repo metadata"
+    related_family: ""
+    probable_relationship: unclear
+    evidence:
+      - "GitHub metadata marks the repo as a fork."
+      - "Description says An Online Volunteering Portal."
+    missing_info:
+      - "Whether your original authored source or major modifications live elsewhere."
+    notes_for_user:
+      - "Do not rely on this GitHub repo alone as portfolio proof of ownership."
+
+  - repo_name: "arjoneel-portfolio"
+    repo_url: "https://github.com/arjoneelghosh/arjoneel-portfolio"
+    confidence: low
+    probable_title: "Arjoneel Portfolio"
+    suggested_slug: "arjoneel-portfolio"
+    probable_category: "portfolio infrastructure"
+    probable_subcategory: "incomplete portfolio variant"
+    probable_status: "incomplete"
+    include_in_portfolio: false
+    suggested_treatment: exclude
+    one_line_summary_guess: "Small incomplete portfolio app variant."
+    preview_summary_guess: "Too minimal and redundant to keep as a separate portfolio repo."
+    problem_guess: "Start another portfolio website iteration."
+    approach_guess:
+      - "Contains React-style app files but no surfaced README or manifest in the public fetch."
+    outcomes_guess:
+      - "No clear standalone value."
+    detected_stack:
+      - "TypeScript"
+      - "React"
+    detected_artifacts:
+      - "App.tsx"
+      - "components/"
+      - "pages/"
+      - "index.css"
+    related_family: "portfolio_websites"
+    probable_relationship: duplicate
+    evidence:
+      - "Very small repo size and minimal visible structure."
+      - "No surfaced README or package manifest in the fetch."
+    missing_info:
+      - "Whether there is any hidden or missing history that makes this meaningful."
+    notes_for_user:
+      - "Safe to exclude as a duplicate/incomplete portfolio variant."
+
+  - repo_name: "devtraining-needit-utah"
+    repo_url: "https://github.com/arjoneelghosh/devtraining-needit-utah"
+    confidence: high
+    probable_title: "devtraining-needit-utah"
+    suggested_slug: "devtraining-needit-utah"
+    probable_category: "template/fork"
+    probable_subcategory: "training repo"
+    probable_status: "fork"
+    include_in_portfolio: false
+    suggested_treatment: template
+    one_line_summary_guess: "Training or demo repository marked as a fork."
+    preview_summary_guess: "Exclude as non-original training/fork material."
+    problem_guess: "Training exercise."
+    approach_guess:
+      - "GitHub marks the repo as a fork."
+    outcomes_guess:
+      - "No separate portfolio value as authored work."
+    detected_stack: []
+    detected_artifacts:
+      - "forked repo metadata"
+    related_family: ""
+    probable_relationship: duplicate
+    evidence:
+      - "GitHub metadata marks it as a fork."
+      - "Repo name strongly suggests training material."
+    missing_info: []
+    notes_for_user:
+      - "Exclude from portfolio."
+
+excluded_repos:
+  - name: "spring-petclinic"
+    reason: "Forked sample application, not original portfolio work."
+  - name: "devtraining-needit-utah"
+    reason: "Forked training repo."
+  - name: "PotpieAI_Context_Project"
+    reason: "No visible public code or documentation surfaced."
+  - name: "Face-Detection"
+    reason: "Too thin on public evidence to justify a portfolio slot."
+  - name: "arjoneel-portfolio"
+    reason: "Small incomplete portfolio duplicate."

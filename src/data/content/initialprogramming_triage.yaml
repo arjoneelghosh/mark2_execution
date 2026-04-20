@@ -1,0 +1,76 @@
+﻿items:
+  - folder: "DBMS"
+    confidence: high
+    probable_title: "ClinicDBMS / DBMS SQL exercises"
+    probable_type: "coursework"
+    include_in_portfolio: false
+    suggested_treatment: "exclude"
+    evidence:
+      - "Top-level folder is dominated by loose SQL practice files and SSMS solution files."
+      - "ClinicDBMS contains SQL schema, joins, stored procedures, triggers, and backup statements only."
+      - "No README, app layer, package manifest, or cohesive standalone deliverable was found."
+    missing_info:
+      - "Whether this was ever paired with a frontend or report outside this root."
+    notes_for_user:
+      - "Treat as coursework unless there is a stronger companion repo elsewhere."
+
+  - folder: "DIP AI"
+    confidence: medium
+    probable_title: "Hand Gesture Recognition Training Prototype"
+    probable_type: "coursework"
+    include_in_portfolio: false
+    suggested_treatment: "merge"
+    evidence:
+      - "Contains duplicated 'hackathon hand gesture' structures with Data and Model folders."
+      - "datacollection.py captures webcam hand images into labeled folders."
+      - "test.py loads keras_model.h5 and labels.txt via cvzone for gesture classification."
+      - "One variant targets A-Z while another narrower variant targets only A/L/O/V/Y."
+    missing_info:
+      - "No README or product framing explaining scope, outcomes, or intended user experience."
+      - "Unclear whether there is a more complete wrapper app in another repo."
+    notes_for_user:
+      - "Looks more like ML/CV learning work than a finished standalone project."
+      - "Could be referenced later as supporting experimentation if useful."
+
+  - folder: "Project file"
+    confidence: high
+    probable_title: "Human Resource Management System"
+    probable_type: "project"
+    include_in_portfolio: true
+    suggested_treatment: "archive"
+    evidence:
+      - "hrm/index.php brands the app as Human Resource Management System."
+      - "controller/login.php implements admin and employee login flows and session handling."
+      - "db/hrm_db.sql includes a full MySQL schema with employee, role, city, and workload tables."
+      - "Separate user-facing pages exist for profile, leave application, leave status, and contact."
+    missing_info:
+      - "Whether this was original work end-to-end or adapted from a template/tutorial."
+      - "Whether the project was deployed or used beyond coursework/demo purposes."
+    notes_for_user:
+      - "This is the only clearly standalone project in this root."
+      - "It is better suited for archive/supporting treatment than featured treatment."
+
+  - folder: "Web Dev"
+    confidence: high
+    probable_title: "Web Development Practice Collection"
+    probable_type: "coursework"
+    include_in_portfolio: false
+    suggested_treatment: "exclude"
+    evidence:
+      - "Contains multiple small exercise folders such as CSS, Forms, Inline Block ID and Classes, and 2nd part."
+      - "DAA portfolio/index.html explicitly presents coursework proof and demo screenshots."
+      - "First website is an early practice HTML/CSS page with local media and loose text files."
+    missing_info:
+      - "Whether any subfolder was later evolved into a more complete standalone project elsewhere."
+    notes_for_user:
+      - "Useful only as evidence of early learning progression, not as direct portfolio content."
+
+excluded_items:
+  - name: "Project file PPT"
+    reason: "Explicitly excluded by request and likely presentation material rather than a standalone project."
+  - name: "Untitled-1.c"
+    reason: "Explicitly excluded by request; loose source file, not a project."
+  - name: "Untitled-1.exe"
+    reason: "Explicitly excluded by request; compiled binary, not a reviewable project."
+  - name: "VSCodeUserSetup-x64-1.82.3.exe"
+    reason: "Explicitly excluded by request; installer noise."

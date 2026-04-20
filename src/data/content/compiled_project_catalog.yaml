@@ -1,0 +1,431 @@
+projects:
+  - canonical_title: "AgriFore"
+    canonical_slug: "agrifore"
+    treatment: featured
+    source_of_truth: merged
+    confidence: high
+    category: "ML / Data"
+    subcategory: "Agricultural Forecasting Platform"
+    status: "Research Prototype / Full-Stack System"
+    one_line_summary_guess: "Agricultural forecasting platform combining ETL, model artifacts, backend APIs, and a dashboard."
+    preview_summary_guess: "Most complete agriculture project across local and GitHub sources, with figures, reports, API/backend, and frontend evidence."
+    local_sources:
+      - "C:/Users/footb/Desktop/AgriFore"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    github_sources:
+      - "Kamareddy_Telangana_Production_Weather_Market_"
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    hosted_links:
+      - "https://kamareddyprojectionfrontend.vercel.app"
+    supporting_evidence:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+    media_candidates:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/architecture_aligned_fresh.png"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/arrivals_vs_price_fresh.png"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/feature_importance_fresh.png"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/architecture.png"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/arrival_price.png"
+    missing_info:
+      - "Exact ownership across ETL, modeling, backend, frontend, and paper work."
+      - "Best public demo or stable deployment proof."
+    notes_for_user:
+      - "Keep only one agriculture forecasting entry."
+
+  - canonical_title: "FlightFinder AI"
+    canonical_slug: "flightfinder-ai"
+    treatment: featured
+    source_of_truth: merged
+    confidence: high
+    category: "Full Stack"
+    subcategory: "Accessible Travel Assistant"
+    status: "Substantial Prototype"
+    one_line_summary_guess: "Accessible AI-assisted flight booking system with adaptive UI for different communication needs."
+    preview_summary_guess: "Strong full-stack accessibility product supported by both local and public GitHub evidence."
+    local_sources:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking"
+    github_sources:
+      - "Disable_Friendly_Flight_Booking"
+    hosted_links: []
+    supporting_evidence:
+      - "local project summary docs"
+      - "gesture-recognition support inside the project if it was part of the real demo"
+    media_candidates: []
+    missing_info:
+      - "Whether flight APIs, AI chat, ASL, and voice flows were fully working."
+      - "Best screenshots or demo proof."
+    notes_for_user:
+      - "GitHub repo is the best public proof; local folder likely has better implementation context."
+
+  - canonical_title: "SignChat"
+    canonical_slug: "signchat"
+    treatment: featured
+    source_of_truth: local
+    confidence: high
+    category: "ML / Computer Vision"
+    subcategory: "Assistive Tech"
+    status: "Prototype / Research Build"
+    one_line_summary_guess: "Live sign-language transcription app using webcam landmarks and per-language models."
+    preview_summary_guess: "Strong assistive ML project, with precursor gesture-recognition experiments retained only as lineage."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    media_candidates: []
+    missing_info:
+      - "Dataset/training story."
+      - "Which language models actually worked."
+      - "Best screenshots or demo proof."
+    notes_for_user:
+      - "Keep precursor gesture folders out of the final project list."
+
+  - canonical_title: "CropIQ"
+    canonical_slug: "cropiq"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "AI / Full Stack"
+    subcategory: "Agriculture Assistant"
+    status: "Prototype"
+    one_line_summary_guess: "Agriculture advisory chat app with crop, market, and weather context."
+    preview_summary_guess: "Agriculture assistant product that should remain distinct from the main forecasting platform unless later evidence shows otherwise."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "AgricultureForecasting chatbot traces if confirmed related"
+    media_candidates: []
+    missing_info:
+      - "Event context and exact ownership."
+      - "What AI/orchestration logic was actually used."
+      - "Best screenshots or demo proof."
+    notes_for_user:
+      - "Keep separate from AgriFore for now."
+
+  - canonical_title: "LoanONE AI"
+    canonical_slug: "loanone-ai"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "Full Stack"
+    subcategory: "Fintech / AI Product Prototype"
+    status: "Hackathon Prototype"
+    one_line_summary_guess: "AI-assisted loan approval workflow prototype with onboarding, document upload, and status tracking."
+    preview_summary_guess: "One canonical loan-family project compiled from overlapping local hackathon variants."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    media_candidates: []
+    missing_info:
+      - "Which branch was the final presented version."
+      - "Whether face/voice/AI parts actually worked."
+      - "Best screenshots or demo proof."
+    notes_for_user:
+      - "Do not split the loan variants into separate entries."
+
+  - canonical_title: "AQI Forecasting"
+    canonical_slug: "aqi-forecasting"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "ML / Data"
+    subcategory: "Time-Series Forecasting App"
+    status: "Prototype"
+    one_line_summary_guess: "Forecasting application using ARIMA and Prophet with a Streamlit-driven workflow."
+    preview_summary_guess: "Main AQI forecasting workspace, with side folders treated as support-only."
+    local_sources:
+      - "C:/Users/footb/Desktop/Project AQI"
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "selected UI pieces from C:/Users/footb/Desktop/Project AQI/sales_frontend"
+    media_candidates: []
+    missing_info:
+      - "Whether the domain stayed AQI-specific throughout."
+      - "Which UI branch should represent it."
+    notes_for_user:
+      - "Keep separate from RStudio Replica."
+
+  - canonical_title: "RStudio Replica Forecasting App"
+    canonical_slug: "rstudio-replica-forecasting-app"
+    treatment: archive
+    source_of_truth: github
+    confidence: high
+    category: "Data Application"
+    subcategory: "Forecasting Platform"
+    status: "Substantial Prototype"
+    one_line_summary_guess: "Forecasting application replicating RStudio-style time-series workflows using ARIMA and Prophet."
+    preview_summary_guess: "Separate forecasting tool line from AQI Forecasting, strong enough to keep as supporting work."
+    local_sources: []
+    github_sources:
+      - "R-studio_replica"
+    hosted_links: []
+    supporting_evidence: []
+    media_candidates: []
+    missing_info:
+      - "Best runnable path."
+      - "Whether a clean demo or screenshots exist."
+    notes_for_user:
+      - "Good archive/supporting project if you want a second forecasting item."
+
+  - canonical_title: "Collaborative Filtering Recommendation Engine"
+    canonical_slug: "collaborative-filtering-recommendation-engine"
+    treatment: archive
+    source_of_truth: merged
+    confidence: medium
+    category: "ML / Data"
+    subcategory: "Recommender Systems"
+    status: "Prototype"
+    one_line_summary_guess: "Recommendation demo combining a frontend recommendation UX with collaborative-filtering model experiments."
+    preview_summary_guess: "One recommendation-system project compiled from local and GitHub evidence."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project"
+    github_sources:
+      - "Collaborative-Filtering-Recommendation-Engine"
+    hosted_links: []
+    supporting_evidence:
+      - "local cf_model scripts and interaction data"
+    media_candidates: []
+    missing_info:
+      - "Whether the showcased recommendations were heuristic, collaborative filtering, or both."
+      - "Best screenshots or demo."
+    notes_for_user:
+      - "Nested duplicate workspaces should stay out of the live schema."
+
+  - canonical_title: "SurgeMedi"
+    canonical_slug: "surgemedi"
+    treatment: archive
+    source_of_truth: merged
+    confidence: medium
+    category: "Frontend Product"
+    subcategory: "Medical Equipment Tracker / Catalog"
+    status: "Working Frontend"
+    one_line_summary_guess: "Branded medical equipment tracking and catalog interface built with React and TypeScript."
+    preview_summary_guess: "Best canonical representative of the medical-equipment tracker family."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi"
+    github_sources:
+      - "surgemedi"
+      - "Medical-Equipment-Tracking"
+    hosted_links:
+      - "https://surgemedi.vercel.app"
+      - "https://medical-equipment-tracking.vercel.app"
+    supporting_evidence:
+      - "local frontend screenshots"
+    media_candidates:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/2.png"
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi/public/original.jpg"
+    missing_info:
+      - "Whether there was a backend or real client context."
+    notes_for_user:
+      - "Do not create a separate entry for Medical-Equipment-Tracking."
+
+  - canonical_title: "Priority-Based CSV Sampler"
+    canonical_slug: "priority-based-csv-sampler"
+    treatment: archive
+    source_of_truth: local
+    confidence: high
+    category: "Data Tooling"
+    subcategory: "CSV Workflow Utility"
+    status: "Utility"
+    one_line_summary_guess: "Streamlit utility for sampling CSV rows using configurable priority rules."
+    preview_summary_guess: "Practical internal-tool style project, with related SopraSteria filtering work kept as support."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/File_filter"
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    media_candidates: []
+    missing_info:
+      - "Whether this supported a real internship or workplace workflow."
+      - "Best screenshots if available."
+    notes_for_user:
+      - "Use File_filter as canonical."
+
+  - canonical_title: "GitHub Contribution Scheduler"
+    canonical_slug: "github-contribution-scheduler"
+    treatment: archive
+    source_of_truth: local
+    confidence: medium
+    category: "Developer Tooling"
+    subcategory: "Desktop Utility"
+    status: "Prototype / Utility"
+    one_line_summary_guess: "Desktop utility for planning and scheduling GitHub contribution activity."
+    preview_summary_guess: "Niche developer tool with a Python desktop app as canonical and a React design prototype as support."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler"
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    media_candidates: []
+    missing_info:
+      - "How complete the scheduling flow was in practice."
+      - "Screenshots of the desktop UI."
+    notes_for_user:
+      - "Do not treat the React design folder as a separate project."
+
+  - canonical_title: "Agriculture Forecasting Precursors"
+    canonical_slug: "agriculture-forecasting-precursors"
+    treatment: early
+    source_of_truth: merged
+    confidence: medium
+    category: "ML / Data"
+    subcategory: "Lineage / Support"
+    status: "Precursor / Mixed Workspace"
+    one_line_summary_guess: "Earlier agriculture forecasting and district-specific branches that feed into AgriFore."
+    preview_summary_guess: "Lineage-only support material for the final AgriFore case study."
+    local_sources:
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+    github_sources:
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    hosted_links: []
+    supporting_evidence:
+      - "absorbed under AgriFore"
+    media_candidates:
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/feature_importance.png"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/simulation.png"
+    missing_info:
+      - "Whether any lineage needs explicit mention in final case-study copy."
+    notes_for_user:
+      - "Do not populate as a standalone project."
+
+  - canonical_title: "Gesture Recognition Precursors"
+    canonical_slug: "gesture-recognition-precursors"
+    treatment: early
+    source_of_truth: local
+    confidence: medium
+    category: "ML / Computer Vision"
+    subcategory: "Lineage / Support"
+    status: "Experimental"
+    one_line_summary_guess: "Earlier hand-gesture and sign-recognition experiments that led into SignChat."
+    preview_summary_guess: "Lineage-only material for the SignChat story."
+    local_sources:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "absorbed under SignChat"
+    media_candidates: []
+    missing_info:
+      - "Whether you want the precursor lineage visible publicly."
+    notes_for_user:
+      - "Keep out of the live project catalog."
+
+  - canonical_title: "Loan Hackathon Variants"
+    canonical_slug: "loan-hackathon-variants"
+    treatment: early
+    source_of_truth: local
+    confidence: medium
+    category: "Full Stack"
+    subcategory: "Lineage / Support"
+    status: "Variant"
+    one_line_summary_guess: "Desktop loan-flow and face-ID branches that support the main LoanONE AI story."
+    preview_summary_guess: "Lineage-only support for the final loan-family project entry."
+    local_sources:
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "absorbed under LoanONE AI"
+    media_candidates: []
+    missing_info:
+      - "Which branch was the strongest demo version."
+    notes_for_user:
+      - "Keep one canonical loan entry only."
+
+  - canonical_title: "AQI Side Workspaces"
+    canonical_slug: "aqi-side-workspaces"
+    treatment: early
+    source_of_truth: local
+    confidence: medium
+    category: "ML / Data"
+    subcategory: "Lineage / Support"
+    status: "Duplicate Workspace"
+    one_line_summary_guess: "Side workspaces and stubs associated with AQI Forecasting."
+    preview_summary_guess: "Support-only local branches for the main AQI Forecasting project."
+    local_sources:
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    github_sources: []
+    hosted_links: []
+    supporting_evidence:
+      - "absorbed under AQI Forecasting"
+    media_candidates: []
+    missing_info:
+      - "Whether sales_frontend contains materially better UI assets."
+    notes_for_user:
+      - "Do not populate separately."
+
+  - canonical_title: "Portfolio Website Lineage"
+    canonical_slug: "portfolio-website-lineage"
+    treatment: early
+    source_of_truth: github
+    confidence: high
+    category: "Portfolio Infrastructure"
+    subcategory: "Lineage / Support"
+    status: "Legacy / Current Variants"
+    one_line_summary_guess: "Portfolio-site iterations and assistant experiments that should not become project cards."
+    preview_summary_guess: "Useful only as site lineage, not as portfolio population content."
+    local_sources: []
+    github_sources:
+      - "mark2"
+      - "arjoneel-fullstack-resume"
+      - "Website_Mark1_LLM"
+      - "portfolio"
+    hosted_links:
+      - "https://frontend-arjoneel-fullstack-resume.vercel.app"
+    supporting_evidence:
+      - "current portfolio repo"
+    media_candidates: []
+    missing_info: []
+    notes_for_user:
+      - "This is not for live project cards."
+
+  - canonical_title: "VolunTree"
+    canonical_slug: "voluntree"
+    treatment: exclude
+    source_of_truth: unresolved
+    confidence: low
+    category: "Full Stack"
+    subcategory: "Community / Volunteer Platform"
+    status: "Unresolved"
+    one_line_summary_guess: "Volunteer platform with substantial local evidence but unresolved authorship confidence."
+    preview_summary_guess: "Hold out of live schema until provenance is stronger."
+    local_sources:
+      - "C:/onedrive_localdata/Programming/VolunTree/code"
+    github_sources:
+      - "VolunTree"
+    hosted_links: []
+    supporting_evidence:
+      - "local full-stack folder structure"
+    media_candidates: []
+    missing_info:
+      - "Original authored repo or proof of substantial independent modifications."
+    notes_for_user:
+      - "Do not move into src/data until provenance is resolved."

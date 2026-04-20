@@ -1,0 +1,21 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="40" fill="#08101B"/>
+  <rect x="48" y="48" width="1104" height="664" rx="34" fill="#0C1726" stroke="#203349"/>
+  <rect x="102" y="100" width="998" height="120" rx="24" fill="#101D31"/>
+  <rect x="102" y="260" width="410" height="384" rx="24" fill="#0F1A2B" stroke="#25374F"/>
+  <rect x="550" y="260" width="550" height="176" rx="24" fill="#0F1A2B" stroke="#25374F"/>
+  <rect x="550" y="468" width="550" height="176" rx="24" fill="#0F1A2B" stroke="#25374F"/>
+  <circle cx="307" cy="451" r="116" fill="url(#ring)" fill-opacity="0.6"/>
+  <circle cx="307" cy="451" r="74" stroke="#7DD3FC" stroke-width="6"/>
+  <circle cx="307" cy="451" r="28" fill="#67E8F9"/>
+  <path d="M624 340H1032" stroke="#2B425D" stroke-width="16" stroke-linecap="round"/>
+  <path d="M624 370H950" stroke="#21354A" stroke-width="16" stroke-linecap="round"/>
+  <path d="M624 548H996" stroke="#2B425D" stroke-width="16" stroke-linecap="round"/>
+  <path d="M624 578H913" stroke="#21354A" stroke-width="16" stroke-linecap="round"/>
+  <defs>
+    <radialGradient id="ring" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(307 451) rotate(90) scale(116)">
+      <stop stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#67E8F9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

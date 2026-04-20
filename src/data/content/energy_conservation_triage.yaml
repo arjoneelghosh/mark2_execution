@@ -1,0 +1,58 @@
+﻿items:
+  - folder: "C:\\Users\\footb\\Downloads\\energy_conservation_mini"
+    confidence: medium
+    probable_title: "Sustainable Smart Home Control"
+    probable_category: "frontend / research presentation"
+    probable_subcategory: "static concept site for energy-harvesting smart-home project"
+    probable_type: research_site
+    include_in_portfolio: true
+    suggested_treatment: merge
+    probable_status: "coherent concept site / mini project"
+    one_line_summary_guess: "A multi-page static site presenting a battery-less piezoelectric smart-home switch concept with interactive diagrams and research-oriented storytelling."
+    problem_guess: "Explain and present a sustainable smart-home control concept built around piezoelectric energy harvesting in a polished, interactive web format."
+    approach_guess:
+      - "Built an 8-page static HTML site with a shared visual system and bottom navigation."
+      - "Implemented custom CSS for glassmorphism styling, gradients, layout, and motion."
+      - "Used vanilla JavaScript for page progress, accordions, flip cards, hover tooltips, and particle-style effects."
+      - "Added static hosting configuration for Vercel, Netlify, and GitHub Pages."
+    technical_depth_assessment: medium
+    detected_stack:
+      - "HTML"
+      - "CSS"
+      - "Vanilla JavaScript"
+      - "SVG diagrams"
+      - "GitHub Pages / Netlify / Vercel static hosting config"
+    detected_artifacts:
+      - "README.md"
+      - "HOSTING.md"
+      - "introduction.html"
+      - "motivation.html"
+      - "literature-review.html"
+      - "problem-statement.html"
+      - "plan-of-action.html"
+      - "energy-harvesting.html"
+      - "team.html"
+      - "references.html"
+      - "css/main.css"
+      - "js/main.js"
+      - "vercel.json"
+      - "netlify.toml"
+      - ".github/workflows/deploy.yml"
+    originality_assessment: "Likely user-authored or at least user-assembled at the frontend/site level, but the project narrative contains placeholder/team-fiction signals that reduce confidence in treating the underlying subject as a real shipped project."
+    evidence:
+      - "Git history shows an initial commit by Arjoneel Ghosh."
+      - "The repo has substantial custom CSS and JS rather than a single static template page."
+      - "The site includes multiple connected pages, deployment config, and interactive components."
+      - "team.html uses non-user names and placeholder university-style email addresses."
+      - "README and HOSTING.md contain polished generic marketing/deployment language."
+    missing_info:
+      - "Whether the underlying energy-harvesting system was actually built elsewhere."
+      - "Whether the named team members were real collaborators or placeholder content."
+      - "Whether the copy/design was heavily AI-generated."
+    notes_for_user:
+      - "Best treated as a mini concept/research site, not as proof of a full hardware/software product."
+      - "If you have real implementation artifacts elsewhere, that could raise this from merge-level to archive-worthy supporting work."
+
+excluded_items:
+  - name: "package-lock.json"
+    reason: "Tiny lockfile with no meaningful dependency information for triage."

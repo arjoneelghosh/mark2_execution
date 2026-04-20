@@ -1,0 +1,171 @@
+sources:
+  - project_slug: "agrifore"
+    local_folders:
+      - "C:/Users/footb/Desktop/AgriFore"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    github_repos:
+      - "Kamareddy_Telangana_Production_Weather_Market_"
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    hosted_urls:
+      - "https://kamareddyprojectionfrontend.vercel.app"
+    evidence_paths:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+
+  - project_slug: "flightfinder-ai"
+    local_folders:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking"
+    github_repos:
+      - "Disable_Friendly_Flight_Booking"
+    hosted_urls: []
+    evidence_paths:
+      - "local project summary docs"
+
+  - project_slug: "signchat"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+
+  - project_slug: "cropiq"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "AgricultureForecasting chatbot traces if confirmed related"
+
+  - project_slug: "loanone-ai"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+
+  - project_slug: "aqi-forecasting"
+    local_folders:
+      - "C:/Users/footb/Desktop/Project AQI"
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "selected pieces from C:/Users/footb/Desktop/Project AQI/sales_frontend"
+
+  - project_slug: "rstudio-replica-forecasting-app"
+    local_folders: []
+    github_repos:
+      - "R-studio_replica"
+    hosted_urls: []
+    evidence_paths: []
+
+  - project_slug: "collaborative-filtering-recommendation-engine"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project"
+    github_repos:
+      - "Collaborative-Filtering-Recommendation-Engine"
+    hosted_urls: []
+    evidence_paths:
+      - "local cf_model scripts and interaction data"
+
+  - project_slug: "surgemedi"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi"
+    github_repos:
+      - "surgemedi"
+      - "Medical-Equipment-Tracking"
+    hosted_urls:
+      - "https://surgemedi.vercel.app"
+      - "https://medical-equipment-tracking.vercel.app"
+    evidence_paths:
+      - "local screenshots under the public folder"
+
+  - project_slug: "priority-based-csv-sampler"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/File_filter"
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+
+  - project_slug: "github-contribution-scheduler"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler"
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+
+  - project_slug: "agriculture-forecasting-precursors"
+    local_folders:
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+    github_repos:
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    hosted_urls: []
+    evidence_paths:
+      - "absorbed under AgriFore"
+
+  - project_slug: "gesture-recognition-precursors"
+    local_folders:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "absorbed under SignChat"
+
+  - project_slug: "loan-hackathon-variants"
+    local_folders:
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "absorbed under LoanONE AI"
+
+  - project_slug: "aqi-side-workspaces"
+    local_folders:
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    github_repos: []
+    hosted_urls: []
+    evidence_paths:
+      - "absorbed under AQI Forecasting"
+
+  - project_slug: "portfolio-website-lineage"
+    local_folders: []
+    github_repos:
+      - "mark2"
+      - "arjoneel-fullstack-resume"
+      - "Website_Mark1_LLM"
+      - "portfolio"
+    hosted_urls:
+      - "https://frontend-arjoneel-fullstack-resume.vercel.app"
+    evidence_paths:
+      - "current portfolio repo"
+
+  - project_slug: "voluntree"
+    local_folders:
+      - "C:/onedrive_localdata/Programming/VolunTree/code"
+    github_repos:
+      - "VolunTree"
+    hosted_urls: []
+    evidence_paths:
+      - "local full-stack folder structure"

@@ -1,0 +1,23 @@
+evidence_items:
+  - folder: "C:/Users/footb/Desktop/InternshipCertificates"
+    probable_type: "certificate"
+    likely_related_project_or_experience: "Internships / Experience section"
+    useful_for_portfolio: true
+    notes:
+      - "Contains KPMG.pdf and SopraSteria.pdf."
+      - "Best used for experience verification, not project population."
+
+  - folder: "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+    probable_type: "report"
+    likely_related_project_or_experience: "AgriFore"
+    useful_for_portfolio: true
+    notes:
+      - "Contains generated charts and architecture visuals that could support a later case study."
+
+  - folder: "C:/Users/footb/Desktop/KamareddyAgriFore"
+    probable_type: "screenshot"
+    likely_related_project_or_experience: "AgriFore / Kamareddy variant"
+    useful_for_portfolio: true
+    notes:
+      - "Contains figure PNGs and figure-generation audit notes."
+      - "Better as supporting evidence than as a separate portfolio project."

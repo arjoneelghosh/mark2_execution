@@ -1,0 +1,278 @@
+projects:
+  - canonical_title: "AgriFore"
+    canonical_slug: "agrifore"
+    family: "agriculture"
+    local_sources:
+      - "C:/Users/footb/Desktop/AgriFore"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    github_sources:
+      - "Kamareddy_Telangana_Production_Weather_Market_"
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    source_of_truth: merged
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: featured
+    supporting_evidence:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    excluded_variants:
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    rationale:
+      - "Local evidence is richer for artifacts, figures, and family lineage."
+      - "GitHub provides cleaner public proof for the integrated representative repo."
+      - "The family should resolve to one agriculture forecasting entry."
+    missing_info:
+      - "Exact ownership across ETL, modeling, backend, frontend, and paper work."
+
+  - canonical_title: "LoanONE AI"
+    canonical_slug: "loanone-ai"
+    family: "loan_hackathon"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    github_sources: []
+    source_of_truth: local
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    excluded_variants:
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    rationale:
+      - "The local evidence is stronger than GitHub because no confirmed public repo was found."
+      - "The Desktop variants overlap too heavily to justify separate entries."
+      - "One combined loan-family story is cleaner than multiple sibling cards."
+    missing_info:
+      - "Which branch was the final presented version."
+      - "What AI or verification features were fully working."
+
+  - canonical_title: "FlightFinder AI"
+    canonical_slug: "flightfinder-ai"
+    family: "accessible_flight_booking"
+    local_sources:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking"
+    github_sources:
+      - "Disable_Friendly_Flight_Booking"
+    source_of_truth: merged
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: featured
+    supporting_evidence:
+      - "local project summary and architecture docs"
+      - "gesture-recognition support inside the local project if it was part of the real demo"
+    excluded_variants: []
+    rationale:
+      - "GitHub gives the best public project proof."
+      - "Local evidence looks at least as rich and likely contains stronger supporting documents."
+      - "Both sources clearly describe the same accessibility-focused product."
+    missing_info:
+      - "How complete and stable the external integrations were."
+
+  - canonical_title: "SignChat"
+    canonical_slug: "signchat"
+    family: "sign_language_lineage"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    github_sources: []
+    source_of_truth: local
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: featured
+    supporting_evidence:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    excluded_variants:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    rationale:
+      - "The strongest evidence is local and coherent."
+      - "The other gesture folders read as precursors rather than separate projects."
+      - "No clearer public GitHub representative was found."
+    missing_info:
+      - "Dataset and training details you want to claim publicly."
+
+  - canonical_title: "CropIQ"
+    canonical_slug: "cropiq"
+    family: "agriculture_assistant"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    github_sources: []
+    source_of_truth: local
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "AgricultureForecasting chatbot traces if they belong to the same product line"
+    excluded_variants:
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+    rationale:
+      - "The local app identity is clear enough to keep as a separate supporting project."
+      - "It overlaps thematically with AgriFore but not enough to force a merge."
+      - "The evidence is weaker than the main agriculture forecasting project."
+    missing_info:
+      - "Event context and exact ownership."
+
+  - canonical_title: "AQI Forecasting"
+    canonical_slug: "aqi-forecasting"
+    family: "aqi_forecasting"
+    local_sources:
+      - "C:/Users/footb/Desktop/Project AQI"
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    github_sources: []
+    source_of_truth: local
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "selected UI or assets from sales_frontend if materially better than the main workspace"
+    excluded_variants:
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    rationale:
+      - "The top-level local workspace is the clearest AQI representative."
+      - "The sibling folders do not justify separate entries."
+      - "Related forecasting work on GitHub does not show a direct one-to-one match."
+    missing_info:
+      - "Whether the domain remained AQI-specific throughout."
+
+  - canonical_title: "RStudio Replica Forecasting App"
+    canonical_slug: "rstudio-replica-forecasting-app"
+    family: "forecasting_tools"
+    local_sources: []
+    github_sources:
+      - "R-studio_replica"
+    source_of_truth: github
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence: []
+    excluded_variants: []
+    rationale:
+      - "This appears to be a separate forecasting project line from AQI Forecasting."
+      - "The GitHub repo is substantial enough to stand alone as supporting work."
+    missing_info:
+      - "Current runnable path and demo quality."
+
+  - canonical_title: "Collaborative Filtering Recommendation Engine"
+    canonical_slug: "collaborative-filtering-recommendation-engine"
+    family: "recommendation_systems"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project"
+    github_sources:
+      - "Collaborative-Filtering-Recommendation-Engine"
+    source_of_truth: merged
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "local cf_model scripts and sample interaction data"
+    excluded_variants:
+      - "nested duplicate workspaces inside the local repo tree"
+    rationale:
+      - "GitHub provides public proof while local files provide easier structure inspection."
+      - "The evidence consistently points to one recommendation-engine project."
+    missing_info:
+      - "Which recommendation path was actually demonstrated."
+
+  - canonical_title: "SurgeMedi"
+    canonical_slug: "surgemedi"
+    family: "medical_equipment_tracker"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi"
+    github_sources:
+      - "surgemedi"
+      - "Medical-Equipment-Tracking"
+    source_of_truth: merged
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "local screenshots under the public folder"
+    excluded_variants:
+      - "Medical-Equipment-Tracking"
+    rationale:
+      - "The branded surgemedi version is the cleanest canonical identity."
+      - "The descriptive-name GitHub repo looks like a duplicate or earlier/later variant."
+    missing_info:
+      - "Whether a backend or real client context exists."
+
+  - canonical_title: "Priority-Based CSV Sampler"
+    canonical_slug: "priority-based-csv-sampler"
+    family: "data_utilities"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/File_filter"
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    github_sources: []
+    source_of_truth: local
+    confidence: high
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    excluded_variants:
+      - "C:/onedrive_localdata/Programming/SopraSteria/priority_filter"
+    rationale:
+      - "File_filter is the cleaner canonical utility."
+      - "SopraSteria/Filtering is related support evidence, not a separate stronger project."
+    missing_info:
+      - "Whether this was used in a real internship workflow."
+
+  - canonical_title: "GitHub Contribution Scheduler"
+    canonical_slug: "github-contribution-scheduler"
+    family: "developer_tooling"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler"
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    github_sources: []
+    source_of_truth: local
+    confidence: medium
+    include_in_portfolio: true
+    suggested_treatment: archive
+    supporting_evidence:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    excluded_variants:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    rationale:
+      - "The Python utility is the stronger canonical project."
+      - "The React design folder reads like a concept or UI prototype for the same tool."
+    missing_info:
+      - "How complete the scheduling flow was in practice."
+
+  - canonical_title: "VolunTree"
+    canonical_slug: "voluntree"
+    family: "community_platform"
+    local_sources:
+      - "C:/onedrive_localdata/Programming/VolunTree/code"
+    github_sources:
+      - "VolunTree"
+    source_of_truth: unresolved
+    confidence: low
+    include_in_portfolio: false
+    suggested_treatment: exclude
+    supporting_evidence:
+      - "local full-stack folder structure"
+    excluded_variants:
+      - "VolunTree GitHub fork as proof of original ownership"
+    rationale:
+      - "Local evidence suggests a substantial project."
+      - "GitHub evidence weakens authorship confidence because the visible repo is a fork."
+      - "Conservative handling means keeping it out until provenance is clearer."
+    missing_info:
+      - "Original authored repo or clearer proof of substantial independent modifications."

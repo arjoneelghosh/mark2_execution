@@ -1,0 +1,186 @@
+featured_projects:
+  - canonical_title: "AgriFore"
+    canonical_slug: "agrifore"
+    source_of_truth: merged
+    primary_sources:
+      - "C:/Users/footb/Desktop/AgriFore"
+      - "Kamareddy_Telangana_Production_Weather_Market_"
+    supporting_evidence:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+    notes:
+      - "Use one agriculture forecasting entry only."
+      - "Treat Kamareddy-only and paper/figure variants as support material."
+
+  - canonical_title: "FlightFinder AI"
+    canonical_slug: "flightfinder-ai"
+    source_of_truth: merged
+    primary_sources:
+      - "C:/Users/footb/Desktop/ViklangFlightBooking"
+      - "Disable_Friendly_Flight_Booking"
+    supporting_evidence:
+      - "local project summary docs"
+      - "gesture-recognition support inside the project if it was part of the real demo"
+    notes:
+      - "Use the GitHub repo as public proof and the local folder as richer implementation evidence."
+
+  - canonical_title: "SignChat"
+    canonical_slug: "signchat"
+    source_of_truth: local
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/Sign_Language/signchat_py"
+    supporting_evidence:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    notes:
+      - "Keep the precursor gesture work as lineage only, not separate cards."
+
+archive_projects:
+  - canonical_title: "CropIQ"
+    canonical_slug: "cropiq"
+    source_of_truth: local
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/SIH_bot/chatbot"
+    supporting_evidence:
+      - "AgricultureForecasting chatbot traces if confirmed related"
+    notes:
+      - "Keep separate from AgriFore unless later evidence shows it was just an internal branch."
+
+  - canonical_title: "LoanONE AI"
+    canonical_slug: "loanone-ai"
+    source_of_truth: local
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/hackathon-main"
+    supporting_evidence:
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    notes:
+      - "Represent the whole loan hackathon family with one entry."
+
+  - canonical_title: "AQI Forecasting"
+    canonical_slug: "aqi-forecasting"
+    source_of_truth: local
+    primary_sources:
+      - "C:/Users/footb/Desktop/Project AQI"
+    supporting_evidence:
+      - "selected pieces from C:/Users/footb/Desktop/Project AQI/sales_frontend"
+    notes:
+      - "Keep separate from RStudio Replica unless stronger overlap evidence appears later."
+
+  - canonical_title: "RStudio Replica Forecasting App"
+    canonical_slug: "rstudio-replica-forecasting-app"
+    source_of_truth: github
+    primary_sources:
+      - "R-studio_replica"
+    supporting_evidence: []
+    notes:
+      - "Forecasting archive/supporting project, distinct from AQI Forecasting."
+
+  - canonical_title: "Collaborative Filtering Recommendation Engine"
+    canonical_slug: "collaborative-filtering-recommendation-engine"
+    source_of_truth: merged
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/Collaborative_Filtering_Rec_Engine/project"
+      - "Collaborative-Filtering-Recommendation-Engine"
+    supporting_evidence:
+      - "local cf_model scripts and interaction data"
+    notes:
+      - "Keep as one archive ML/recommendation entry."
+
+  - canonical_title: "SurgeMedi"
+    canonical_slug: "surgemedi"
+    source_of_truth: merged
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/ansh_c/surgemedi"
+      - "surgemedi"
+    supporting_evidence:
+      - "local screenshots under the public folder"
+    notes:
+      - "Collapse Medical-Equipment-Tracking into this entry."
+
+  - canonical_title: "Priority-Based CSV Sampler"
+    canonical_slug: "priority-based-csv-sampler"
+    source_of_truth: local
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/File_filter"
+    supporting_evidence:
+      - "C:/onedrive_localdata/Programming/SopraSteria/Filtering"
+    notes:
+      - "Use this as the canonical data-utility entry."
+
+  - canonical_title: "GitHub Contribution Scheduler"
+    canonical_slug: "github-contribution-scheduler"
+    source_of_truth: local
+    primary_sources:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/github_contribution_scheduler"
+    supporting_evidence:
+      - "C:/onedrive_localdata/Programming/Commitment_issues/commitment_issue_design"
+    notes:
+      - "Use the Python desktop utility as canonical and the React design as support only."
+
+early_or_lineage_only:
+  - canonical_title: "Agriculture Forecasting Precursors"
+    merge_under: "AgriFore"
+    primary_sources:
+      - "C:/Users/footb/Desktop/AgricultureForecasting"
+      - "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore"
+      - "Telengana_Price_Forecasting_by_Agriculture_Railfall_Correlation"
+    notes:
+      - "Keep as lineage and supporting evidence only."
+
+  - canonical_title: "Gesture Recognition Precursors"
+    merge_under: "SignChat"
+    primary_sources:
+      - "C:/Users/footb/Downloads/hackathon hand gesture"
+      - "C:/onedrive_localdata/Programming/Gesture-Recognition-master"
+    notes:
+      - "Do not create separate project entries from these."
+
+  - canonical_title: "Loan Hackathon Variants"
+    merge_under: "LoanONE AI"
+    primary_sources:
+      - "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+      - "C:/Users/footb/Desktop/hackathin/hackathon-main"
+      - "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    notes:
+      - "Keep one canonical loan entry only."
+
+  - canonical_title: "AQI Side Workspaces"
+    merge_under: "AQI Forecasting"
+    primary_sources:
+      - "C:/Users/footb/Desktop/Project AQI/sales_frontend"
+      - "C:/Users/footb/Desktop/Project AQI/AQI-Forecasting"
+    notes:
+      - "Support-only or duplicate workspaces."
+
+  - canonical_title: "Portfolio Website Lineage"
+    merge_under: "portfolio platform, not a project card"
+    primary_sources:
+      - "mark2"
+      - "arjoneel-fullstack-resume"
+      - "Website_Mark1_LLM"
+      - "portfolio"
+    notes:
+      - "These are portfolio-site iterations, not separate showcased projects."
+
+excluded_from_portfolio:
+  - item: "VolunTree"
+    reason: "Local evidence is substantial, but the public GitHub repo is a fork and authorship/provenance remains too uncertain."
+  - item: "Medical-Equipment-Tracking"
+    reason: "Duplicate or variant of surgemedi."
+  - item: "Face-Detection"
+    reason: "Too thin and weak on both local and GitHub evidence."
+  - item: "PotpieAI_Context_Project"
+    reason: "No visible implementation evidence."
+  - item: "spring-petclinic"
+    reason: "Forked sample application."
+  - item: "devtraining-needit-utah"
+    reason: "Forked training repo."
+  - item: "The_Wedding_Company_Backend_Assignment"
+    reason: "Technically solid but assignment-scoped."
+  - item: "Tredence_Assignment"
+    reason: "Technically solid but assignment-scoped."
+  - item: "arjoneel-portfolio"
+    reason: "Incomplete duplicate portfolio-site variant."

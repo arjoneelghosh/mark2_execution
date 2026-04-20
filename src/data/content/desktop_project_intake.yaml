@@ -1,0 +1,463 @@
+projects:
+  - folder: "C:/Users/footb/Desktop/AgriFore"
+    include_in_portfolio: true
+    confidence: high
+    probable_title: "AgriFore"
+    suggested_slug: "agrifore"
+    probable_category: "ML / Data"
+    probable_subcategory: "Agricultural Forecasting Platform"
+    probable_status: "Research Prototype / Full-Stack System"
+    featured_candidate: true
+    one_line_summary_guess: "Agricultural forecasting platform combining ETL, model artifacts, a FastAPI backend, and a Next.js dashboard."
+    preview_summary_guess: "Most complete agriculture project on the Desktop, with pipeline, prediction API, and dashboard layers."
+    problem_guess: "Help forecast agricultural prices and yield-related signals for Telangana markets and districts."
+    approach_guess:
+      - "Built a DuckDB-based ETL and feature pipeline across production, weather, and market data."
+      - "Served model-backed endpoints through FastAPI."
+      - "Added a Next.js dashboard for market intelligence and price prediction flows."
+    outcomes_guess:
+      - "Repo evidence supports a substantial end-to-end system with paper/report artifacts."
+      - "Likely best representative of the agriculture project family."
+    detected_stack:
+      - "Python"
+      - "DuckDB"
+      - "FastAPI"
+      - "XGBoost/joblib"
+      - "Next.js"
+      - "TypeScript"
+      - "Tailwind CSS"
+      - "Recharts"
+    detected_artifacts:
+      - "REPO_FULL_REPORT.md"
+      - "api/server.py"
+      - "frontend/README.md"
+      - "AgricultureProd"
+      - "AgriMarket"
+      - "aaaFinalModels"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates:
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/architecture_aligned_fresh.png"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/arrivals_vs_price_fresh.png"
+      - "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures/feature_importance_fresh.png"
+    related_family: "AgriFore Forecasting Family"
+    probable_relationship: "main"
+    evidence:
+      - "frontend/README.md describes an AI Agricultural Market Intelligence Dashboard built with Next.js 14."
+      - "api/server.py exposes a FastAPI backend over DuckDB and model artifacts."
+      - "REPO_FULL_REPORT.md documents ETL, models, API endpoints, and canonical artifacts."
+    missing_info:
+      - "Your exact ownership across ETL, modeling, backend, frontend, and paper work."
+      - "Which claims from the paper you want to emphasize publicly versus keep internal."
+      - "Whether there is a stable deployment URL."
+    notes_for_user:
+      - "Best agriculture family representative for portfolio use."
+
+  - folder: "C:/Users/footb/Desktop/AgriFore_Kamareddy_Only"
+    include_in_portfolio: false
+    confidence: medium
+    probable_title: "AgriFore Kamareddy Only"
+    suggested_slug: "agrifore-kamareddy-only"
+    probable_category: "ML / Data"
+    probable_subcategory: "District-Specific Forecasting Variant"
+    probable_status: "Narrowed Variant"
+    featured_candidate: false
+    one_line_summary_guess: "District-focused variant of AgriFore centered on Kamareddy-specific artifacts and reporting."
+    preview_summary_guess: "Likely a narrowed branch of AgriFore rather than a separate portfolio flagship."
+    problem_guess: "Adapt the broader agriculture forecasting workflow to a Kamareddy-specific scope."
+    approach_guess:
+      - "Retained the same core ETL, API, frontend, and model structure as AgriFore."
+      - "Focused outputs and paper material on Kamareddy-specific runs."
+    outcomes_guess:
+      - "Useful support material for a Kamareddy case-study angle."
+    detected_stack:
+      - "Python"
+      - "DuckDB"
+      - "FastAPI"
+      - "Next.js"
+      - "TypeScript"
+      - "XGBoost/joblib"
+    detected_artifacts:
+      - "AgriFore_IEEE_Paper_repo_verified.md"
+      - "simulate.py"
+      - "AgricultureProd"
+      - "AgriMarket"
+      - "frontend"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: "AgriFore Forecasting Family"
+    probable_relationship: "narrowed-scope"
+    evidence:
+      - "Shares the same major folder layout as AgriFore."
+      - "Root files and naming are explicitly Kamareddy-focused."
+    missing_info:
+      - "Whether you want this preserved as a separate district case study."
+    notes_for_user:
+      - "Keep as supporting variant unless you intentionally want two agriculture entries."
+
+  - folder: "C:/Users/footb/Desktop/KamareddyAgriFore"
+    include_in_portfolio: false
+    confidence: medium
+    probable_title: "Kamareddy AgriFore"
+    suggested_slug: "kamareddy-agrifore"
+    probable_category: "ML / Data"
+    probable_subcategory: "Paper / Figure Packaging Variant"
+    probable_status: "Support Variant"
+    featured_candidate: false
+    one_line_summary_guess: "Presentation-heavy AgriFore derivative with generated figures, simulations, and paper-support material."
+    preview_summary_guess: "Best treated as support evidence for AgriFore, not as a separate project entry."
+    problem_guess: "Package the forecasting work into clearer figures, simulations, and paper-friendly assets."
+    approach_guess:
+      - "Generated evidence figures from repo data and model artifacts."
+      - "Kept the same underlying app and pipeline structure as the broader AgriFore work."
+    outcomes_guess:
+      - "Useful source of figures and supporting visuals for later portfolio writing."
+    detected_stack:
+      - "Python"
+      - "DuckDB"
+      - "FastAPI"
+      - "Next.js"
+      - "TypeScript"
+    detected_artifacts:
+      - "generated_paper_figures_summary.md"
+      - "architecture.png"
+      - "arrival_price.png"
+      - "feature_importance.png"
+      - "simulation.png"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates:
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/architecture.png"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/arrival_price.png"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/feature_importance.png"
+      - "C:/Users/footb/Desktop/KamareddyAgriFore/simulation.png"
+    related_family: "AgriFore Forecasting Family"
+    probable_relationship: "support"
+    evidence:
+      - "Root contains generated figure PNGs and a figure summary audit."
+      - "Retains the same AgricultureProd/AgriMarket/api/frontend structure as AgriFore."
+    missing_info:
+      - "Whether any of the simulation assets represent unique work not already present in AgriFore."
+    notes_for_user:
+      - "Best used as case-study evidence rather than a separate entry."
+
+  - folder: "C:/Users/footb/Desktop/AgricultureForecasting"
+    include_in_portfolio: false
+    confidence: medium
+    probable_title: "AgricultureForecasting"
+    suggested_slug: "agriculture-forecasting"
+    probable_category: "ML / Data"
+    probable_subcategory: "Umbrella Research Workspace"
+    probable_status: "Precursor / Mixed Workspace"
+    featured_candidate: false
+    one_line_summary_guess: "Early umbrella workspace combining forecasting experiments, saved models, frontends, and a crop advisory chatbot."
+    preview_summary_guess: "Looks more like a precursor workspace than one clean portfolio project."
+    problem_guess: "Explore agricultural forecasting and advisory ideas across multiple parallel experiments."
+    approach_guess:
+      - "Collected forecasting scripts and trained model artifacts in separate subfolders."
+      - "Added both a Lovable/Vite frontend and a CropIQ-like chatbot branch."
+    outcomes_guess:
+      - "Useful for provenance and support context, but not portfolio-ready as one entry."
+    detected_stack:
+      - "Python"
+      - "React"
+      - "Vite"
+      - "Supabase client"
+      - "Zustand"
+    detected_artifacts:
+      - "frontend"
+      - "chatbot"
+      - "bot/chatbot"
+      - "Implementation"
+      - "Models"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: "AgriFore Forecasting Family"
+    probable_relationship: "unclear"
+    evidence:
+      - "Contains multiple subprojects rather than one coherent repo."
+      - "bot/chatbot package matches a CropIQ-style chat stack."
+      - "Implementation and Models contain saved `.pkl` models and forecasting scripts."
+    missing_info:
+      - "Which subfolder was the actual intended representative project."
+      - "Whether this should be split into separate historical entries or treated only as support provenance."
+    notes_for_user:
+      - "Do not populate directly into the live portfolio without choosing a narrower representative scope."
+
+  - folder: "C:/Users/footb/Desktop/Project AQI"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "AQI Forecasting"
+    suggested_slug: "aqi-forecasting"
+    probable_category: "ML / Data"
+    probable_subcategory: "Time-Series Forecasting App"
+    probable_status: "Prototype"
+    featured_candidate: true
+    one_line_summary_guess: "Time-series forecasting application using ARIMA and Prophet with a Streamlit-driven workflow."
+    preview_summary_guess: "Forecasting app with statistical models, interactive outputs, and evidence of both backend experimentation and frontend branches."
+    problem_guess: "Let users upload time-series data and generate explainable forecasts without coding directly in R or Python notebooks."
+    approach_guess:
+      - "Built Streamlit-based forecasting flows using ARIMA and Prophet."
+      - "Added helper scripts for preprocessing, visualization, and model training."
+      - "Maintained side workspaces such as `sales_frontend` and git stubs for related variants."
+    outcomes_guess:
+      - "Clear forecasting-app concept exists and is explainable."
+    detected_stack:
+      - "Python"
+      - "Streamlit"
+      - "pmdarima"
+      - "Prophet"
+      - "scikit-learn"
+      - "matplotlib"
+    detected_artifacts:
+      - "README.md"
+      - "requirements.txt"
+      - "forecasting.py"
+      - "model_training.py"
+      - "sales_frontend"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: "AQI Forecasting Family"
+    probable_relationship: "main"
+    evidence:
+      - "README describes a forecasting application using ARIMA and Prophet."
+      - "requirements.txt includes Prophet, pmdarima, Streamlit, and scikit-learn."
+      - "forecasting.py contains ARIMA forecasting flow inside Streamlit."
+    missing_info:
+      - "Whether the primary dataset was AQI-specific throughout or broadened to generic forecasting experiments."
+      - "Which frontend branch should be treated as the representative UI."
+    notes_for_user:
+      - "Good featured candidate if you can confirm the exact data domain and strongest UI branch."
+
+  - folder: "C:/Users/footb/Desktop/ViklangFlightBooking"
+    include_in_portfolio: true
+    confidence: high
+    probable_title: "FlightFinder AI"
+    suggested_slug: "flightfinder-ai"
+    probable_category: "Full Stack"
+    probable_subcategory: "Accessible Travel Assistant"
+    probable_status: "Prototype"
+    featured_candidate: true
+    one_line_summary_guess: "Accessible AI-assisted flight booking system with role-adaptive UI for deaf/mute, blind, and standard users."
+    preview_summary_guess: "Strong full-stack accessibility project combining booking, AI chat, voice input, and ASL-oriented flows."
+    problem_guess: "Make flight discovery and booking more accessible for users with different communication needs."
+    approach_guess:
+      - "Built a Next.js frontend with role-adaptive layouts and accessibility-focused interaction patterns."
+      - "Added a FastAPI backend for auth, chat, flight search, and trip history."
+      - "Prepared ASL camera and voice input pathways alongside external API integrations."
+    outcomes_guess:
+      - "The repo reads like a coherent full-stack product concept with meaningful accessibility framing."
+    detected_stack:
+      - "Next.js"
+      - "TypeScript"
+      - "Tailwind CSS"
+      - "Framer Motion"
+      - "FastAPI"
+      - "SQLAlchemy"
+      - "JWT"
+      - "OpenRouter"
+      - "Amadeus"
+      - "TensorFlow/OpenCV support"
+    detected_artifacts:
+      - "README.md"
+      - "PROJECT_SUMMARY.md"
+      - "frontend/package.json"
+      - "backend/requirements.txt"
+      - "Gesture-Recognition-master"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: ""
+    probable_relationship: "main"
+    evidence:
+      - "README explicitly brands the project as FlightFinder AI."
+      - "PROJECT_SUMMARY.md documents role-adaptive UI, GPT-powered chat, Amadeus integration, ASL camera support, voice input, auth, and trip history."
+      - "frontend and backend manifests show a credible full-stack setup."
+    missing_info:
+      - "Whether the flight APIs and AI integrations were actually run end-to-end."
+      - "Your exact ownership across accessibility design, backend, and AI integration."
+    notes_for_user:
+      - "One of the strongest non-agriculture candidates on the Desktop."
+
+  - folder: "C:/Users/footb/Desktop/hackathin/quickloanhub-main"
+    include_in_portfolio: true
+    confidence: medium
+    probable_title: "QuickLoanHub"
+    suggested_slug: "quickloanhub"
+    probable_category: "Frontend"
+    probable_subcategory: "Loan Onboarding Hackathon App"
+    probable_status: "Hackathon Prototype"
+    featured_candidate: false
+    one_line_summary_guess: "Loan onboarding and verification prototype with multiple routed application steps."
+    preview_summary_guess: "Best representative of the Desktop loan-hackathon family, though it overlaps heavily with sibling variants."
+    problem_guess: "Guide users through a streamlined digital loan application and verification flow."
+    approach_guess:
+      - "Built a React/Vite frontend using shadcn-style and routed multi-step flows."
+      - "Explored supporting identity or camera-preview behavior in sibling variants."
+    outcomes_guess:
+      - "Strong enough to keep as an archive/supporting candidate once the family is de-duplicated."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind CSS"
+      - "shadcn/ui"
+      - "React Router"
+    detected_artifacts:
+      - "README.md"
+      - "package.json"
+      - "src/App.tsx"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: "Loan / Face-ID Hackathon Family"
+    probable_relationship: "main"
+    evidence:
+      - "Folder has a complete Vite frontend structure and substantial package manifest."
+      - "It sits beside a near-duplicate `hackathon-main` and a face-ID helper folder."
+    missing_info:
+      - "Whether this or `hackathon-main` was the final or strongest submission."
+    notes_for_user:
+      - "Keep only one loan-family representative in the portfolio."
+
+  - folder: "C:/Users/footb/Desktop/hackathin/hackathon-main"
+    include_in_portfolio: false
+    confidence: medium
+    probable_title: "hackathon-main loan flow"
+    suggested_slug: "hackathon-main-loan-flow"
+    probable_category: "Frontend"
+    probable_subcategory: "Loan Onboarding Variant"
+    probable_status: "Variant"
+    featured_candidate: false
+    one_line_summary_guess: "Close variant of the loan-flow hackathon app with camera preview and the same route structure."
+    preview_summary_guess: "Looks like a sibling branch of QuickLoanHub rather than a separate entry."
+    problem_guess: "Support the same loan application workflow with slightly different UI or camera behavior."
+    approach_guess:
+      - "Used React routing across login, questionnaire, document upload, and status pages."
+      - "Added a conditional camera preview through a custom hook."
+    outcomes_guess:
+      - "Best treated as a merge candidate into the main loan-family entry."
+    detected_stack:
+      - "React"
+      - "TypeScript"
+      - "Vite"
+      - "React Router"
+    detected_artifacts:
+      - "src/App.tsx"
+      - "package.json"
+      - "src/hooks"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: "Loan / Face-ID Hackathon Family"
+    probable_relationship: "variant"
+    evidence:
+      - "App.tsx includes the same route flow as the sibling loan project."
+      - "Camera-preview logic suggests an incremental branch rather than a separate concept."
+    missing_info:
+      - "Which branch was actually presented or completed."
+    notes_for_user:
+      - "Merge into the main loan-family representative."
+
+  - folder: "C:/Users/footb/Desktop/hackathin/SC_face_id"
+    include_in_portfolio: false
+    confidence: medium
+    probable_title: "SC Face ID"
+    suggested_slug: "sc-face-id"
+    probable_category: "Computer Vision"
+    probable_subcategory: "Face Detection Utility"
+    probable_status: "Support Module"
+    featured_candidate: false
+    one_line_summary_guess: "OpenCV-based face detection utility used as support code for the loan/identity workflow family."
+    preview_summary_guess: "Likely support code rather than a full standalone product."
+    problem_guess: "Detect and capture a single face from webcam input for identity-related checks."
+    approach_guess:
+      - "Used OpenCV Haar cascades for webcam-based face detection."
+      - "Supported single-face and multi-face handling modes."
+    outcomes_guess:
+      - "Useful evidence of the computer-vision component in the hackathon family."
+    detected_stack:
+      - "Python"
+      - "OpenCV"
+    detected_artifacts:
+      - "main.py"
+      - "requirements.txt"
+      - "detectors"
+      - "detected_faces"
+    links_found:
+      github: ""
+      demo: ""
+      writeup: ""
+    screenshot_asset_candidates: []
+    related_family: "Loan / Face-ID Hackathon Family"
+    probable_relationship: "support"
+    evidence:
+      - "main.py implements webcam face detection with single-face capture behavior."
+    missing_info:
+      - "Whether it was actually integrated into the main hackathon demo."
+    notes_for_user:
+      - "Keep as support material, not as a separate portfolio project."
+
+excluded_items:
+  - name: ".ipynb_checkpoints"
+    reason: "Notebook cache folder, not a portfolio project."
+  - name: "ism"
+    reason: "Coursework and lecture-material folder."
+  - name: "SimpliLearn"
+    reason: "Training/course material rather than a standalone project."
+  - name: "SimpliLearnScripts"
+    reason: "Learning notebooks and scratch scripts."
+  - name: "desktop.ini"
+    reason: "System file."
+  - name: "Docker Desktop.lnk"
+    reason: "Shortcut file."
+  - name: "Postman.lnk"
+    reason: "Shortcut file."
+  - name: "WhatsApp Image 2025-04-25 at 21.01.59_a5c92720.jpg"
+    reason: "Loose image with no project attribution from filename."
+  - name: "WhatsApp Image 2025-08-13 at 22.44.28_805f90c0.jpg"
+    reason: "Loose image with no project attribution from filename."
+  - name: "x.ipynb"
+    reason: "Loose notebook scratch file."
+  - name: "Project AQI/AQI-Forecasting"
+    reason: "Appears to be only a bare git stub, not a usable project copy."
+  - name: "Project AQI/sales_frontend"
+    reason: "Looks like a sibling or duplicate workspace, not clearly a separate project."
+  - name: "hackathin/ai-branch-manager"
+    reason: "Looks like a separate utility and not clearly portfolio-worthy from current evidence."
+
+supporting_evidence:
+  - folder: "C:/Users/footb/Desktop/InternshipCertificates"
+    type: "certificate"
+    relevance: "Useful for later experience/credentials population."
+    notes:
+      - "Contains KPMG.pdf and SopraSteria.pdf."
+  - folder: "C:/Users/footb/Desktop/AgriFore/1stApril_Sim/figures"
+    type: "report"
+    relevance: "Useful for AgriFore case-study visuals and methodology evidence."
+    notes:
+      - "Contains generated architecture, arrival-vs-price, feature-importance, and trend figures."
+  - folder: "C:/Users/footb/Desktop/KamareddyAgriFore"
+    type: "screenshot"
+    relevance: "Useful for AgriFore/Kamareddy writeups and paper evidence."
+    notes:
+      - "Contains figure PNGs and figure-generation audit notes."
