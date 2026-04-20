@@ -173,7 +173,7 @@ const AskPage: React.FC = () => {
               </div>
             </section>
 
-            <section className="surface-chat min-h-0 min-w-0 overflow-hidden">
+            <section className="surface-chat-column min-h-0 min-w-0 overflow-hidden">
               <PortfolioChatPanel
                 isOpen={true}
                 onClose={() => {}}
