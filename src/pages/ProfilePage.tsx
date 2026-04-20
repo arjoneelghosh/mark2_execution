@@ -43,6 +43,8 @@ const TECH_STACK_GROUPS = [
 const getEducationScoreLabel = (education: (typeof profileRecord.education)[number]) =>
   education.score ? `${education.score.label} ${education.score.value}` : null;
 
+const PREVIEW_TAG_CLASS = 'theme-tag text-[10px] px-2 py-0.5 rounded-md';
+
 const ProfilePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('About');
   const [previewCard, setPreviewCard] = useState<ContentCard | null>(null);
@@ -82,7 +84,7 @@ const ProfilePage: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/[0.06]">
+              <div className="theme-divider mt-8 border-t pt-6">
                 <h4 className="font-heading text-base font-medium text-navy-100 mb-5">Skills</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {profileRecord.skillGroups.map((group, index) => (
@@ -111,7 +113,7 @@ const ProfilePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/[0.06]">
+              <div className="theme-divider mt-8 border-t pt-6">
                 <h4 className="font-heading text-base font-medium text-navy-100 mb-5">
                   Education
                 </h4>
@@ -159,7 +161,7 @@ const ProfilePage: React.FC = () => {
               {TECH_STACK_GROUPS.map((group) => (
                 <div
                   key={group.label}
-                  className="border-b border-white/[0.05] pb-4 last:border-b-0 last:pb-0"
+                  className="theme-divider-soft border-b pb-4 last:border-b-0 last:pb-0"
                 >
                   <p className="text-sm leading-relaxed text-navy-300">
                     <span className="font-heading font-semibold text-navy-50">
@@ -195,14 +197,14 @@ const ProfilePage: React.FC = () => {
                       href={card.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-medium text-accent-blue hover:text-accent-glow transition-colors"
+                      className="theme-link-inline text-xs font-medium transition-colors"
                     >
                       Open
                     </a>
                     <a
                       href={card.link}
                       download
-                      className="text-xs font-medium text-accent-blue hover:text-accent-glow transition-colors"
+                      className="theme-link-inline text-xs font-medium transition-colors"
                     >
                       Download
                     </a>
@@ -243,14 +245,14 @@ const ProfilePage: React.FC = () => {
                             href={card.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[11px] font-medium text-accent-blue hover:text-accent-glow transition-colors"
+                            className="theme-link-inline text-[11px] font-medium transition-colors"
                           >
                             {card.linkLabel || 'View'}
                           </a>
                           <a
                             href={card.link}
                             download
-                            className="text-[11px] font-medium text-accent-blue hover:text-accent-glow transition-colors"
+                            className="theme-link-inline text-[11px] font-medium transition-colors"
                           >
                             Download
                           </a>
@@ -276,7 +278,7 @@ const ProfilePage: React.FC = () => {
         {previewCard && (
           <>
             {(previewKind === 'resume' || previewKind === 'achievement') && previewCard.link && (
-              <div className="w-full rounded-xl overflow-hidden border border-white/[0.08] bg-navy-950/50 mb-4">
+              <div className="theme-media-frame w-full rounded-xl overflow-hidden mb-4">
                 <iframe
                   src={previewCard.link}
                   title={`${previewCard.title} preview`}
@@ -291,7 +293,7 @@ const ProfilePage: React.FC = () => {
                 {previewCard.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-400 border border-white/[0.04]"
+                    className={PREVIEW_TAG_CLASS}
                   >
                     {tag}
                   </span>
@@ -299,23 +301,19 @@ const ProfilePage: React.FC = () => {
               </div>
             )}
             {(previewKind === 'resume' || previewKind === 'achievement') && previewCard.link && (
-              <div className="flex gap-3 pt-3 border-t border-white/[0.06]">
+              <div className="theme-divider flex gap-3 pt-3 border-t">
                 <a
                   href={previewCard.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl text-sm font-medium
-                    bg-accent-blue/15 text-accent-blue border border-accent-blue/20
-                    hover:bg-accent-blue/25 transition-all duration-250"
+                  className="theme-button-accent px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250"
                 >
                   {previewCard.linkLabel || 'Open'}
                 </a>
                 <a
                   href={previewCard.link}
                   download
-                  className="px-4 py-2 rounded-xl text-sm font-medium
-                    bg-white/[0.04] text-navy-200 border border-white/[0.08]
-                    hover:bg-white/[0.06] transition-all duration-250"
+                  className="theme-button-muted px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250"
                 >
                   Download
                 </a>

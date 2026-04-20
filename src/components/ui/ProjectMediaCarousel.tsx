@@ -96,7 +96,7 @@ const ProjectMediaCarousel: React.FC<ProjectMediaCarouselProps> = ({
 
   if (slides.length === 0) {
     return (
-      <div className={`${containerClassName} bg-navy-900/40`} aria-hidden="true" />
+      <div className={`${containerClassName} theme-media-frame`} aria-hidden="true" />
     );
   }
 
@@ -138,7 +138,7 @@ const ProjectMediaCarousel: React.FC<ProjectMediaCarouselProps> = ({
         )}
 
         {mode === 'card' && hasMultipleSlides && (
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/16 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--page-bg-rgb)/0.18)] via-transparent to-transparent pointer-events-none" />
         )}
       </div>
 
@@ -147,7 +147,7 @@ const ProjectMediaCarousel: React.FC<ProjectMediaCarouselProps> = ({
           <button
             type="button"
             onClick={showPrevious}
-            className="px-2.5 py-1.5 rounded-lg bg-navy-950/78 text-navy-100 text-[11px] border border-white/[0.08] hover:bg-navy-900/92 transition-colors"
+            className="theme-button-muted px-2.5 py-1.5 rounded-lg text-[11px] transition-colors"
             aria-label="Previous slide"
           >
             Prev
@@ -158,7 +158,7 @@ const ProjectMediaCarousel: React.FC<ProjectMediaCarouselProps> = ({
               setNextIndex(null);
               setIsPlaying((current) => !current);
             }}
-            className="px-2.5 py-1.5 rounded-lg bg-navy-950/78 text-navy-100 text-[11px] border border-white/[0.08] hover:bg-navy-900/92 transition-colors"
+            className="theme-button-muted px-2.5 py-1.5 rounded-lg text-[11px] transition-colors"
             aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
           >
             {isPlaying ? 'Pause' : 'Play'}
@@ -166,7 +166,7 @@ const ProjectMediaCarousel: React.FC<ProjectMediaCarouselProps> = ({
           <button
             type="button"
             onClick={showNext}
-            className="px-2.5 py-1.5 rounded-lg bg-navy-950/78 text-navy-100 text-[11px] border border-white/[0.08] hover:bg-navy-900/92 transition-colors"
+            className="theme-button-muted px-2.5 py-1.5 rounded-lg text-[11px] transition-colors"
             aria-label="Next slide"
           >
             Next

@@ -12,6 +12,7 @@ const ParticleField: React.FC = () => {
     let animationId: number;
     let particles: { x: number; y: number; radius: number; opacity: number; speed: number; drift: number }[] = [];
     let particleRgb = '138 170 224';
+    let particleLayerOpacity = '0.6';
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -22,6 +23,10 @@ const ParticleField: React.FC = () => {
       particleRgb =
         getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim() ||
         '138 170 224';
+      particleLayerOpacity =
+        getComputedStyle(document.documentElement).getPropertyValue('--particle-layer-opacity').trim() ||
+        '0.6';
+      canvas.style.opacity = particleLayerOpacity;
     };
 
     const init = () => {
@@ -76,7 +81,7 @@ const ParticleField: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 'var(--particle-layer-opacity, 0.6)' }}
       aria-hidden="true"
     />
   );

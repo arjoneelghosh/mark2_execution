@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import portraitPhoto from '../assets/project-previews/photo.png';
 import { MessageCircle } from 'lucide-react';
 import type { ContentCard } from '../types';
+import { useTheme } from '../lib/theme/theme';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [ringRevealProgress, setRingRevealProgress] = useState(0);
   const [ringIsActive, setRingIsActive] = useState(false);
   const [previewCard, setPreviewCard] = useState<ContentCard | null>(null);
@@ -34,8 +37,10 @@ const HomePage: React.FC = () => {
       const ringScale = 0.94 + t * 0.06;
 
       if (portraitRef.current) {
-        const portraitOpacity = 0.28 - t * 0.2;
-        portraitRef.current.style.opacity = `${Math.max(portraitOpacity, 0.08)}`;
+        const baseOpacity = isLight ? 0.18 : 0.28;
+        const minOpacity = isLight ? 0.05 : 0.08;
+        const portraitOpacity = baseOpacity - t * (isLight ? 0.12 : 0.2);
+        portraitRef.current.style.opacity = `${Math.max(portraitOpacity, minOpacity)}`;
       }
 
       if (ringRef.current) {
@@ -61,7 +66,7 @@ const HomePage: React.FC = () => {
     const onScroll = () => requestAnimationFrame(apply);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isLight]);
 
   return (
     <div className="bg-home relative">
@@ -73,9 +78,9 @@ const HomePage: React.FC = () => {
           className="absolute top-0 right-0 w-[52%] h-full pointer-events-none select-none"
           style={{ opacity: 0.28 }}
         >
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy-950 via-navy-950/28 to-transparent" />
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-navy-950/42 via-transparent to-navy-950/12" />
-          <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy-950/10 via-transparent to-navy-950/38" />
+          <div className="home-portrait-overlay-left absolute inset-0 z-10" />
+          <div className="home-portrait-overlay-top absolute inset-0 z-10" />
+          <div className="home-portrait-overlay-bottom absolute inset-0 z-10" />
           <img
             src={portraitPhoto}
             alt="Arjoneel Ghosh"
@@ -136,7 +141,9 @@ const HomePage: React.FC = () => {
         <div
           style={{
             transform: 'scale(1.14)',
-            filter: 'drop-shadow(0 0 48px rgba(74, 144, 217, 0.18))',
+            filter: isLight
+              ? 'drop-shadow(0 0 34px rgba(74, 144, 217, 0.14))'
+              : 'drop-shadow(0 0 48px rgba(74, 144, 217, 0.18))',
           }}
         >
           <HomepageRing
@@ -204,7 +211,7 @@ const HomePage: React.FC = () => {
         >
           <button
             onClick={() => navigate('/ask')}
-            className="group flex items-center gap-3 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-accent-blue/20 hover:bg-white/[0.04] transition-all duration-280"
+            className="theme-home-cta group flex items-center gap-3 rounded-xl px-5 py-3 transition-all duration-280"
           >
             <MessageCircle
               size={16}
@@ -224,7 +231,7 @@ const HomePage: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/work')}
-              className="text-accent-blue text-sm font-medium hover:text-accent-glow transition-colors duration-220 flex items-center gap-2"
+              className="theme-link-inline flex items-center gap-2 text-sm font-medium transition-colors duration-220"
             >
               Explore projects
             </button>
@@ -237,7 +244,7 @@ const HomePage: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/experience')}
-              className="text-accent-blue text-sm font-medium hover:text-accent-glow transition-colors duration-220 flex items-center gap-2"
+              className="theme-link-inline flex items-center gap-2 text-sm font-medium transition-colors duration-220"
             >
               View experience
             </button>
@@ -250,7 +257,7 @@ const HomePage: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/lab')}
-              className="text-accent-blue text-sm font-medium hover:text-accent-glow transition-colors duration-220 flex items-center gap-2"
+              className="theme-link-inline flex items-center gap-2 text-sm font-medium transition-colors duration-220"
             >
               Enter Lab
             </button>
@@ -272,7 +279,7 @@ const HomePage: React.FC = () => {
                 {previewCard.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-400 border border-white/[0.04]"
+                    className="theme-tag text-[10px] px-2 py-0.5 rounded-md"
                   >
                     {tag}
                   </span>

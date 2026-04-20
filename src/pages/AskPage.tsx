@@ -107,7 +107,7 @@ const AskPage: React.FC = () => {
       <CompactRing />
 
       <div className="relative z-10 max-w-[1520px] mx-auto pl-9 pr-8 py-8 lg:pl-14 lg:pr-14 lg:py-10">
-        <div className="surface-shell animate-fade-in overflow-hidden rounded-[30px] xl:h-[calc(100dvh-5.5rem)] xl:min-h-[680px] xl:max-h-[860px]">
+        <div className="surface-shell-deep animate-fade-in overflow-hidden rounded-[30px] xl:h-[calc(100dvh-5.5rem)] xl:min-h-[680px] xl:max-h-[860px]">
           <div className="theme-divider border-b px-6 py-6 lg:px-8 lg:py-7">
             <div className="flex items-start gap-3">
               <div className="theme-pill-accent mt-0.5 flex h-8 w-8 items-center justify-center rounded-xl">
@@ -173,7 +173,7 @@ const AskPage: React.FC = () => {
               </div>
             </section>
 
-            <section className="min-h-0 min-w-0 overflow-hidden">
+            <section className="surface-chat min-h-0 min-w-0 overflow-hidden">
               <PortfolioChatPanel
                 isOpen={true}
                 onClose={() => {}}

@@ -245,7 +245,7 @@ const PortfolioChatPanel: React.FC<PortfolioChatPanelProps> = ({
                 className={`shrink-0 rounded-2xl border px-3.5 py-3.5 transition-all duration-220 ${
                   speechSupported && !isResponding
                     ? 'theme-button-muted'
-                    : 'cursor-not-allowed border border-navy-800/70 bg-navy-900/70 text-navy-500'
+                    : 'theme-button-disabled cursor-not-allowed'
                 }`}
                 aria-label={isListening ? 'Stop speech input' : 'Start speech input'}
                 title={speechSupported ? 'Speech input' : 'Speech input not supported in this browser'}

@@ -9,8 +9,7 @@ import { experienceEntries } from '../data';
 import type { ExperienceEntry } from '../types';
 
 const TABS = ['Internships', 'Leadership'];
-const CARD_SURFACE_TAG_CLASS =
-  'text-[10px] px-2 py-0.5 rounded-md bg-accent-blue/5 text-accent-blue/60 border border-accent-blue/8';
+const CARD_SURFACE_TAG_CLASS = 'theme-tag-accent text-[10px] px-2 py-0.5 rounded-md';
 
 const formatCompactLeadershipPeriod = (periods: string[]) => {
   const parsed = periods
@@ -141,7 +140,7 @@ const ExperiencePage: React.FC = () => {
                 {entry.summary}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/[0.04]">
+              <div className="theme-divider-soft flex flex-wrap gap-1.5 mt-3 pt-3 border-t">
                 {entry.tech.map((t) => (
                   <span key={t} className={CARD_SURFACE_TAG_CLASS}>
                     {t}
@@ -168,7 +167,7 @@ const ExperiencePage: React.FC = () => {
         {previewEntry && (
           <>
             {previewEntry.certificateLink && activeTab === 'Internships' && (
-              <div className="w-full rounded-xl overflow-hidden border border-white/[0.08] bg-navy-950/50 mb-4">
+              <div className="theme-media-frame w-full rounded-xl overflow-hidden mb-4">
                 <iframe
                   src={previewEntry.certificateLink}
                   title={`${previewEntry.organization} certificate preview`}
@@ -231,11 +230,11 @@ const ExperiencePage: React.FC = () => {
             </div>
 
             {focusEntry.relatedProjectSlugs && focusEntry.relatedProjectSlugs.length > 0 && (
-              <div className="pt-4 border-t border-white/[0.06]">
+              <div className="theme-divider pt-4 border-t">
                 <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-2">Related Projects</h4>
                 <div className="flex flex-wrap gap-2">
                   {focusEntry.relatedProjectSlugs.map((slug) => (
-                    <span key={slug} className="text-xs px-3 py-1 rounded-lg bg-white/[0.03] text-navy-300 border border-white/[0.06]">
+                    <span key={slug} className="theme-tag text-xs px-3 py-1 rounded-lg">
                       {slug}
                     </span>
                   ))}
@@ -244,9 +243,9 @@ const ExperiencePage: React.FC = () => {
             )}
 
             {focusEntry.certificateLink && focusEntry.type === 'Internships' && (
-              <div className="space-y-4 pt-4 border-t border-white/[0.06]">
+              <div className="theme-divider space-y-4 pt-4 border-t">
                 <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider">Certificate Evidence</h4>
-                <div className="rounded-2xl overflow-hidden border border-white/[0.08] bg-navy-950/60">
+                <div className="theme-media-frame rounded-2xl overflow-hidden">
                   <iframe
                     src={focusEntry.certificateLink}
                     title={`${focusEntry.organization} internship certificate`}
@@ -258,18 +257,14 @@ const ExperiencePage: React.FC = () => {
                     href={focusEntry.certificateLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl text-sm font-medium
-                      bg-accent-blue/15 text-accent-blue border border-accent-blue/20
-                      hover:bg-accent-blue/25 transition-all duration-250"
+                    className="theme-button-accent px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250"
                   >
                     {focusEntry.certificateLabel || 'Open Certificate'}
                   </a>
                   <a
                     href={focusEntry.certificateLink}
                     download
-                    className="px-4 py-2 rounded-xl text-sm font-medium
-                      bg-white/[0.04] text-navy-200 border border-white/[0.08]
-                      hover:bg-white/[0.06] transition-all duration-250"
+                    className="theme-button-muted px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250"
                   >
                     Download Certificate
                   </a>

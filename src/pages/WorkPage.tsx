@@ -12,10 +12,8 @@ import type { ProjectRecord } from '../types';
 
 const TABS = ['Featured', 'DS/ML', 'Full Stack', 'Archive'];
 const MAX_MINI_CARD_TECHS = 4;
-const CARD_SURFACE_TAG_CLASS =
-  'text-[10px] px-2 py-0.5 rounded-md bg-accent-blue/5 text-accent-blue/60 border border-accent-blue/8';
-const CARD_META_CLASS =
-  'text-[11px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-500 border border-white/[0.04] inline-flex items-center';
+const CARD_SURFACE_TAG_CLASS = 'theme-tag-accent text-[10px] px-2 py-0.5 rounded-md';
+const CARD_META_CLASS = 'theme-meta-pill text-[11px] px-2 py-0.5 rounded-md inline-flex items-center';
 const CARD_SLIDESHOW_INTERVAL_MS = 3200;
 const PREVIEW_SLIDESHOW_INTERVAL_MS = 3600;
 
@@ -104,7 +102,7 @@ const WorkPage: React.FC = () => {
                     mode="card"
                     intervalMs={CARD_SLIDESHOW_INTERVAL_MS}
                     debugLabel={project.title}
-                    containerClassName="w-full h-44 rounded-[20px] overflow-hidden mb-5 -mt-1 bg-navy-900/50 relative"
+                    containerClassName="theme-media-frame w-full h-44 rounded-[20px] overflow-hidden mb-5 -mt-1 relative"
                     imageClassName="w-full h-full object-cover opacity-75 group-hover:opacity-90"
                   />
                 )}
@@ -144,7 +142,7 @@ const WorkPage: React.FC = () => {
                   </div>
                 )}
 
-                <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/[0.04]">
+                <div className="theme-divider-soft flex flex-wrap gap-1.5 mt-auto pt-4 border-t">
                   {miniCardTechStack.map((tech) => (
                     <span key={tech} className={CARD_SURFACE_TAG_CLASS}>
                       {tech}
@@ -177,7 +175,7 @@ const WorkPage: React.FC = () => {
                 mode="preview"
                 intervalMs={PREVIEW_SLIDESHOW_INTERVAL_MS}
                 debugLabel={previewProject.title}
-                containerClassName="w-full h-56 sm:h-64 rounded-xl mb-4 overflow-hidden bg-navy-900/50 relative"
+                containerClassName="theme-media-frame w-full h-56 sm:h-64 rounded-xl mb-4 overflow-hidden relative"
                 imageClassName="w-full h-full object-cover opacity-90"
               />
             )}
@@ -193,7 +191,7 @@ const WorkPage: React.FC = () => {
                 {getProjectDisciplineTags(previewProject).map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 rounded-md bg-accent-blue/5 text-accent-blue/60 border border-accent-blue/8"
+                    className="theme-tag-accent text-[10px] px-2 py-0.5 rounded-md"
                   >
                     {tag}
                   </span>
@@ -202,7 +200,7 @@ const WorkPage: React.FC = () => {
             )}
             <div className="flex flex-wrap gap-1.5 mb-4">
               {previewProject.techStack.map((tech) => (
-                <span key={tech} className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-400 border border-white/[0.04]">
+                <span key={tech} className="theme-tag text-[10px] px-2 py-0.5 rounded-md">
                   {tech}
                 </span>
               ))}
@@ -211,13 +209,13 @@ const WorkPage: React.FC = () => {
             <div className="flex gap-3 mt-4">
               {previewProject.links.live && (
                 <a href={previewProject.links.live} target="_blank" rel="noopener noreferrer"
-                  className="text-xs text-accent-blue hover:text-accent-glow transition-colors">
+                  className="theme-link-inline text-xs transition-colors">
                   Live Demo
                 </a>
               )}
               {previewProject.links.github && (
                 <a href={previewProject.links.github} target="_blank" rel="noopener noreferrer"
-                  className="text-xs text-accent-blue hover:text-accent-glow transition-colors">
+                  className="theme-link-inline text-xs transition-colors">
                   GitHub
                 </a>
               )}
@@ -283,27 +281,23 @@ const WorkPage: React.FC = () => {
                 <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-3">Tech Stack</h4>
                 <div className="flex flex-wrap gap-2">
                   {focusProject.techStack.map((tech) => (
-                    <span key={tech} className="text-xs px-3 py-1 rounded-lg bg-accent-blue/8 text-accent-blue/80 border border-accent-blue/12">
+                    <span key={tech} className="theme-tag-accent text-xs px-3 py-1 rounded-lg">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="flex gap-4 pt-4 border-t border-white/[0.06]">
+              <div className="theme-divider flex gap-4 pt-4 border-t">
                 {focusProject.links.live && (
                   <a href={focusProject.links.live} target="_blank" rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl text-sm font-medium
-                      bg-accent-blue/15 text-accent-blue border border-accent-blue/20
-                      hover:bg-accent-blue/25 transition-all duration-250">
+                    className="theme-button-accent px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250">
                     Live Demo
                   </a>
                 )}
                 {focusProject.links.github && (
                   <a href={focusProject.links.github} target="_blank" rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl text-sm font-medium
-                      bg-white/[0.04] text-navy-200 border border-white/[0.08]
-                      hover:bg-white/[0.06] transition-all duration-250">
+                    className="theme-button-muted px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250">
                     GitHub
                   </a>
                 )}

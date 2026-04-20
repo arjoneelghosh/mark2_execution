@@ -31,7 +31,7 @@ const BottomRail: React.FC<BottomRailProps> = ({ visible }) => {
         ${visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
       `}
     >
-      <div className="border-t border-white/[0.05] bg-navy-950/80 backdrop-blur-lg">
+      <div className="theme-divider theme-callout-surface border-t backdrop-blur-lg">
         <div className="max-w-7xl mx-auto px-8 py-3 flex items-center justify-between gap-8">
           {railItems.map((item, i) => (
             <div key={i} className="flex items-center gap-3 flex-1 min-w-0">

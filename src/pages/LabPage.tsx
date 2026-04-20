@@ -26,6 +26,9 @@ interface LabLaneContent {
 }
 
 const TABS: LabLane[] = ['Papers', 'Concepts', 'Working Prototypes'];
+const LAB_META_CLASS = 'theme-meta-pill inline-block rounded-md px-2 py-0.5 text-[11px]';
+const LAB_TAG_CLASS = 'theme-tag-accent rounded-md px-2 py-0.5 text-[10px]';
+const LAB_PREVIEW_TAG_CLASS = 'theme-tag rounded-md px-2 py-0.5 text-[10px]';
 
 const paperLink = publicationRecords[0]?.link;
 
@@ -196,7 +199,7 @@ const LabPage: React.FC = () => {
               </p>
 
               {card.meta && (
-                <span className="text-[11px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-500 border border-white/[0.04] inline-block mb-3">
+                <span className={`${LAB_META_CLASS} mb-3`}>
                   {card.meta}
                 </span>
               )}
@@ -206,7 +209,7 @@ const LabPage: React.FC = () => {
                   {card.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] px-2 py-0.5 rounded-md bg-accent-blue/5 text-accent-blue/60 border border-accent-blue/8"
+                      className={LAB_TAG_CLASS}
                     >
                       {tag}
                     </span>
@@ -249,7 +252,7 @@ const LabPage: React.FC = () => {
                 {previewCard.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-navy-400 border border-white/[0.04]"
+                    className={LAB_PREVIEW_TAG_CLASS}
                   >
                     {tag}
                   </span>
@@ -265,7 +268,7 @@ const LabPage: React.FC = () => {
                   href={previewCard.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-accent-blue hover:text-accent-glow transition-colors"
+                  className="theme-link-inline text-xs transition-colors"
                 >
                   {previewCard.linkLabel || 'Open'}
                 </a>
@@ -288,14 +291,14 @@ const LabPage: React.FC = () => {
               </p>
             ))}
             {(focusCard.meta || focusCard.tags) && (
-              <div className="pt-4 border-t border-white/[0.06] space-y-4">
+              <div className="theme-divider pt-4 border-t space-y-4">
                 {focusCard.meta && <p className="text-navy-400 text-sm">{focusCard.meta}</p>}
                 {focusCard.tags && (
                   <div className="flex flex-wrap gap-2">
                     {focusCard.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-3 py-1 rounded-lg bg-accent-blue/8 text-accent-blue/80 border border-accent-blue/12"
+                        className="theme-tag-accent text-xs px-3 py-1 rounded-lg"
                       >
                         {tag}
                       </span>
@@ -305,12 +308,12 @@ const LabPage: React.FC = () => {
               </div>
             )}
             {focusCard.link && (
-              <div className="pt-4 border-t border-white/[0.06]">
+              <div className="theme-divider pt-4 border-t">
                 <a
                   href={focusCard.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl text-sm font-medium bg-accent-blue/15 text-accent-blue border border-accent-blue/20 hover:bg-accent-blue/25 transition-all duration-250 w-fit inline-block"
+                  className="theme-button-accent px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250 w-fit inline-block"
                 >
                   {focusCard.linkLabel || 'Open'}
                 </a>

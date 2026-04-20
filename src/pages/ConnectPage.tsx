@@ -72,17 +72,13 @@ const ConnectPage: React.FC = () => {
             <div className="flex gap-3 mt-5">
               {previewCard.link && (
                 <a href={previewCard.link} target="_blank" rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl text-sm font-medium
-                    bg-accent-blue/15 text-accent-blue border border-accent-blue/20
-                    hover:bg-accent-blue/25 transition-all duration-250">
+                  className="theme-button-accent px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250">
                   {previewCard.linkLabel || 'Open'}
                 </a>
               )}
               {previewKey === 'Resume' && previewCard.link && (
                 <a href={previewCard.link} download
-                  className="px-4 py-2 rounded-xl text-sm font-medium
-                    bg-white/[0.04] text-navy-200 border border-white/[0.08]
-                    hover:bg-white/[0.06] transition-all duration-250">
+                  className="theme-button-muted px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250">
                   Download
                 </a>
               )}
