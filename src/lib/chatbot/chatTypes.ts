@@ -91,7 +91,14 @@ export type PortfolioMatchContext =
   | { kind: 'faq'; item: { label: string; replyTitle: string; replySummary: string; replyBullets: string[] } }
   | { kind: 'action'; item: { label: string; replyTitle: string; replySummary: string; replyBullets: string[] } }
   | { kind: 'project'; project: any; request: 'overview' | 'tech-stack' }
-  | { kind: 'project-list'; scope: 'featured' | 'ml' | 'full-stack' | 'archive'; projects: any[] }
+  | {
+      kind: 'project-list';
+      scope: 'featured' | 'ml' | 'full-stack' | 'archive';
+      projects: any[];
+      title?: string;
+      answer?: string;
+      related?: string[];
+    }
   | {
       kind: 'project-synthesis';
       query: string;

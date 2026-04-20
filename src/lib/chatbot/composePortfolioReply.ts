@@ -225,25 +225,27 @@ export function composePortfolioReply(context: PortfolioMatchContext): Portfolio
     case 'project-list':
       return {
         title:
-          context.scope === 'featured'
+          context.title ||
+          (context.scope === 'featured'
             ? 'Featured Projects'
             : context.scope === 'ml'
               ? 'DS/ML Projects'
               : context.scope === 'full-stack'
                 ? 'Full Stack Projects'
-                : 'Archive Projects',
+                : 'Archive Projects'),
         answer:
-          context.scope === 'ml'
+          context.answer ||
+          (context.scope === 'ml'
             ? 'These are the current DS/ML projects in the local portfolio knowledge base. Older ML/Data wording still maps to this same taxonomy.'
             : context.scope === 'full-stack'
               ? 'These are the current full-stack projects surfaced in the local portfolio knowledge base.'
               : context.scope === 'archive'
                 ? 'These are the archive-facing projects currently listed in Work.'
-                : 'These are the current featured project entries.',
+                : 'These are the current featured project entries.'),
         bullets: context.projects.map(
           (project) => `${project.title} (${project.status}) - ${project.summary}`
         ),
-        related: ['Projects'],
+        related: context.related || ['Projects'],
       };
 
     case 'project-synthesis':
