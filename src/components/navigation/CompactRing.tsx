@@ -18,6 +18,13 @@ const CompactRing: React.FC = () => {
   const ringRadius = 84;
   const isRingVisible = isRingHovered;
   const ringScale = isRingVisible ? 1.16 : 1.04;
+  const accentField = 'rgb(var(--accent-blue-rgb) / 0.1)';
+  const accentHalo = 'rgb(var(--accent-glow-rgb) / 0.12)';
+  const accentHaloOuter = 'rgb(var(--accent-blue-rgb) / 0.05)';
+  const ringStroke = 'rgb(var(--accent-blue-rgb) / 0.1)';
+  const coreGlow = 'rgb(var(--accent-blue-rgb) / 0.08)';
+  const coreFill = 'rgb(var(--ring-core-fill-rgb) / 0.88)';
+  const coreStroke = 'rgb(var(--ring-core-stroke-rgb) / 0.2)';
 
   useEffect(() => {
     setIsRingHovered(false);
@@ -35,7 +42,7 @@ const CompactRing: React.FC = () => {
         <div
           className="compact-ring-pulse absolute w-[216px] h-[216px] rounded-full transition-all duration-280 ease-out"
           style={{
-            background: 'radial-gradient(circle, rgba(74,144,217,0.1) 0%, transparent 70%)',
+            background: `radial-gradient(circle, ${accentField} 0%, transparent 70%)`,
             filter: 'blur(26px)',
             opacity: isRingVisible ? 1 : 0,
             transform: `scale(${isRingVisible ? 1 : 0.9})`,
@@ -44,7 +51,7 @@ const CompactRing: React.FC = () => {
         <div
           className="compact-ring-pulse-halo absolute w-[180px] h-[180px] rounded-full transition-all duration-280 ease-out"
           style={{
-            background: 'radial-gradient(circle, rgba(91,160,232,0.12) 0%, rgba(74,144,217,0.05) 42%, transparent 74%)',
+            background: `radial-gradient(circle, ${accentHalo} 0%, ${accentHaloOuter} 42%, transparent 74%)`,
             filter: 'blur(18px)',
             opacity: isRingVisible ? 1 : 0,
             transform: `scale(${isRingVisible ? 1 : 0.9})`,
@@ -60,7 +67,7 @@ const CompactRing: React.FC = () => {
             cx={0}
             cy={0}
             r={isRingVisible ? 34 : 54}
-            fill="rgba(74, 144, 217, 0.08)"
+            fill={coreGlow}
             className="compact-ring-core-glow transition-all duration-300"
           />
 
@@ -79,7 +86,7 @@ const CompactRing: React.FC = () => {
               cy={0}
               r={ringRadius}
               fill="none"
-              stroke="rgba(74, 144, 217, 0.1)"
+              stroke={ringStroke}
               strokeWidth={1.1}
             />
 
@@ -118,16 +125,16 @@ const CompactRing: React.FC = () => {
               cx={0}
               cy={0}
               r={isRingVisible ? 24 : 40}
-              fill="rgba(9, 18, 34, 0.7)"
-              stroke="rgba(74, 144, 217, 0.16)"
+              fill={coreFill}
+              stroke={coreStroke}
               strokeWidth={1}
-              className="compact-ring-core transition-all duration-300 group-hover:stroke-[rgba(74,144,217,0.3)]"
+              className="compact-ring-core transition-all duration-300"
             />
             <text
               x={isRingVisible ? 0 : 1}
               y={isRingVisible ? 4 : 12}
               textAnchor="middle"
-              className="select-none fill-navy-100 transition-all duration-300 group-hover:fill-accent-blue"
+              className="select-none fill-[rgb(var(--ring-label-rgb))] transition-all duration-300 group-hover:fill-accent-blue"
               style={{
                 fontSize: isRingVisible ? '11.5px' : '35px',
                 letterSpacing: isRingVisible ? '0.12em' : '0.04em',

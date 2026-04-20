@@ -7,6 +7,7 @@ import ExperiencePage from './pages/ExperiencePage';
 import LabPage from './pages/LabPage';
 import ConnectPage from './pages/ConnectPage';
 import AskPage from './pages/AskPage';
+import ThemeToggle from './components/ui/ThemeToggle';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ const App: React.FC = () => {
   return (
     <>
       <ScrollToTop />
+      <ThemeToggle />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/work" element={<WorkPage />} />

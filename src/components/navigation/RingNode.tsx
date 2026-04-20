@@ -37,64 +37,76 @@ const RingNode: React.FC<RingNodeProps> = ({
   const isCompact = size === 'compact';
   const isHomepageReady = !isCompact && isReady;
   const labelOpacity = isCompact || isHomepageReady ? 1 : 0;
+  const accentSoft = 'rgb(var(--accent-blue-rgb) / 0.18)';
+  const accentHover = 'rgb(var(--accent-blue-rgb) / 0.12)';
+  const accentGlow = 'rgb(var(--accent-blue-rgb) / 0.16)';
+  const accentGlowSoft = 'rgb(var(--accent-blue-rgb) / 0.08)';
+  const accentStroke = 'rgb(var(--accent-glow-rgb) / 0.96)';
+  const accentStrokeSoft = 'rgb(var(--accent-border-rgb) / 0.92)';
+  const ringNodeCompactFill = 'rgb(var(--navy-700-rgb) / 0.96)';
+  const ringNodeHomepageFill = 'rgb(var(--navy-400-rgb) / 0.56)';
+  const ringNodeHomepageHoverFill = 'rgb(var(--navy-850-rgb) / 0.96)';
+  const ringNodeInactiveFill = 'rgb(var(--navy-700-rgb) / 0.82)';
+  const ringNodeLabel = 'rgb(var(--ring-muted-label-rgb) / 0.76)';
+  const ringNodeLabelHover = 'rgb(var(--ring-label-rgb) / 0.96)';
 
   const nodeHaloFill = isActive
-    ? 'rgba(74, 144, 217, 0.18)'
+    ? accentSoft
     : isCompact
       ? isHovered
-        ? 'rgba(74, 144, 217, 0.12)'
+        ? accentHover
         : 'transparent'
       : isHomepageReady
         ? isHovered
-          ? 'rgba(74, 144, 217, 0.05)'
-          : 'rgba(74, 144, 217, 0.14)'
+          ? 'rgb(var(--accent-blue-rgb) / 0.05)'
+          : 'rgb(var(--accent-blue-rgb) / 0.14)'
         : isHovered
-          ? 'rgba(74, 144, 217, 0.04)'
+          ? 'rgb(var(--accent-blue-rgb) / 0.04)'
           : 'transparent';
 
   const nodeFill = isActive
-    ? 'rgba(74, 144, 217, 0.96)'
+    ? 'rgb(var(--accent-blue-rgb) / 0.96)'
     : isCompact
       ? isHovered
-        ? 'rgba(42, 90, 154, 0.92)'
-        : 'rgba(22, 37, 80, 0.96)'
+        ? 'rgb(var(--accent-muted-rgb) / 0.92)'
+        : ringNodeCompactFill
       : isHomepageReady
         ? isHovered
-          ? 'rgba(13, 22, 48, 0.96)'
-          : 'rgba(58, 95, 160, 0.56)'
-        : 'rgba(22, 37, 80, 0.82)';
+          ? ringNodeHomepageHoverFill
+          : ringNodeHomepageFill
+        : ringNodeInactiveFill;
 
   const nodeStroke = isActive
-    ? 'rgba(91, 160, 232, 0.96)'
+    ? accentStroke
     : isCompact
       ? isHovered
-        ? 'rgba(91, 160, 232, 0.92)'
-        : 'rgba(39, 69, 128, 0.92)'
+        ? accentStroke
+        : accentStrokeSoft
       : isHomepageReady
         ? isHovered
-          ? 'rgba(184, 208, 240, 0.5)'
-          : 'rgba(91, 160, 232, 0.72)'
-        : 'rgba(42, 90, 154, 0.54)';
+          ? 'rgb(var(--ring-label-rgb) / 0.5)'
+          : 'rgb(var(--accent-glow-rgb) / 0.72)'
+        : 'rgb(var(--accent-muted-rgb) / 0.54)';
 
   const nodeGlowFill = isActive
-    ? 'rgba(74, 144, 217, 0.16)'
+    ? accentGlow
     : isCompact
       ? isHovered
-        ? 'rgba(74, 144, 217, 0.14)'
+        ? accentGlow
         : 'transparent'
       : isHomepageReady
         ? isHovered
-          ? 'rgba(74, 144, 217, 0.08)'
-          : 'rgba(74, 144, 217, 0.12)'
+          ? accentGlowSoft
+          : accentHover
         : isHovered
-          ? 'rgba(74, 144, 217, 0.05)'
+          ? 'rgb(var(--accent-blue-rgb) / 0.05)'
           : 'transparent';
 
   const labelFill = isActive
-    ? 'rgba(74, 144, 217, 0.98)'
+    ? 'rgb(var(--accent-blue-rgb) / 0.98)'
     : isHovered
-      ? 'rgba(224, 236, 255, 0.96)'
-      : 'rgba(138, 170, 224, 0.76)';
+      ? ringNodeLabelHover
+      : ringNodeLabel;
 
   const handleHover = (hovered: boolean) => {
     if (!isVisible) return;

@@ -38,10 +38,8 @@ const FocusPanel: React.FC<FocusPanelProps> = ({ isOpen, onClose, title, childre
       />
 
       {/* Panel */}
-      <div className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-hidden
-        rounded-2xl border border-[rgba(255,255,255,0.08)]
-        bg-gradient-to-b from-navy-900/95 to-navy-950/95
-        backdrop-blur-xl shadow-panel animate-scale-in
+      <div className="surface-shell relative z-10 w-full max-w-4xl max-h-[90vh] overflow-hidden
+        rounded-2xl backdrop-blur-xl animate-scale-in
         flex flex-col"
       >
         {/* Header */}
@@ -51,8 +49,7 @@ const FocusPanel: React.FC<FocusPanelProps> = ({ isOpen, onClose, title, childre
           </h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-navy-300 hover:text-navy-50
-              hover:bg-white/5 transition-all duration-220 flex-shrink-0"
+            className="theme-button-muted flex-shrink-0 rounded-xl p-2 transition-all duration-220"
             aria-label="Close panel"
           >
             <X size={20} />

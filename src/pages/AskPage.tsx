@@ -107,10 +107,10 @@ const AskPage: React.FC = () => {
       <CompactRing />
 
       <div className="relative z-10 max-w-[1520px] mx-auto pl-9 pr-8 py-8 lg:pl-14 lg:pr-14 lg:py-10">
-        <div className="animate-fade-in overflow-hidden rounded-[30px] border border-white/[0.08] bg-gradient-to-b from-navy-900/95 via-navy-950/96 to-navy-950/98 shadow-[0_24px_80px_rgba(4,10,20,0.4)] xl:h-[calc(100dvh-5.5rem)] xl:min-h-[680px] xl:max-h-[860px]">
-          <div className="border-b border-white/[0.06] px-6 py-6 lg:px-8 lg:py-7">
+        <div className="surface-shell animate-fade-in overflow-hidden rounded-[30px] xl:h-[calc(100dvh-5.5rem)] xl:min-h-[680px] xl:max-h-[860px]">
+          <div className="theme-divider border-b px-6 py-6 lg:px-8 lg:py-7">
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-xl border border-accent-blue/16 bg-accent-blue/8 text-accent-blue">
+              <div className="theme-pill-accent mt-0.5 flex h-8 w-8 items-center justify-center rounded-xl">
                 <Sparkles size={16} />
               </div>
               <div>
@@ -121,14 +121,14 @@ const AskPage: React.FC = () => {
                   Grounded local portfolio assistant
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <div className="inline-flex items-center gap-1.5 rounded-full border border-accent-blue/15 bg-accent-blue/8 px-3 py-1.5 text-[12px] text-accent-blue/85">
+                  <div className="theme-pill-accent inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px]">
                     <ShieldCheck size={12} />
                     <span>Local knowledge only</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setIsMethodologyOpen(true)}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.03] px-3 py-1.5 text-[12px] text-navy-200 transition-all duration-220 hover:border-accent-blue/18 hover:bg-accent-blue/8 hover:text-navy-50"
+                    className="theme-pill inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] transition-all duration-220"
                   >
                     <Info size={12} />
                     <span>Methodology</span>
@@ -139,7 +139,7 @@ const AskPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-[340px_minmax(0,1fr)] xl:h-[calc(100%-10.25rem)] min-h-0">
-            <section className="border-b border-white/[0.06] xl:border-b-0 xl:border-r xl:border-r-white/[0.06] min-h-0 overflow-hidden bg-white/[0.015]">
+            <section className="theme-divider surface-faq min-h-0 overflow-hidden border-b xl:border-b-0 xl:border-r">
               <div className="flex h-full min-h-0 flex-col px-5 py-5 lg:px-6 lg:py-6">
                 <div className="mb-5 shrink-0">
                   <p className="font-heading text-base font-medium text-navy-100 mb-2">FAQs</p>

@@ -42,17 +42,16 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-navy-950/70 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 overlay-dim animate-fade-in"
         onClick={onClose}
       />
 
       {/* Panel */}
-      <div className="relative z-10 w-full max-w-lg glass-panel p-8 animate-scale-in max-h-[80vh] overflow-y-auto">
+      <div className="glass-panel relative z-10 w-full max-w-lg max-h-[80vh] overflow-y-auto p-8 animate-scale-in">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-lg text-navy-300 hover:text-navy-50
-            hover:bg-white/5 transition-all duration-220"
+          className="theme-button-muted absolute top-4 right-4 rounded-lg p-2 transition-all duration-220"
           aria-label="Close preview"
         >
           <X size={18} />
@@ -70,10 +69,7 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({
         {onDeepen && (
           <button
             onClick={onDeepen}
-            className="mt-6 px-5 py-2.5 rounded-xl text-sm font-medium
-              bg-accent-blue/15 text-accent-blue border border-accent-blue/20
-              hover:bg-accent-blue/25 hover:border-accent-blue/35
-              transition-all duration-250"
+            className="theme-button-accent mt-6 rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-250"
           >
             {deepenLabel}
           </button>

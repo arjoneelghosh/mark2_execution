@@ -31,11 +31,11 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
             <button
               key={tab}
               onClick={() => onTabChange?.(tab)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-250
+              className={`rounded-xl px-4 py-2 text-sm font-medium transition-all duration-250
                 ${
                   activeTab === tab
-                    ? 'bg-accent-blue/15 text-accent-blue border border-accent-blue/25'
-                    : 'bg-white/[0.02] text-navy-300 border border-white/[0.06] hover:border-white/[0.12] hover:text-navy-100'
+                    ? 'theme-pill-accent'
+                    : 'theme-pill'
                 }
               `}
             >

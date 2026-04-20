@@ -11,13 +11,21 @@ const ParticleField: React.FC = () => {
 
     let animationId: number;
     let particles: { x: number; y: number; radius: number; opacity: number; speed: number; drift: number }[] = [];
+    let particleRgb = '138 170 224';
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
+    const syncThemeTokens = () => {
+      particleRgb =
+        getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim() ||
+        '138 170 224';
+    };
+
     const init = () => {
+      syncThemeTokens();
       resize();
       const count = Math.floor((canvas.width * canvas.height) / 18000);
       particles = Array.from({ length: Math.min(count, 120) }, () => ({
@@ -35,7 +43,7 @@ const ParticleField: React.FC = () => {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(138, 170, 224, ${p.opacity})`;
+        ctx.fillStyle = `rgb(${particleRgb} / ${p.opacity})`;
         ctx.fill();
 
         p.y -= p.speed;
@@ -54,10 +62,13 @@ const ParticleField: React.FC = () => {
     init();
     draw();
     window.addEventListener('resize', resize);
+    const observer = new MutationObserver(syncThemeTokens);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', resize);
+      observer.disconnect();
     };
   }, []);
 

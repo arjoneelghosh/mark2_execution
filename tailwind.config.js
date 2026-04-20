@@ -1,33 +1,35 @@
 /** @type {import('tailwindcss').Config} */
+const tokenColor = (token) => `rgb(var(${token}) / <alpha-value>)`;
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         navy: {
-          950: '#060a18',
-          900: '#0a1128',
-          850: '#0d1630',
-          800: '#111d3a',
-          700: '#162550',
-          600: '#1e3468',
-          500: '#274580',
-          400: '#3a5fa0',
-          300: '#5a80c0',
-          200: '#8aaae0',
-          100: '#b8d0f0',
-          50: '#e0ecff',
+          950: tokenColor('--navy-950-rgb'),
+          900: tokenColor('--navy-900-rgb'),
+          850: tokenColor('--navy-850-rgb'),
+          800: tokenColor('--navy-800-rgb'),
+          700: tokenColor('--navy-700-rgb'),
+          600: tokenColor('--navy-600-rgb'),
+          500: tokenColor('--navy-500-rgb'),
+          400: tokenColor('--navy-400-rgb'),
+          300: tokenColor('--navy-300-rgb'),
+          200: tokenColor('--navy-200-rgb'),
+          100: tokenColor('--navy-100-rgb'),
+          50: tokenColor('--navy-50-rgb'),
         },
         accent: {
-          blue: '#4a90d9',
-          glow: '#5ba0e8',
-          soft: '#3d7cc7',
-          muted: '#2a5a9a',
+          blue: tokenColor('--accent-blue-rgb'),
+          glow: tokenColor('--accent-glow-rgb'),
+          soft: tokenColor('--accent-soft-rgb'),
+          muted: tokenColor('--accent-muted-rgb'),
         },
         glass: {
-          white: 'rgba(255, 255, 255, 0.04)',
-          border: 'rgba(255, 255, 255, 0.08)',
-          hover: 'rgba(255, 255, 255, 0.06)',
+          white: tokenColor('--chip-bg-rgb'),
+          border: tokenColor('--border-rgb'),
+          hover: tokenColor('--panel-soft-rgb'),
         },
       },
       fontFamily: {
@@ -52,12 +54,12 @@ export default {
         '3xl': '1.5rem',
       },
       boxShadow: {
-        'glow-sm': '0 0 15px rgba(74, 144, 217, 0.15)',
-        'glow-md': '0 0 30px rgba(74, 144, 217, 0.2)',
-        'glow-lg': '0 0 50px rgba(74, 144, 217, 0.25)',
-        'card': '0 4px 24px rgba(0, 0, 0, 0.3)',
-        'card-hover': '0 8px 40px rgba(0, 0, 0, 0.4)',
-        'panel': '0 16px 64px rgba(0, 0, 0, 0.5)',
+        'glow-sm': '0 0 15px rgb(var(--accent-blue-rgb) / 0.15)',
+        'glow-md': '0 0 30px rgb(var(--accent-blue-rgb) / 0.2)',
+        'glow-lg': '0 0 50px rgb(var(--accent-blue-rgb) / 0.25)',
+        card: 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
+        panel: 'var(--shadow-panel)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
