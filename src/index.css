@@ -1012,13 +1012,23 @@ a:hover {
   :root[data-theme='light'] .ask-shell {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-elevated-rgb) / 0.82) 0%,
-      rgb(var(--panel-soft-rgb) / 0.84) 34%,
-      rgb(var(--panel-bg-rgb) / 0.8) 72%,
-      rgb(var(--accent-soft-surface-rgb) / 0.22) 100%
+      rgb(var(--panel-elevated-rgb) / 0.52) 0%,
+      rgb(var(--panel-soft-rgb) / 0.48) 34%,
+      rgb(var(--panel-bg-rgb) / 0.44) 72%,
+      rgb(var(--accent-soft-surface-rgb) / 0.16) 100%
     );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  :root[data-theme='light'] .ask-shell > .theme-divider {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--panel-elevated-rgb) / 0.28) 0%,
+      rgb(var(--panel-soft-rgb) / 0.18) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   :root[data-theme='light'] .surface-faq {
@@ -1040,6 +1050,14 @@ a:hover {
     );
   }
 
+  :root[data-theme='light'] .ask-shell .surface-chat-column {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--panel-soft-rgb) / 0.22) 0%,
+      rgb(var(--chat-surface-rgb) / 0.18) 100%
+    );
+  }
+
   :root[data-theme='light'] .surface-chat {
     background: linear-gradient(
       180deg,
@@ -1054,37 +1072,39 @@ a:hover {
   :root[data-theme='light'] .ask-chat-panel .surface-chat {
     background: linear-gradient(
       180deg,
-      rgb(var(--chat-surface-rgb) / 0.72) 0%,
-      rgb(var(--panel-bg-rgb) / 0.68) 100%
+      rgb(var(--chat-surface-rgb) / 0.34) 0%,
+      rgb(var(--panel-bg-rgb) / 0.28) 100%
     );
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow:
-      inset 0 1px 0 rgba(255, 251, 240, 0.72),
-      inset 0 -1px 0 rgba(211, 203, 173, 0.22);
+      inset 0 1px 0 rgba(255, 251, 240, 0.46),
+      inset 0 -1px 0 rgba(211, 203, 173, 0.14);
   }
 
   :root[data-theme='light'] .ask-chat-panel .surface-composer {
     background: linear-gradient(
       180deg,
-      rgb(var(--composer-surface-rgb) / 0.82) 0%,
-      rgb(var(--panel-elevated-rgb) / 0.74) 100%
+      rgb(var(--composer-surface-rgb) / 0.48) 0%,
+      rgb(var(--panel-elevated-rgb) / 0.42) 100%
     );
-    box-shadow: inset 0 1px 0 rgba(255, 249, 235, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 249, 235, 0.44);
   }
 
   :root[data-theme='light'] .ask-chat-panel .surface-input-shell {
     background: linear-gradient(
       180deg,
-      rgb(var(--input-bg-rgb) / 0.9) 0%,
-      rgb(var(--panel-bg-rgb) / 0.84) 100%
+      rgb(var(--input-bg-rgb) / 0.62) 0%,
+      rgb(var(--panel-bg-rgb) / 0.54) 100%
     );
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow:
-      0 14px 28px rgba(77, 61, 20, 0.06),
-      0 4px 10px rgba(77, 61, 20, 0.03),
-      inset 0 1px 0 rgba(255, 251, 240, 0.82);
+      0 14px 28px rgba(77, 61, 20, 0.04),
+      0 4px 10px rgba(77, 61, 20, 0.02),
+      inset 0 1px 0 rgba(255, 251, 240, 0.64);
   }
 
   :root[data-theme='light'] .surface-composer {
@@ -1615,12 +1635,22 @@ a:hover {
   :root[data-theme='dark'] .ask-shell {
     background: linear-gradient(
       180deg,
-      rgb(var(--navy-900-rgb) / 0.88) 0%,
-      rgb(var(--navy-950-rgb) / 0.84) 56%,
-      rgb(var(--navy-950-rgb) / 0.8) 100%
+      rgb(var(--navy-900-rgb) / 0.72) 0%,
+      rgb(var(--navy-950-rgb) / 0.66) 56%,
+      rgb(var(--navy-950-rgb) / 0.62) 100%
     );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  :root[data-theme='dark'] .ask-shell > .theme-divider {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--navy-900-rgb) / 0.24) 0%,
+      rgb(var(--navy-950-rgb) / 0.16) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   :root[data-theme='dark'] .surface-faq {
@@ -1631,14 +1661,22 @@ a:hover {
     background: transparent;
   }
 
+  :root[data-theme='dark'] .ask-shell .surface-chat-column {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--border-rgb) / 0.012) 0%,
+      rgb(var(--border-rgb) / 0.008) 100%
+    );
+  }
+
   :root[data-theme='dark'] .surface-chat {
     background: rgb(var(--border-rgb) / 0.035);
   }
 
   :root[data-theme='dark'] .ask-chat-panel .surface-chat {
-    background: rgb(var(--border-rgb) / 0.022);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgb(var(--border-rgb) / 0.014);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   :root[data-theme='dark'] .surface-composer {
@@ -1646,7 +1684,9 @@ a:hover {
   }
 
   :root[data-theme='dark'] .ask-chat-panel .surface-composer {
-    background: rgb(var(--border-rgb) / 0.018);
+    background: rgb(var(--border-rgb) / 0.012);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   :root[data-theme='dark'] .surface-input-shell {
@@ -1656,7 +1696,7 @@ a:hover {
   }
 
   :root[data-theme='dark'] .ask-chat-panel .surface-input-shell {
-    background: rgb(var(--border-rgb) / 0.028);
+    background: rgb(var(--border-rgb) / 0.02);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
