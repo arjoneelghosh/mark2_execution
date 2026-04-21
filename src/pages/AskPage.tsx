@@ -17,10 +17,20 @@ interface AskPromptItem {
 
 const UNIFIED_QUESTION_LIST: AskPromptItem[] = [
   {
-    id: 'best-ml',
-    label: 'Show DS/ML work',
-    description: assistantActions.find((item) => item.id === 'best-ml')?.description || '',
-    prompt: 'Show DS/ML work',
+    id: 'navigation-ring',
+    label:
+      assistantFaqs.find((item) => item.id === 'navigation-ring')?.label ||
+      'How do I use the navigation ring?',
+    description:
+      assistantFaqs.find((item) => item.id === 'navigation-ring')?.description ||
+      'Understand how the persistent ring navigation works across the portfolio.',
+    prompt: 'How do I use the navigation ring?',
+  },
+  {
+    id: 'guide',
+    label: 'Guide me through this portfolio',
+    description: assistantActions.find((item) => item.id === 'guide')?.description || '',
+    prompt: 'Guide me through this portfolio',
   },
   {
     id: 'recruiter-summary',
@@ -28,6 +38,12 @@ const UNIFIED_QUESTION_LIST: AskPromptItem[] = [
     description:
       assistantActions.find((item) => item.id === 'recruiter-summary')?.description || '',
     prompt: 'Summarize Arjoneel for a recruiter',
+  },
+  {
+    id: 'best-ml',
+    label: 'Show DS/ML work',
+    description: assistantActions.find((item) => item.id === 'best-ml')?.description || '',
+    prompt: 'Show DS/ML work',
   },
   {
     id: 'full-stack',
@@ -68,22 +84,6 @@ const UNIFIED_QUESTION_LIST: AskPromptItem[] = [
       assistantFaqs.find((item) => item.id === 'education')?.description ||
       'Get the grounded education record.',
     prompt: "What is Arjoneel's education?",
-  },
-  {
-    id: 'navigation-ring',
-    label:
-      assistantFaqs.find((item) => item.id === 'navigation-ring')?.label ||
-      'How do I use the navigation ring?',
-    description:
-      assistantFaqs.find((item) => item.id === 'navigation-ring')?.description ||
-      'Understand how the persistent ring navigation works across the portfolio.',
-    prompt: 'How do I use the navigation ring?',
-  },
-  {
-    id: 'guide',
-    label: 'Guide me through this portfolio',
-    description: assistantActions.find((item) => item.id === 'guide')?.description || '',
-    prompt: 'Guide me through this portfolio',
   },
 ];
 
