@@ -1417,17 +1417,17 @@ a:hover {
     border-radius: 34px;
     background: linear-gradient(
       155deg,
-      rgb(246 239 214 / 0.94) 0%,
-      rgb(228 215 171 / 0.9) 40%,
-      rgb(210 193 148 / 0.86) 100%
+      rgb(246 239 214 / 0.68) 0%,
+      rgb(228 215 171 / 0.64) 40%,
+      rgb(210 193 148 / 0.54) 100%
     );
-    border: 1px solid rgb(195 177 131 / 0.76);
+    border: 1px solid rgb(195 177 131 / 0.54);
     box-shadow:
-      0 28px 62px rgba(83, 66, 22, 0.1),
-      0 10px 24px rgba(83, 66, 22, 0.05),
-      inset 0 1px 0 rgba(255, 250, 237, 0.66);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+      0 22px 48px rgba(83, 66, 22, 0.07),
+      0 10px 24px rgba(83, 66, 22, 0.03),
+      inset 0 1px 0 rgba(255, 250, 237, 0.46);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   :root[data-theme='light'] .home-hero-copy::before {
@@ -1435,13 +1435,13 @@ a:hover {
     background:
       linear-gradient(
         180deg,
-        rgba(255, 250, 236, 0.34) 0%,
-        rgba(255, 248, 231, 0.08) 24%,
+        rgba(255, 250, 236, 0.22) 0%,
+        rgba(255, 248, 231, 0.05) 24%,
         transparent 54%
       ),
       radial-gradient(
         circle at top right,
-        rgba(255, 252, 242, 0.28) 0%,
+        rgba(255, 252, 242, 0.18) 0%,
         transparent 54%
       );
   }
@@ -1455,9 +1455,9 @@ a:hover {
     background:
       linear-gradient(
         135deg,
-        rgba(150, 118, 67, 0.12) 0%,
+        rgba(150, 118, 67, 0.08) 0%,
         transparent 34%,
-        rgba(255, 248, 228, 0.12) 100%
+        rgba(255, 248, 228, 0.08) 100%
       );
   }
 
@@ -1478,58 +1478,48 @@ a:hover {
   :root[data-theme='light'] .home-focus-card {
     background: linear-gradient(
       180deg,
-      rgb(242 236 208 / 0.94) 0%,
-      rgb(236 229 197 / 0.98) 58%,
-      rgb(var(--accent-soft-surface-rgb) / 0.22) 100%
+      rgb(242 236 208 / 0.62) 0%,
+      rgb(236 229 197 / 0.68) 58%,
+      rgb(var(--accent-soft-surface-rgb) / 0.12) 100%
     );
-    border-color: rgb(var(--border-rgb) / 0.78);
+    border-color: rgb(var(--border-rgb) / 0.52);
     box-shadow:
-      0 16px 34px rgba(83, 66, 22, 0.08),
-      0 6px 16px rgba(83, 66, 22, 0.04);
+      0 12px 26px rgba(83, 66, 22, 0.05),
+      0 6px 16px rgba(83, 66, 22, 0.025);
   }
 
   :root[data-theme='light'] .home-focus-card::before {
     opacity: 1;
     background: linear-gradient(
-      180deg,
-      rgba(255, 248, 231, 0.42) 0%,
-      transparent 34%,
-      rgba(167, 189, 214, 0.1) 100%
-    );
+        180deg,
+        rgba(255, 248, 231, 0.22) 0%,
+        transparent 34%,
+        rgba(167, 189, 214, 0.06) 100%
+      );
   }
 
   :root[data-theme='light'] .home-feature-block {
     padding: 1.35rem 1.4rem;
     margin-left: -0.45rem;
     border-radius: 24px;
-    background: linear-gradient(
-      180deg,
-      rgb(248 243 224 / 0.8) 0%,
-      rgb(242 236 213 / 0.92) 52%,
-      rgb(var(--accent-soft-surface-rgb) / 0.18) 100%
-    );
-    border: 1px solid rgb(var(--border-rgb) / 0.68);
-    box-shadow:
-      0 18px 38px rgba(83, 66, 22, 0.06),
-      0 8px 18px rgba(83, 66, 22, 0.03);
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   :root[data-theme='light'] .home-feature-block::before {
-    opacity: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 248, 231, 0.38) 0%,
-      transparent 32%,
-      rgba(167, 189, 214, 0.08) 100%
-    );
+    opacity: 0;
+    background: none;
   }
 
   :root[data-theme='light'] .home-portrait-overlay-left {
     background: linear-gradient(
       to right,
-      rgb(var(--page-bg-rgb)) 0%,
-      rgb(var(--page-bg-rgb) / 0.8) 24%,
-      rgb(226 218 175 / 0.18) 52%,
+      rgb(var(--page-bg-rgb) / 0.82) 0%,
+      rgb(var(--page-bg-rgb) / 0.34) 24%,
+      rgb(226 218 175 / 0.08) 52%,
       transparent 100%
     );
   }
@@ -1537,18 +1527,18 @@ a:hover {
   :root[data-theme='light'] .home-portrait-overlay-top {
     background: linear-gradient(
       to top,
-      rgb(var(--page-bg-rgb) / 0.58) 0%,
+      rgb(var(--page-bg-rgb) / 0.34) 0%,
       transparent 46%,
-      rgb(228 220 182 / 0.2) 100%
+      rgb(228 220 182 / 0.08) 100%
     );
   }
 
   :root[data-theme='light'] .home-portrait-overlay-bottom {
     background: linear-gradient(
       to bottom,
-      rgb(var(--page-bg-secondary-rgb) / 0.22) 0%,
+      rgb(var(--page-bg-secondary-rgb) / 0.12) 0%,
       transparent 40%,
-      rgb(var(--page-bg-rgb) / 0.5) 100%
+      rgb(var(--page-bg-rgb) / 0.22) 100%
     );
   }
 

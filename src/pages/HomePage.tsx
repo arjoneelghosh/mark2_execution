@@ -37,9 +37,9 @@ const HomePage: React.FC = () => {
       const ringScale = 0.94 + t * 0.06;
 
       if (portraitRef.current) {
-        const baseOpacity = isLight ? 0.18 : 0.28;
-        const minOpacity = isLight ? 0.05 : 0.08;
-        const portraitOpacity = baseOpacity - t * (isLight ? 0.12 : 0.2);
+        const baseOpacity = isLight ? 0.3 : 0.28;
+        const minOpacity = isLight ? 0.12 : 0.08;
+        const portraitOpacity = baseOpacity - t * (isLight ? 0.18 : 0.2);
         portraitRef.current.style.opacity = `${Math.max(portraitOpacity, minOpacity)}`;
       }
 
@@ -76,7 +76,7 @@ const HomePage: React.FC = () => {
         <div
           ref={portraitRef}
           className="absolute top-0 right-0 w-[52%] h-full pointer-events-none select-none"
-          style={{ opacity: 0.28 }}
+          style={{ opacity: isLight ? 0.3 : 0.28 }}
         >
           <div className="home-portrait-overlay-left absolute inset-0 z-10" />
           <div className="home-portrait-overlay-top absolute inset-0 z-10" />
