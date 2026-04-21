@@ -22,13 +22,22 @@ const ParticleField: React.FC = () => {
       canvas.height = window.innerHeight;
     };
 
-    const syncThemeTokens = () => {
+    const syncThemeAppearance = () => {
       particleRgb =
         getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim() ||
         '138 170 224';
       particleLayerOpacity =
         getComputedStyle(document.documentElement).getPropertyValue('--particle-layer-opacity').trim() ||
         '0.6';
+      particleHaloOpacity = Number.parseFloat(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--particle-halo-opacity')
+          .trim() || '0.14'
+      );
+      canvas.style.opacity = particleLayerOpacity;
+    };
+
+    const syncParticleGenerationTokens = () => {
       particleDensityMultiplier = Number.parseFloat(
         getComputedStyle(document.documentElement)
           .getPropertyValue('--particle-density-multiplier')
@@ -44,11 +53,10 @@ const ParticleField: React.FC = () => {
           .getPropertyValue('--particle-halo-opacity')
           .trim() || '0.14'
       );
-      canvas.style.opacity = particleLayerOpacity;
     };
 
-    const init = () => {
-      syncThemeTokens();
+    const generateParticles = () => {
+      syncParticleGenerationTokens();
       resize();
       const count = Math.floor(((canvas.width * canvas.height) / 18000) * particleDensityMultiplier);
       particles = Array.from({ length: Math.min(count, 120) }, () => ({
@@ -59,6 +67,11 @@ const ParticleField: React.FC = () => {
         speed: Math.random() * 0.15 + 0.02,
         drift: (Math.random() - 0.5) * 0.08,
       }));
+    };
+
+    const init = () => {
+      syncThemeAppearance();
+      generateParticles();
     };
 
     const draw = () => {
@@ -89,13 +102,13 @@ const ParticleField: React.FC = () => {
 
     init();
     draw();
-    window.addEventListener('resize', init);
-    const observer = new MutationObserver(init);
+    window.addEventListener('resize', generateParticles);
+    const observer = new MutationObserver(syncThemeAppearance);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', init);
+      window.removeEventListener('resize', generateParticles);
       observer.disconnect();
     };
   }, []);

@@ -138,10 +138,10 @@
 
   --overlay-rgb: 15 27 45;
   --particle-rgb: 44 63 92;
-  --particle-layer-opacity: 0.88;
-  --particle-density-multiplier: 1.72;
-  --particle-radius-multiplier: 1.68;
-  --particle-halo-opacity: 0.2;
+  --particle-layer-opacity: 0.6;
+  --particle-density-multiplier: 1;
+  --particle-radius-multiplier: 1;
+  --particle-halo-opacity: 0.14;
 
   --ring-core-fill-rgb: 255 250 238;
   --ring-core-stroke-rgb: 74 144 217;
