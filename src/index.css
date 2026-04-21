@@ -137,11 +137,11 @@
   --chip-border-rgb: 220 211 184;
 
   --overlay-rgb: 15 27 45;
-  --particle-rgb: 112 149 194;
-  --particle-layer-opacity: 0.74;
-  --particle-density-multiplier: 1.5;
-  --particle-radius-multiplier: 1.48;
-  --particle-halo-opacity: 0.22;
+  --particle-rgb: 44 63 92;
+  --particle-layer-opacity: 0.88;
+  --particle-density-multiplier: 1.72;
+  --particle-radius-multiplier: 1.68;
+  --particle-halo-opacity: 0.2;
 
   --ring-core-fill-rgb: 255 250 238;
   --ring-core-stroke-rgb: 74 144 217;
