@@ -774,6 +774,12 @@ const referencesChatbotMeta = (query: string, queryTokens: string[]) => {
 };
 
 export type CanonicalIntent =
+  | 'profile-unsupported'
+  | 'candidate-profile'
+  | 'role-fit'
+  | 'project-ranking'
+  | 'portfolio-orientation'
+  | 'candidate-vs-website'
   | 'portfolio-website'
   | 'portfolio-summary'
   | 'portfolio-strengths'
@@ -870,6 +876,726 @@ const PARTIAL_SUPPORT_RELATED = [
   'Is this chatbot grounded?',
   'Does every page have chatbot support?',
 ];
+
+const GROUNDED_FALLBACK_RELATED = [
+  'Show DS/ML work',
+  'Summarize tech stack',
+  'What is in Lab Concepts?',
+  'What internships are listed?',
+];
+
+const createActionContext = (
+  label: string,
+  replyTitle: string,
+  replySummary: string,
+  replyBullets: string[]
+): Extract<PortfolioMatchContext, { kind: 'action' }> => ({
+  kind: 'action',
+  item: {
+    label,
+    replyTitle,
+    replySummary,
+    replyBullets,
+  },
+});
+
+const buildGroundedFallbackContext = (): UnsupportedContext => ({
+  kind: 'unsupported',
+  title: 'Grounded Portfolio Assistant',
+  summary:
+    'I can only answer from the local portfolio knowledge currently loaded into this site. That means I will not invent missing facts, external background, metrics, or unsupported project details.',
+  bullets: ['Try asking about projects, internships, Lab content, records, skills, or navigation.'],
+  related: GROUNDED_FALLBACK_RELATED,
+  suggestions: GROUNDED_FALLBACK_RELATED,
+});
+
+const getProjectBySlug = (slug: string) =>
+  chatbotKnowledge.projects.find((project) => project.slug === slug);
+
+const getLeadingNoiseToken = (queryTokens: string[]) => {
+  if (queryTokens.length < 2 || queryTokens.length > 4) return null;
+
+  const [first, ...rest] = queryTokens;
+  if (!/^[a-z]+$/.test(first) || first.length < 3 || first.length > 5) return null;
+
+  const knownVocabulary = [
+    'what',
+    'which',
+    'who',
+    'how',
+    'why',
+    'is',
+    'are',
+    'the',
+    'your',
+    'this',
+    'portfolio',
+    'project',
+    'projects',
+    'experience',
+    'frontend',
+    'website',
+    'tech',
+    'stack',
+    'tools',
+    'technologies',
+    'regularly',
+    'use',
+    'used',
+    'summary',
+  ];
+
+  if (hasTokenFamily([first], knownVocabulary, 1)) return null;
+
+  const hasClearIntentToken =
+    hasTokenFamily(rest, ['project', 'projects', 'experience', 'frontend', 'website'], 1) ||
+    (hasTokenFamily(rest, ['tech', 'stack', 'tools', 'technologies'], 1) &&
+      (rest.length >= 1 || hasTokenFamily(rest, ['regularly', 'use', 'used'], 2)));
+
+  return hasClearIntentToken ? first : null;
+};
+
+const referencesRecurringToolsQuery = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'what tools/technologies do you use regularly',
+    'what tools technologies do you use regularly',
+    'what tools do you use regularly',
+    'what technologies do you use regularly',
+    'what tools do you use',
+    'what tech stack do you use regularly',
+    'regular tools',
+    'tools technologies',
+  ]) ||
+  query.includes('tools/technologies') ||
+  ((hasTokenFamily(queryTokens, ['tools', 'technologies'], 1) &&
+    hasTokenFamily(queryTokens, ['use', 'regularly'], 2)) ||
+    (hasTokenFamily(queryTokens, ['tools'], 1) && hasTokenFamily(queryTokens, ['use'], 1)) ||
+    (query.includes('tech stack') && hasTokenFamily(queryTokens, ['use', 'regularly'], 2)));
+
+const buildRegularToolsContext = (noiseToken?: string): PortfolioMatchContext =>
+  createActionContext(
+    'Regularly Used Tools',
+    'Regularly Used Tools',
+    `${
+      noiseToken
+        ? `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on the recurring tools wording `
+        : ''
+    }The tools that appear most consistently across this portfolio are Python, SQL, Pandas, DuckDB, FastAPI, React, TypeScript, Streamlit, and model-oriented tooling such as scikit-learn, XGBoost, and Prophet.`,
+    [
+      'Data and analytics: Python, SQL, Pandas, DuckDB, and Streamlit show up repeatedly in forecasting, tooling, and dashboard-style work.',
+      'Delivery and interfaces: React, TypeScript, FastAPI, and dashboard or workflow-oriented frontend delivery appear across the strongest product-facing projects.',
+      'ML and forecasting: scikit-learn, XGBoost, Prophet, ARIMA, and computer-vision tooling such as OpenCV and MediaPipe are the clearest recurring model-side tools.',
+    ]
+  );
+
+const buildNoiseAwareProjectIntentContext = (
+  query: string,
+  queryTokens: string[]
+): PortfolioMatchContext | null => {
+  const noiseToken = getLeadingNoiseToken(queryTokens);
+  if (!noiseToken) return null;
+
+  if (query.includes('experience')) {
+    return createActionContext(
+      'Experience Summary',
+      'Experience Summary',
+      `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "experience" here is the closest relevant summary.`,
+      [
+        'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
+        'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
+      ]
+    );
+  }
+
+  if (query.includes('tech stack') || referencesRecurringToolsQuery(query, queryTokens)) {
+    if (referencesRecurringToolsQuery(query, queryTokens)) {
+      return buildRegularToolsContext(noiseToken);
+    }
+
+    return createActionContext(
+      'Tech Stack Summary',
+      'Tech Stack Summary',
+      `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "tech stack" here is the closest grounded summary.`,
+      getTechStackGroups().map((group) => `${group.label}: ${group.values.join(', ')}`)
+    );
+  }
+
+  if (query.includes('frontend') && query.includes('projects')) {
+    return createActionContext(
+      'Frontend and Website Projects',
+      'Frontend and Website Projects',
+      `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "frontend projects" here are the closest relevant project signals.`,
+      [
+        'SurgeMedi - Real deployed catalog website with product discovery, product detail views, and inquiry workflow.',
+        'FlightFinder AI - Accessibility-aware product workflow with guided UI, conversational flow, and structured interaction design.',
+        'AgriFore - Dashboard-oriented frontend delivery layered over forecasting and API-backed analytics.',
+      ]
+    );
+  }
+
+  if (query.includes('project')) {
+    return createActionContext(
+      'Portfolio Projects',
+      'Portfolio Projects',
+      `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "projects" here is the closest relevant project overview.`,
+      chatbotKnowledge.projects
+        .filter((project) => !project.archive)
+        .slice(0, 5)
+        .map((project) => `${project.title} - ${project.previewSummary || project.summary}`)
+    );
+  }
+
+  return null;
+};
+
+const referencesUnsupportedProfileInterviewQuery = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'what are your key responsibilities in your current role',
+    'tell me about a time you worked in a team',
+    'describe a conflict at work and how you resolved it',
+    'give an example of a failure and what you learned',
+    'what are your salary expectations',
+    'do you have any other offers',
+    'why did you choose this field',
+  ]) ||
+  ((hasTokenFamily(queryTokens, ['salary', 'offer', 'offers'], 1) ||
+    hasTokenFamily(queryTokens, ['conflict', 'failure', 'learned'], 2) ||
+    (hasTokenFamily(queryTokens, ['team'], 1) && hasTokenFamily(queryTokens, ['worked'], 1))) &&
+    queryTokens.length >= 4);
+
+const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'what is your experience',
+    'what experience',
+    'what is your job profile',
+    'what projects have you worked on',
+    'what tools/technologies do you use regularly',
+    'what tools technologies do you use regularly',
+    'what tools do you use regularly',
+    'what technologies do you use regularly',
+    'what tools do you use',
+    'what tech stack do you use regularly',
+    'summarize this candidate in one line',
+    'what kind of engineer is arjoneel',
+    'strengths weaknesses',
+    'what risks might recruiters see in this portfolio',
+    'why should i hire arjoneel',
+    'why should i not hire arjoneel',
+  ]) ||
+  ((query.includes('experience') || query.includes('job profile')) &&
+    !hasTokenFamily(queryTokens, ['website', 'site', 'ring', 'portfolio'], 1)) ||
+  ((hasTokenFamily(queryTokens, ['projects'], 1) || hasTokenFamily(queryTokens, ['technologies', 'tools'], 1)) &&
+    (hasTokenFamily(queryTokens, ['worked', 'use', 'regularly'], 2) ||
+      includesAny(query, ['have you worked on', 'do you use regularly']))) ||
+  (hasTokenFamily(queryTokens, ['hire'], 1) && hasTokenFamily(queryTokens, ['arjoneel'], 2));
+
+const referencesRoleFitIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'how do you think arjoneel can add value to an applied ai engineer role',
+    'how do you think arjoneel can add value to a frontend engineer role',
+    'how do you think arjoneel can add value to a data scientist role',
+    'how do you think arjoneel can add value to an ml engineer role',
+    'what role is this portfolio best suited for',
+    'what role is this portfolio not yet strong enough for',
+    'who should hire this person',
+    'ds or swe',
+    'full stack or ml',
+    'research or product',
+    'is this person stronger in ml software or product thinking',
+  ]) ||
+  (query.includes('add value') && query.includes('role')) ||
+  (hasTokenFamily(queryTokens, ['role'], 1) &&
+    (hasTokenFamily(queryTokens, ['suited', 'fit'], 2) ||
+      includesAny(query, ['not yet strong enough']))) ||
+  (hasTokenFamily(queryTokens, ['ml', 'frontend', 'data', 'product', 'research'], 1) &&
+    hasTokenFamily(queryTokens, ['stronger'], 2));
+
+const referencesProjectRankingIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'what is the best project here and why',
+    'best project for recruiter',
+    'which project looks the most complete',
+    'which project looks the most impressive to a recruiter',
+    'which project should be discussed first in an interview',
+    'what is the clearest proof of frontend ability here',
+    'what is the clearest proof of backend ability here',
+    'what is the strongest technical signal on this site',
+    'what is the weakest signal on this site',
+    'website projects frontend experience',
+  ]) ||
+  ((hasTokenFamily(queryTokens, ['best', 'strongest', 'weakest', 'clearest'], 2) &&
+    hasTokenFamily(queryTokens, ['project', 'frontend', 'backend', 'signal', 'strength'], 2)) ||
+    (hasTokenFamily(queryTokens, ['interview'], 1) &&
+      hasTokenFamily(queryTokens, ['project', 'discussed'], 2)) ||
+    (hasTokenFamily(queryTokens, ['website', 'projects'], 1) &&
+      hasTokenFamily(queryTokens, ['frontend', 'experience'], 2)));
+
+const referencesPortfolioOrientationIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'is this portfolio more research oriented product oriented or engineering oriented',
+    'is this portfolio more research-oriented product-oriented or engineering-oriented',
+  ]) ||
+  ((query.includes('research-oriented') ||
+    query.includes('product-oriented') ||
+    query.includes('engineering-oriented')) &&
+    query.includes('portfolio')) ||
+  (query.includes('portfolio') &&
+    hasTokenFamily(queryTokens, ['research', 'product', 'engineering'], 2));
+
+const referencesCandidateVsWebsiteIntent = (query: string) =>
+  includesAny(query, ['arjoneel or website']);
+
+const buildCandidateProfileContext = (
+  rawQuery: string,
+  query: string,
+  queryTokens: string[]
+): PortfolioMatchContext => {
+  const strengths = chatbotKnowledge.siteMeta.portfolioStrengths;
+  const weaknesses = chatbotKnowledge.siteMeta.portfolioWeaknesses;
+  const recruiterReply = chatbotKnowledge.ask.actionReplies['recruiter-summary'];
+  const noiseToken = getLeadingNoiseToken(queryTokens);
+  const topProjects = [
+    'AgriFore',
+    'FlightFinder AI',
+    'Priority-Based CSV Sampler',
+    'R Styled Forecast Tool for Business Metrics',
+  ];
+
+  if (referencesUnsupportedProfileInterviewQuery(query, queryTokens)) {
+    return buildGroundedFallbackContext();
+  }
+
+  if (includesAny(query, ['what projects have you worked on'])) {
+    return createActionContext(
+      'Project History',
+      'Project History',
+      'The portfolio project history spans forecasting systems, applied AI, internal-style data tooling, and full-stack product delivery.',
+      [
+        `Featured and strongest work: ${topProjects.join(', ')}.`,
+        'Additional main-shelf project evidence includes SignChat, SurgeMedi, and LoanOne AI.',
+        'Lab extends that work with CropIQ, the AgriFore Dashboard, FlightFinder AI Working Prototype, and the AgriFore manuscript.',
+      ]
+    );
+  }
+
+  if (
+    referencesRecurringToolsQuery(query, queryTokens)
+  ) {
+    return buildRegularToolsContext(noiseToken ?? undefined);
+  }
+
+  if (includesAny(query, ['strengths weaknesses'])) {
+    return createActionContext(
+      'Strengths and Weaknesses',
+      'Strengths and Weaknesses',
+      'The portfolio shows strong technical range, but the main cautions are about maturity and evidence consistency rather than ability.',
+      [
+        `Strengths: ${strengths.bullets[0]}`,
+        `Strengths: ${strengths.bullets[1]}`,
+        `Weaknesses: ${weaknesses.bullets[0]}`,
+        `Weaknesses: ${weaknesses.bullets[1]}`,
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what risks might recruiters see in this portfolio'])) {
+    return { kind: 'site-meta', topic: getSiteMeta('portfolioWeaknesses') };
+  }
+
+  if (includesAny(query, ['why should i hire arjoneel'])) {
+    return createActionContext(
+      'Why Hire Arjoneel',
+      'Why Hire Arjoneel',
+      'The strongest case for hiring Arjoneel from this portfolio is the combination of evidence-backed forecasting and ML work, practical tooling, and product-oriented delivery.',
+      [
+        strengths.bullets[0],
+        strengths.bullets[1],
+        strengths.bullets[3],
+        recruiterReply.bullets[0],
+      ]
+    );
+  }
+
+  if (includesAny(query, ['why should i not hire arjoneel'])) {
+    return createActionContext(
+      'Why Not Hire Arjoneel',
+      'Why Not Hire Arjoneel',
+      'The main reasons for caution from this portfolio are maturity and packaging gaps rather than a lack of technical range.',
+      [
+        weaknesses.bullets[0],
+        weaknesses.bullets[1],
+        weaknesses.bullets[2],
+        weaknesses.bullets[3],
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what is your experience', 'what experience']) || query.includes('experience')) {
+    return createActionContext(
+      'Experience Summary',
+      'Experience Summary',
+      `${
+        noiseToken
+          ? `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "experience" here is the closest relevant summary. `
+          : ''
+      }The published experience here is internship-led and project-heavy, with additional leadership evidence rather than a long full-time role history.`,
+      [
+        'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
+        'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what is your job profile'])) {
+    return createActionContext(
+      'Job Profile',
+      'Job Profile',
+      `${chatbotKnowledge.site.ownerName} is best described here as a ${chatbotKnowledge.site.headline.toLowerCase()} with strongest evidence in forecasting systems, assistive AI, and product-oriented technical delivery.`,
+      recruiterReply.bullets
+    );
+  }
+
+  return createActionContext(
+    'Profile Summary',
+    'Profile Summary',
+    `${chatbotKnowledge.site.ownerName} is positioned as a ${chatbotKnowledge.site.headline.toLowerCase()} whose work centers on forecasting systems, assistive computer vision, and product-oriented technical delivery.`,
+    [
+      recruiterReply.bullets[0],
+      recruiterReply.bullets[1],
+      'Supporting experience includes KPMG India Services LLP and Sopra Steria India Limited internship records.',
+      'The broader profile combines projects, grouped skills, education, experience records, and Lab material.',
+    ]
+  );
+};
+
+const buildRoleFitContext = (query: string): PortfolioMatchContext => {
+  const weaknesses = chatbotKnowledge.siteMeta.portfolioWeaknesses;
+
+  if (includesAny(query, ['applied ai engineer role', 'applied ai engineer'])) {
+    return createActionContext(
+      'Applied AI Engineer Fit',
+      'Applied AI Engineer Fit',
+      'The portfolio looks well suited for an applied AI engineer role because it combines ML workflows with user-facing delivery rather than stopping at model experimentation.',
+      [
+        'Applied AI signals: AgriFore for forecasting and model-backed analytics, SignChat for assistive computer vision, and FlightFinder AI for AI-assisted accessibility workflows.',
+        'Delivery signals: FastAPI, dashboard interfaces, product workflows, and multimodal interaction surfaces appear repeatedly.',
+        `Main gap to keep in mind: ${weaknesses.bullets[2]}`,
+      ]
+    );
+  }
+
+  if (includesAny(query, ['frontend engineer role', 'frontend engineer'])) {
+    return createActionContext(
+      'Frontend Engineer Fit',
+      'Frontend Engineer Fit',
+      'The portfolio is partially suited for a frontend engineer role, but the strongest overall signal is broader full-stack and ML-oriented delivery rather than frontend-only specialization.',
+      [
+        'Frontend-facing evidence: SurgeMedi, FlightFinder AI, LoanOne AI, and the AgriFore dashboard surfaces.',
+        'Profile support: React, TypeScript, JavaScript, dashboard interfaces, and product workflow design are all represented in the local skill groups.',
+        `Main gap: ${weaknesses.bullets[1]}`,
+      ]
+    );
+  }
+
+  if (includesAny(query, ['data scientist role', 'data scientist'])) {
+    return createActionContext(
+      'Data Scientist Fit',
+      'Data Scientist Fit',
+      'The portfolio is well suited for a data scientist role, especially where forecasting, analytics workflows, and practical delivery matter.',
+      [
+        'Core DS signals: AgriFore, R Styled Forecast Tool for Business Metrics, and Priority-Based CSV Sampler.',
+        'Experience support: KPMG internship material references data mining, pattern recognition, forecasting workflows, and analytics automation.',
+        `Main gap to keep in mind: ${weaknesses.bullets[2]}`,
+      ]
+    );
+  }
+
+  if (includesAny(query, ['ml engineer role', 'machine learning engineer'])) {
+    return createActionContext(
+      'ML Engineer Fit',
+      'ML Engineer Fit',
+      'This portfolio is best suited for ML engineer roles, especially ones that value product delivery rather than pure offline modeling.',
+      [
+        'ML signals: AgriFore, SignChat, R Styled Forecast Tool for Business Metrics, and Priority-Based CSV Sampler.',
+        'Profile support: forecasting workflows, feature engineering, model evaluation, time-series work, computer vision, and real-time inference all appear in the local skills data.',
+        `Main gap to keep in mind: ${weaknesses.bullets[0]}`,
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what role is this portfolio best suited for'])) {
+    return createActionContext(
+      'Best-Fit Role',
+      'Best-Fit Role',
+      'The single best fit here is an ML engineer role with product-facing delivery expectations.',
+      [
+        'AgriFore, R Styled Forecast Tool for Business Metrics, and Priority-Based CSV Sampler provide the strongest forecasting and DS/ML evidence.',
+        'FlightFinder AI and SignChat show that the portfolio can turn ML or AI work into a user-facing product surface.',
+        'The profile headline itself is Machine Learning Engineer and Full-Stack Developer, which reinforces that direction.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what role is this portfolio not yet strong enough for'])) {
+    return createActionContext(
+      'Current Role Gaps',
+      'Current Role Gaps',
+      'This portfolio is not yet strongest for a pure research-scientist role.',
+      [
+        'There is research-style work and an IEEE-format manuscript, but the broader portfolio evidence is still more applied and product-facing than publication-heavy.',
+        weaknesses.bullets[0],
+        weaknesses.bullets[2],
+      ]
+    );
+  }
+
+  if (includesAny(query, ['who should hire this person'])) {
+    return createActionContext(
+      'Who Should Hire This Person',
+      'Who Should Hire This Person',
+      'Teams hiring ML engineers or applied AI engineers who want someone comfortable shipping usable product surfaces are the clearest fit for this portfolio.',
+      [
+        'The strongest work combines forecasting, applied AI, data tooling, and front-end or workflow delivery.',
+        'The portfolio repeatedly shows productized technical systems rather than isolated notebooks or static demos.',
+        `Main caution to keep in mind: ${weaknesses.bullets[1]}`,
+      ]
+    );
+  }
+
+  if (includesAny(query, ['ds or swe'])) {
+    return createActionContext(
+      'DS or SWE',
+      'DS or SWE',
+      'This portfolio reads closer to DS/ML than to pure software engineering, with full-stack delivery used to operationalize the work.',
+      [
+        'AgriFore, R Styled Forecast Tool for Business Metrics, and Priority-Based CSV Sampler make the forecasting and analytical side of the profile very visible.',
+        'There is real software and product delivery evidence, but it mostly supports the ML, analytics, or AI story rather than replacing it.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['full stack or ml'])) {
+    return createActionContext(
+      'Full Stack or ML',
+      'Full Stack or ML',
+      'This portfolio is closer to ML, with full-stack used as the delivery layer.',
+      [
+        'The profile headline, forecasting work, and applied AI projects all point first toward ML-oriented identity.',
+        'Full-stack evidence is strong, but it is most often attached to productizing the ML or AI workflows rather than standing alone.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['research or product'])) {
+    return createActionContext(
+      'Research or Product',
+      'Research or Product',
+      'This portfolio reads closer to product-oriented engineering than to pure research.',
+      [
+        'Many projects are framed as guided workflows, dashboards, internal tools, or accessibility-oriented product surfaces.',
+        'There is research-style and Lab material, but it does not dominate the portfolio in the way a research-first profile would.',
+      ]
+    );
+  }
+
+  return createActionContext(
+    'ML, Software, or Product Thinking',
+    'ML, Software, or Product Thinking',
+    'ML is the strongest signal in this portfolio, product thinking is next, and pure software-only identity is less central.',
+    [
+      'ML strength is most visible through AgriFore, SignChat, R Styled Forecast Tool for Business Metrics, and Priority-Based CSV Sampler.',
+      'Product thinking is also strong because FlightFinder AI, SurgeMedi, and other projects are framed as guided user workflows rather than raw technical demos.',
+      'Pure software-only positioning is not the main story because much of the software work exists to support ML, AI, analytics, or decision workflows.',
+    ]
+  );
+};
+
+const buildProjectRankingContext = (query: string, queryTokens: string[]): PortfolioMatchContext => {
+  const agrifore = getProjectBySlug('agrifore');
+  const flightFinder = getProjectBySlug('flightfinder-ai');
+  const surgeMedi = getProjectBySlug('surgemedi');
+  const weaknesses = chatbotKnowledge.siteMeta.portfolioWeaknesses;
+  const noiseToken = getLeadingNoiseToken(queryTokens);
+
+  if (query.includes('frontend') && query.includes('projects')) {
+    return createActionContext(
+      'Frontend and Website Projects',
+      'Frontend and Website Projects',
+      `${
+        noiseToken
+          ? `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "frontend projects" `
+          : ''
+      }the closest relevant project signals are SurgeMedi, FlightFinder AI, and the AgriFore dashboard surfaces.`,
+      [
+        'SurgeMedi - Real deployed catalog website with product discovery, product detail views, and inquiry workflow.',
+        'FlightFinder AI - Accessibility-aware workflow with guided UI, conversational flow, and product-style interaction design.',
+        'AgriFore - Dashboard-oriented frontend delivery layered over forecasting and API-backed analytics.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['website projects frontend experience'])) {
+    return createActionContext(
+      'Website Projects and Frontend Experience',
+      'Website Projects and Frontend Experience',
+      'The clearest website and frontend experience in this portfolio comes from SurgeMedi, FlightFinder AI, LoanOne AI, and the AgriFore dashboard surfaces.',
+      [
+        'SurgeMedi is the clearest pure website-style frontend signal because it is a real deployed catalog site with product discovery, detail views, and inquiry flow.',
+        'FlightFinder AI adds richer guided workflow and accessibility-first interface design.',
+        'AgriFore shows dashboard-style frontend work layered over forecasting and API-backed delivery.',
+      ]
+    );
+  }
+
+  if (
+    includesAny(query, ['best strenght']) ||
+    (hasTokenFamily(queryTokens, ['best'], 1) &&
+      (hasTokenFamily(queryTokens, ['strength', 'strengths'], 2) ||
+        hasApproximateToken(queryTokens, 'strength', 2)))
+  ) {
+    return createActionContext(
+      'Strongest Portfolio Signal',
+      'Strongest Portfolio Signal',
+      'The single strongest signal in this portfolio is evidence-backed forecasting and DS/ML delivery.',
+      [
+        'AgriFore anchors that signal with forecasting, DuckDB and SQL data preparation, FastAPI delivery, and a visible dashboard surface.',
+        'R Styled Forecast Tool for Business Metrics and Priority-Based CSV Sampler reinforce the broader analytical and tooling depth behind that signal.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what is the best project here and why'])) {
+    return createActionContext(
+      'Best Project Pick',
+      'Best Project Pick',
+      `The best single project here is ${agrifore?.title || 'AgriFore'} because it combines the deepest evidence-backed ML and analytics work with visible product delivery.`,
+      [
+        agrifore
+          ? `${agrifore.title} brings together forecasting, structured data work, FastAPI-backed delivery, dashboard analytics, and a live demo path.`
+          : 'The strongest overall project is the forecasting platform with dashboard analytics and API-backed delivery.',
+        'It is one of the clearest places where data preparation, modeling, backend serving, and UI surface all appear in one system.',
+        'It is also featured and completed, which makes it easier to defend as the strongest overall interview project.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['best project for recruiter', 'which project looks the most impressive to a recruiter'])) {
+    return createActionContext(
+      'Best Recruiter-Facing Project',
+      'Best Recruiter-Facing Project',
+      `The best recruiter-facing project here is ${flightFinder?.title || 'FlightFinder AI'} because it is easy to understand quickly while still showing technical range.`,
+      [
+        flightFinder
+          ? `${flightFinder.title} combines accessibility, conversational interaction, structured retrieval, and a product-style workflow in one featured project.`
+          : 'The strongest recruiter-facing project combines accessibility, conversational interaction, and structured product workflow.',
+        'It signals both technical work and user-centered product thinking without requiring a long setup explanation.',
+        'That makes it easier for a recruiter to remember than a narrower single-mode technical artifact.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['which project looks the most complete'])) {
+    return createActionContext(
+      'Most Complete Project',
+      'Most Complete Project',
+      `The most complete-looking project here is ${agrifore?.title || 'AgriFore'}.`,
+      [
+        agrifore
+          ? `${agrifore.title} is completed, featured, backed by supporting material, and includes both analytics views and prediction workflow.`
+          : 'The strongest complete-looking project is the forecasting platform with analytics and prediction workflow.',
+        'It reads as more end to end than the prototype-heavy projects because the data pipeline, backend, and interface all show up together.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['which project should be discussed first in an interview'])) {
+    return createActionContext(
+      'First Interview Project',
+      'First Interview Project',
+      `The first project to discuss in an interview should be ${agrifore?.title || 'AgriFore'}.`,
+      [
+        'It gives the cleanest route into forecasting, data pipelines, model choices, backend delivery, and dashboard presentation in one conversation.',
+        'It is also evidence-backed enough to support both technical follow-up and product-delivery questions.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what is the clearest proof of frontend ability here'])) {
+    return createActionContext(
+      'Frontend Proof',
+      'Frontend Proof',
+      `The clearest proof of frontend ability here is ${surgeMedi?.title || 'SurgeMedi'}.`,
+      [
+        surgeMedi
+          ? `${surgeMedi.title} is a real deployed catalog website with structured browsing, product detail views, and contact-driven conversion flow.`
+          : 'The clearest frontend signal is the deployed catalog website with structured browsing and product-detail flow.',
+        'That makes it a cleaner frontend proof than projects where the UI is primarily supporting a larger ML or analytics story.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what is the clearest proof of backend ability here'])) {
+    return createActionContext(
+      'Backend Proof',
+      'Backend Proof',
+      `The clearest proof of backend ability here is ${agrifore?.title || 'AgriFore'}.`,
+      [
+        agrifore
+          ? `${agrifore.title} explicitly combines DuckDB and SQL data preparation, forecasting workflow, and FastAPI-backed prediction delivery.`
+          : 'The clearest backend signal is the forecasting platform with structured data preparation and API-backed prediction flow.',
+        'That is stronger backend evidence than a frontend-only product shell or a UI-first prototype.',
+      ]
+    );
+  }
+
+  if (includesAny(query, ['what is the strongest technical signal on this site'])) {
+    return createActionContext(
+      'Strongest Technical Signal',
+      'Strongest Technical Signal',
+      'The strongest technical signal on this site is forecasting and DS/ML delivery anchored by AgriFore.',
+      [
+        'AgriFore shows data preparation, model-backed forecasting, API serving, analytics surfaces, and a live-facing delivery path.',
+        'That signal is reinforced by the R Styled Forecast Tool for Business Metrics and Priority-Based CSV Sampler.',
+      ]
+    );
+  }
+
+  return createActionContext(
+    'Weakest Technical Signal',
+    'Weakest Technical Signal',
+    'The weakest technical signal on this site is not lack of range; it is the uneven visibility of production maturity across the project set.',
+    [
+      weaknesses.bullets[0],
+      weaknesses.bullets[2],
+      weaknesses.bullets[3],
+    ]
+  );
+};
+
+const buildPortfolioOrientationContext = (): PortfolioMatchContext =>
+  createActionContext(
+    'Portfolio Orientation',
+    'Portfolio Orientation',
+    'This portfolio reads as engineering-oriented, with a strong product layer and some research-style material.',
+    [
+      'The profile headline itself combines Machine Learning Engineer with Full-Stack Developer rather than a research-only label.',
+      'The strongest projects combine data or ML depth with APIs, dashboards, interfaces, and guided workflows.',
+      'There is Lab and manuscript material, but the broader portfolio still emphasizes shipping usable systems more than pure research publication output.',
+    ]
+  );
+
+const buildCandidateVsWebsiteContext = (): PortfolioMatchContext =>
+  createActionContext(
+    'Arjoneel and the Website',
+    'Arjoneel and the Website',
+    'Arjoneel Ghosh is the candidate behind the site, and the website is the portfolio that packages his projects, profile, experience, Lab material, and Ask workflow.',
+    [
+      `Candidate: ${chatbotKnowledge.site.ownerName}, positioned as ${chatbotKnowledge.site.headline}.`,
+      'Website: portfolio structure spanning Projects, Profile, Experience, Connect, Ask, and Lab.',
+    ]
+  );
 
 const getProjectWorkBuckets = (project: (typeof chatbotKnowledge.projects)[number]) =>
   Array.isArray(project.workBuckets) && project.workBuckets.length > 0
@@ -1740,6 +2466,38 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
   const identityRefs = referencesIdentityProfile(query, queryTokens);
   const knowledgeRefs = referencesKnowledgeSynthesis(query, queryTokens);
 
+  if (referencesUnsupportedProfileInterviewQuery(query, queryTokens)) {
+    return 'profile-unsupported';
+  }
+
+  if (referencesCandidateVsWebsiteIntent(query)) {
+    return 'candidate-vs-website';
+  }
+
+  if (
+    (includesAny(query, ['summarize tech stack', 'summarise tech stak', 'tech stack summary', 'summarize the tech stack']) ||
+      (query.includes('tech stack') && !referencesRecurringToolsQuery(query, queryTokens))) &&
+    !findExplicitProjectMention(query)
+  ) {
+    return 'tech-stack-summary';
+  }
+
+  if (referencesPortfolioOrientationIntent(query, queryTokens)) {
+    return 'portfolio-orientation';
+  }
+
+  if (referencesCandidateProfileIntent(query, queryTokens)) {
+    return 'candidate-profile';
+  }
+
+  if (referencesRoleFitIntent(query, queryTokens)) {
+    return 'role-fit';
+  }
+
+  if (referencesProjectRankingIntent(query, queryTokens)) {
+    return 'project-ranking';
+  }
+
   if (referencesShortProfileSummaryQuery(query, queryTokens)) {
     return 'profile-summary';
   }
@@ -2162,6 +2920,89 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent,
       matchedDomain: context.kind,
       matchedEntryCount: 0,
+      context,
+    };
+  }
+
+  if (
+    (canonicalIntent === 'project-overview' || canonicalIntent === 'tech-stack-summary') &&
+    getLeadingNoiseToken(queryTokens)
+  ) {
+    const noiseAwareContext = buildNoiseAwareProjectIntentContext(query, queryTokens);
+    if (noiseAwareContext) {
+      context = noiseAwareContext;
+      return {
+        normalizedQuery: query,
+        canonicalIntent,
+        matchedDomain: context.kind,
+        matchedEntryCount: getMatchedEntryCount(context),
+        context,
+      };
+    }
+  }
+
+  if (canonicalIntent === 'profile-unsupported') {
+    context = buildGroundedFallbackContext();
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 0,
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'candidate-vs-website') {
+    context = buildCandidateVsWebsiteContext();
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 1,
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'portfolio-orientation') {
+    context = buildPortfolioOrientationContext();
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 1,
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'candidate-profile') {
+    context = buildCandidateProfileContext(rawQuery, query, queryTokens);
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: getMatchedEntryCount(context),
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'role-fit') {
+    context = buildRoleFitContext(query);
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 1,
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'project-ranking') {
+    context = buildProjectRankingContext(query, queryTokens);
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 1,
       context,
     };
   }
