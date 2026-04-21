@@ -555,10 +555,30 @@ const referencesPortfolioWebsiteQuery = (query: string, queryTokens: string[]) =
 };
 
 const referencesPortfolioSummaryQuery = (query: string, queryTokens: string[]) => {
-  if (query === 'portfolio' || query === 'summarize portfolio') return true;
+  const mentionsSummaryCue =
+    hasTokenFamily(queryTokens, ['summary', 'overview'], 1) ||
+    hasApproximateToken(queryTokens, 'summarize', 2) ||
+    hasApproximateToken(queryTokens, 'summarise', 2);
+
+  if (
+    query === 'portfolio' ||
+    query === 'summary' ||
+    query === 'summarize' ||
+    query === 'summarise' ||
+    query === 'sumarize' ||
+    query === 'portfolio summary' ||
+    query === 'summary portfolio' ||
+    query === 'summarize portfolio'
+  ) {
+    return true;
+  }
 
   return (
     includesAny(query, [
+      'summary',
+      'sumarize',
+      'summarize',
+      'summarise',
       'give me a portfolio summary',
       'summarize this website',
       'summarize portfolio',
@@ -571,7 +591,78 @@ const referencesPortfolioSummaryQuery = (query: string, queryTokens: string[]) =
       'what does this portfolio cover',
     ]) ||
     ((query.includes('portfolio') || query.includes('website') || query.includes('site')) &&
-      hasTokenFamily(queryTokens, ['summary', 'summarize', 'summarise', 'overview'], 1))
+      mentionsSummaryCue)
+  );
+};
+
+const referencesShortIdentityQuery = (query: string, queryTokens: string[]) => {
+  const mentionsOwner =
+    hasTokenFamily(queryTokens, ['arjoneel'], 2) || hasTokenFamily(queryTokens, ['ghosh'], 1);
+
+  if (!mentionsOwner) return false;
+
+  return (
+    query === 'arjoneel' ||
+    query === 'ghosh' ||
+    includesAny(query, ['about arjoneel', 'introduce arjoneel', 'tell me about arjoneel']) ||
+    (queryTokens.length <= 2 && !hasTokenFamily(queryTokens, ['paper', 'publication', 'manuscript', 'ieee'], 2))
+  );
+};
+
+const referencesShortProfileSummaryQuery = (query: string, queryTokens: string[]) => {
+  const mentionsOwner =
+    hasTokenFamily(queryTokens, ['arjoneel'], 2) || hasTokenFamily(queryTokens, ['ghosh'], 1);
+  const mentionsSummaryCue =
+    hasTokenFamily(queryTokens, ['summary', 'profile'], 1) ||
+    hasApproximateToken(queryTokens, 'summarize', 2) ||
+    hasApproximateToken(queryTokens, 'summarise', 2);
+
+  return (
+    mentionsOwner &&
+    (includesAny(query, ['arjoneel summary', 'arjoneel profile', 'about arjoneel']) ||
+      (mentionsSummaryCue && queryTokens.length <= 4))
+  );
+};
+
+const referencesPortfolioStrengthsQuery = (query: string, queryTokens: string[]) =>
+  query === 'strength' ||
+  query === 'strengths' ||
+  includesAny(query, [
+    'greatest strength',
+    'greatest strengths',
+    'strongest signals',
+    'portfolio strengths',
+    'strong points',
+  ]) ||
+  (hasTokenFamily(queryTokens, ['strength', 'strengths'], 1) &&
+    !hasTokenFamily(queryTokens, ['project', 'agrifore', 'signchat', 'flightfinder'], 2));
+
+const referencesPortfolioWeaknessesQuery = (query: string, queryTokens: string[]) =>
+  query === 'weakness' ||
+  query === 'weaknesses' ||
+  includesAny(query, [
+    'greatest weakness',
+    'greatest weaknesses',
+    'portfolio weaknesses',
+    'current limitations',
+    'weaker signals',
+    'portfolio gaps',
+  ]) ||
+  (hasTokenFamily(queryTokens, ['weakness', 'weaknesses', 'limitation', 'limitations', 'gaps'], 2) &&
+    !hasTokenFamily(queryTokens, ['project', 'agrifore', 'signchat', 'flightfinder'], 2));
+
+const referencesPortfolioSwotQuery = (query: string, queryTokens: string[]) => {
+  const mentionsSwotCue =
+    query === 'swot' ||
+    query === 'swat' ||
+    hasTokenFamily(queryTokens, ['swot', 'swat'], 1);
+
+  return (
+    mentionsSwotCue &&
+    (queryTokens.length <= 2 ||
+      query.includes('analysis') ||
+      query.includes('portfolio') ||
+      query.includes('arjoneel'))
   );
 };
 
@@ -685,6 +776,9 @@ const referencesChatbotMeta = (query: string, queryTokens: string[]) => {
 export type CanonicalIntent =
   | 'portfolio-website'
   | 'portfolio-summary'
+  | 'portfolio-strengths'
+  | 'portfolio-weaknesses'
+  | 'portfolio-swot'
   | 'project-overview'
   | 'broad-project-discovery'
   | 'comparative-projects'
@@ -1646,6 +1740,14 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
   const identityRefs = referencesIdentityProfile(query, queryTokens);
   const knowledgeRefs = referencesKnowledgeSynthesis(query, queryTokens);
 
+  if (referencesShortProfileSummaryQuery(query, queryTokens)) {
+    return 'profile-summary';
+  }
+
+  if (referencesShortIdentityQuery(query, queryTokens)) {
+    return 'identity-intro';
+  }
+
   if (
     referencesPortfolioOwnerSiteQuery(query, queryTokens) ||
     includesAny(query, ['who made this portfolio', 'who is the person behind this portfolio']) ||
@@ -1657,6 +1759,18 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
 
   if (referencesPortfolioSummaryQuery(query, queryTokens)) {
     return 'portfolio-summary';
+  }
+
+  if (referencesPortfolioStrengthsQuery(query, queryTokens)) {
+    return 'portfolio-strengths';
+  }
+
+  if (referencesPortfolioWeaknessesQuery(query, queryTokens)) {
+    return 'portfolio-weaknesses';
+  }
+
+  if (referencesPortfolioSwotQuery(query, queryTokens)) {
+    return 'portfolio-swot';
   }
 
   if (referencesNavigationRingQuery(query, queryTokens)) {
@@ -2193,6 +2307,9 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent === 'chatbot-scope' ||
       canonicalIntent === 'portfolio-website' ||
       canonicalIntent === 'portfolio-summary' ||
+      canonicalIntent === 'portfolio-strengths' ||
+      canonicalIntent === 'portfolio-weaknesses' ||
+      canonicalIntent === 'portfolio-swot' ||
       canonicalIntent === 'portfolio-structure' ||
       canonicalIntent === 'navigation-ring' ||
       canonicalIntent === 'website-navigation' ||
@@ -2211,6 +2328,9 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       'how-ask-page-works': 'askPageWorkflow',
       'portfolio-website': 'portfolioWebsite',
       'portfolio-summary': 'portfolioSummary',
+      'portfolio-strengths': 'portfolioStrengths',
+      'portfolio-weaknesses': 'portfolioWeaknesses',
+      'portfolio-swot': 'portfolioSwot',
       'portfolio-structure': 'portfolioStructure',
       'navigation-ring': 'navigationSystem',
       'website-navigation': 'navigationSystem',

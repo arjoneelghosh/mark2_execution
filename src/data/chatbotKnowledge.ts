@@ -38,6 +38,42 @@ export const chatbotKnowledge = {
       ],
       related: ["Projects", "Profile", "Experience", "Lab", "Ask"]
     },
+    portfolioStrengths: {
+      id: "portfolio-strengths",
+      label: "Portfolio Strengths",
+      summary: "The strongest signals in this portfolio are evidence-backed DS/ML depth, credible product-facing execution, and practical tooling work rather than one narrow single-project story.",
+      bullets: [
+        "Forecasting and DS/ML depth is strongly evidenced through AgriFore, the R Styled Forecast Tool for Business Metrics, and the Priority-Based CSV Sampler.",
+        "Applied AI and accessibility work are clearly represented through SignChat and FlightFinder AI, which makes the portfolio broader than a pure forecasting-only profile.",
+        "The project set is supported by education, internship records, grouped skills, certifications, and Lab material, so the portfolio does not rely on project screenshots alone.",
+        "There is also a useful balance between model-led work, internal-style tooling, and full-stack product surfaces."
+      ],
+      related: ["Projects", "Profile", "Experience", "Lab"]
+    },
+    portfolioWeaknesses: {
+      id: "portfolio-weaknesses",
+      label: "Portfolio Gaps",
+      summary: "The weaker signals in this portfolio are mostly evidence and packaging gaps rather than a lack of technical range.",
+      bullets: [
+        "Some projects are stronger as prototypes, guided demos, or concept-backed systems than as fully evidenced production deployments.",
+        "Breadth is high across DS/ML, accessibility, tooling, and product work, but depth can look uneven unless the viewer studies the stronger case-study details.",
+        "Public production evidence, long-running deployed proof, or externally validated usage signals are not equally visible across the whole project set.",
+        "Recruiters may still need help separating mature delivery signals from exploratory or Lab-stage work."
+      ],
+      related: ["Projects", "Lab", "Profile"]
+    },
+    portfolioSwot: {
+      id: "portfolio-swot",
+      label: "Portfolio SWOT Analysis",
+      summary: "This SWOT view stays grounded in what the portfolio actually shows rather than making generic MBA-style claims.",
+      bullets: [
+        "Strengths: strong forecasting and DS/ML evidence, practical data tooling, accessibility-oriented AI work, and enough full-stack delivery to show product thinking.",
+        "Weaknesses: some portfolio signals are still prototype or concept-led, and not every project shows the same level of production maturity or external proof.",
+        "Opportunities: stronger recruiter packaging, deeper case-study framing, clearer production-vs-prototype labeling, and more public demo or deployment evidence would raise clarity.",
+        "Risks / Threats: reviewers may misread breadth as lack of focus, or may blur together Lab-stage exploration and production-ready work if the evidence hierarchy is not obvious."
+      ],
+      related: ["Projects", "Profile", "Experience", "Lab"]
+    },
     portfolioStructure: {
       id: "portfolio-structure",
       label: "Portfolio Structure",
