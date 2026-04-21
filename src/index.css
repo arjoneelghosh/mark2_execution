@@ -1010,17 +1010,11 @@ a:hover {
   }
 
   :root[data-theme='light'] .ask-shell {
-    background: linear-gradient(
-      180deg,
-      rgb(var(--panel-bg-rgb) / 0.98) 0%,
-      rgb(var(--panel-soft-rgb) / 0.98) 52%,
-      rgb(var(--panel-elevated-rgb) / 0.94) 100%
-    );
-    border: 1px solid rgb(var(--border-rgb) / 0.8);
+    background: transparent;
+    border: 1px solid rgb(var(--border-rgb) / 0.62);
     box-shadow:
-      0 30px 82px rgba(79, 63, 20, 0.14),
-      0 8px 22px rgba(79, 63, 20, 0.06),
-      inset 0 1px 0 rgba(255, 251, 240, 0.92);
+      0 24px 64px rgba(79, 63, 20, 0.08),
+      0 8px 22px rgba(79, 63, 20, 0.04);
   }
 
   :root[data-theme='light'] .ask-shell > .theme-divider {
@@ -1066,6 +1060,20 @@ a:hover {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     box-shadow: none;
+  }
+
+  :root[data-theme='light'] .ask-chat-panel {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--panel-bg-rgb) / 0.98) 0%,
+      rgb(var(--panel-soft-rgb) / 0.98) 52%,
+      rgb(var(--panel-elevated-rgb) / 0.94) 100%
+    );
+    border: 1px solid rgb(var(--border-rgb) / 0.8);
+    box-shadow:
+      0 30px 82px rgba(79, 63, 20, 0.14),
+      0 8px 22px rgba(79, 63, 20, 0.06),
+      inset 0 1px 0 rgba(255, 251, 240, 0.92);
   }
 
   :root[data-theme='light'] .ask-chat-panel .surface-composer {
@@ -1616,11 +1624,9 @@ a:hover {
   }
 
   :root[data-theme='dark'] .ask-shell {
-    background: rgb(var(--border-rgb) / 0.04);
-    border: 1px solid rgb(var(--border-rgb) / 0.08);
-    box-shadow: var(--shadow-panel);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent;
+    border: 1px solid rgb(var(--border-rgb) / 0.06);
+    box-shadow: 0 20px 60px rgba(4, 10, 20, 0.22);
   }
 
   :root[data-theme='dark'] .ask-shell > .theme-divider {
@@ -1647,6 +1653,14 @@ a:hover {
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  :root[data-theme='dark'] .ask-chat-panel {
+    background: rgb(var(--border-rgb) / 0.04);
+    border: 1px solid rgb(var(--border-rgb) / 0.08);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   :root[data-theme='dark'] .surface-composer {
