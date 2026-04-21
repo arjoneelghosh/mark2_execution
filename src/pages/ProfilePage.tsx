@@ -71,7 +71,7 @@ const ProfilePage: React.FC = () => {
 
         {activeTab === 'About' && (
           <div className="space-y-8">
-            <div className="glass-panel p-8 animate-fade-in">
+            <div className="glass-panel profile-about-panel p-8 animate-fade-in">
               <h3 className="font-heading text-lg font-semibold text-navy-50 mb-2">
                 {profileRecord.headline}
               </h3>

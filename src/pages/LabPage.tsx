@@ -165,7 +165,7 @@ const LabPage: React.FC = () => {
           onTabChange={(tab) => setActiveTab(tab as LabLane)}
         />
 
-        <div className="mb-10 glass-panel p-6 animate-fade-in">
+        <div className="mb-10 glass-panel lab-intro-panel p-6 animate-fade-in">
           <h3 className="font-heading text-base font-medium text-navy-100 mb-1">
             {currentSection.heading}
           </h3>

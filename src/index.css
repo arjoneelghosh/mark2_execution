@@ -1560,6 +1560,15 @@ a:hover {
     -webkit-backdrop-filter: blur(12px);
   }
 
+  :root[data-theme='dark'] .profile-about-panel,
+  :root[data-theme='dark'] .lab-intro-panel {
+    background: rgb(var(--border-rgb) / 0.02);
+    border: 1px solid rgb(var(--border-rgb) / 0.06);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   :root[data-theme='dark'] .glow-border {
     border: 1px solid rgb(var(--accent-border-rgb) / 0.15);
     box-shadow: 0 0 15px rgb(var(--accent-blue-rgb) / 0.08);
