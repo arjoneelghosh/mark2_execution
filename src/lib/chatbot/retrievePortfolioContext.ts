@@ -1049,8 +1049,31 @@ const buildNoiseAwareProjectIntentContext = (
   return null;
 };
 
+const SUPPORTED_ROLE_FIT_PHRASES = [
+  'how do you think arjoneel can add value to an applied ai engineer role',
+  'how do you think arjoneel can add value to a frontend engineer role',
+  'how do you think arjoneel can add value to a data scientist role',
+  'how do you think arjoneel can add value to an ml engineer role',
+  'how do you think arjoneel can add value to a machine learning engineer role',
+  'applied ai engineer role',
+  'applied ai engineer',
+  'frontend engineer role',
+  'frontend engineer',
+  'data scientist role',
+  'data scientist',
+  'ml engineer role',
+  'ml engineer',
+  'machine learning engineer role',
+  'machine learning engineer',
+];
+
+const referencesSupportedRoleFitPrompt = (query: string) =>
+  includesAny(query, SUPPORTED_ROLE_FIT_PHRASES);
+
 const referencesUnsupportedProfileInterviewQuery = (query: string, queryTokens: string[]) =>
   includesAny(query, [
+    'salary',
+    'salary expectations',
     'what are your key responsibilities in your current role',
     'tell me about a time you worked in a team',
     'describe a conflict at work and how you resolved it',
@@ -1058,9 +1081,32 @@ const referencesUnsupportedProfileInterviewQuery = (query: string, queryTokens: 
     'what are your salary expectations',
     'do you have any other offers',
     'why did you choose this field',
+    'how do you handle pressure or deadlines',
+    'what do you know about our company',
+    'what do you know about us',
+    'why do you want to work with us',
+    'why this company',
+    'why do you want to join our team',
+    'what excites you about our mission',
+    'why our organization',
+    'how can you help our business',
+    'why are you a fit for this position',
+    'why should we hire you for this team',
+    'where do you see yourself in 5 years',
+    'what are your long term goals',
+    'what are your future plans',
+    'what kind of career do you want',
+    'what motivates you personally',
   ]) ||
+  ((query.includes('add value') || query.includes('fit for this position')) &&
+    !referencesSupportedRoleFitPrompt(query)) ||
+  ((query.includes('our') || query.includes('us')) &&
+    includesAny(query, ['company', 'team', 'mission', 'organization', 'business', 'work with'])) ||
+  ((query.includes('future') || query.includes('long term') || query.includes('5 years')) &&
+    hasTokenFamily(queryTokens, ['yourself', 'goals', 'plans', 'career'], 2)) ||
   ((hasTokenFamily(queryTokens, ['salary', 'offer', 'offers'], 1) ||
     hasTokenFamily(queryTokens, ['conflict', 'failure', 'learned'], 2) ||
+    hasTokenFamily(queryTokens, ['pressure', 'deadline', 'deadlines'], 1) ||
     (hasTokenFamily(queryTokens, ['team'], 1) && hasTokenFamily(queryTokens, ['worked'], 1))) &&
     queryTokens.length >= 4);
 
@@ -1096,6 +1142,7 @@ const referencesRoleFitIntent = (query: string, queryTokens: string[]) =>
     'how do you think arjoneel can add value to a frontend engineer role',
     'how do you think arjoneel can add value to a data scientist role',
     'how do you think arjoneel can add value to an ml engineer role',
+    'how do you think arjoneel can add value to a machine learning engineer role',
     'what role is this portfolio best suited for',
     'what role is this portfolio not yet strong enough for',
     'who should hire this person',
@@ -1104,10 +1151,7 @@ const referencesRoleFitIntent = (query: string, queryTokens: string[]) =>
     'research or product',
     'is this person stronger in ml software or product thinking',
   ]) ||
-  (query.includes('add value') && query.includes('role')) ||
-  (hasTokenFamily(queryTokens, ['role'], 1) &&
-    (hasTokenFamily(queryTokens, ['suited', 'fit'], 2) ||
-      includesAny(query, ['not yet strong enough']))) ||
+  referencesSupportedRoleFitPrompt(query) ||
   (hasTokenFamily(queryTokens, ['ml', 'frontend', 'data', 'product', 'research'], 1) &&
     hasTokenFamily(queryTokens, ['stronger'], 2));
 
