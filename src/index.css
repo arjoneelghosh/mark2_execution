@@ -910,43 +910,43 @@ a:hover {
   :root[data-theme='light'] .glass-panel {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-bg-rgb) / 0.98) 0%,
-      rgb(var(--panel-soft-rgb) / 0.98) 52%,
-      rgb(var(--panel-elevated-rgb) / 0.94) 100%
+      rgb(var(--panel-bg-rgb) / 0.74) 0%,
+      rgb(var(--panel-soft-rgb) / 0.76) 52%,
+      rgb(var(--panel-elevated-rgb) / 0.68) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.8);
+    border: 1px solid rgb(var(--border-rgb) / 0.66);
     box-shadow:
-      0 30px 82px rgba(79, 63, 20, 0.14),
-      0 8px 22px rgba(79, 63, 20, 0.06),
-      inset 0 1px 0 rgba(255, 251, 240, 0.92);
+      0 24px 64px rgba(79, 63, 20, 0.1),
+      0 8px 22px rgba(79, 63, 20, 0.04),
+      inset 0 1px 0 rgba(255, 251, 240, 0.72);
   }
 
   :root[data-theme='light'] .card-base {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-bg-rgb) / 0.96) 0%,
-      rgb(var(--panel-soft-rgb) / 0.98) 58%,
-      rgb(var(--panel-elevated-rgb) / 0.93) 100%
+      rgb(var(--panel-bg-rgb) / 0.72) 0%,
+      rgb(var(--panel-soft-rgb) / 0.78) 58%,
+      rgb(var(--panel-elevated-rgb) / 0.68) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.78);
+    border: 1px solid rgb(var(--border-rgb) / 0.64);
     box-shadow:
-      0 16px 34px rgba(79, 63, 20, 0.08),
-      0 3px 10px rgba(79, 63, 20, 0.04),
-      inset 0 1px 0 rgba(255, 251, 240, 0.95);
+      0 14px 30px rgba(79, 63, 20, 0.06),
+      0 3px 10px rgba(79, 63, 20, 0.03),
+      inset 0 1px 0 rgba(255, 251, 240, 0.68);
   }
 
   :root[data-theme='light'] .card-base:hover {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-bg-rgb) / 1) 0%,
-      rgb(var(--panel-soft-rgb) / 1) 52%,
-      rgb(var(--accent-soft-surface-rgb) / 0.48) 100%
+      rgb(var(--panel-bg-rgb) / 0.84) 0%,
+      rgb(var(--panel-soft-rgb) / 0.86) 52%,
+      rgb(var(--accent-soft-surface-rgb) / 0.38) 100%
     );
-    border-color: rgb(var(--accent-border-rgb) / 0.88);
+    border-color: rgb(var(--accent-border-rgb) / 0.72);
     box-shadow:
-      0 24px 48px rgba(79, 63, 20, 0.12),
-      0 8px 20px rgba(79, 63, 20, 0.06),
-      0 0 0 1px rgba(255, 251, 240, 0.55) inset;
+      0 20px 42px rgba(79, 63, 20, 0.1),
+      0 8px 20px rgba(79, 63, 20, 0.04),
+      0 0 0 1px rgba(255, 251, 240, 0.4) inset;
   }
 
   :root[data-theme='light'] .bg-page {
@@ -983,30 +983,30 @@ a:hover {
   :root[data-theme='light'] .surface-shell {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-elevated-rgb) / 0.96) 0%,
-      rgb(var(--panel-soft-rgb) / 0.98) 38%,
-      rgb(var(--panel-bg-rgb) / 0.98) 100%
+      rgb(var(--panel-elevated-rgb) / 0.76) 0%,
+      rgb(var(--panel-soft-rgb) / 0.82) 38%,
+      rgb(var(--panel-bg-rgb) / 0.76) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.84);
+    border: 1px solid rgb(var(--border-rgb) / 0.68);
     box-shadow:
-      0 28px 72px rgba(77, 61, 20, 0.12),
-      0 12px 30px rgba(77, 61, 20, 0.05),
-      inset 0 1px 0 rgba(255, 251, 240, 0.92);
+      0 22px 58px rgba(77, 61, 20, 0.1),
+      0 10px 24px rgba(77, 61, 20, 0.04),
+      inset 0 1px 0 rgba(255, 251, 240, 0.7);
   }
 
   :root[data-theme='light'] .surface-shell-deep {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-elevated-rgb) / 0.97) 0%,
-      rgb(var(--panel-soft-rgb) / 0.98) 34%,
-      rgb(var(--panel-bg-rgb) / 0.98) 72%,
-      rgb(var(--accent-soft-surface-rgb) / 0.32) 100%
+      rgb(var(--panel-elevated-rgb) / 0.8) 0%,
+      rgb(var(--panel-soft-rgb) / 0.82) 34%,
+      rgb(var(--panel-bg-rgb) / 0.78) 72%,
+      rgb(var(--accent-soft-surface-rgb) / 0.22) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.86);
+    border: 1px solid rgb(var(--border-rgb) / 0.7);
     box-shadow:
-      0 34px 88px rgba(77, 61, 20, 0.14),
-      0 16px 36px rgba(77, 61, 20, 0.06),
-      inset 0 1px 0 rgba(255, 251, 240, 0.94);
+      0 26px 72px rgba(77, 61, 20, 0.11),
+      0 12px 28px rgba(77, 61, 20, 0.05),
+      inset 0 1px 0 rgba(255, 251, 240, 0.72);
   }
 
   :root[data-theme='light'] .ask-shell {
@@ -1024,19 +1024,19 @@ a:hover {
   :root[data-theme='light'] .surface-faq {
     background: linear-gradient(
       180deg,
-      rgb(var(--faq-surface-rgb) / 0.98) 0%,
-      rgb(var(--panel-elevated-rgb) / 0.9) 100%
+      rgb(var(--faq-surface-rgb) / 0.78) 0%,
+      rgb(var(--panel-elevated-rgb) / 0.72) 100%
     );
     box-shadow:
-      inset -1px 0 0 rgba(255, 251, 240, 0.52),
-      inset 0 1px 0 rgba(255, 247, 231, 0.62);
+      inset -1px 0 0 rgba(255, 251, 240, 0.34),
+      inset 0 1px 0 rgba(255, 247, 231, 0.42);
   }
 
   :root[data-theme='light'] .surface-chat-column {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-soft-rgb) / 0.84) 0%,
-      rgb(var(--chat-surface-rgb) / 0.94) 100%
+      rgb(var(--panel-soft-rgb) / 0.62) 0%,
+      rgb(var(--chat-surface-rgb) / 0.74) 100%
     );
   }
 
@@ -1047,12 +1047,12 @@ a:hover {
   :root[data-theme='light'] .surface-chat {
     background: linear-gradient(
       180deg,
-      rgb(var(--chat-surface-rgb) / 0.98) 0%,
-      rgb(var(--panel-bg-rgb) / 0.98) 100%
+      rgb(var(--chat-surface-rgb) / 0.76) 0%,
+      rgb(var(--panel-bg-rgb) / 0.72) 100%
     );
     box-shadow:
-      inset 0 1px 0 rgba(255, 251, 240, 0.96),
-      inset 0 -1px 0 rgba(211, 203, 173, 0.42);
+      inset 0 1px 0 rgba(255, 251, 240, 0.72),
+      inset 0 -1px 0 rgba(211, 203, 173, 0.26);
   }
 
   :root[data-theme='light'] .ask-chat-panel .surface-chat {
@@ -1065,15 +1065,15 @@ a:hover {
   :root[data-theme='light'] .ask-chat-panel {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-bg-rgb) / 0.98) 0%,
-      rgb(var(--panel-soft-rgb) / 0.98) 52%,
-      rgb(var(--panel-elevated-rgb) / 0.94) 100%
+      rgb(var(--panel-bg-rgb) / 0.74) 0%,
+      rgb(var(--panel-soft-rgb) / 0.76) 52%,
+      rgb(var(--panel-elevated-rgb) / 0.68) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.8);
+    border: 1px solid rgb(var(--border-rgb) / 0.66);
     box-shadow:
-      0 30px 82px rgba(79, 63, 20, 0.14),
-      0 8px 22px rgba(79, 63, 20, 0.06),
-      inset 0 1px 0 rgba(255, 251, 240, 0.92);
+      0 24px 64px rgba(79, 63, 20, 0.1),
+      0 8px 22px rgba(79, 63, 20, 0.04),
+      inset 0 1px 0 rgba(255, 251, 240, 0.72);
   }
 
   :root[data-theme='light'] .ask-chat-panel .surface-composer {
@@ -1086,38 +1086,38 @@ a:hover {
   :root[data-theme='light'] .ask-chat-panel .surface-input-shell {
     background: linear-gradient(
       180deg,
-      rgb(var(--panel-bg-rgb) / 0.78) 0%,
-      rgb(var(--panel-soft-rgb) / 0.84) 100%
+      rgb(var(--panel-bg-rgb) / 0.66) 0%,
+      rgb(var(--panel-soft-rgb) / 0.74) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.64);
+    border: 1px solid rgb(var(--border-rgb) / 0.58);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     box-shadow:
-      0 16px 34px rgba(77, 61, 20, 0.08),
-      0 6px 16px rgba(77, 61, 20, 0.03),
-      inset 0 1px 0 rgba(255, 251, 240, 0.82);
+      0 12px 28px rgba(77, 61, 20, 0.06),
+      0 6px 16px rgba(77, 61, 20, 0.025),
+      inset 0 1px 0 rgba(255, 251, 240, 0.62);
   }
 
   :root[data-theme='light'] .surface-composer {
     background: linear-gradient(
       180deg,
-      rgb(var(--composer-surface-rgb) / 0.98) 0%,
-      rgb(var(--panel-elevated-rgb) / 0.9) 100%
+      rgb(var(--composer-surface-rgb) / 0.76) 0%,
+      rgb(var(--panel-elevated-rgb) / 0.68) 100%
     );
-    box-shadow: inset 0 1px 0 rgba(255, 249, 235, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 249, 235, 0.62);
   }
 
   :root[data-theme='light'] .surface-input-shell {
     background: linear-gradient(
       180deg,
-      rgb(var(--input-bg-rgb) / 1) 0%,
-      rgb(var(--panel-bg-rgb) / 0.98) 100%
+      rgb(var(--input-bg-rgb) / 0.82) 0%,
+      rgb(var(--panel-bg-rgb) / 0.74) 100%
     );
-    border: 1px solid rgb(var(--border-rgb) / 0.82);
+    border: 1px solid rgb(var(--border-rgb) / 0.68);
     box-shadow:
-      0 14px 28px rgba(77, 61, 20, 0.08),
-      0 4px 10px rgba(77, 61, 20, 0.04),
-      inset 0 1px 0 rgba(255, 251, 240, 0.96);
+      0 12px 24px rgba(77, 61, 20, 0.06),
+      0 4px 10px rgba(77, 61, 20, 0.03),
+      inset 0 1px 0 rgba(255, 251, 240, 0.72);
   }
 
   :root[data-theme='light'] .surface-bubble {
