@@ -163,6 +163,19 @@
   --shadow-accent: 0 18px 38px rgba(80, 134, 194, 0.12);
 }
 
+:root[data-theme='light'] .bg-home {
+  --navy-50-rgb: 44 35 28;
+  --navy-100-rgb: 61 49 40;
+  --navy-200-rgb: 84 69 57;
+  --navy-300-rgb: 108 89 75;
+  --navy-400-rgb: 133 111 95;
+  --text-primary-rgb: 44 35 28;
+  --text-secondary-rgb: 84 69 57;
+  --text-muted-rgb: 108 89 75;
+  --text-faint-rgb: 133 111 95;
+}
+
+
 *,
 *::before,
 *::after {
@@ -1344,41 +1357,63 @@ a:hover {
     padding: 2rem 2.2rem 2.3rem;
     border-radius: 34px;
     background: linear-gradient(
-      180deg,
-      rgb(193 187 143 / 0.78) 0%,
-      rgb(210 202 162 / 0.8) 44%,
-      rgb(229 222 186 / 0.7) 100%
+      155deg,
+      rgb(246 239 214 / 0.94) 0%,
+      rgb(228 215 171 / 0.9) 40%,
+      rgb(210 193 148 / 0.86) 100%
     );
-    border: 1px solid rgb(201 192 154 / 0.78);
+    border: 1px solid rgb(195 177 131 / 0.76);
     box-shadow:
-      0 28px 64px rgba(83, 66, 22, 0.12),
-      0 12px 28px rgba(83, 66, 22, 0.06);
+      0 28px 62px rgba(83, 66, 22, 0.1),
+      0 10px 24px rgba(83, 66, 22, 0.05),
+      inset 0 1px 0 rgba(255, 250, 237, 0.66);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
 
   :root[data-theme='light'] .home-hero-copy::before {
     opacity: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 249, 233, 0.44) 0%,
-      transparent 26%,
-      rgba(255, 251, 242, 0.12) 100%
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 250, 236, 0.34) 0%,
+        rgba(255, 248, 231, 0.08) 24%,
+        transparent 54%
+      ),
+      radial-gradient(
+        circle at top right,
+        rgba(255, 252, 242, 0.28) 0%,
+        transparent 54%
+      );
+  }
+
+  :root[data-theme='light'] .home-hero-copy::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(150, 118, 67, 0.12) 0%,
+        transparent 34%,
+        rgba(255, 248, 228, 0.12) 100%
+      );
   }
 
   :root[data-theme='light'] .home-hero-copy h1 {
-    color: rgb(255 249 235 / 0.98);
-    text-shadow: 0 8px 24px rgba(78, 61, 20, 0.14);
+    color: rgb(80 58 37 / 0.98);
+    text-shadow: 0 1px 0 rgba(255, 249, 233, 0.22);
   }
 
   :root[data-theme='light'] .home-hero-copy > p:first-of-type {
-    color: rgb(255 248 227 / 0.95) !important;
-    text-shadow: 0 4px 16px rgba(78, 61, 20, 0.1);
+    color: rgb(154 111 54 / 0.92) !important;
+    text-shadow: none;
   }
 
   :root[data-theme='light'] .home-hero-copy > p:last-of-type {
-    color: rgb(255 247 228 / 0.9);
+    color: rgb(94 72 49 / 0.92);
   }
 
   :root[data-theme='light'] .home-focus-card {
