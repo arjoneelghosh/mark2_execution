@@ -89,7 +89,7 @@ const HomePage: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-20 max-w-6xl mx-auto w-full pl-9 pr-8 lg:pl-14 lg:pr-14">
+        <div className="relative z-20 page-shell-home w-full">
           <div className="home-hero-copy max-w-[34rem] lg:max-w-[32rem] pt-24 lg:pt-0">
             <p
               className="text-accent-blue/70 tracking-widest uppercase mb-7 animate-fade-in opacity-0 italic font-medium"
@@ -153,7 +153,7 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto pl-9 pr-8 lg:pl-14 lg:pr-14 pb-40">
+      <div className="relative z-10 page-shell-home pb-40">
         <div className="max-w-[34rem] space-y-6 mt-14">
           {profileRecord.longBio.slice(1).map((paragraph, i) => (
             <p

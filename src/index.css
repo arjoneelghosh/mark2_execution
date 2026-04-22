@@ -250,6 +250,31 @@ a:hover {
 }
 
 @layer components {
+  .page-shell-standard {
+    max-width: 72rem;
+    margin-left: clamp(0.9rem, 2.5vw, 2.25rem);
+    margin-right: auto;
+    padding-left: 2.25rem;
+    padding-right: 2rem;
+  }
+
+  .page-shell-home {
+    max-width: 80rem;
+    margin-left: clamp(0.9rem, 2.5vw, 2.25rem);
+    margin-right: auto;
+    padding-left: 2.25rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .page-shell-standard,
+    .page-shell-home {
+      margin-left: clamp(1.5rem, 4vw, 4.75rem);
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+  }
+
   .glass-panel {
     background: linear-gradient(
       180deg,

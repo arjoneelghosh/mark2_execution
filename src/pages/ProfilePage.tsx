@@ -60,7 +60,7 @@ const ProfilePage: React.FC = () => {
       <ParticleField />
       <CompactRing />
 
-      <div className="relative z-10 max-w-6xl mx-auto pl-9 pr-8 py-20 lg:pl-14 lg:pr-14 lg:py-28">
+      <div className="relative z-10 page-shell-standard py-20 lg:py-28">
         <SectionHeading
           heading="Profile"
           description=" This is the Profile page, this page contain information about my Profile summary, skill architecture and certificate-backed records tied to the current portfolio."
