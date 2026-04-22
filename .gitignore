@@ -9,6 +9,7 @@ Thumbs.db
 Desktop.ini
 
 # Local process artifacts and branch-pass notes
+chat_report*.md
 report*.md
 integration_report.md
 ask_local_first_architecture_note.md
