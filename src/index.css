@@ -56,7 +56,7 @@
   --overlay-rgb: 6 10 24;
   --particle-rgb: 138 170 224;
   --particle-layer-opacity: 0.6;
-  --particle-density-multiplier: 1;
+  --particle-density-multiplier: 1.14;
   --particle-radius-multiplier: 1;
   --particle-halo-opacity: 0.14;
 
@@ -139,7 +139,7 @@
   --overlay-rgb: 15 27 45;
   --particle-rgb: 44 63 92;
   --particle-layer-opacity: 0.6;
-  --particle-density-multiplier: 1;
+  --particle-density-multiplier: 1.14;
   --particle-radius-multiplier: 1;
   --particle-halo-opacity: 0.14;
 
