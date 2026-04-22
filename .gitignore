@@ -7,6 +7,7 @@ dist/
 .DS_Store
 Thumbs.db
 Desktop.ini
+allignment/
 
 # Local process artifacts and branch-pass notes
 chat_report*.md
@@ -17,6 +18,7 @@ approved_design/
 repo_exclude_manifest.md
 repo_include_manifest.md
 repo_sync_plan.md
+scripts/
 
 src/assets/project-previews/assets.lnk
 src/assets/project-previews/ASK_DESIGN.png
