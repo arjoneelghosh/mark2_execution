@@ -156,7 +156,7 @@ const LabPage: React.FC = () => {
       <ParticleField />
       <CompactRing />
 
-      <div className="relative z-10 max-w-5xl mx-auto pl-9 pr-8 py-20 lg:pl-14 lg:pr-14 lg:py-28">
+      <div className="relative z-10 max-w-6xl mx-auto pl-9 pr-8 py-20 lg:pl-14 lg:pr-14 lg:py-28">
         <SectionHeading
           heading="Lab"
           description="This page contains my Research Paper, Concept I have worked on, and a few working prototypes as Proof of Concept demonstration of existing concepts"

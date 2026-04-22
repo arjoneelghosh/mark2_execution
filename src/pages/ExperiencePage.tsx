@@ -103,7 +103,7 @@ const ExperiencePage: React.FC = () => {
       <ParticleField />
       <CompactRing />
 
-      <div className="relative z-10 max-w-5xl mx-auto pl-9 pr-8 py-20 lg:pl-14 lg:pr-14 lg:py-28">
+      <div className="relative z-10 max-w-6xl mx-auto pl-9 pr-8 py-20 lg:pl-14 lg:pr-14 lg:py-28">
         <SectionHeading
           heading="Experience"
           description="This page contains role-based experience focused on structured environments, practical responsibility, and certificate-backed evidence."
