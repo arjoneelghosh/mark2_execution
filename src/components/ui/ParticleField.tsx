@@ -59,7 +59,7 @@ const ParticleField: React.FC = () => {
       syncParticleGenerationTokens();
       resize();
       const count = Math.floor(((canvas.width * canvas.height) / 18000) * particleDensityMultiplier);
-      particles = Array.from({ length: Math.min(count, 120) }, () => ({
+      particles = Array.from({ length: Math.min(count, 160) }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: (Math.random() * 1.2 + 0.3) * particleRadiusMultiplier,
