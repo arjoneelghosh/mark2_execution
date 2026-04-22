@@ -15,7 +15,7 @@ const CompactRing: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isRingHovered, setIsRingHovered] = useState(false);
-  const [showNavigationGuide, setShowNavigationGuide] = useState(false);
+  const [idleCenterMode, setIdleCenterMode] = useState<'ag' | 'guide'>('ag');
   const ringRadius = 84;
   const isRingVisible = isRingHovered;
   const ringScale = isRingVisible ? 1.16 : 1.04;
@@ -32,14 +32,15 @@ const CompactRing: React.FC = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setShowNavigationGuide((current) => !current);
-    }, 2000);
+    const timeoutId = window.setTimeout(() => {
+      setIdleCenterMode((current) => (current === 'ag' ? 'guide' : 'ag'));
+    }, idleCenterMode === 'ag' ? 2000 : 5000);
 
-    return () => window.clearInterval(intervalId);
-  }, []);
+    return () => window.clearTimeout(timeoutId);
+  }, [idleCenterMode]);
 
-  const centerMode = isRingVisible ? 'home' : showNavigationGuide ? 'guide' : 'ag';
+  const centerMode = isRingVisible ? 'home' : idleCenterMode;
+  const centerTransition = 'opacity 420ms ease, transform 420ms ease';
 
   return (
     <div className="fixed top-7 right-7 z-40 w-[216px] h-[216px]">
@@ -141,28 +142,78 @@ const CompactRing: React.FC = () => {
               strokeWidth={1}
               className="compact-ring-core transition-all duration-300"
             />
-            <text
-              x={centerMode === 'ag' ? 1 : 0}
-              y={centerMode === 'ag' ? 12 : centerMode === 'home' ? 4 : -3}
-              textAnchor="middle"
-              className="select-none fill-[rgb(var(--ring-label-rgb))] transition-all duration-300 group-hover:fill-accent-blue"
+            <g
+              className="transition-all group-hover:fill-accent-blue"
               style={{
-                fontSize:
-                  centerMode === 'ag' ? '35px' : centerMode === 'home' ? '11.5px' : '8.2px',
-                letterSpacing:
-                  centerMode === 'ag' ? '0.04em' : centerMode === 'home' ? '0.12em' : '0.06em',
-                fontWeight: centerMode === 'ag' ? 500 : 600,
+                opacity: centerMode === 'ag' ? 1 : 0,
+                transform: centerMode === 'ag' ? 'translateY(0px)' : 'translateY(2px)',
+                transformOrigin: 'center',
+                transition: centerTransition,
               }}
             >
-              {centerMode === 'guide' ? (
-                <>
-                  <tspan x={0} dy={0}>Use to</tspan>
-                  <tspan x={0} dy={11}>Navigate</tspan>
-                </>
-              ) : (
-                centerMode === 'home' ? 'Home' : 'AG'
-              )}
-            </text>
+              <text
+                x={1}
+                y={12}
+                textAnchor="middle"
+                className="select-none fill-[rgb(var(--ring-label-rgb))]"
+                style={{
+                  fontSize: '35px',
+                  letterSpacing: '0.04em',
+                  fontWeight: 500,
+                }}
+              >
+                AG
+              </text>
+            </g>
+
+            <g
+              className="transition-all group-hover:fill-accent-blue"
+              style={{
+                opacity: centerMode === 'guide' ? 1 : 0,
+                transform: centerMode === 'guide' ? 'translateY(0px)' : 'translateY(-2px)',
+                transformOrigin: 'center',
+                transition: centerTransition,
+              }}
+            >
+              <text
+                x={0}
+                y={-3}
+                textAnchor="middle"
+                className="select-none fill-[rgb(var(--ring-label-rgb))]"
+                style={{
+                  fontSize: '8.2px',
+                  letterSpacing: '0.06em',
+                  fontWeight: 600,
+                }}
+              >
+                <tspan x={0} dy={0}>Use to</tspan>
+                <tspan x={0} dy={11}>Navigate</tspan>
+              </text>
+            </g>
+
+            <g
+              className="transition-all group-hover:fill-accent-blue"
+              style={{
+                opacity: centerMode === 'home' ? 1 : 0,
+                transform: centerMode === 'home' ? 'translateY(0px)' : 'translateY(2px)',
+                transformOrigin: 'center',
+                transition: centerTransition,
+              }}
+            >
+              <text
+                x={0}
+                y={4}
+                textAnchor="middle"
+                className="select-none fill-[rgb(var(--ring-label-rgb))]"
+                style={{
+                  fontSize: '11.5px',
+                  letterSpacing: '0.12em',
+                  fontWeight: 600,
+                }}
+              >
+                Home
+              </text>
+            </g>
           </g>
         </svg>
       </div>
