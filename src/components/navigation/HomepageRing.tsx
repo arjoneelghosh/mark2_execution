@@ -35,7 +35,7 @@ const HomepageRing: React.FC<HomepageRingProps> = ({ scrollProgress = 0, isActiv
   const innerOrbitStrokeOpacity = 0.05 + revealStrength * 0.13 + activeBoost * 0.08 + hoverBoost * 0.04;
   const innerBloomOpacity = revealStrength * 0.035 + activeBoost * 0.045 + hoverBoost * 0.025;
   const handleBlockedRingPress = () => {
-    window.alert('please scroll down');
+    window.alert('Scroll Down to use the Navigation Ring');
   };
 
   return (

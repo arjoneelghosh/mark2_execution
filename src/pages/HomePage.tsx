@@ -164,6 +164,12 @@ const HomePage: React.FC = () => {
               {paragraph}
             </p>
           ))}
+          <p
+            className="text-navy-200 text-base leading-[1.75] animate-fade-in opacity-0"
+            style={{ animationDelay: '760ms', animationFillMode: 'forwards' }}
+          >
+            Please scroll down to active the navigation ring and checkout my portfolio website.
+          </p>
         </div>
 
         <div className="mt-24 mb-3 w-12 h-px bg-accent-blue/20" />

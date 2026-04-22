@@ -15,6 +15,7 @@ const CompactRing: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isRingHovered, setIsRingHovered] = useState(false);
+  const [showNavigationGuide, setShowNavigationGuide] = useState(false);
   const ringRadius = 84;
   const isRingVisible = isRingHovered;
   const ringScale = isRingVisible ? 1.16 : 1.04;
@@ -29,6 +30,16 @@ const CompactRing: React.FC = () => {
   useEffect(() => {
     setIsRingHovered(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setShowNavigationGuide((current) => !current);
+    }, 2000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const centerMode = isRingVisible ? 'home' : showNavigationGuide ? 'guide' : 'ag';
 
   return (
     <div className="fixed top-7 right-7 z-40 w-[216px] h-[216px]">
@@ -131,17 +142,26 @@ const CompactRing: React.FC = () => {
               className="compact-ring-core transition-all duration-300"
             />
             <text
-              x={isRingVisible ? 0 : 1}
-              y={isRingVisible ? 4 : 12}
+              x={centerMode === 'ag' ? 1 : 0}
+              y={centerMode === 'ag' ? 12 : centerMode === 'home' ? 4 : -3}
               textAnchor="middle"
               className="select-none fill-[rgb(var(--ring-label-rgb))] transition-all duration-300 group-hover:fill-accent-blue"
               style={{
-                fontSize: isRingVisible ? '11.5px' : '35px',
-                letterSpacing: isRingVisible ? '0.12em' : '0.04em',
-                fontWeight: isRingVisible ? 600 : 500,
+                fontSize:
+                  centerMode === 'ag' ? '35px' : centerMode === 'home' ? '11.5px' : '8.2px',
+                letterSpacing:
+                  centerMode === 'ag' ? '0.04em' : centerMode === 'home' ? '0.12em' : '0.06em',
+                fontWeight: centerMode === 'ag' ? 500 : 600,
               }}
             >
-              {isRingVisible ? 'Home' : 'AG'}
+              {centerMode === 'guide' ? (
+                <>
+                  <tspan x={0} dy={0}>Use to</tspan>
+                  <tspan x={0} dy={11}>Navigate</tspan>
+                </>
+              ) : (
+                centerMode === 'home' ? 'Home' : 'AG'
+              )}
             </text>
           </g>
         </svg>
