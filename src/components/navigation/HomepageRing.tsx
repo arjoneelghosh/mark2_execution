@@ -35,7 +35,13 @@ const HomepageRing: React.FC<HomepageRingProps> = ({ scrollProgress = 0, isActiv
   const innerOrbitStrokeOpacity = 0.05 + revealStrength * 0.13 + activeBoost * 0.08 + hoverBoost * 0.04;
   const innerBloomOpacity = revealStrength * 0.035 + activeBoost * 0.045 + hoverBoost * 0.025;
   const handleBlockedRingPress = () => {
-    window.alert('Scroll Down to use the Navigation Ring');
+    window.alert('Please scroll down to use the Navigation Ring');
+  };
+
+  const handleCenterPress = () => {
+    if (!isActive) {
+      handleBlockedRingPress();
+    }
   };
 
   return (
@@ -77,7 +83,19 @@ const HomepageRing: React.FC<HomepageRingProps> = ({ scrollProgress = 0, isActiv
         />
 
         {/* Center instructional text */}
-        <g>
+        <g
+          onClick={handleCenterPress}
+          role={!isActive ? 'button' : undefined}
+          tabIndex={!isActive ? 0 : -1}
+          onKeyDown={(e) => {
+            if (!isActive && (e.key === 'Enter' || e.key === ' ')) {
+              e.preventDefault();
+              handleBlockedRingPress();
+            }
+          }}
+          aria-label={!isActive ? 'Navigation ring guidance' : undefined}
+          style={{ cursor: !isActive ? 'pointer' : 'default' }}
+        >
           <circle
             cx={0}
             cy={0}
@@ -106,7 +124,7 @@ const HomepageRing: React.FC<HomepageRingProps> = ({ scrollProgress = 0, isActiv
             style={{
               fontSize: '9.4px',
               letterSpacing: '0.08em',
-              fontWeight: 450,
+              fontWeight: 700,
               opacity: centerTextOpacity,
             }}
           >

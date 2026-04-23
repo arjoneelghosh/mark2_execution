@@ -181,9 +181,9 @@ const CompactRing: React.FC = () => {
                 textAnchor="middle"
                 className="select-none fill-[rgb(var(--ring-label-rgb))]"
                 style={{
-                  fontSize: '8.2px',
+                  fontSize: '9.6px',
                   letterSpacing: '0.06em',
-                  fontWeight: 600,
+                  fontWeight: 700,
                 }}
               >
                 <tspan x={0} dy={0}>Use to</tspan>
