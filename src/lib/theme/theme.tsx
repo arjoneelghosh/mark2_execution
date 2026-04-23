@@ -8,22 +8,8 @@ const THEME_ATTRIBUTE = 'data-theme';
 const isSiteTheme = (value: string | null): value is SiteTheme =>
   value === 'dark' || value === 'light';
 
-const getStoredTheme = (): SiteTheme | null => {
-  if (typeof window === 'undefined') return null;
-
-  try {
-    const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return isSiteTheme(stored) ? stored : null;
-  } catch {
-    return null;
-  }
-};
-
 const resolveInitialTheme = (): SiteTheme => {
   if (typeof document === 'undefined') return 'dark';
-
-  const stored = getStoredTheme();
-  if (stored) return stored;
 
   const attrTheme = document.documentElement.getAttribute(THEME_ATTRIBUTE);
   return isSiteTheme(attrTheme) ? attrTheme : 'dark';
@@ -37,7 +23,15 @@ const applyTheme = (theme: SiteTheme) => {
 };
 
 export const initializeTheme = () => {
-  applyTheme(resolveInitialTheme());
+  applyTheme('dark');
+
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.removeItem(THEME_STORAGE_KEY);
+  } catch {
+    // Ignore storage failures and keep the runtime theme applied.
+  }
 };
 
 interface ThemeContextValue {
@@ -54,8 +48,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     applyTheme(theme);
 
+    if (theme !== 'dark') return;
+
     try {
-      window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+      window.localStorage.setItem(THEME_STORAGE_KEY, 'dark');
     } catch {
       // Ignore storage failures and keep the runtime theme applied.
     }
