@@ -776,6 +776,7 @@ const referencesChatbotMeta = (query: string, queryTokens: string[]) => {
 export type CanonicalIntent =
   | 'profile-unsupported'
   | 'candidate-profile'
+  | 'experience-duration'
   | 'role-fit'
   | 'project-ranking'
   | 'portfolio-orientation'
@@ -988,6 +989,115 @@ const buildRegularToolsContext = (noiseToken?: string): PortfolioMatchContext =>
     ]
   );
 
+const PORTFOLIO_MONTH_LOOKUP: Record<string, number> = {
+  jan: 0,
+  feb: 1,
+  mar: 2,
+  apr: 3,
+  may: 4,
+  jun: 5,
+  jul: 6,
+  aug: 7,
+  sep: 8,
+  oct: 9,
+  nov: 10,
+  dec: 11,
+};
+
+const parsePortfolioDate = (value: string) => {
+  const normalizedValue = value.trim();
+  const textMatch = normalizedValue.match(/^(\d{2})-([A-Za-z]{3})-(\d{2})$/);
+  if (textMatch) {
+    const [, day, month, year] = textMatch;
+    const monthIndex = PORTFOLIO_MONTH_LOOKUP[month.toLowerCase()];
+    if (monthIndex === undefined) return null;
+    const fullYear = Number(year) >= 70 ? 1900 + Number(year) : 2000 + Number(year);
+    return new Date(Date.UTC(fullYear, monthIndex, Number(day)));
+  }
+
+  const numericMatch = normalizedValue.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+  if (numericMatch) {
+    const [, day, month, year] = numericMatch;
+    return new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
+  }
+
+  return null;
+};
+
+const getInternshipDurationBreakdown = () => {
+  const internships = chatbotKnowledge.experience.internships.map((entry) => {
+    const [rawStart, rawEnd] = entry.period.split(/\s+to\s+/i);
+    const start = rawStart ? parsePortfolioDate(rawStart) : null;
+    const end = rawEnd ? parsePortfolioDate(rawEnd) : null;
+
+    if (!start || !end || Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+      return { entry, days: null as number | null, roundedMonths: null as number | null };
+    }
+
+    const days =
+      Math.max(1, Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1);
+    const roundedMonths = Math.max(1, Math.round(days / 30.4375));
+
+    return { entry, days, roundedMonths };
+  });
+
+  const computableInternships = internships.filter(
+    (item): item is typeof item & { days: number; roundedMonths: number } =>
+      typeof item.days === 'number' && typeof item.roundedMonths === 'number'
+  );
+
+  const totalDays = computableInternships.reduce((sum, item) => sum + item.days, 0);
+  const totalRoundedMonths = totalDays > 0 ? Math.max(1, Math.round(totalDays / 30.4375)) : 0;
+
+  return {
+    internships,
+    computableInternships,
+    totalRoundedMonths,
+    allInternshipsComputable:
+      computableInternships.length === chatbotKnowledge.experience.internships.length &&
+      chatbotKnowledge.experience.internships.length > 0,
+  };
+};
+
+const buildInternshipListingContext = (): PortfolioMatchContext => ({
+  kind: 'experience-list',
+  scope: 'internships',
+  entries: chatbotKnowledge.experience.internships,
+});
+
+const buildExperienceDurationContext = (noiseToken?: string): PortfolioMatchContext => {
+  const breakdown = getInternshipDurationBreakdown();
+  const prefix = noiseToken
+    ? `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on the experience wording `
+    : '';
+
+  if (breakdown.allInternshipsComputable && breakdown.totalRoundedMonths > 0) {
+    return createActionContext(
+      'Total Experience',
+      'Total Experience',
+      `${prefix}the explicitly dated internship records support roughly ${breakdown.totalRoundedMonths} months of internship experience in total. I would not fold leadership records into one exact month count because those entries are published as year labels or certificate-style periods rather than month-precise ranges.`,
+      [
+        ...breakdown.computableInternships.map(
+          ({ entry, roundedMonths }) =>
+            `${entry.role} at ${entry.organization}: ${entry.period} (${roundedMonths} month${
+              roundedMonths === 1 ? '' : 's'
+            } approx.).`
+        ),
+        'Leadership roles are listed separately, but their published periods are not precise enough to merge into one exact total month calculation safely.',
+      ]
+    );
+  }
+
+  return createActionContext(
+    'Total Experience',
+    'Total Experience',
+    `${prefix}the portfolio does not publish enough precise date detail to confirm one exact total month count across all experience records. The closest grounded answer is the internship record summary below.`,
+    chatbotKnowledge.experience.internships.map(
+      (entry) => `${entry.role} at ${entry.organization}: ${entry.period}.`
+    )
+  );
+};
+
 const buildNoiseAwareProjectIntentContext = (
   query: string,
   queryTokens: string[]
@@ -1110,11 +1220,57 @@ const referencesUnsupportedProfileInterviewQuery = (query: string, queryTokens: 
     (hasTokenFamily(queryTokens, ['team'], 1) && hasTokenFamily(queryTokens, ['worked'], 1))) &&
     queryTokens.length >= 4);
 
+const referencesExperienceDurationIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'how many months of exp',
+    'how much total exp',
+    'how much total experience',
+    'how much experience do you have',
+    'how many months of experience',
+    'months of exp',
+    'months of experience',
+    'total exp',
+    'total experience',
+    'internship duration',
+    'work experience',
+  ]) ||
+  (((query.includes('exp') || query.includes('experience')) &&
+    (query.includes('total') ||
+      query.includes('months') ||
+      query.includes('how much') ||
+      query.includes('how many'))) ||
+    (query.includes('internship') &&
+      (query.includes('duration') || query.includes('months'))));
+
+const referencesInternshipListingIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'what internships are listed',
+    'what internships do you have',
+    'which internships are mentioned',
+    'internship list',
+    'what internships are there',
+  ]) ||
+  (hasTokenFamily(queryTokens, ['internship', 'internships'], 1) &&
+    hasTokenFamily(queryTokens, ['list', 'listed', 'mentioned', 'have'], 2));
+
 const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) =>
   includesAny(query, [
+    'tell me about arjoneel',
+    'tell me about you',
+    'who are you',
+    'what is your profile',
+    'what is your background',
     'what is your experience',
     'what experience',
+    'what experience do you have',
+    'how much experience do you have',
+    'how much total exp',
+    'how much total experience',
+    'how many months of exp',
     'what is your job profile',
+    'what internships are listed',
+    'what internships do you have',
+    'internship list',
     'what projects have you worked on',
     'what tools/technologies do you use regularly',
     'what tools technologies do you use regularly',
@@ -1129,8 +1285,16 @@ const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) 
     'why should i hire arjoneel',
     'why should i not hire arjoneel',
   ]) ||
+  referencesExperienceDurationIntent(query, queryTokens) ||
+  referencesInternshipListingIntent(query, queryTokens) ||
   ((query.includes('experience') || query.includes('job profile')) &&
     !hasTokenFamily(queryTokens, ['website', 'site', 'ring', 'portfolio'], 1)) ||
+  ((hasTokenFamily(queryTokens, ['you', 'your'], 1) || hasTokenFamily(queryTokens, ['arjoneel'], 1)) &&
+    hasTokenFamily(
+      queryTokens,
+      ['profile', 'background', 'experience', 'internship', 'internships', 'projects'],
+      2
+    )) ||
   ((hasTokenFamily(queryTokens, ['projects'], 1) || hasTokenFamily(queryTokens, ['technologies', 'tools'], 1)) &&
     (hasTokenFamily(queryTokens, ['worked', 'use', 'regularly'], 2) ||
       includesAny(query, ['have you worked on', 'do you use regularly']))) ||
@@ -1208,6 +1372,14 @@ const buildCandidateProfileContext = (
 
   if (referencesUnsupportedProfileInterviewQuery(query, queryTokens)) {
     return buildGroundedFallbackContext();
+  }
+
+  if (referencesInternshipListingIntent(query, queryTokens)) {
+    return buildInternshipListingContext();
+  }
+
+  if (referencesExperienceDurationIntent(query, queryTokens)) {
+    return buildExperienceDurationContext(noiseToken ?? undefined);
   }
 
   if (includesAny(query, ['what projects have you worked on'])) {
@@ -1298,6 +1470,28 @@ const buildCandidateProfileContext = (
       'Job Profile',
       `${chatbotKnowledge.site.ownerName} is best described here as a ${chatbotKnowledge.site.headline.toLowerCase()} with strongest evidence in forecasting systems, assistive AI, and product-oriented technical delivery.`,
       recruiterReply.bullets
+    );
+  }
+
+  if (
+    includesAny(query, [
+      'tell me about arjoneel',
+      'tell me about you',
+      'who are you',
+      'what is your profile',
+      'what is your background',
+    ])
+  ) {
+    return createActionContext(
+      'Profile Summary',
+      'Profile Summary',
+      `${chatbotKnowledge.site.ownerName} is positioned as a ${chatbotKnowledge.site.headline.toLowerCase()} whose work centers on forecasting systems, assistive computer vision, and product-oriented technical delivery.`,
+      [
+        recruiterReply.bullets[0],
+        recruiterReply.bullets[1],
+        'Supporting experience includes KPMG India Services LLP and Sopra Steria India Limited internship records.',
+        'The broader profile combines projects, grouped skills, education, experience records, and Lab material.',
+      ]
     );
   }
 
@@ -2530,6 +2724,14 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
     return 'portfolio-orientation';
   }
 
+  if (referencesExperienceDurationIntent(query, queryTokens)) {
+    return 'experience-duration';
+  }
+
+  if (referencesInternshipListingIntent(query, queryTokens)) {
+    return 'internships';
+  }
+
   if (referencesCandidateProfileIntent(query, queryTokens)) {
     return 'candidate-profile';
   }
@@ -3014,6 +3216,17 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent,
       matchedDomain: context.kind,
       matchedEntryCount: 1,
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'experience-duration') {
+    context = buildExperienceDurationContext(getLeadingNoiseToken(queryTokens) ?? undefined);
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: getMatchedEntryCount(context),
       context,
     };
   }
