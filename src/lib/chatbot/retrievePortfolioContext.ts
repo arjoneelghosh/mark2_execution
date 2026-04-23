@@ -1232,7 +1232,6 @@ const referencesExperienceDurationIntent = (query: string, queryTokens: string[]
     'total exp',
     'total experience',
     'internship duration',
-    'work experience',
   ]) ||
   (((query.includes('exp') || query.includes('experience')) &&
     (query.includes('total') ||
@@ -1248,16 +1247,49 @@ const referencesInternshipListingIntent = (query: string, queryTokens: string[])
     'what internships do you have',
     'which internships are mentioned',
     'internship list',
+    'internships',
+    'listed internships',
     'what internships are there',
   ]) ||
   (hasTokenFamily(queryTokens, ['internship', 'internships'], 1) &&
     hasTokenFamily(queryTokens, ['list', 'listed', 'mentioned', 'have'], 2));
+
+const referencesOwnerNameIntent = (query: string) =>
+  includesAny(query, ['owner name', 'your name']) || query === 'name';
+
+const referencesOwnerSummaryIntent = (query: string) =>
+  includesAny(query, [
+    'owner info',
+    'owner information',
+    'tell me about yourself',
+    'tell me about you',
+    'who are you',
+    'what is your profile',
+    'what is your background',
+  ]);
+
+const referencesExperienceSummaryIntent = (query: string) =>
+  includesAny(query, [
+    'exp',
+    'experience',
+    'work experience',
+    'what experience do you have',
+    'what is your experience',
+    'what experience',
+    'how much experience do you have',
+  ]);
 
 const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) =>
   includesAny(query, [
     'tell me about arjoneel',
     'tell me about you',
     'who are you',
+    'tell me about yourself',
+    'owner name',
+    'owner info',
+    'owner information',
+    'your name',
+    'name',
     'what is your profile',
     'what is your background',
     'what is your experience',
@@ -1285,6 +1317,9 @@ const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) 
     'why should i hire arjoneel',
     'why should i not hire arjoneel',
   ]) ||
+  referencesOwnerNameIntent(query) ||
+  referencesOwnerSummaryIntent(query) ||
+  referencesExperienceSummaryIntent(query) ||
   referencesExperienceDurationIntent(query, queryTokens) ||
   referencesInternshipListingIntent(query, queryTokens) ||
   ((query.includes('experience') || query.includes('job profile')) &&
@@ -1374,6 +1409,19 @@ const buildCandidateProfileContext = (
     return buildGroundedFallbackContext();
   }
 
+  if (referencesOwnerNameIntent(query)) {
+    return createActionContext(
+      'Owner Name',
+      'Owner Name',
+      `${chatbotKnowledge.site.ownerName} is the owner and candidate behind this portfolio.`,
+      [`Current profile: ${chatbotKnowledge.site.headline}.`]
+    );
+  }
+
+  if (referencesOwnerSummaryIntent(query)) {
+    return { kind: 'action', item: identityReplyByMode('owner') };
+  }
+
   if (referencesInternshipListingIntent(query, queryTokens)) {
     return buildInternshipListingContext();
   }
@@ -1448,6 +1496,23 @@ const buildCandidateProfileContext = (
   }
 
   if (includesAny(query, ['what is your experience', 'what experience']) || query.includes('experience')) {
+    return createActionContext(
+      'Experience Summary',
+      'Experience Summary',
+      `${
+        noiseToken
+          ? `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on "experience" here is the closest relevant summary. `
+          : ''
+      }The published experience here is internship-led and project-heavy, with additional leadership evidence rather than a long full-time role history.`,
+      [
+        'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
+        'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
+      ]
+    );
+  }
+
+  if (referencesExperienceSummaryIntent(query)) {
     return createActionContext(
       'Experience Summary',
       'Experience Summary',
