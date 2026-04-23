@@ -777,6 +777,7 @@ export type CanonicalIntent =
   | 'profile-unsupported'
   | 'candidate-profile'
   | 'experience-duration'
+  | 'latest-experience'
   | 'role-fit'
   | 'project-ranking'
   | 'portfolio-orientation'
@@ -1098,6 +1099,76 @@ const buildExperienceDurationContext = (noiseToken?: string): PortfolioMatchCont
   );
 };
 
+const getLatestInternshipRecord = () => {
+  const internships = chatbotKnowledge.experience.internships
+    .map((entry) => {
+      const [, rawEnd] = entry.period.split(/\s+to\s+/i);
+      const end = rawEnd ? parsePortfolioDate(rawEnd) : null;
+      return {
+        entry,
+        end,
+      };
+    })
+    .filter(
+      (item): item is { entry: (typeof chatbotKnowledge.experience.internships)[number]; end: Date } =>
+        !!item.end && !Number.isNaN(item.end.getTime())
+    );
+
+  if (internships.length === 0) return null;
+
+  return internships.reduce((latest, current) =>
+    current.end.getTime() > latest.end.getTime() ? current : latest
+  );
+};
+
+const referencesLatestCompanyIntent = (query: string) =>
+  includesAny(query, [
+    'latest company',
+    'what company is the latest one where i have worked',
+    'for which company is the latest one where i have worked',
+    'for which company is the latest one where arjoneel has worked',
+    'where did i work most recently',
+    'where did arjoneel work most recently',
+  ]) ||
+  ((query.includes('latest') || query.includes('most recent')) &&
+    (query.includes('company') || query.includes('where')) &&
+    query.includes('work'));
+
+const buildLatestExperienceContext = (query: string): PortfolioMatchContext => {
+  const latest = getLatestInternshipRecord();
+  const asksCompany = referencesLatestCompanyIntent(query);
+
+  if (!latest) {
+    return createActionContext(
+      asksCompany ? 'Latest Company' : 'Latest Work Experience',
+      asksCompany ? 'Latest Company' : 'Latest Work Experience',
+      'The local portfolio has experience records, but the latest one cannot be confirmed exactly from the published date detail alone.',
+      chatbotKnowledge.experience.internships.map(
+        (entry) => `${entry.role} at ${entry.organization}: ${entry.period}.`
+      )
+    );
+  }
+
+  if (asksCompany) {
+    return createActionContext(
+      'Latest Company',
+      'Latest Company',
+      `The latest listed company where ${chatbotKnowledge.site.ownerName.split(' ')[0]} has worked is ${latest.entry.organization}.`,
+      [`Latest listed role: ${latest.entry.role} (${latest.entry.period}).`]
+    );
+  }
+
+  return createActionContext(
+    'Latest Work Experience',
+    'Latest Work Experience',
+    `The latest listed work experience is ${latest.entry.role} at ${latest.entry.organization} (${latest.entry.period}).`,
+    [
+      latest.entry.summary,
+      ...(latest.entry.tech?.length ? [`Tech used: ${latest.entry.tech.join(', ')}.`] : []),
+    ]
+  );
+};
+
 const buildNoiseAwareProjectIntentContext = (
   query: string,
   queryTokens: string[]
@@ -1279,6 +1350,26 @@ const referencesExperienceSummaryIntent = (query: string) =>
     'how much experience do you have',
   ]);
 
+const referencesLatestExperienceIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'latest job',
+    'latest work',
+    'latest work exp',
+    'latest one work exp',
+    'most recent job',
+    'most recent work experience',
+    'latest company worked at',
+    'latest company where i worked',
+    'what company is the latest one where i have worked',
+    'for which company is the latest one where i have worked',
+    'for which company is the latest one where arjoneel has worked',
+    'where did i work most recently',
+    'where did arjoneel work most recently',
+    'what is the latest work experience',
+  ]) ||
+  ((query.includes('latest') || query.includes('most recent')) &&
+    hasTokenFamily(queryTokens, ['job', 'work', 'experience', 'exp', 'company'], 2));
+
 const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) =>
   includesAny(query, [
     'tell me about arjoneel',
@@ -1320,6 +1411,7 @@ const referencesCandidateProfileIntent = (query: string, queryTokens: string[]) 
   referencesOwnerNameIntent(query) ||
   referencesOwnerSummaryIntent(query) ||
   referencesExperienceSummaryIntent(query) ||
+  referencesLatestExperienceIntent(query, queryTokens) ||
   referencesExperienceDurationIntent(query, queryTokens) ||
   referencesInternshipListingIntent(query, queryTokens) ||
   ((query.includes('experience') || query.includes('job profile')) &&
@@ -1420,6 +1512,10 @@ const buildCandidateProfileContext = (
 
   if (referencesOwnerSummaryIntent(query)) {
     return { kind: 'action', item: identityReplyByMode('owner') };
+  }
+
+  if (referencesLatestExperienceIntent(query, queryTokens)) {
+    return buildLatestExperienceContext(query);
   }
 
   if (referencesInternshipListingIntent(query, queryTokens)) {
@@ -2789,6 +2885,10 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
     return 'portfolio-orientation';
   }
 
+  if (referencesLatestExperienceIntent(query, queryTokens)) {
+    return 'latest-experience';
+  }
+
   if (referencesExperienceDurationIntent(query, queryTokens)) {
     return 'experience-duration';
   }
@@ -3281,6 +3381,17 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent,
       matchedDomain: context.kind,
       matchedEntryCount: 1,
+      context,
+    };
+  }
+
+  if (canonicalIntent === 'latest-experience') {
+    context = buildLatestExperienceContext(query);
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: getMatchedEntryCount(context),
       context,
     };
   }
