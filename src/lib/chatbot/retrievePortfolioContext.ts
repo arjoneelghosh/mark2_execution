@@ -1066,11 +1066,60 @@ const buildInternshipListingContext = (): PortfolioMatchContext => ({
   entries: chatbotKnowledge.experience.internships,
 });
 
-const buildExperienceDurationContext = (noiseToken?: string): PortfolioMatchContext => {
+const referencesCompanyDurationIntent = (query: string, queryTokens: string[]) =>
+  includesAny(query, [
+    'tell me the time for which he worked in the companies',
+    'tell me how long he worked in the companies',
+    'how long did he work in the companies',
+    'what was the duration of his work in the companies',
+    'how long did arjoneel work at the companies',
+    'tell me the work duration for each company',
+    'tell me the duration he worked at each company',
+    'company wise work duration',
+    'company-wise work duration',
+    'tenure at the companies',
+    'work tenure',
+    'internship duration by company',
+    'how long did he work at each company',
+  ]) ||
+  ((query.includes('how long') ||
+    query.includes('duration') ||
+    query.includes('tenure') ||
+    query.includes('time for which') ||
+    query.includes('period')) &&
+    hasTokenFamily(queryTokens, ['worked', 'work', 'companies', 'company', 'internships', 'experience'], 2));
+
+const buildExperienceDurationContext = (query: string, noiseToken?: string): PortfolioMatchContext => {
   const breakdown = getInternshipDurationBreakdown();
   const prefix = noiseToken
     ? `I do not have a grounded meaning for "${noiseToken}" in this portfolio, but based on the experience wording `
     : '';
+  const asksCompanyDuration = referencesCompanyDurationIntent(query, tokenize(query));
+
+  if (asksCompanyDuration) {
+    const companyDurationBullets =
+      breakdown.computableInternships.length > 0
+        ? breakdown.computableInternships.map(
+            ({ entry, roundedMonths }) =>
+              `${entry.organization}: ${entry.period} (${roundedMonths} month${
+                roundedMonths === 1 ? '' : 's'
+              } approx.) as ${entry.role}.`
+          )
+        : chatbotKnowledge.experience.internships.map(
+            (entry) => `${entry.organization}: ${entry.period} (${entry.role}).`
+          );
+
+    return createActionContext(
+      'Work Duration by Company',
+      'Work Duration by Company',
+      `${prefix}${
+        breakdown.computableInternships.length > 0
+          ? 'the local internship records publish enough date detail to show company-wise work duration directly.'
+          : 'the local portfolio does not publish enough precise date detail to calculate exact durations for every company, but the listed company-wise work periods are below.'
+      }`,
+      companyDurationBullets
+    );
+  }
 
   if (breakdown.allInternshipsComputable && breakdown.totalRoundedMonths > 0) {
     return createActionContext(
@@ -1303,7 +1352,12 @@ const referencesExperienceDurationIntent = (query: string, queryTokens: string[]
     'total exp',
     'total experience',
     'internship duration',
+    'work tenure',
+    'tenure at the companies',
+    'company wise work duration',
+    'company-wise work duration',
   ]) ||
+  referencesCompanyDurationIntent(query, queryTokens) ||
   (((query.includes('exp') || query.includes('experience')) &&
     (query.includes('total') ||
       query.includes('months') ||
@@ -1523,7 +1577,7 @@ const buildCandidateProfileContext = (
   }
 
   if (referencesExperienceDurationIntent(query, queryTokens)) {
-    return buildExperienceDurationContext(noiseToken ?? undefined);
+    return buildExperienceDurationContext(query, noiseToken ?? undefined);
   }
 
   if (includesAny(query, ['what projects have you worked on'])) {
@@ -3397,7 +3451,7 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
   }
 
   if (canonicalIntent === 'experience-duration') {
-    context = buildExperienceDurationContext(getLeadingNoiseToken(queryTokens) ?? undefined);
+    context = buildExperienceDurationContext(query, getLeadingNoiseToken(queryTokens) ?? undefined);
     return {
       normalizedQuery: query,
       canonicalIntent,
