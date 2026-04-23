@@ -1973,6 +1973,10 @@ a:hover {
   display: none;
 }
 
+.mobile-footer-banner {
+  display: none;
+}
+
 @keyframes mobile-banner-scroll {
   0% {
     transform: translateX(0);
@@ -1990,6 +1994,22 @@ a:hover {
     display: block;
     overflow: hidden;
     border-bottom: 1px solid rgb(var(--border-rgb) / 0.18);
+    background: linear-gradient(
+      90deg,
+      rgb(var(--panel-elevated-rgb) / 0.72) 0%,
+      rgb(var(--panel-soft-rgb) / 0.6) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .mobile-footer-banner {
+    position: relative;
+    z-index: 40;
+    display: block;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgb(var(--border-rgb) / 0.18);
     background: linear-gradient(
       90deg,
       rgb(var(--panel-elevated-rgb) / 0.72) 0%,

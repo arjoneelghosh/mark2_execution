@@ -146,16 +146,6 @@ const HomePage: React.FC = () => {
               {profileRecord.longBio[0]}
             </p>
 
-            <div
-              ref={mobileRingRef}
-              className="home-mobile-ring-panel md:hidden mt-10 flex items-center justify-center"
-              style={{ opacity: 0.58, transform: 'scale(0.82)' }}
-            >
-              <HomepageRing
-                scrollProgress={ringRevealProgress}
-                isActive={ringIsActive}
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -203,6 +193,17 @@ const HomePage: React.FC = () => {
           >
             Please scroll down to active the navigation ring and checkout my portfolio website.
           </p>
+        </div>
+
+        <div
+          ref={mobileRingRef}
+          className="home-mobile-ring-panel md:hidden mt-14 flex items-center justify-center animate-fade-in opacity-0"
+          style={{ opacity: 0.58, transform: 'scale(0.82)', animationDelay: '820ms', animationFillMode: 'forwards' }}
+        >
+          <HomepageRing
+            scrollProgress={ringRevealProgress}
+            isActive={ringIsActive}
+          />
         </div>
 
         <div className="mt-24 mb-3 w-12 h-px bg-accent-blue/20" />

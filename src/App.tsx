@@ -26,8 +26,8 @@ const App: React.FC = () => {
       <ThemeToggle />
       <div className="mobile-top-banner" aria-hidden="true">
         <div className="mobile-top-banner-track">
-          <span>For the best experience, I recommend using use a laptop or desktop device. </span>
-          <span>For the best experience, I recommend using use a laptop or desktop device. </span>
+          <span>For the best experience, I recommend using a laptop or desktop device. </span>
+          <span>For the best experience, I recommend using a laptop or desktop device. </span>
         </div>
       </div>
       <Routes>
@@ -40,6 +40,12 @@ const App: React.FC = () => {
         <Route path="/ask" element={<AskPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
+      <div className="mobile-footer-banner" aria-hidden="true">
+        <div className="mobile-top-banner-track">
+          <span>For the best experience, I recommend using a laptop or desktop device. </span>
+          <span>For the best experience, I recommend using a laptop or desktop device. </span>
+        </div>
+      </div>
     </>
   );
 };
