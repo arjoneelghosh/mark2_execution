@@ -945,6 +945,21 @@ a:hover {
       0 6px 18px rgba(79, 63, 20, 0.03);
   }
 
+  :root[data-theme='light'] .profile-about-panel {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--panel-bg-rgb) / 0.42) 0%,
+      rgb(var(--panel-soft-rgb) / 0.48) 58%,
+      rgb(var(--panel-elevated-rgb) / 0.38) 100%
+    );
+    border: 1px solid rgb(var(--border-rgb) / 0.52);
+    box-shadow:
+      0 10px 24px rgba(79, 63, 20, 0.05),
+      0 2px 8px rgba(79, 63, 20, 0.025);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   :root[data-theme='light'] .card-base {
     background: linear-gradient(
       180deg,
