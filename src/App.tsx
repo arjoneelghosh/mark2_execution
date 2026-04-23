@@ -24,6 +24,12 @@ const App: React.FC = () => {
     <>
       <ScrollToTop />
       <ThemeToggle />
+      <div className="mobile-top-banner" aria-hidden="true">
+        <div className="mobile-top-banner-track">
+          <span>For the best experience, I recommend using use a laptop or desktop device. </span>
+          <span>For the best experience, I recommend using use a laptop or desktop device. </span>
+        </div>
+      </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/work" element={<WorkPage />} />

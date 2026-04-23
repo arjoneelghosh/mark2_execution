@@ -14,11 +14,13 @@ const NAV_ITEMS = [
 const CompactRing: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isTouchMode, setIsTouchMode] = useState(false);
   const [isRingHovered, setIsRingHovered] = useState(false);
+  const [isTapExpanded, setIsTapExpanded] = useState(false);
   const [idleCenterMode, setIdleCenterMode] = useState<'ag' | 'guide'>('ag');
-  const ringRadius = 84;
-  const isRingVisible = isRingHovered;
-  const ringScale = isRingVisible ? 1.16 : 1.04;
+  const ringRadius = isTouchMode ? 70 : 84;
+  const isRingVisible = isTouchMode ? isTapExpanded : isRingHovered;
+  const ringScale = isTouchMode ? (isRingVisible ? 1.02 : 0.92) : isRingVisible ? 1.16 : 1.04;
   const accentField = 'rgb(var(--accent-blue-rgb) / var(--compact-ring-field-opacity))';
   const accentHalo = 'rgb(var(--accent-glow-rgb) / var(--compact-ring-halo-opacity))';
   const accentHaloOuter = 'rgb(var(--accent-blue-rgb) / var(--compact-ring-halo-outer-opacity))';
@@ -28,7 +30,29 @@ const CompactRing: React.FC = () => {
   const coreStroke = 'rgb(var(--ring-core-stroke-rgb) / var(--compact-ring-core-stroke-opacity))';
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px), (hover: none) and (pointer: coarse)');
+    const sync = () => {
+      const nextTouchMode = mediaQuery.matches;
+      setIsTouchMode(nextTouchMode);
+      if (!nextTouchMode) {
+        setIsTapExpanded(false);
+      }
+    };
+
+    sync();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', sync);
+      return () => mediaQuery.removeEventListener('change', sync);
+    }
+
+    mediaQuery.addListener(sync);
+    return () => mediaQuery.removeListener(sync);
+  }, []);
+
+  useEffect(() => {
     setIsRingHovered(false);
+    setIsTapExpanded(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -41,44 +65,70 @@ const CompactRing: React.FC = () => {
 
   const centerMode = isRingVisible ? 'home' : idleCenterMode;
   const centerTransition = 'opacity 420ms ease, transform 420ms ease';
+  const containerSize = isTouchMode ? 184 : 216;
+  const centerBaseRadius = isTouchMode ? (isRingVisible ? 22 : 36) : isRingVisible ? 24 : 40;
+  const handleCenterActivate = () => {
+    if (isTouchMode && !isTapExpanded) {
+      setIsTapExpanded(true);
+      return;
+    }
+
+    navigate('/');
+  };
 
   return (
-    <div className="fixed top-7 right-7 z-40 w-[216px] h-[216px]">
+    <div
+      className="fixed z-40"
+      style={{
+        top: isTouchMode ? '1rem' : '1.75rem',
+        right: isTouchMode ? '0.75rem' : '1.75rem',
+        width: `${containerSize}px`,
+        height: `${containerSize}px`,
+      }}
+    >
       <div
         className="relative w-full h-full flex items-center justify-center transition-transform duration-280 ease-out"
         style={{ transform: `scale(${ringScale})`, transformOrigin: 'center' }}
-        onMouseEnter={() => setIsRingHovered(true)}
-        onMouseLeave={() => setIsRingHovered(false)}
+        onMouseEnter={() => {
+          if (!isTouchMode) setIsRingHovered(true);
+        }}
+        onMouseLeave={() => {
+          if (!isTouchMode) setIsRingHovered(false);
+        }}
       >
         {/* Ambient pulse field */}
         <div
-          className="compact-ring-pulse absolute w-[216px] h-[216px] rounded-full transition-all duration-280 ease-out"
+          className="compact-ring-pulse absolute rounded-full transition-all duration-280 ease-out"
           style={{
             background: `radial-gradient(circle, ${accentField} 0%, transparent 70%)`,
             filter: 'blur(26px)',
             opacity: isRingVisible ? 1 : 0,
             transform: `scale(${isRingVisible ? 1 : 0.9})`,
+            width: `${containerSize}px`,
+            height: `${containerSize}px`,
           }}
         />
         <div
-          className="compact-ring-pulse-halo absolute w-[180px] h-[180px] rounded-full transition-all duration-280 ease-out"
+          className="compact-ring-pulse-halo absolute rounded-full transition-all duration-280 ease-out"
           style={{
             background: `radial-gradient(circle, ${accentHalo} 0%, ${accentHaloOuter} 42%, transparent 74%)`,
             filter: 'blur(18px)',
             opacity: isRingVisible ? 1 : 0,
             transform: `scale(${isRingVisible ? 1 : 0.9})`,
+            width: `${isTouchMode ? 154 : 180}px`,
+            height: `${isTouchMode ? 154 : 180}px`,
           }}
         />
 
         <svg
           viewBox="-130 -130 260 260"
-          className="w-[216px] h-[216px] relative z-10"
-          style={{ overflow: 'visible' }}
+          className="relative z-10"
+          style={{ overflow: 'visible', width: `${containerSize}px`, height: `${containerSize}px` }}
         >
           <circle
             cx={0}
             cy={0}
-            r={isRingVisible ? 34 : 54}
+            r={isRingVisible ? (isTouchMode ? 30 : 34) : isTouchMode ? 44 : 54}
             fill={coreGlow}
             className="compact-ring-core-glow transition-all duration-300"
           />
@@ -120,23 +170,27 @@ const CompactRing: React.FC = () => {
           {/* Center node */}
           <g
             className="cursor-pointer group"
-            onClick={() => navigate('/')}
-            onMouseEnter={() => setIsRingHovered(true)}
-            onFocus={() => setIsRingHovered(true)}
+            onClick={handleCenterActivate}
+            onMouseEnter={() => {
+              if (!isTouchMode) setIsRingHovered(true);
+            }}
+            onFocus={() => {
+              if (!isTouchMode) setIsRingHovered(true);
+            }}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                navigate('/');
+                handleCenterActivate();
               }
             }}
-            aria-label="Home"
+            aria-label={isTouchMode && !isTapExpanded ? 'Open navigation ring' : 'Home'}
           >
             <circle
               cx={0}
               cy={0}
-              r={isRingVisible ? 24 : 40}
+              r={centerBaseRadius}
               fill={coreFill}
               stroke={coreStroke}
               strokeWidth={1}
@@ -157,7 +211,7 @@ const CompactRing: React.FC = () => {
                 textAnchor="middle"
                 className="select-none fill-[rgb(var(--ring-label-rgb))]"
                 style={{
-                  fontSize: '35px',
+                  fontSize: isTouchMode ? '30px' : '35px',
                   letterSpacing: '0.04em',
                   fontWeight: 500,
                 }}
@@ -181,7 +235,7 @@ const CompactRing: React.FC = () => {
                 textAnchor="middle"
                 className="select-none fill-[rgb(var(--ring-label-rgb))]"
                 style={{
-                  fontSize: '9.6px',
+                  fontSize: isTouchMode ? '8.9px' : '9.6px',
                   letterSpacing: '0.06em',
                   fontWeight: 700,
                 }}
@@ -206,7 +260,7 @@ const CompactRing: React.FC = () => {
                 textAnchor="middle"
                 className="select-none fill-[rgb(var(--ring-label-rgb))]"
                 style={{
-                  fontSize: '11.5px',
+                  fontSize: isTouchMode ? '10.8px' : '11.5px',
                   letterSpacing: '0.12em',
                   fontWeight: 600,
                 }}

@@ -13,6 +13,7 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isLight = theme === 'light';
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
   const [ringRevealProgress, setRingRevealProgress] = useState(0);
   const [ringIsActive, setRingIsActive] = useState(false);
   const [previewCard, setPreviewCard] = useState<ContentCard | null>(null);
@@ -26,26 +27,47 @@ const HomePage: React.FC = () => {
     .filter((group): group is NonNullable<typeof group> => Boolean(group));
 
   const ringRef = useRef<HTMLDivElement>(null);
+  const mobileRingRef = useRef<HTMLDivElement>(null);
   const portraitRef = useRef<HTMLDivElement>(null);
   const focusSectionRef = useRef<HTMLDivElement>(null);
   const ringActiveRef = useRef(false);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const sync = () => setIsMobileLayout(mediaQuery.matches);
+
+    sync();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', sync);
+      return () => mediaQuery.removeEventListener('change', sync);
+    }
+
+    mediaQuery.addListener(sync);
+    return () => mediaQuery.removeListener(sync);
+  }, []);
+
+  useEffect(() => {
     const apply = () => {
       const t = Math.min(Math.max(window.scrollY / 560, 0), 1);
-      const ringOpacity = Math.min(0.04 + t * 1.04, 1);
-      const ringScale = 0.94 + t * 0.06;
+      const ringOpacity = isMobileLayout ? Math.min(0.58 + t * 0.36, 1) : Math.min(0.04 + t * 1.04, 1);
+      const ringScale = isMobileLayout ? 0.82 + t * 0.08 : 0.94 + t * 0.06;
 
       if (portraitRef.current) {
         const baseOpacity = isLight ? 0.3 : 0.28;
         const minOpacity = isLight ? 0.12 : 0.08;
-        const portraitOpacity = baseOpacity - t * (isLight ? 0.18 : 0.2);
+        const portraitOpacity = baseOpacity - t * (isLight ? 0.18 : 0.2) - (isMobileLayout ? 0.08 : 0);
         portraitRef.current.style.opacity = `${Math.max(portraitOpacity, minOpacity)}`;
       }
 
       if (ringRef.current) {
-        ringRef.current.style.opacity = `${ringOpacity}`;
+        ringRef.current.style.opacity = `${isMobileLayout ? 0 : ringOpacity}`;
         ringRef.current.style.transform = `translateY(-50%) scale(${ringScale})`;
+      }
+
+      if (mobileRingRef.current) {
+        mobileRingRef.current.style.opacity = `${isMobileLayout ? ringOpacity : 0}`;
+        mobileRingRef.current.style.transform = `scale(${ringScale})`;
       }
 
       setRingRevealProgress(t);
@@ -66,7 +88,7 @@ const HomePage: React.FC = () => {
     const onScroll = () => requestAnimationFrame(apply);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isLight]);
+  }, [isLight, isMobileLayout]);
 
   return (
     <div className="bg-home relative">
@@ -75,7 +97,7 @@ const HomePage: React.FC = () => {
       <div className="relative z-10 min-h-screen flex items-center overflow-hidden">
         <div
           ref={portraitRef}
-          className="absolute top-0 right-0 w-[52%] h-full pointer-events-none select-none"
+          className="absolute top-0 right-0 h-full pointer-events-none select-none w-[74%] sm:w-[62%] md:w-[52%]"
           style={{ opacity: isLight ? 0.3 : 0.28 }}
         >
           <div className="home-portrait-overlay-left absolute inset-0 z-10" />
@@ -90,7 +112,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className="relative z-20 page-shell-home w-full">
-          <div className="home-hero-copy max-w-[34rem] lg:max-w-[32rem] pt-24 lg:pt-0">
+          <div className="home-hero-copy home-mobile-hero-copy max-w-[34rem] lg:max-w-[32rem] pt-28 md:pt-24 lg:pt-0">
             <p
               className="text-accent-blue/70 tracking-widest uppercase mb-7 animate-fade-in opacity-0 italic font-medium"
               style={{
@@ -123,13 +145,24 @@ const HomePage: React.FC = () => {
             >
               {profileRecord.longBio[0]}
             </p>
+
+            <div
+              ref={mobileRingRef}
+              className="home-mobile-ring-panel md:hidden mt-10 flex items-center justify-center"
+              style={{ opacity: 0.58, transform: 'scale(0.82)' }}
+            >
+              <HomepageRing
+                scrollProgress={ringRevealProgress}
+                isActive={ringIsActive}
+              />
+            </div>
           </div>
         </div>
       </div>
 
       <div
         ref={ringRef}
-        className="fixed z-30 will-change-transform"
+        className="fixed z-30 will-change-transform hidden md:block"
         style={{
           right: '14%',
           top: '51%',
