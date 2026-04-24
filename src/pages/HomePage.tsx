@@ -99,7 +99,10 @@ const HomePage: React.FC = () => {
         <div
           ref={portraitRef}
           className="absolute top-0 right-0 h-full pointer-events-none select-none w-[74%] sm:w-[62%] md:w-[52%]"
-          style={{ opacity: isLight ? (isMobileLayout ? 0.48 : 0.3) : 0.28 }}
+          style={{
+            opacity: isLight ? (isMobileLayout ? 0.48 : 0.3) : 0.28,
+            width: isLight && isMobileLayout ? '82%' : undefined,
+          }}
         >
           <div className="home-portrait-overlay-left absolute inset-0 z-10" />
           <div className="home-portrait-overlay-top absolute inset-0 z-10" />
@@ -108,7 +111,7 @@ const HomePage: React.FC = () => {
             src={portraitPhoto}
             alt="Arjoneel Ghosh"
             className="w-full h-full object-cover"
-            style={{ objectPosition: isLight && isMobileLayout ? '58% 12%' : '54% 14%' }}
+            style={{ objectPosition: isLight && isMobileLayout ? '72% 12%' : '54% 14%' }}
           />
         </div>
 

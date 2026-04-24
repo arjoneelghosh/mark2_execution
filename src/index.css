@@ -1989,9 +1989,9 @@ a:hover {
 
 @media (max-width: 767px) {
   :root[data-theme='light'] .home-mobile-hero-copy {
-    max-width: min(78vw, 23rem);
+    max-width: min(62vw, 18.5rem);
     margin-right: auto;
-    padding: 1.45rem 1.3rem 1.55rem;
+    padding: 1.18rem 1.05rem 1.28rem;
     background: linear-gradient(
       155deg,
       rgb(246 239 214 / 0.42) 0%,
