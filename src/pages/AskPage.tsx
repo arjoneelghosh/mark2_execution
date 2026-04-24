@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CompactRing from '../components/navigation/CompactRing';
 import PortfolioChatPanel from '../components/chat/PortfolioChatPanel';
 import ParticleField from '../components/ui/ParticleField';
@@ -89,6 +89,7 @@ const UNIFIED_QUESTION_LIST: AskPromptItem[] = [
 
 const AskPage: React.FC = () => {
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
   const {
     messages,
     inputValue,
@@ -100,6 +101,21 @@ const AskPage: React.FC = () => {
     startListening,
     stopListening,
   } = usePortfolioChat();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const sync = () => setIsMobileLayout(mediaQuery.matches);
+
+    sync();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', sync);
+      return () => mediaQuery.removeEventListener('change', sync);
+    }
+
+    mediaQuery.addListener(sync);
+    return () => mediaQuery.removeListener(sync);
+  }, []);
 
   return (
     <div className="bg-page min-h-screen relative">
@@ -139,39 +155,41 @@ const AskPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-[340px_minmax(0,1fr)] xl:h-[calc(100%-10.25rem)] min-h-0">
-            <section className="theme-divider surface-faq min-h-0 overflow-hidden border-b xl:border-b-0 xl:border-r">
-              <div className="flex h-full min-h-0 flex-col px-5 py-5 lg:px-6 lg:py-6">
-                <div className="mb-5 shrink-0">
-                  <p className="font-heading text-base font-medium text-navy-100 mb-2">FAQs</p>
-                  <p className="text-sm leading-relaxed text-navy-400">
-                    One unified question bank for guided prompts and grounded portfolio queries.
-                  </p>
-                </div>
+            {!isMobileLayout && (
+              <section className="theme-divider surface-faq min-h-0 overflow-hidden border-b xl:border-b-0 xl:border-r">
+                <div className="flex h-full min-h-0 flex-col px-5 py-5 lg:px-6 lg:py-6">
+                  <div className="mb-5 shrink-0">
+                    <p className="font-heading text-base font-medium text-navy-100 mb-2">FAQs</p>
+                    <p className="text-sm leading-relaxed text-navy-400">
+                      One unified question bank for guided prompts and grounded portfolio queries.
+                    </p>
+                  </div>
 
-                <div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
-                  {UNIFIED_QUESTION_LIST.map((item, index) => (
-                    <GlowCard
-                      key={item.id}
-                      delay={index * 70}
-                      onClick={() =>
-                        sendMessage(item.prompt, {
-                          triggerSource: 'faq-rail',
-                          userTriggered: true,
-                        })
-                      }
-                      className="!p-5"
-                    >
-                      <h3 className="font-heading text-sm font-semibold text-navy-50 mb-1.5">
-                        {item.label}
-                      </h3>
-                      <p className="text-navy-400 text-xs leading-relaxed">
-                        {item.description}
-                      </p>
-                    </GlowCard>
-                  ))}
+                  <div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
+                    {UNIFIED_QUESTION_LIST.map((item, index) => (
+                      <GlowCard
+                        key={item.id}
+                        delay={index * 70}
+                        onClick={() =>
+                          sendMessage(item.prompt, {
+                            triggerSource: 'faq-rail',
+                            userTriggered: true,
+                          })
+                        }
+                        className="!p-5"
+                      >
+                        <h3 className="font-heading text-sm font-semibold text-navy-50 mb-1.5">
+                          {item.label}
+                        </h3>
+                        <p className="text-navy-400 text-xs leading-relaxed">
+                          {item.description}
+                        </p>
+                      </GlowCard>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            )}
 
             <section className="surface-chat-column min-h-0 min-w-0 overflow-hidden">
               <PortfolioChatPanel
