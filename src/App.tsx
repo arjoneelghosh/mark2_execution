@@ -26,8 +26,8 @@ const App: React.FC = () => {
       <ThemeToggle />
       <div className="mobile-top-banner" aria-hidden="true">
         <div className="mobile-top-banner-track">
-          <span>For an optimal viewing experience, I recommend using dark mode on a laptop or desktop.</span>
-          <span>For an optimal viewing experience, I recommend using dark mode on a laptop or desktop.</span>
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
         </div>
       </div>
       <Routes>
@@ -42,8 +42,8 @@ const App: React.FC = () => {
       </Routes>
       <div className="mobile-footer-banner" aria-hidden="true">
         <div className="mobile-top-banner-track">
-          <span>For an optimal viewing experience, I recommend using dark mode on a laptop or desktop.</span>
-          <span>For an optimal viewing experience, I recommend using dark mode on a laptop or desktop.</span>
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
         </div>
       </div>
     </>
