@@ -24,6 +24,12 @@ const App: React.FC = () => {
     <>
       <ScrollToTop />
       <ThemeToggle />
+      <div className="mobile-top-banner" aria-hidden="true">
+        <div className="mobile-top-banner-track">
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
+        </div>
+      </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/work" element={<WorkPage />} />
@@ -34,6 +40,12 @@ const App: React.FC = () => {
         <Route path="/ask" element={<AskPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
+      <div className="mobile-footer-banner" aria-hidden="true">
+        <div className="mobile-top-banner-track">
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
+          <span>For an optimal viewing experience, I recommend exploring using dark mode on a laptop or desktop.</span>
+        </div>
+      </div>
     </>
   );
 };

@@ -5,9 +5,10 @@ import SectionHeading from '../components/ui/SectionHeading';
 import GlowCard from '../components/ui/GlowCard';
 import PreviewPanel from '../components/ui/PreviewPanel';
 import FocusPanel from '../components/ui/FocusPanel';
+import ImageLightbox from '../components/ui/ImageLightbox';
 import ProjectMediaCarousel from '../components/ui/ProjectMediaCarousel';
 import { getProjectsForTier2 } from '../data';
-import { buildProjectSlides } from '../lib/projects/buildProjectSlides';
+import { buildProjectSlides, type ProjectMediaSlide } from '../lib/projects/buildProjectSlides';
 import type { ProjectRecord } from '../types';
 
 const TABS = ['Featured', 'DS/ML', 'Full Stack', 'Archive'];
@@ -61,12 +62,25 @@ const WorkPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Featured');
   const [previewProject, setPreviewProject] = useState<ProjectRecord | null>(null);
   const [focusProject, setFocusProject] = useState<ProjectRecord | null>(null);
+  const [lightboxState, setLightboxState] = useState<{
+    images: ProjectMediaSlide[];
+    initialIndex: number;
+  } | null>(null);
 
   const filtered = [...getProjectsForTier2(activeTab)].sort((a, b) => a.priority - b.priority);
   const previewSlides = useMemo(
     () => (previewProject ? buildProjectSlides(previewProject, 'preview') : []),
     [previewProject]
   );
+  const focusSlides = useMemo(
+    () => (focusProject ? buildProjectSlides(focusProject, 'preview') : []),
+    [focusProject]
+  );
+
+  const openImageLightbox = (images: ProjectMediaSlide[], initialIndex: number) => {
+    if (!images.length) return;
+    setLightboxState({ images, initialIndex });
+  };
 
   return (
     <div className="bg-page min-h-screen relative">
@@ -103,7 +117,7 @@ const WorkPage: React.FC = () => {
                     intervalMs={CARD_SLIDESHOW_INTERVAL_MS}
                     debugLabel={project.title}
                     containerClassName="theme-media-frame w-full h-44 rounded-[20px] overflow-hidden mb-5 -mt-1 relative"
-                    imageClassName="w-full h-full object-cover opacity-75 group-hover:opacity-90"
+                    imageClassName="w-full h-full object-contain p-2.5 opacity-92 group-hover:opacity-100"
                   />
                 )}
 
@@ -176,7 +190,8 @@ const WorkPage: React.FC = () => {
                 intervalMs={PREVIEW_SLIDESHOW_INTERVAL_MS}
                 debugLabel={previewProject.title}
                 containerClassName="theme-media-frame w-full h-56 sm:h-64 rounded-xl mb-4 overflow-hidden relative"
-                imageClassName="w-full h-full object-cover opacity-90"
+                imageClassName="w-full h-full object-contain p-3 sm:p-4 opacity-96"
+                onSlideActivate={(index) => openImageLightbox(previewSlides, index)}
               />
             )}
             <p className="text-navy-100 text-sm font-medium mb-2">
@@ -231,15 +246,22 @@ const WorkPage: React.FC = () => {
       >
         {focusProject && (
           <>
-            {focusProject.media?.gallery && focusProject.media.gallery.length > 0 && (
+            {focusSlides.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                {[focusProject.media.cover, ...focusProject.media.gallery].map((img, i) => (
-                  <img
-                    key={i}
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full rounded-xl opacity-90"
-                  />
+                {focusSlides.map((img, i) => (
+                  <button
+                    key={`${img.src}-${i}`}
+                    type="button"
+                    onClick={() => openImageLightbox(focusSlides, i)}
+                    className="theme-media-frame overflow-hidden rounded-xl p-2 text-left transition-all duration-220"
+                    aria-label={`Open image preview for ${img.alt}`}
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="h-full max-h-72 w-full rounded-lg object-contain opacity-95"
+                    />
+                  </button>
                 ))}
               </div>
             )}
@@ -306,6 +328,13 @@ const WorkPage: React.FC = () => {
           </>
         )}
       </FocusPanel>
+
+      <ImageLightbox
+        isOpen={!!lightboxState}
+        images={lightboxState?.images || []}
+        initialIndex={lightboxState?.initialIndex || 0}
+        onClose={() => setLightboxState(null)}
+      />
     </div>
   );
 };
