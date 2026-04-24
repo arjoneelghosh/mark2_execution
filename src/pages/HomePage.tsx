@@ -54,9 +54,10 @@ const HomePage: React.FC = () => {
       const ringScale = isMobileLayout ? 0.82 + t * 0.08 : 0.94 + t * 0.06;
 
       if (portraitRef.current) {
-        const baseOpacity = isLight ? 0.3 : 0.28;
+        const baseOpacity = isLight ? (isMobileLayout ? 0.48 : 0.3) : 0.28;
         const minOpacity = isLight ? 0.12 : 0.08;
-        const portraitOpacity = baseOpacity - t * (isLight ? 0.18 : 0.2) - (isMobileLayout ? 0.08 : 0);
+        const mobileOpacityPenalty = isMobileLayout ? (isLight ? 0.02 : 0.08) : 0;
+        const portraitOpacity = baseOpacity - t * (isLight ? 0.18 : 0.2) - mobileOpacityPenalty;
         portraitRef.current.style.opacity = `${Math.max(portraitOpacity, minOpacity)}`;
       }
 
@@ -98,7 +99,7 @@ const HomePage: React.FC = () => {
         <div
           ref={portraitRef}
           className="absolute top-0 right-0 h-full pointer-events-none select-none w-[74%] sm:w-[62%] md:w-[52%]"
-          style={{ opacity: isLight ? 0.3 : 0.28 }}
+          style={{ opacity: isLight ? (isMobileLayout ? 0.48 : 0.3) : 0.28 }}
         >
           <div className="home-portrait-overlay-left absolute inset-0 z-10" />
           <div className="home-portrait-overlay-top absolute inset-0 z-10" />
@@ -107,7 +108,7 @@ const HomePage: React.FC = () => {
             src={portraitPhoto}
             alt="Arjoneel Ghosh"
             className="w-full h-full object-cover"
-            style={{ objectPosition: '54% 14%' }}
+            style={{ objectPosition: isLight && isMobileLayout ? '58% 12%' : '54% 14%' }}
           />
         </div>
 
@@ -195,17 +196,6 @@ const HomePage: React.FC = () => {
           </p>
         </div>
 
-        <div
-          ref={mobileRingRef}
-          className="home-mobile-ring-panel md:hidden mt-14 flex items-center justify-center animate-fade-in opacity-0"
-          style={{ opacity: 0.58, transform: 'scale(0.82)', animationDelay: '820ms', animationFillMode: 'forwards' }}
-        >
-          <HomepageRing
-            scrollProgress={ringRevealProgress}
-            isActive={ringIsActive}
-          />
-        </div>
-
         <div className="mt-24 mb-3 w-12 h-px bg-accent-blue/20" />
 
         <div
@@ -261,6 +251,17 @@ const HomePage: React.FC = () => {
               Ask me anything about this portfolio
             </span>
           </button>
+        </div>
+
+        <div
+          ref={mobileRingRef}
+          className="home-mobile-ring-panel md:hidden mt-14 mb-8 flex items-center justify-center animate-fade-in opacity-0"
+          style={{ opacity: 0.86, transform: 'scale(0.9)', animationDelay: '1260ms', animationFillMode: 'forwards' }}
+        >
+          <HomepageRing
+            scrollProgress={1}
+            isActive
+          />
         </div>
 
         <div className="mt-32 space-y-20">

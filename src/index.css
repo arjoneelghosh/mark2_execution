@@ -1988,6 +1988,34 @@ a:hover {
 }
 
 @media (max-width: 767px) {
+  :root[data-theme='light'] .home-portrait-overlay-left {
+    background: linear-gradient(
+      to right,
+      rgb(var(--page-bg-rgb) / 0.58) 0%,
+      rgb(var(--page-bg-rgb) / 0.16) 18%,
+      transparent 52%,
+      transparent 100%
+    );
+  }
+
+  :root[data-theme='light'] .home-portrait-overlay-top {
+    background: linear-gradient(
+      to top,
+      rgb(var(--page-bg-rgb) / 0.16) 0%,
+      transparent 44%,
+      rgb(228 220 182 / 0.04) 100%
+    );
+  }
+
+  :root[data-theme='light'] .home-portrait-overlay-bottom {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--page-bg-secondary-rgb) / 0.06) 0%,
+      transparent 36%,
+      rgb(var(--page-bg-rgb) / 0.12) 100%
+    );
+  }
+
   .mobile-top-banner {
     position: relative;
     z-index: 80;
