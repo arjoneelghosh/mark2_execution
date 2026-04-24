@@ -118,7 +118,6 @@ const WorkPage: React.FC = () => {
                     debugLabel={project.title}
                     containerClassName="theme-media-frame w-full h-44 rounded-[20px] overflow-hidden mb-5 -mt-1 relative"
                     imageClassName="w-full h-full object-contain p-2.5 opacity-92 group-hover:opacity-100"
-                    onSlideActivate={(index) => openImageLightbox(cardSlides, index)}
                   />
                 )}
 
