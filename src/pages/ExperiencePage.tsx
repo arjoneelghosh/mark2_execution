@@ -5,112 +5,18 @@ import SectionHeading from '../components/ui/SectionHeading';
 import GlowCard from '../components/ui/GlowCard';
 import PreviewPanel from '../components/ui/PreviewPanel';
 import FocusPanel from '../components/ui/FocusPanel';
-import { experienceEntries } from '../data';
+import { experiencePageEntries } from '../data';
 import type { ExperienceEntry } from '../types';
 
 const TABS = ['Internships', 'Leadership'];
 const CARD_SURFACE_TAG_CLASS = 'theme-tag-accent text-[10px] px-2 py-0.5 rounded-md';
-
-const getExperiencePreviewText = (summary: string) => {
-  const normalized = summary.trim();
-  if (!normalized) return '';
-
-  const sentences = normalized.split(/(?<=[.!?])\s+/);
-  const firstSentence = sentences[0]?.trim() || normalized;
-
-  if (firstSentence.length <= 180) {
-    return firstSentence;
-  }
-
-  return `${firstSentence.slice(0, 177).trimEnd()}...`;
-};
-
-const formatCompactLeadershipPeriod = (periods: string[]) => {
-  const parsed = periods
-    .map((period) => {
-      const match = period.match(/^(\d{4})-(\d{2})$/);
-      if (!match) return null;
-      const start = Number(match[1]);
-      const end = 2000 + Number(match[2]);
-      return { start, end };
-    })
-    .filter((value): value is { start: number; end: number } => value !== null);
-
-  if (parsed.length === 0) return periods.join(', ');
-
-  const start = Math.min(...parsed.map((value) => value.start));
-  const end = Math.max(...parsed.map((value) => value.end));
-  return `${start}-${end}`;
-};
-
-const buildLeadershipEntries = (entries: ExperienceEntry[]): ExperienceEntry[] => {
-  const grouped = new Map<string, ExperienceEntry[]>();
-
-  entries
-    .filter((entry) => entry.type === 'Leadership' && entry.role === 'Committee Head')
-    .forEach((entry) => {
-      const key = `${entry.organization}__${entry.role}`;
-      const existing = grouped.get(key) || [];
-      existing.push(entry);
-      grouped.set(key, existing);
-    });
-
-  return Array.from(grouped.entries()).map(([key, group]) => {
-    const [organization, role] = key.split('__');
-    const years = group.map((entry) => entry.period);
-    const tech = Array.from(new Set(group.flatMap((entry) => entry.tech)));
-
-
-    
-
-    return {
-      id: `leadership-${organization.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${role.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
-      organization,
-      role,
-      period: formatCompactLeadershipPeriod(years),
-      type: 'Leadership',
-      location: group[0]?.location,
-      summary:
-        organization === 'SRM Directorate of Student Affairs'
-          ? 'My two year tenure with the Directorate of Student Affairs at SRM University has been a defining experience in shaping my leadership and organizational abilities. I began as a member of the discipline team where I contributed to ensuring smooth coordination and effective crowd management during large scale events including Milan. Building on this foundation I advanced to the role of Committee Head in my second year where I led teams managed logistics and oversaw end to end event execution. This progression reflects my commitment and consistency and highlights my ability to take on increasing responsibility collaborate effectively and deliver under pressure skills that I am eager to further develop and apply in future academic and professional settings.'
-          : 'My involvement with SRM MUNSOC has been marked by consistent growth and increasing leadership responsibility across multiple years. I began as a committee member in 2022, gaining foundational experience in conference organization and delegate engagement. In 2023, I advanced to serve as Committee Head of the UNSC during SRMMUN where I led discussions mentored delegates and ensured the smooth functioning of committee proceedings. Building on this experience, I took on the role of Committee Head of the Council Affairs team in 2024 where I oversaw broader organizational responsibilities and contributed to the overall execution of the conference. This progression reflects my sustained commitment to extracurricular development and my ability to lead teams manage complex responsibilities and drive organizational excellence.',
-
-          bullets:
-            organization === 'SRM Directorate of Student Affairs'
-              ? [
-                  '* Proof of leadership and continuous involvement in extracurricular growth',
-                  '* Demonstrates strong leadership and sustained extracurricular involvement through a two-year tenure with the Directorate of Student Affairs (DSA) at SRM.',
-                  '* Began as a discipline team member, contributing to event coordination, and progressed to Committee Head, leading teams and overseeing execution for major events such as Milan, reflecting both commitment and growth in responsibility.',
-                ]
-              : [
-                  '* Proof of leadership and continuous involvement in extracurricular growth',
-                  '* Progressed into leadership roles in subsequent editions, serving as Committee Head of the UNSC in 2023 and Committee Head of the Council Affairs team in 2024, taking on responsibilities such as leading teams, mentoring delegates, and ensuring the effective management and smooth functioning of conference proceedings.',
-                 ],
-
-
-
-//      bullets: [
- //       '* Proof of leadership and continuous involvment in extracurriculum growth',
-//        organization === 'SRM Directorate of Student Affairs'
-//          ? '* Demonstrates strong leadership and sustained extracurricular involvement through a two-year tenure with the Directorate of Student Affairs (DSA) at SRM.'
-//          ? '* Began as a discipline team member, contributing to event coordination, and progressed to Committee Head, leading teams and overseeing execution for major events such as Milan, reflecting both commitment and growth in responsibility.'
-//          : '* Displayed leadership'
-//          : '* Managed the SRM MUN of 2022 as a committee member, 2023 as committee head of the UNSC committee and 2024 the committee head of council affairs team',
-//      ],
-      tech,
-    };
-  });
-};
 
 const ExperiencePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Internships');
   const [previewEntry, setPreviewEntry] = useState<ExperienceEntry | null>(null);
   const [focusEntry, setFocusEntry] = useState<ExperienceEntry | null>(null);
 
-  const filtered =
-    activeTab === 'Leadership'
-      ? buildLeadershipEntries(experienceEntries)
-      : experienceEntries.filter((e) => e.type === activeTab);
+  const filtered = experiencePageEntries.filter((entry) => entry.type === activeTab);
 
   return (
     <div className="bg-page min-h-screen relative">
@@ -151,7 +57,7 @@ const ExperiencePage: React.FC = () => {
               </div>
 
               <p className="text-navy-300 text-sm leading-relaxed">
-                {entry.summary}
+                {entry.cardText || entry.summary}
               </p>
 
               <div className="theme-divider-soft flex flex-wrap gap-1.5 mt-3 pt-3 border-t">
@@ -196,7 +102,7 @@ const ExperiencePage: React.FC = () => {
               )}
             </div>
             <p className="text-navy-200 text-sm leading-relaxed">
-              {getExperiencePreviewText(previewEntry.summary)}
+              {previewEntry.previewText || previewEntry.summary}
             </p>
           </>
         )}
@@ -217,9 +123,13 @@ const ExperiencePage: React.FC = () => {
             </div>
 
             <div>
+              <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-2">Summary</h4>
+              <p className="text-navy-200 text-sm leading-relaxed">{focusEntry.summary}</p>
+            </div>
+
+            <div>
               <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-2">Details</h4>
               <div className="space-y-3">
-                <p className="text-navy-200 text-sm leading-relaxed">{focusEntry.summary}</p>
                 {focusEntry.bullets.map((bullet, i) => (
                   <p key={i} className="text-navy-200 text-sm">
                     {bullet}
