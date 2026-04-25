@@ -13,7 +13,7 @@ const internshipEntries: ExperienceEntry[] = [
     cardText:
       'As a Data Science Intern at KPMG, I worked on real-world analytics and forecasting challenges across agriculture and business domains. I developed ML-driven pipelines, built interactive dashboards, and created predictive tools that supported data-driven decision-making. My responsibilities included time-series modeling, data visualization, and implementing geospatial analysis using advanced Python libraries.',
     previewText:
-      'As a Data Science Intern at KPMG, I worked on real-world analytics and forecasting challenges across agriculture and business domains.',
+      'Worked on data mining, pattern recognition, forecasting workflows, and analytics automation in a structured internship environment, contributing to business-facing analytical delivery rather than a standalone personal project. Built automation-oriented reporting and analytics flows that helped reduce repeated manual effort in client-specific workflows.',
     summary:
       'Worked on data mining, pattern recognition, forecasting workflows, and analytics automation in a structured internship environment, contributing to business-facing analytical delivery rather than a standalone personal project.',
     bullets: [
