@@ -11,7 +11,7 @@ export const experienceEntries: ExperienceEntry[] = [
     type: 'Internships',
     location: 'Noida, India',
     summary:
-      'Worked on data mining, pattern recognition, forecasting workflows, and analytics automation in a structured internship environment, contributing to business-facing analytical delivery rather than a standalone personal project.',
+      'As a Data Science Intern at KPMG, I worked on real-world analytics and forecasting challenges across agriculture and business domains. I developed ML-driven pipelines, built interactive dashboards, and created predictive tools that supported data-driven decision-making. My responsibilities included time-series modeling, data visualization, and implementing geospatial analysis using advanced Python libraries.',
     bullets: [
       'Worked on real-world datasets with a focus on extracting patterns, building forecasting workflows, and supporting analytical interpretation.',
       'Built automation-oriented reporting and analytics flows that helped reduce repeated manual effort in client-specific workflows.',
@@ -30,7 +30,8 @@ export const experienceEntries: ExperienceEntry[] = [
     type: 'Internships',
     location: 'Hybrid / Noida, India',
     summary:
-      'Worked on a quota-driven CSV sampling engine for ServiceNow-style case datasets, focusing on hierarchical sampling logic, iterative balancing, configuration-driven execution, and a Streamlit-based interface for practical workflow use.',
+      `Designed and implemented a priority-based sampling engine that reduced analyst prep time.
+Contributed to business intelligence workflows, supporting data cleaning, transformation, and structured reporting.`,
     bullets: [
       'Built around a formal project titled "Quota-Based Three-Phase Iterative Balancing Sampler for ServiceNow Cases" inside a company setting rather than as a purely personal utility.',
       'The system was designed to preserve multi-priority quota distributions across structured incident-style datasets while supporting fallback handling, constrained balancing, and reproducible configuration.',
