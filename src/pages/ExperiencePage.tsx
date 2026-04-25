@@ -11,6 +11,20 @@ import type { ExperienceEntry } from '../types';
 const TABS = ['Internships', 'Leadership'];
 const CARD_SURFACE_TAG_CLASS = 'theme-tag-accent text-[10px] px-2 py-0.5 rounded-md';
 
+const getExperiencePreviewText = (summary: string) => {
+  const normalized = summary.trim();
+  if (!normalized) return '';
+
+  const sentences = normalized.split(/(?<=[.!?])\s+/);
+  const firstSentence = sentences[0]?.trim() || normalized;
+
+  if (firstSentence.length <= 180) {
+    return firstSentence;
+  }
+
+  return `${firstSentence.slice(0, 177).trimEnd()}...`;
+};
+
 const formatCompactLeadershipPeriod = (periods: string[]) => {
   const parsed = periods
     .map((period) => {
@@ -181,7 +195,9 @@ const ExperiencePage: React.FC = () => {
                 <span>{previewEntry.location}</span>
               )}
             </div>
-            <p className="text-navy-200 text-sm">{previewEntry.summary}</p>
+            <p className="text-navy-200 text-sm leading-relaxed">
+              {getExperiencePreviewText(previewEntry.summary)}
+            </p>
           </>
         )}
       </PreviewPanel>
@@ -201,22 +217,16 @@ const ExperiencePage: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-2">Summary</h4>
-              <p className="text-navy-200 leading-relaxed">{focusEntry.summary}</p>
-            </div>
-
-            {focusEntry.bullets.length > 0 && (
-              <div>
-                <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-2">Details</h4>
-                <div className="space-y-2">
-                  {focusEntry.bullets.map((bullet, i) => (
-                    <p key={i} className="text-navy-200 text-sm">
-                      {bullet}
-                    </p>
-                  ))}
-                </div>
+              <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-2">Details</h4>
+              <div className="space-y-3">
+                <p className="text-navy-200 text-sm leading-relaxed">{focusEntry.summary}</p>
+                {focusEntry.bullets.map((bullet, i) => (
+                  <p key={i} className="text-navy-200 text-sm">
+                    {bullet}
+                  </p>
+                ))}
               </div>
-            )}
+            </div>
 
             <div>
               <h4 className="text-sm font-medium text-navy-100 uppercase tracking-wider mb-3">Skills and Technologies</h4>

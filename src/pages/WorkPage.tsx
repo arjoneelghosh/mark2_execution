@@ -51,6 +51,11 @@ const getProjectTaxonomyLabel = (project: ProjectRecord) => getProjectBuckets(pr
 const getProjectDisciplineTags = (project: ProjectRecord) =>
   project.disciplineTags?.length ? project.disciplineTags.slice(0, 3) : [];
 
+const getProjectCardMetaLabel = (project: ProjectRecord) => {
+  const disciplineTags = getProjectDisciplineTags(project);
+  return disciplineTags.length > 0 ? disciplineTags.join(' • ') : getProjectTaxonomyLabel(project);
+};
+
 const getProjectSurfaceLabel = (project: ProjectRecord) => {
   if (project.featured) return 'Featured project';
   if (project.subcategories.includes('Archive')) return 'Archive project';
@@ -100,8 +105,7 @@ const WorkPage: React.FC = () => {
           {filtered.map((project, i) => {
             const miniCardTechStack = getMiniCardTechStack(project);
             const cardSlides = buildProjectSlides(project, 'card');
-            const taxonomyLabel = getProjectTaxonomyLabel(project);
-            const disciplineTags = getProjectDisciplineTags(project);
+            const cardMetaLabel = getProjectCardMetaLabel(project);
 
             return (
               <GlowCard
@@ -143,18 +147,8 @@ const WorkPage: React.FC = () => {
                 </p>
 
                 <span className={`${CARD_META_CLASS} mb-3`}>
-                  {taxonomyLabel}
+                  {cardMetaLabel}
                 </span>
-
-                {disciplineTags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {disciplineTags.map((tag) => (
-                      <span key={tag} className={CARD_SURFACE_TAG_CLASS}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
 
                 <div className="theme-divider-soft flex flex-wrap gap-1.5 mt-auto pt-4 border-t">
                   {miniCardTechStack.map((tech) => (
