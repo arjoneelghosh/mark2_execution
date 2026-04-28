@@ -92,6 +92,8 @@ export interface ExperienceEntry {
   period: string;
   type: ExperienceType;
   location?: string;
+  cardText?: string;
+  previewText?: string;
   summary: string;
   bullets: string[];
   tech: string[];
