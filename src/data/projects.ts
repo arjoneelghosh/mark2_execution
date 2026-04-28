@@ -91,7 +91,7 @@ export const projectRecords: ProjectRecord[] = [
     subcategories: ['Featured', 'Accessibility', 'Full Stack Product'], tags: ['React', 'TypeScript', 'Conversational Search', 'Accessibility Workflows'],
     status: 'Completed', featured: true, priority: 3, year: 'Undated', periodLabel: 'Evidence-backed featured project',
     summary: 'Accessibility focused flight search and booking assistant with role-aware workflows, conversational search, structured flight retrieval, and sign or voice supported interaction paths.',
-    previewSummary: 'Accessibility-aware travel assistant that combines guided booking, conversational interpretation, and structured flight retrieval in a product-style workflow.',
+    previewSummary: 'Travel assistant that combines guided booking, conversational interpretation, and structured flight retrieval in a product-style workflow.',
     overview: 'FlightFinder AI is an accessibility focused travel workflow prototype that brings together chat based search, voice support, sign language support, and trip history into one product style interface.',
     problem: 'Travel interfaces are often built for a single interaction style, which makes booking harder for users who need voice support, sign based interaction, or other accessibility aware input paths.',
     approach: [
