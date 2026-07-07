@@ -18,7 +18,9 @@ approved_design/
 repo_exclude_manifest.md
 repo_include_manifest.md
 repo_sync_plan.md
-scripts/
+scripts/*
+!scripts/generate-static-seo.ts
+.seo-build/
 
 src/assets/project-previews/assets.lnk
 src/assets/project-previews/ASK_DESIGN.png
