@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { composePortfolioReply } from '../lib/chatbot/composePortfolioReply';
+import { askServerAssistant } from '../lib/chatbot/askServerAssistant';
 import type {
   AskResponseDiagnostics,
   AskResponsePath,
@@ -496,10 +497,33 @@ export function usePortfolioChat() {
       }
 
       try {
+        let finalReply = reply;
+        const serverAnswer = await askServerAssistant({
+          question: text,
+          resolvedQuery: effectiveQuery,
+        });
+
+        if (serverAnswer) {
+          finalReply = {
+            ...reply,
+            title: '',
+            answer: serverAnswer,
+            bullets: undefined,
+            unsupported: false,
+          };
+
+          if (DEBUG_CHAT) {
+            console.debug('[portfolio-chat-server-answer]', {
+              requestId,
+              chatSessionId: chatSessionIdRef.current,
+            });
+          }
+        }
+
         const assistantMessage: ChatMessage = {
           id: createId('assistant'),
           role: 'assistant',
-          reply,
+          reply: finalReply,
         };
 
         const nextMemory = buildSessionMemoryFromResolution({
