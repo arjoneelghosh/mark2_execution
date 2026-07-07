@@ -425,7 +425,11 @@ const injectRoute = (template: string, routeDef: RouteSeo): string => {
   ].join('\n    ');
   html = html.replace('</head>', `    ${headExtras}\n  </head>`);
 
-  const seoBlock = `<div id="seo-static-content" hidden aria-hidden="true" data-generated="build">${routeDef.html}</div>`;
+  // Visually hidden (screen-reader-style clipping) instead of the `hidden`
+  // attribute: DOM-based text extractors used by AI summarizers honor
+  // `hidden`/display:none and would skip the content, but they do read
+  // clipped off-screen text. Users never see it; React replaces it on mount.
+  const seoBlock = `<div id="seo-static-content" aria-hidden="true" data-generated="build" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${routeDef.html}</div>`;
   html = html.replace('<div id="root"></div>', `<div id="root">${seoBlock}</div>`);
 
   return html;
