@@ -129,7 +129,7 @@ ${list(profileRecord.currentFocus)}
 <h2>Explore this portfolio</h2>
 <ul>
   <li><a href="/work">Projects</a> — ${projectRecords.length} machine learning, forecasting, and full-stack builds</li>
-  <li><a href="/experience">Experience</a> — internships at KPMG India and Sopra Steria India</li>
+  <li><a href="/experience">Experience</a> — internships at KPMG India, Sopra Steria India, and DigiSys InnoSol</li>
   <li><a href="/profile">Profile</a> — skills, bio, and education</li>
   <li><a href="/lab">Lab</a> — publications and research concepts</li>
   <li><a href="/connect">Connect</a> — contact channels</li>
@@ -175,7 +175,7 @@ ${list(profileRecord.currentFocus)}
     route: '/experience',
     title: 'Experience — Arjoneel Ghosh',
     description:
-      'Professional experience of Arjoneel Ghosh, including data science and analytics internships at KPMG India Services LLP and Sopra Steria India Limited.',
+      'Professional experience of Arjoneel Ghosh, including internships at KPMG India Services LLP, Sopra Steria India Limited, and DigiSys InnoSol Pvt. Ltd.',
     html: `<h1>Experience of ${esc(profileRecord.name)}</h1>${experiencePageEntries.map(experienceHtml).join('')}`,
     structuredData: [
       {
@@ -388,7 +388,7 @@ const buildLlmsTxt = (): string => {
   lines.push('## Education');
   lines.push('');
   educationRecords.forEach((edu) => {
-    lines.push(`- ${edu.qualification}, ${edu.institution} (${edu.period}) — ${edu.score.label}: ${edu.score.value}`);
+    lines.push(`- ${edu.qualification}, ${edu.institution} (${edu.period}) — ${edu.score.label}: ${edu.score.value}. ${edu.summary}`);
   });
   lines.push('');
   lines.push('## Certifications');

@@ -1233,6 +1233,7 @@ const buildNoiseAwareProjectIntentContext = (
       [
         'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
         'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Intern at DigiSys InnoSol Pvt. Ltd.: AI governance and compliance automation with pandas preprocessing pipelines, multi-agent orchestration, and evidence-bound RAG workflows.',
         'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
       ]
     );
@@ -1657,6 +1658,7 @@ const buildCandidateProfileContext = (
       [
         'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
         'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Intern at DigiSys InnoSol Pvt. Ltd.: AI governance and compliance automation with pandas preprocessing pipelines, multi-agent orchestration, and evidence-bound RAG workflows.',
         'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
       ]
     );
@@ -1674,6 +1676,7 @@ const buildCandidateProfileContext = (
       [
         'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
         'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Intern at DigiSys InnoSol Pvt. Ltd.: AI governance and compliance automation with pandas preprocessing pipelines, multi-agent orchestration, and evidence-bound RAG workflows.',
         'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
       ]
     );
@@ -1704,7 +1707,7 @@ const buildCandidateProfileContext = (
       [
         recruiterReply.bullets[0],
         recruiterReply.bullets[1],
-        'Supporting experience includes KPMG India Services LLP and Sopra Steria India Limited internship records.',
+        'Supporting experience includes KPMG India Services LLP, Sopra Steria India Limited, and DigiSys InnoSol Pvt. Ltd. internship records.',
         'The broader profile combines projects, grouped skills, education, experience records, and Lab material.',
       ]
     );
@@ -1717,7 +1720,7 @@ const buildCandidateProfileContext = (
     [
       recruiterReply.bullets[0],
       recruiterReply.bullets[1],
-      'Supporting experience includes KPMG India Services LLP and Sopra Steria India Limited internship records.',
+      'Supporting experience includes KPMG India Services LLP, Sopra Steria India Limited, and DigiSys InnoSol Pvt. Ltd. internship records.',
       'The broader profile combines projects, grouped skills, education, experience records, and Lab material.',
     ]
   );
