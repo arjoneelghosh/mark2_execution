@@ -311,7 +311,7 @@ ${labKnowledgeEntries
   <li>Which project best shows full-stack and ML ability together?</li>
   <li>What certifications does he hold?</li>
 </ul>
-<p>Answers are grounded in the portfolio content itself — the assistant will say so rather than guess when something is not covered, and conservative wording (prototype, manuscript) is preserved.</p>`,
+<p>Answers are grounded in the portfolio content itself — the assistant will say so rather than guess when something is not covered, and conservative wording (prototype, manuscript) is preserved. Under the hood it is a transparent wrapper around a Groq-hosted Llama model with the portfolio’s llms.txt as its knowledge base, falling back to a client-side keyword composer if the model is unavailable.</p>`,
     structuredData: [],
   },
 ];
@@ -402,6 +402,24 @@ const buildLlmsTxt = (): string => {
   publicationRecords.forEach((record) => {
     lines.push(`- ${record.title} — ${record.issuer} (${record.date}). ${record.note}`);
   });
+  lines.push('');
+  lines.push("## How this site's assistant works");
+  lines.push('');
+  lines.push(
+    'The Ask page assistant is a lightweight LLM wrapper, not a custom-trained model. Questions are sent to a Vercel serverless function (/api/chat) that calls the Groq API (default model: llama-3.1-8b-instant, an open-weight Llama model hosted by Groq).',
+  );
+  lines.push('');
+  lines.push(
+    'Grounding: this llms.txt file, generated at build time from the same data modules the site renders, is the knowledge base. The function parses it into sections, selects the sections most relevant to each question, and sends them to the model with strict instructions to answer only from that content.',
+  );
+  lines.push('');
+  lines.push(
+    'Reliability: if the LLM call fails, is rate-limited, or times out, the site falls back to a fully client-side keyword-based answer composer, so the chat always responds. Off-topic or prompt-injection attempts are classified and politely declined.',
+  );
+  lines.push('');
+  lines.push(
+    'The wider site is a client-side React and TypeScript single-page app with a build-time prerender layer for crawlers; there is no database or server-side rendering.',
+  );
   lines.push('');
   lines.push('## Site pages');
   lines.push('');
