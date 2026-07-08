@@ -528,6 +528,30 @@ experience:
       certificateLink: true
       certificateLabel: "View Internship Certificate"
 
+    - id: "exp-digisys-innosol"
+      section: "experience"
+      type: "Internships"
+      organization: "DigiSys InnoSol Pvt. Ltd."
+      role: "Intern"
+      period: "01-Jan-26 to 31-May-26"
+      location: "Chennai, India"
+      summary: "Worked on AI governance and compliance automation in the Artificial Intelligence department, focusing on preprocessing pipelines for multi-regional vendor risk data, multi-agent orchestration for artifact-to-question matching, and evidence-bound retrieval flows for draft compliance responses."
+      bullets:
+        - "Engineered pandas preprocessing pipelines that standardized multi-regional vendor risk data using structural sanity checks, dynamic feature imputation, and Min-Max normalization to keep metric evaluation reliable."
+        - "Contributed to a multi-agent AI orchestrator that automated artifact-to-question matching, streamlining sector-specific GRC workflows toward evidence-backed draft compliance responses."
+        - "Worked on the design and validation of evidence-bound RAG flows, guardrail mechanisms, reliable state propagation, batch document processing, and retrieval-backed answer generation."
+        - "This internship record is certificate-backed and best represented as structured professional AI-engineering exposure inside a company setting rather than as an independent personal build."
+      tech:
+        - "Python"
+        - "Pandas"
+        - "Multi-Agent Orchestration"
+        - "RAG Workflows"
+        - "Guardrails"
+        - "GRC Automation"
+        - "Data Preprocessing"
+      certificateLink: true
+      certificateLabel: "View Internship Certificate"
+
   leadership:
     - id: "exp-munsoc"
       section: "experience"
@@ -966,7 +990,7 @@ ask:
       title: "Education"
       summary: "Arjoneel's published education record includes a B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology, plus CBSE Class XII and Class X school records."
       bullets:
-        - "SRM Institute of Science and Technology | Aug 2022 - May 2026 | B.Tech in Computer Science and Engineering | CGPA 8.18"
+        - "SRM Institute of Science and Technology | Aug 2022 - May 2026 | B.Tech in Computer Science and Engineering | CGPA 8.2 (graduated May 2026)"
         - "Navyug Convent Sr. Secondary School | Apr 2021 - Mar 2022 | CBSE Class XII | Percentage 70.8%"
         - "Amity International School, Sector 46 | Feb 2019 - Mar 2020 | CBSE Class X | Percentage 89.8%"
     project-overview:
@@ -1001,7 +1025,7 @@ ask:
       summary: "Arjoneel Ghosh is positioned as a machine learning engineer and full-stack developer with work spanning forecasting systems, assistive computer vision, accessibility-first product workflows, and practical internal-style data tooling."
       bullets:
         - "Featured work now centers on AgriFore, FlightFinder AI, Priority-Based CSV Sampler, R Styled Forecast Tool for Business Metrics."
-        - "Published education record includes a B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology (Aug 2022 - May 2026, CGPA 8.18)."
+        - "Published education record includes a B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology (Aug 2022 - May 2026, CGPA 8.2), completed in May 2026."
         - "The portfolio also includes richer internship records, consolidated leadership evidence, and a Lab section organized around papers, concepts, and prototypes."
     full-stack:
       title: "Full Stack Work"
@@ -1130,11 +1154,11 @@ profile:
       institution: "SRM Institute of Science and Technology"
       period: "Aug 2022 - May 2026"
       qualification: "B.Tech in Computer Science and Engineering"
-      summary: "Published higher-education record for SRM Institute of Science and Technology, where Arjoneel is pursuing a B.Tech in Computer Science and Engineering."
+      summary: "Published higher-education record for SRM Institute of Science and Technology, where Arjoneel completed his B.Tech in Computer Science and Engineering, graduating in May 2026."
       score:
         kind: "cgpa"
         label: "CGPA"
-        value: "8.18"
+        value: "8.2"
       tags:
         - "Computer Science and Engineering"
     - id: "edu-navyug-class-xii"
