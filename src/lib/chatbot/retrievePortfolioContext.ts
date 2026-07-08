@@ -2610,6 +2610,10 @@ const buildProjectReason = ({
     ) {
       if (project.slug === 'flightfinder-ai') {
         whyItFits.push('role-aware product workflow with chat, voice, sign, and backend-connected flight search');
+      } else if (project.slug === 'surgemedi') {
+        whyItFits.push('deployed catalog frontend with structured product browsing and an inquiry-driven conversion flow, without claimed backend depth');
+      } else if (project.slug === 'cropiq') {
+        whyItFits.push('productized conversational workflow with client-side advisory logic and structured chat state');
       } else {
         whyItFits.push('end-to-end product workflow with UI and backend integration');
       }
@@ -3366,6 +3370,75 @@ function buildKnowledgeContext(
   };
 }
 
+const TECH_QUERY_STOPWORDS = new Set([
+  'which', 'what', 'projects', 'project', 'use', 'uses', 'using', 'used', 'built', 'with',
+  'written', 'made', 'powered', 'does', 'the', 'are', 'his', 'any', 'that', 'have', 'has',
+  'list', 'show', 'all', 'portfolio', 'arjoneel', 'work', 'works',
+]);
+
+const buildTechProjectsContext = (
+  query: string,
+  queryTokens: string[]
+): Extract<PortfolioMatchContext, { kind: 'action' }> | null => {
+  const asksUsage =
+    /\b(use|uses|using|built with|written in|made with)\b/.test(query) ||
+    query.includes('which projects') ||
+    query.includes('what projects');
+  if (!asksUsage) return null;
+
+  const candidateTokens = queryTokens.filter(
+    (token) => token.length >= 3 && !TECH_QUERY_STOPWORDS.has(token)
+  );
+  if (candidateTokens.length === 0) return null;
+
+  const projects = chatbotKnowledge.projects as Array<{
+    title: string;
+    previewSummary?: string;
+    summary?: string;
+    techStack?: string[];
+  }>;
+
+  let matchedTech: string | null = null;
+  const matched: typeof projects = [];
+  for (const project of projects) {
+    const techList = project.techStack ?? [];
+    const hit = techList.find((tech) => {
+      const lowered = tech.toLowerCase();
+      return candidateTokens.some(
+        (token) => lowered === token || lowered.startsWith(token) || lowered.split(/[^a-z0-9]+/).includes(token)
+      );
+    });
+    if (hit) {
+      matchedTech = matchedTech ?? hit;
+      matched.push(project);
+    }
+  }
+  if (!matchedTech || matched.length === 0) return null;
+
+  return createActionContext(
+    `Projects Using ${matchedTech}`,
+    `Projects Using ${matchedTech}`,
+    `These are the portfolio projects whose published tech stack includes ${matchedTech}.`,
+    matched.map((project) => `${project.title} — ${project.previewSummary || project.summary || ''}`)
+  );
+};
+
+const PRIVATE_INFO_PATTERN =
+  /\b(phone|mobile|whatsapp|home address|residential address|salary|compensation|ctc|aadhaar|passport number)\b|where does (he|arjoneel) live/;
+
+const buildPrivateInfoContext = (
+  query: string
+): Extract<PortfolioMatchContext, { kind: 'action' }> | null => {
+  if (!PRIVATE_INFO_PATTERN.test(query) || query.includes('email')) return null;
+  const links = chatbotKnowledge.profile.contactLinks as Array<{ label: string; link: string }>;
+  return createActionContext(
+    'Contact Channels',
+    'Contact Channels',
+    'The portfolio does not publish private details like phone numbers, home address, or salary expectations. These are the published contact channels.',
+    links.map((item) => `${item.label}: ${item.link}`)
+  );
+};
+
 export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolution {
   const query = normalize(rawQuery);
   const queryTokens = tokenize(rawQuery);
@@ -3408,6 +3481,30 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent,
       matchedDomain: context.kind,
       matchedEntryCount: 0,
+      context,
+    };
+  }
+
+  const privateInfoContext = buildPrivateInfoContext(query);
+  if (privateInfoContext) {
+    context = privateInfoContext;
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 0,
+      context,
+    };
+  }
+
+  const techProjectsContext = buildTechProjectsContext(query, queryTokens);
+  if (techProjectsContext) {
+    context = techProjectsContext;
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: techProjectsContext.item.replyBullets.length,
       context,
     };
   }
