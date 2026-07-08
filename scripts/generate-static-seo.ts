@@ -301,7 +301,17 @@ ${labKnowledgeEntries
 <h1>Ask about this portfolio</h1>
 <p>This page hosts an interactive assistant that answers questions about ${esc(
       profileRecord.name,
-    )}’s projects, experience, education, and skills. For a machine-readable summary of the full portfolio, see <a href="/llms.txt">/llms.txt</a>.</p>`,
+    )}’s projects, experience, education, and skills. For a machine-readable summary of the full portfolio, see <a href="/llms.txt">/llms.txt</a>.</p>
+<h2>Example questions</h2>
+<ul>
+  <li>What are Arjoneel’s strongest ML projects?</li>
+  <li>Summarize his internships.</li>
+  <li>Which projects use FastAPI or Streamlit?</li>
+  <li>Is AgriFore a published paper or a manuscript?</li>
+  <li>Which project best shows full-stack and ML ability together?</li>
+  <li>What certifications does he hold?</li>
+</ul>
+<p>Answers are grounded in the portfolio content itself — the assistant will say so rather than guess when something is not covered, and conservative wording (prototype, manuscript) is preserved.</p>`,
     structuredData: [],
   },
 ];
