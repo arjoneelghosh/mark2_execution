@@ -1395,8 +1395,8 @@ const referencesOwnerSummaryIntent = (query: string) =>
   ]);
 
 const referencesExperienceSummaryIntent = (query: string) =>
+  /\bexp\b/.test(query) ||
   includesAny(query, [
-    'exp',
     'experience',
     'work experience',
     'what experience do you have',
