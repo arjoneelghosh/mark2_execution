@@ -3134,8 +3134,28 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
   }
 
   if (
-    includesAny(query, ['what powers this chatbot', 'what powers the chatbot']) ||
+    includesAny(query, [
+      'what powers this chatbot',
+      'what powers the chatbot',
+      'are you gpt',
+      'are you a gpt',
+      'are you chatgpt',
+      'are you an ai',
+      'are you a real ai',
+      'are you an llm',
+      'are you a llm',
+      'what model are you',
+      'which model are you',
+      'what llm is this',
+      'which llm is this',
+      'are you groq',
+      'are you llama',
+      'is this a gpt wrapper',
+      'is this an llm wrapper',
+    ]) ||
     ((query.includes('power') || query.includes('powered')) && query.includes('chatbot')) ||
+    query.includes('groq') ||
+    query.includes('llama') ||
     (metaRefs.mentionsPower && metaRefs.mentionsChatbot)
   ) {
     return 'chatbot-powering';
