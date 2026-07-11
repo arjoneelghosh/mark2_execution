@@ -1233,6 +1233,7 @@ const buildNoiseAwareProjectIntentContext = (
       [
         'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
         'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Intern at DigiSys InnoSol Pvt. Ltd.: AI governance and compliance automation with pandas preprocessing pipelines, multi-agent orchestration, and evidence-bound RAG workflows.',
         'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
       ]
     );
@@ -1394,8 +1395,8 @@ const referencesOwnerSummaryIntent = (query: string) =>
   ]);
 
 const referencesExperienceSummaryIntent = (query: string) =>
+  /\bexp\b/.test(query) ||
   includesAny(query, [
-    'exp',
     'experience',
     'work experience',
     'what experience do you have',
@@ -1657,6 +1658,7 @@ const buildCandidateProfileContext = (
       [
         'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
         'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Intern at DigiSys InnoSol Pvt. Ltd.: AI governance and compliance automation with pandas preprocessing pipelines, multi-agent orchestration, and evidence-bound RAG workflows.',
         'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
       ]
     );
@@ -1674,6 +1676,7 @@ const buildCandidateProfileContext = (
       [
         'Intern at KPMG India Services LLP: data mining, pattern recognition, forecasting workflows, and analytics automation.',
         'Project Intern at Sopra Steria India Limited: quota-driven CSV sampling engine with Streamlit, YAML or JSON configuration, and iterative balancing logic.',
+        'Intern at DigiSys InnoSol Pvt. Ltd.: AI governance and compliance automation with pandas preprocessing pipelines, multi-agent orchestration, and evidence-bound RAG workflows.',
         'Leadership evidence includes SRMMUN Society and SRM Directorate of Student Affairs roles.',
       ]
     );
@@ -1704,7 +1707,7 @@ const buildCandidateProfileContext = (
       [
         recruiterReply.bullets[0],
         recruiterReply.bullets[1],
-        'Supporting experience includes KPMG India Services LLP and Sopra Steria India Limited internship records.',
+        'Supporting experience includes KPMG India Services LLP, Sopra Steria India Limited, and DigiSys InnoSol Pvt. Ltd. internship records.',
         'The broader profile combines projects, grouped skills, education, experience records, and Lab material.',
       ]
     );
@@ -1717,7 +1720,7 @@ const buildCandidateProfileContext = (
     [
       recruiterReply.bullets[0],
       recruiterReply.bullets[1],
-      'Supporting experience includes KPMG India Services LLP and Sopra Steria India Limited internship records.',
+      'Supporting experience includes KPMG India Services LLP, Sopra Steria India Limited, and DigiSys InnoSol Pvt. Ltd. internship records.',
       'The broader profile combines projects, grouped skills, education, experience records, and Lab material.',
     ]
   );
@@ -2607,6 +2610,10 @@ const buildProjectReason = ({
     ) {
       if (project.slug === 'flightfinder-ai') {
         whyItFits.push('role-aware product workflow with chat, voice, sign, and backend-connected flight search');
+      } else if (project.slug === 'surgemedi') {
+        whyItFits.push('deployed catalog frontend with structured product browsing and an inquiry-driven conversion flow, without claimed backend depth');
+      } else if (project.slug === 'cropiq') {
+        whyItFits.push('productized conversational workflow with client-side advisory logic and structured chat state');
       } else {
         whyItFits.push('end-to-end product workflow with UI and backend integration');
       }
@@ -3131,8 +3138,28 @@ const detectCanonicalIntent = (query: string, queryTokens: string[]): CanonicalI
   }
 
   if (
-    includesAny(query, ['what powers this chatbot', 'what powers the chatbot']) ||
+    includesAny(query, [
+      'what powers this chatbot',
+      'what powers the chatbot',
+      'are you gpt',
+      'are you a gpt',
+      'are you chatgpt',
+      'are you an ai',
+      'are you a real ai',
+      'are you an llm',
+      'are you a llm',
+      'what model are you',
+      'which model are you',
+      'what llm is this',
+      'which llm is this',
+      'are you groq',
+      'are you llama',
+      'is this a gpt wrapper',
+      'is this an llm wrapper',
+    ]) ||
     ((query.includes('power') || query.includes('powered')) && query.includes('chatbot')) ||
+    query.includes('groq') ||
+    query.includes('llama') ||
     (metaRefs.mentionsPower && metaRefs.mentionsChatbot)
   ) {
     return 'chatbot-powering';
@@ -3343,6 +3370,75 @@ function buildKnowledgeContext(
   };
 }
 
+const TECH_QUERY_STOPWORDS = new Set([
+  'which', 'what', 'projects', 'project', 'use', 'uses', 'using', 'used', 'built', 'with',
+  'written', 'made', 'powered', 'does', 'the', 'are', 'his', 'any', 'that', 'have', 'has',
+  'list', 'show', 'all', 'portfolio', 'arjoneel', 'work', 'works',
+]);
+
+const buildTechProjectsContext = (
+  query: string,
+  queryTokens: string[]
+): Extract<PortfolioMatchContext, { kind: 'action' }> | null => {
+  const asksUsage =
+    /\b(use|uses|using|built with|written in|made with)\b/.test(query) ||
+    query.includes('which projects') ||
+    query.includes('what projects');
+  if (!asksUsage) return null;
+
+  const candidateTokens = queryTokens.filter(
+    (token) => token.length >= 3 && !TECH_QUERY_STOPWORDS.has(token)
+  );
+  if (candidateTokens.length === 0) return null;
+
+  const projects = chatbotKnowledge.projects as Array<{
+    title: string;
+    previewSummary?: string;
+    summary?: string;
+    techStack?: string[];
+  }>;
+
+  let matchedTech: string | null = null;
+  const matched: typeof projects = [];
+  for (const project of projects) {
+    const techList = project.techStack ?? [];
+    const hit = techList.find((tech) => {
+      const lowered = tech.toLowerCase();
+      return candidateTokens.some(
+        (token) => lowered === token || lowered.startsWith(token) || lowered.split(/[^a-z0-9]+/).includes(token)
+      );
+    });
+    if (hit) {
+      matchedTech = matchedTech ?? hit;
+      matched.push(project);
+    }
+  }
+  if (!matchedTech || matched.length === 0) return null;
+
+  return createActionContext(
+    `Projects Using ${matchedTech}`,
+    `Projects Using ${matchedTech}`,
+    `These are the portfolio projects whose published tech stack includes ${matchedTech}.`,
+    matched.map((project) => `${project.title} — ${project.previewSummary || project.summary || ''}`)
+  );
+};
+
+const PRIVATE_INFO_PATTERN =
+  /\b(phone|mobile|whatsapp|home address|residential address|salary|compensation|ctc|aadhaar|passport number)\b|where does (he|arjoneel) live/;
+
+const buildPrivateInfoContext = (
+  query: string
+): Extract<PortfolioMatchContext, { kind: 'action' }> | null => {
+  if (!PRIVATE_INFO_PATTERN.test(query) || query.includes('email')) return null;
+  const links = chatbotKnowledge.profile.contactLinks as Array<{ label: string; link: string }>;
+  return createActionContext(
+    'Contact Channels',
+    'Contact Channels',
+    'The portfolio does not publish private details like phone numbers, home address, or salary expectations. These are the published contact channels.',
+    links.map((item) => `${item.label}: ${item.link}`)
+  );
+};
+
 export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolution {
   const query = normalize(rawQuery);
   const queryTokens = tokenize(rawQuery);
@@ -3385,6 +3481,30 @@ export function resolvePortfolioQuery(rawQuery: string): PortfolioQueryResolutio
       canonicalIntent,
       matchedDomain: context.kind,
       matchedEntryCount: 0,
+      context,
+    };
+  }
+
+  const privateInfoContext = buildPrivateInfoContext(query);
+  if (privateInfoContext) {
+    context = privateInfoContext;
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: 0,
+      context,
+    };
+  }
+
+  const techProjectsContext = buildTechProjectsContext(query, queryTokens);
+  if (techProjectsContext) {
+    context = techProjectsContext;
+    return {
+      normalizedQuery: query,
+      canonicalIntent,
+      matchedDomain: context.kind,
+      matchedEntryCount: techProjectsContext.item.replyBullets.length,
       context,
     };
   }

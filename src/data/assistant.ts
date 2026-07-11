@@ -65,7 +65,7 @@ export const assistantFaqReplies = {
     summary:
       "Arjoneel's published education record includes a B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology, plus CBSE Class XII and Class X school records.",
     bullets: [
-      'SRM Institute of Science and Technology | Aug 2022 - May 2026 | B.Tech in Computer Science and Engineering | CGPA 8.18',
+      'SRM Institute of Science and Technology | Aug 2022 - May 2026 | B.Tech in Computer Science and Engineering | CGPA 8.2 (graduated May 2026)',
       'Navyug Convent Sr. Secondary School | Apr 2021 - Mar 2022 | CBSE Class XII | Percentage 70.8%',
       'Amity International School, Sector 46 | Feb 2019 - Mar 2020 | CBSE Class X | Percentage 89.8%',
     ],
@@ -133,7 +133,7 @@ export const roleSummaries: RoleSummary[] = [
     highlights: [
       `Featured work now centers on ${featuredProjects.map((project) => project.title).join(', ')}.`,
       'SignChat remains a strong ML and computer-vision project, while Movie Recommendation Engine and CropIQ are now archive-facing items rather than active category shelf entries.',
-      'Published education record includes a B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology (Aug 2022 - May 2026, CGPA 8.18).',
+      'Published education record includes a B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology (Aug 2022 - May 2026, CGPA 8.2), completed in May 2026.',
       'Experience combines richer certificate-backed internships with consolidated leadership evidence, and Lab now uses Papers, Concepts, and Prototypes.',
     ],
   },

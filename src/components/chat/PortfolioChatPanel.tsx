@@ -193,7 +193,7 @@ const PortfolioChatPanel: React.FC<PortfolioChatPanelProps> = ({
                     {message.reply.related && message.reply.related.length > 0 && (
                       <div className="pt-2">
                         <p className="mb-2.5 text-[11px] uppercase tracking-[0.16em] text-navy-500">
-                          Related
+                          Sourced from:
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                           {message.reply.related.map((item) => (

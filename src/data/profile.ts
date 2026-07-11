@@ -100,11 +100,11 @@ export const profileRecord: ProfileRecord = {
       period: 'Aug 2022 - May 2026',
       qualification: 'B.Tech in Computer Science and Engineering',
       summary:
-        'Published higher-education record for SRM Institute of Science and Technology, where Arjoneel is pursuing a B.Tech in Computer Science and Engineering.',
+        'Published higher-education record for SRM Institute of Science and Technology, where Arjoneel completed his B.Tech in Computer Science and Engineering, graduating in May 2026.',
       score: {
         kind: 'cgpa',
         label: 'CGPA',
-        value: '8.18',
+        value: '8.2',
       },
       tags: ['Computer Science and Engineering'],
     },

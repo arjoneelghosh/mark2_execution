@@ -1,6 +1,7 @@
 import { ExperienceEntry } from '../types';
 import kpmgCertificatePdf from '../assets/project-previews/InternshipCertificates/KPMG.pdf';
 import sopraSteriaCertificatePdf from '../assets/project-previews/InternshipCertificates/SopraSteria.pdf';
+import digiSysCertificatePdf from '../assets/project-previews/InternshipCertificates/DigiSysInnoSol.pdf';
 
 const internshipEntries: ExperienceEntry[] = [
   {
@@ -20,6 +21,7 @@ const internshipEntries: ExperienceEntry[] = [
       'Worked on real-world datasets with a focus on extracting patterns, building forecasting workflows, and supporting analytical interpretation.',
       'Built automation-oriented reporting and analytics flows that helped reduce repeated manual effort in client-specific workflows.',
       'Developed Prophet-based forecasting work and dashboard-style analytical surfaces that strengthened the bridge between modeling and delivery.',
+      'Built a crop-yield trend forecasting model that reached R² = 0.78 with 22% lower RMSE than ARIMA baselines, supported by a MongoDB and Pandas pipeline for location-based agricultural data.',
       'This experience is best represented as a structured internship record tied to professional workflow exposure rather than as an isolated independent build.',
     ],
     tech: ['Python', 'Prophet', 'Data Mining', 'Pattern Recognition', 'Forecasting Workflows', 'Analytics Automation', 'Dashboarding'],
@@ -48,6 +50,29 @@ const internshipEntries: ExperienceEntry[] = [
     tech: ['Python', 'Streamlit', 'Pandas', 'YAML', 'JSON', 'Configuration-Driven Workflow', 'Quota Balancing', 'ServiceNow'],
     relatedProjectSlugs: ['priority-based-csv-sampler'],
     certificateLink: sopraSteriaCertificatePdf,
+    certificateLabel: 'View Internship Certificate',
+  },
+  {
+    id: 'exp-digisys-innosol',
+    organization: 'DigiSys InnoSol Pvt. Ltd.',
+    role: 'Intern',
+    period: '01-Jan-26 to 31-May-26',
+    type: 'Internships',
+    location: 'Chennai, India',
+    cardText:
+      'As a Software Development Intern in the Artificial Intelligence department at DigiSys InnoSol, I worked on AI governance and compliance automation. I engineered pandas preprocessing pipelines that standardized multi-regional vendor risk data, and contributed to a multi-agent AI orchestrator that matched compliance artifacts to questions so sector-specific GRC workflows could produce evidence-backed draft responses.',
+    previewText:
+      'Worked on AI governance and compliance automation in the Artificial Intelligence department, focusing on preprocessing pipelines for multi-regional vendor risk data, multi-agent orchestration for artifact-to-question matching, and evidence-bound retrieval flows for draft compliance responses.',
+    summary:
+      'Worked on AI governance and compliance automation in the Artificial Intelligence department, focusing on preprocessing pipelines for multi-regional vendor risk data, multi-agent orchestration for artifact-to-question matching, and evidence-bound retrieval flows for draft compliance responses.',
+    bullets: [
+      'Engineered pandas preprocessing pipelines that standardized multi-regional vendor risk data using structural sanity checks, dynamic feature imputation, and Min-Max normalization to keep metric evaluation reliable.',
+      'Contributed to a multi-agent AI orchestrator that automated artifact-to-question matching, streamlining sector-specific GRC workflows toward evidence-backed draft compliance responses.',
+      'Worked on the design and validation of evidence-bound RAG flows, guardrail mechanisms, reliable state propagation, batch document processing, and retrieval-backed answer generation.',
+      'This internship record is certificate-backed and best represented as structured professional AI-engineering exposure inside a company setting rather than as an independent personal build.',
+    ],
+    tech: ['Python', 'Pandas', 'Multi-Agent Orchestration', 'RAG Workflows', 'Guardrails', 'GRC Automation', 'Data Preprocessing'],
+    certificateLink: digiSysCertificatePdf,
     certificateLabel: 'View Internship Certificate',
   },
 ];

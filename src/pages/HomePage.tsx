@@ -284,7 +284,7 @@ const HomePage: React.FC = () => {
           <div className="home-feature-block animate-fade-in opacity-0" style={{ animationDelay: '1450ms', animationFillMode: 'forwards' }}>
             <h3 className="font-heading text-title font-semibold text-navy-50 mb-4">Professional Experience</h3>
             <p className="text-navy-300 text-sm leading-relaxed max-w-md mb-6">
-              Certificate-backed internships at KPMG and Sopra Steria, leadership at SRMMUN Society, and a role-based view of practical responsibility.
+              Certificate-backed internships at KPMG, Sopra Steria, and DigiSys InnoSol, leadership at SRMMUN Society, and a role-based view of practical responsibility.
             </p>
             <button
               onClick={() => navigate('/experience')}

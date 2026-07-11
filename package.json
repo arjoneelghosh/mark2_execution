@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:seo",
+    "build:seo": "vite build --ssr scripts/generate-static-seo.ts --outDir .seo-build --emptyOutDir && node .seo-build/generate-static-seo.js",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },
